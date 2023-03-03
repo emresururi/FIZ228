@@ -424,6 +424,134 @@ subdata
 subdata.loc['n5',:]
 ```
 
+## Adding and Dropping Rows/Cols
+
+We have seen how to add a row via the `concat()` method. What if we want to delete (drop) one or more rows?
+
+Once again consider the `subdata` dataframe:
+
+```{code-cell} ipython3
+subdata
+```
+
+Before we begin, it's a good idea to back up our dataframe:
+
+```{code-cell} ipython3
+subdata_org = subdata
+```
+
+To delete, we feed the unwanted rows' index information to the `drop()` method:
+
+```{code-cell} ipython3
+subdata.drop([1,'n5'])
+```
+
+Notice how _1_ is passed as numerical value and _'n5'_ as string above.
+
+Now here is a surprise:
+
+```{code-cell} ipython3
+subdata
+```
+
+As can be seen, `drop()` returns a new dataframe. So, if we want to update our dataframe, we need to either feed it back to itself or set the `inplace` keyword to `True`:
+
+```{code-cell} ipython3
+subdata = subdata.drop([1,'n5'])
+subdata
+```
+
+```{code-cell} ipython3
+subdata.drop(0,inplace=True)
+subdata
+```
+
+Before we continue further, let's reset our dataframe:
+
+```{code-cell} ipython3
+subdata = subdata_org
+subdata
+```
+
+We have seen how to add a row using the `concat()` method, what if we want to add a new row? There are two ways to do this:
+
++++
+
+### Adding a new column via concat()
+
+In this approach, we define a new dataframe, but concatenating it vertically by setting the `axis` keyword to 1:
+
+```{code-cell} ipython3
+NewCol = pd.DataFrame({'NewVal':[3.2,4.5,-9.3]})
+NewCol
+```
+
+```{code-cell} ipython3
+pd.concat([subdata,NewCol],ignore_index=True,axis=1)
+```
+
+As you can observe, the 'missing' data entries are filled with 'NaN'.
+
++++
+
+### Adding a new column directly:
+
+We can simply define a 'non-existing' column as if there was and go on with it:
+
+```{code-cell} ipython3
+subdata = subdata_org
+subdata
+```
+
+```{code-cell} ipython3
+subdata['NewCol'] = [3.5,6.1,-3.7,4.5]
+subdata
+```
+
+But in this approach, we must match all the entries.
+
++++
+
+### Dropping a column
+
+Dropping a column can be done via `drop()` while setting the `axis` to 1:
+
+```{code-cell} ipython3
+subdata
+```
+
+```{code-cell} ipython3
+subdata.drop('NewCol',axis=1)
+```
+
+and just like the row dropping, if you want this operation to be done in-place, either direct the output to the source or set the `inplace` option to `True`.
+
++++
+
+## Inter-operations between columns
+
+Operating with the column values are pretty straightforward: If you can refer to the values of the columns, then you can also operate on them! ;)
+
+```{code-cell} ipython3
+subdata
+```
+
+Let's add the TwoTheta and NewCol values:
+
+```{code-cell} ipython3
+subdata['TwoTheta'] + subdata['NewCol']
+```
+
+while we are at it, let's collect the results in a new column:
+
+```{code-cell} ipython3
+subdata['Results'] = subdata['TwoTheta'] + subdata['NewCol']
+```
+
+```{code-cell} ipython3
+subdata
+```
+
 ## Exporting the DataFrame to a CSV file
 
 ```{code-cell} ipython3
@@ -455,14 +583,6 @@ print(data_aux.to_csv(index_label='Two Theta'))
 # Use ';' as the seperator, instead of ','
 data_aux.to_csv(sep=';',path_or_buf='out/01_out.csv')
 print(data_aux.to_csv(sep=';'))
-```
-
-```{code-cell} ipython3
-
-```
-
-```{code-cell} ipython3
-
 ```
 
 # Sample Case: Meterological Dataset
@@ -540,7 +660,8 @@ Pay attention that `drop()` method returns a new dataframe. If we want to update
 But wait! We still have the 'NaN' values in the preceeding days -- let's completely find out which days those are:
 
 ```{code-cell} ipython3
-# as NaN value indicates null values, we filter via the 'isnull()' method
+# as NaN value indicates null values,
+# we filter via the 'isnull()' method
 data_weather[data_weather.Temperature.isnull()]
 ```
 
@@ -562,11 +683,3 @@ data_weather
 * X. Sun, D. Tiwari, D.J. Fermin "High Interfacial Hole-Transfer Efficiency at GaFeO<sub>3</sub> Thin Film Photoanodes" Adv. Energy Materials (10) 45 2002784 (2020)  
 [DOI: 10.1002/aenm.202002784](https://doi.org/10.1002/aenm.202002784) | [Data](https://data.bris.ac.uk/data/dataset/c4w8vwn8xfr2kozw9k8lb7o1)
 * [meteoblue.com - Historical Weather Data for Basel](https://www.meteoblue.com/en/weather/archive/export?daterange=2022-01-01%20-%202023-03-03&locations%5B%5D=basel_switzerland_2661604&domain=ERA5T&min=2022-01-01&max=2023-03-03&params%5B%5D=&params%5B%5D=temp2m&params%5B%5D=&params%5B%5D=relhum2m&params%5B%5D=&params%5B%5D=&params%5B%5D=totalClouds&params%5B%5D=&params%5B%5D=sunshine&params%5B%5D=swrad&params%5B%5D=&params%5B%5D=&params%5B%5D=&utc_offset=1&timeResolution=hourly&temperatureunit=CELSIUS&velocityunit=KILOMETER_PER_HOUR&energyunit=watts&lengthunit=metric&degree_day_type=10%3B30&gddBase=10&gddLimit=30)
-
-```{code-cell} ipython3
-
-```
-
-```{code-cell} ipython3
-
-```
