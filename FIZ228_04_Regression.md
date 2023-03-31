@@ -418,5 +418,150 @@ $$r^2 = \frac{S_t-S_r}{S_t}$$
 Where a result of 1 (hence, $S_r = 0$) indicating a perfect fit, $r^2=0$ meaning we could have actually picked the average value and a negative $r^2$ indicating that even picking the average value would be better than this fit!
 
 
+# Case Study: FTIR data of Silica
+
+Fourier Transform Infrared Spectroscopy is one of the fundamental IR spectrum analysis methods. We are going to investigate the FTIR data of Silica, courtesy of Prof. Sevgi Bayarı.
+
+Data: `05_Silica_FTIR.csv`
+
+```python
+data_IR = pd.read_csv("data/05_Silica_FTIR.csv",header=None)
+data_IR.columns = ["Wavenumber (cm-1)","Absorbance"]
+print(data_IR)
+```
+
+```python
+import seaborn as sns
+sns.set_theme()
+
+plt1 = sns.relplot(data=data_IR,x="Wavenumber (cm-1)",\
+                  y="Absorbance",kind="line")
+aux = plt1.set_axis_labels("Wavenumber ($cm^{-1}$)","Absorbance")
+```
+
+```python
+data_IR["Wavelength (um)"] = 1/data_IR["Wavenumber (cm-1)"]*1E-2*1E6
+print(data_IR)
+```
+
+Let's focus on the highest peak:
+
+```python
+filter1 = (data_IR.iloc[:,0] >=900) & (data_IR.iloc[:,0] <= 1500)
+data_IR_filtered = data_IR[filter1]
+
+plt1 = sns.relplot(data=data_IR_filtered,x="Wavenumber (cm-1)",\
+                  y="Absorbance",kind="line")
+aux = plt1.set_axis_labels("Wavenumber ($cm^{-1}$)","Absorbance")
+```
+
+Let's try to put a Gaussian in it! 8)
+
+$$G(x;\mu,\sigma) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp{\left[-\frac{(x-\mu)^2}{2\sigma^2}\right]}$$
+
+Here, $\frac{1}{\sqrt{2\pi\sigma^2}}$ is the normalization factor that makes it a probability distribution function. Since we are interested in the form of the function itself for the fitting, we're just define an amplitude $A$ instead:
+
+```python
+def Gauss(x,A,mu,sigma):
+    y = A*np.exp(-(x-mu)**2/(2*sigma**2))
+    return y
+```
+
+```python
+data_IR_x = data_IR_filtered.iloc[:,0]
+data_IR_y = data_IR_filtered.iloc[:,1]
+```
+
+Let's try with a crude approximation for the peak position $(\mu)$, peak value $(A)$ and spreadness $(\sigma)$:
+
+```python
+x = data_IR_x
+y_0 = Gauss(x,1.30,1150,200)
+plt.plot(x,y_0,"b-",data_IR_x,data_IR_y,"r-")
+plt.show()
+```
+
+We can surely do better than that!
+
+```python
+y_max = np.max(data_IR_y)
+i_ymax = np.argmax(data_IR_y)
+print(i_ymax,y_max)
+x_ymax = data_IR_x.iloc[i_ymax]
+print(x_ymax,y_max)
+```
+
+```python
+x = data_IR_x
+y_1 = Gauss(x,y_max,x_ymax,100)
+plt.plot(x,y_1,"b-",data_IR_x,data_IR_y,"r-")
+plt.show()
+```
+
+Let's call statistics for help!
+
+$$\mu= <x> = \frac{1}{N}{\sum_{i}{x_i}}$$
+
+$$<x^2> = \frac{1}{N}{\sum_{i}{x_i^2}}$$
+
+$$\sigma^2 = <x^2>-<x>^2$$
+
+```python
+N = np.sum(data_IR_y)
+mu_x = np.sum(data_IR_x*data_IR_y)/N
+mu_x2 = sum(x**2*data_IR_y)/N
+sigma = np.sqrt(mu_x2 - mu_x**2)
+y_max_opt = y_max
+print(mu_x,sigma)
+
+x = data_IR_x
+y_2 = Gauss(x,y_max_opt,mu_x,sigma)
+N2 = np.sum(y_2)
+print(N/N2)
+y_2 *= N/N2
+plt.plot(x,y_2,"b-",data_IR_x,data_IR_y,"r-")
+plt.show()
+```
+
+```python
+y_max_opt
+```
+
+### `scipy.optimize.curve_fit()` to the rescue!
+
+```python
+from scipy import optimize
+popt,_=optimize.curve_fit(Gauss,data_IR_x,data_IR_y,p0=[y_max,x_ymax,sigma])
+print(popt)
+```
+
+```python
+x = data_IR_x
+y_3 = Gauss(x,popt[0],popt[1],popt[2])
+plt.plot(x,y_3,"b-",data_IR_x,data_IR_y,"r-")
+plt.show()
+```
+
+Let's calculate the coefficient of determination $r^2$:
+
+```python
+def r2(y,t):
+    # y: true data
+    # t: model data
+    mean = np.mean(y)
+    S_t = np.sum((y-mean)**2)
+    S_r = np.sum((y-t)**2)
+    r2 = (S_t - S_r)/S_t
+    return r2
+```
+
+```python
+print(r2(data_IR_y,y_0))
+print(r2(data_IR_y,y_1))
+print(r2(data_IR_y,y_2))
+print(r2(data_IR_y,y_3))
+```
+
 # References & Acknowledgements
 * This lecture is heavily benefited from Steven Chapra's [Applied Numerical Methods with MATLAB: for Engineers & Scientists](https://www.mheducation.com/highered/product/applied-numerical-methods-matlab-engineers-scientists-chapra/M9780073397962.html).
+* I'm indebted to Prof. Sevgi Bayari for generously supplying the FTIR data.
