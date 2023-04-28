@@ -778,7 +778,7 @@ $$E - V(x_0) = K(x_0) = 0$$
 $$\begin{align} V(x_0) &= E\\
  \frac{1}{2}k_1(x_0-x_1)^2 + \frac{1}{2}k_2(x_0-x_2)^2 &= E\\
  k_1(x_0-x_1)^2 + k_2(x_0-x_2)^2 &= 2E\\
- k_1x_0^2+k_1x_1**2 -2k_1x_1x_0+k_2x_0^2+k_2x_2^2 -2k_2x_2x_0&=2E\\
+ k_1x_0^2+k_1x_1^2 -2k_1x_1x_0+k_2x_0^2+k_2x_2^2 -2k_2x_2x_0&=2E\\
  \underbrace{(k_1+k_2)}_{a}x_0^2\underbrace{-2(k_1x_1+k_2x_2)}_{b}x_0+\underbrace{k_1x_1^2+k_2x_2^2-2E}_{c} &= 0\\
  \leftrightarrow ax_0^2+bx_0+c = 0
 \end{align}$$
