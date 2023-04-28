@@ -525,14 +525,14 @@ def F_sigma(x,mu,sigma):
 
 But what we really have in mind is the fact that, for a given $x_i$, we want to find values as close to the corresponding $t_i$ as possible. One way to obtain this would be to define the error function as:
 
-$$F(x_i,t_i,\mu,\sigma) = \left[t_i - f(x_i;\mu,\sigma)\right]^2=\left\{t_i -
+$$F(x_i,t_i,\mu,\sigma) = \left[t_i - f(x_i;\mu,\sigma)\right]^2=\left\lbrace t_i -
 \left[-\exp{\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)}\right]
-\right\}^2$$
+\right\rbrace^2$$
 
 and then we would have the following derivatives:
 
-$$\pypx{F}{\mu} = \frac{2(x_i-\mu)}{\sigma^2}\exp{\left[-\frac{(x_i-\mu)^2}{2\sigma^2}\right]}\left\{t_i+\exp{\left[-\frac{(x_i-\mu)^2}{2\sigma^2}\right]}\right\}\\
-\pypx{F}{\sigma}=\frac{2(x_i-\mu)^2}{\sigma^3}\exp{\left[-\frac{(x_i-\mu)^2}{2\sigma^2}\right]}\left\{t_i+\exp{\left[-\frac{(x_i-\mu)^2}{2\sigma^2}\right]}\right\}$$
+$$\pypx{F}{\mu} = \frac{2(x_i-\mu)}{\sigma^2}\exp{\left[-\frac{(x_i-\mu)^2}{2\sigma^2}\right]}\left\lbrace t_i+\exp{\left[-\frac{(x_i-\mu)^2}{2\sigma^2}\right]}\right\rbrace\\
+\pypx{F}{\sigma}=\frac{2(x_i-\mu)^2}{\sigma^3}\exp{\left[-\frac{(x_i-\mu)^2}{2\sigma^2}\right]}\left\lbrace t_i+\exp{\left[-\frac{(x_i-\mu)^2}{2\sigma^2}\right]}\right\rbrace$$
 
 _(Evaluated via WolframAlpha: [1](https://www.wolframalpha.com/input?i=d%2Fdu+%28t%2Bexp%28-%28x-u%29%5E2%2F%282*s%5E2%29%29%29%5E2), [2](https://www.wolframalpha.com/input?i=d%2Fds+%28t%2Bexp%28-%28x-u%29%5E2%2F%282*s%5E2%29%29%29%5E2))_
 
