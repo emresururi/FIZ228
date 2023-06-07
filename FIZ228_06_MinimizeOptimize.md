@@ -284,7 +284,7 @@ res = opt.minimize(HeronTri,[3,3,5],constraints=cons)
 res
 ```
 
-Thus, always make sure that you chose various starting points and don't incorporate symmetries if there's a specific reason to do so!
+Thus, always make sure that you chose various starting points and don't incorporate symmetries unless there's a specific reason to do so!
 
 
 **Collecting constraints**<a id='collecting_constraints'></a>
