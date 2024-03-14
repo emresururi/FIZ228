@@ -1,22 +1,22 @@
 ---
-jupyter:
-  jupytext:
-    formats: ipynb,md
-    text_representation:
-      extension: .md
-      format_name: markdown
-      format_version: '1.3'
-      jupytext_version: 1.11.5
-  kernelspec:
-    display_name: Python 3 (ipykernel)
-    language: python
-    name: python3
+jupytext:
+  formats: ipynb,md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.11.5
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
 ---
 
 # Interpolation
 **FIZ228 - Numerical Analysis**  
 Dr. Emre S. Tasci, Hacettepe University
 
++++
 
 In our "Regression" lecture, we talked about fitting a function/model/curve that passes _as close as possible_ to a given set of data points. But sometimes we find ourselves in a case where we have clearly defined points and would like to know about the behaviour between these points. This method of estimating the intermediate values while retaining the known values is known as _interpolation_.
 
@@ -24,7 +24,7 @@ The given data points act as the _boundary conditions_, usually fixed and thus v
 
 As was the case in regression, there is always a risk of _overfitting_ alas in the interpolation, we **must** hit all the given data (within an error tolerance that is related to the measurements.
 
-```python
+```{code-cell} ipython3
 import numpy as np
 import matplotlib.pyplot as plt
 ```
@@ -43,11 +43,12 @@ Revisiting our discussion in regression, we can _always_ fit a set of $n$ data p
 |7|70|830|
 |8|80|1450|
 
++++
 
 ## Polyfit, poly1d, polyval and poly + roots
 We can use numpy's built in polynomial functions to fit (`polyfit`), evaluate (`poly1d` & `polyval`) and even construct polynomials from roots (`poly`) or _vice versa_ (`roots`).
 
-```python
+```{code-cell} ipython3
 data = np.array([range(10,90,10),[25,70,380,550,610,1220,830,1450]]).T
 x = data[:,0]
 y = data[:,1]
@@ -79,34 +80,36 @@ A 7th degree polynomial might be too much for our taste! 8) So let's begin with 
 
 Since it has two roots, it must be a second order polynomial (_quadratic_):
 
-```python
+```{code-cell} ipython3
 q = np.poly([-1,2])
 print(q)
 ```
 
 To write it more neatly, we can construct a poly object using the coefficients:
 
-```python
+```{code-cell} ipython3
 qq = np.poly1d(q)
 print(qq)
 ```
 
-$$x^2-x-2$$ ladies and gents!
+$$x^2-x-2$$ 
+
+ladies and gents!
 
 Let's go from reverse and find the roots of a given polynomial via `roots`:
 
-```python
+```{code-cell} ipython3
 x12 = np.roots(qq)
 print(x12)
 ```
 
-```python
+```{code-cell} ipython3
 # feeding the coefficients would also work:
 x12 = np.roots(q)
 print(x12)
 ```
 
-```python
+```{code-cell} ipython3
 xx = np.linspace(-5,5,100)
 yy = np.polyval(qq,xx)
 plt.plot(xx,yy,"-r")
@@ -119,7 +122,7 @@ plt.show()
 ## Dearest dear linear algebra! <3
 Now, let's take 3 points from our designated polynomial, and afterwards forget about the actual polynomial:
 
-```python
+```{code-cell} ipython3
 qc = [1, -1, 2]
 qq = np.poly1d(qc)
 x = [-3.1,0.7,4.3]
@@ -157,7 +160,7 @@ Q(0.7) = q_1 (0.7)^2+q_2 (0.7)+q_3 = 1.79\\
 Q(4.3) = q_1 (4.3)^2+q_2 (4.3)+q_3 = 16.19
 $$
 
-```python
+```{code-cell} ipython3
 x = np.array([-3.1, 0.7, 4.3])
 print(x**2)
 ```
@@ -179,7 +182,7 @@ $$\begin{pmatrix}
 \begin{pmatrix}14.71\\1.79\\16.19\end{pmatrix}
 $$
 
-```python
+```{code-cell} ipython3
 A = np.array([[9.61,-3.1,1],[0.49,0.7,1],[18.49,4.3,1]])
 b = np.array([14.71,1.79,16.19])
 q123 = np.linalg.solve(A,b)
@@ -188,6 +191,7 @@ print(q123)
 
 ... ta-taaaa!
 
++++
 
 # Newton Interpolating Polynomials
 
@@ -209,6 +213,7 @@ $$\boxed{f_1(x)=f(x_1)+\frac{f(x_2)-f(x_1)}{x_2-x_1} (x-x_1)}$$
 
 _The indice "1" in $f_1$ denotes that this is a first-order (linear) interpolation._
 
++++
 
 ## Example: 
 Estimate $\ln2$ using:
@@ -217,7 +222,7 @@ Estimate $\ln2$ using:
 
 (calculate the true percentage relative error ($\varepsilon_t$) using the true value of $\ln2 = 0.693147$)
 
-```python
+```{code-cell} ipython3
 # 1
 ln1 = 0
 ln6 = 1.791759
@@ -228,7 +233,7 @@ print("True value: {:.6f}".format(np.log(2)))
 print("       E_t: {:.2f}%".format((np.log(2)-ln2_1)/np.log(2)*100))
 ```
 
-```python
+```{code-cell} ipython3
 # 2
 ln1 = 0
 ln4 = 1.386294
@@ -239,7 +244,6 @@ print("True value: {:.6f}".format(np.log(2)))
 print("       E_t: {:.2f}%".format((np.log(2)-ln2_2)/np.log(2)*100))
 ```
 
-<!-- #region -->
 ## Increasing the order
 Newton's polynomials are represented in increasing order as:
 
@@ -273,7 +277,8 @@ $$\begin{matrix}
 \end{matrix}$$
 
 Let's put this into action in our next (evolved) example:
-<!-- #endregion -->
+
++++
 
 ### Example
 Use the three of the previous given $\ln(x)$ values to estimate $\ln2$.
@@ -284,6 +289,7 @@ Use the three of the previous given $\ln(x)$ values to estimate $\ln2$.
 
 (calculate the true percentage relative error ($\varepsilon_t$) using the true value of $\ln2 = 0.693147$)
 
++++
 
 $$\begin{matrix}
    x_1=1 & b_1 = f(x_1)=0 &                                 & \\
@@ -293,7 +299,7 @@ $$\begin{matrix}
    x_3=6 & f(x_3)=1.791759 &                                 &  
 \end{matrix}$$
 
-```python
+```{code-cell} ipython3
 x1 = 1
 f_x1 = 0
 x2 = 4
@@ -315,7 +321,7 @@ print("True value: {:.6f}".format(np.log(2)))
 print("       E_t: {:.2f}%".format((np.log(2)-f_x)/np.log(2)*100))
 ```
 
-```python
+```{code-cell} ipython3
 # Plotting the given data, our estimation for x=2
 # and the actual function:
 xx = np.linspace(1,7,300)
@@ -332,7 +338,7 @@ plt.show()
 
 The advantage of this method is its flexibility in the face of the addition of more data points. So suppose that we made another measurement at the $x_4=5$ point and came up with $f(x_4)=1.609438$ value and we want to incorporate this new data to better our fit:
 
-```python
+```{code-cell} ipython3
 x1 = 1
 f_x1 = 0
 x2 = 4
@@ -367,7 +373,7 @@ print("True value: {:.6f}".format(np.log(2)))
 print("       E_t: {:.2f}%".format((np.log(2)-f_x)/np.log(2)*100))
 ```
 
-```python
+```{code-cell} ipython3
 # Plotting the given data, our estimation for x=2
 # and the actual function:
 xx = np.linspace(1,7,300)
@@ -389,27 +395,34 @@ Lagrange polynomials are yet another way to interpolate using the given data poi
 (Figure: Chapra, 2012)
 
 **1st order Lagrange polynomial** is given by:
+
 $$f_1(x) = L_1 f(x_1) + L_2 f(x_2)$$
 
 where:
+
 $$ L_1 = \frac{x-x_2}{x_1 - x_2},\;L_2 = \frac{x-x_1}{x_2-x_1}$$
 
 so:
+
 $$f_1(x) = \frac{x-x_2}{x_1 - x_2}f(x_1) + \frac{x-x_1}{x_2-x_1}f(x_2)$$
 
 **2nd order Lagrange polynomial** is given by:
+
 $$f_2(x) = L_1 f(x_1) + L_2 f(x_2)+L_3 f_(x_3)$$
 
 where:
+
 $$ L_1 = \frac{(x-x_2)(x-x_3)}{(x_1 - x_2)(x_1 - x_3)},\;L_2 = \frac{(x-x_1)(x-x_3)}{(x_2 - x_1)(x_2 - x_3)},\;L_3 = \frac{(x-x_1)(x-x_2)}{(x_3 - x_1)(x_3 - x_2)}$$
 
 so:
+
 $$f_2(x) = \frac{(x-x_2)(x-x_3)}{(x_1 - x_2)(x_1 - x_3)}f(x_1) + \frac{(x-x_1)(x-x_3)}{(x_2 - x_1)(x_2 - x_3)}f(x_2) + \frac{(x-x_1)(x-x_2)}{(x_3 - x_1)(x_3 - x_2)}f(x_3)$$
 
 and in general:
 
 $$f_{n-1}=\sum_{i=1}^{n}{L_i(x)f(x_i)},\quad L_i(x)=\prod_{j=1\\j\ne i}^{n}{\frac{x-x_j}{x_i-x_j}}$$
 
++++
 
 ## Example
 
@@ -419,7 +432,7 @@ $$x_1 = 0,\;f(x_1)=3.85\\
 x_2 = 20,\;f(x_2) = 0.800\\
 x_3 = 40,\;f(x_3) = 0.212$$
 
-```python
+```{code-cell} ipython3
 x1 = 0
 f_x1 = 3.85
 
@@ -450,7 +463,7 @@ Use the given $\ln(x)$ values to estimate $\ln2$ via Lagrange polynomial.
 
 (calculate the true percentage relative error ($\varepsilon_t$) using the true value of $\ln2 = 0.693147$)
 
-```python
+```{code-cell} ipython3
 x1 = 1
 f_x1 = 0
 
@@ -474,7 +487,7 @@ print("       E_t: {:.2f}%".format((np.log(2)-f2_x)/np.log(2)*100))
 ### via the builtin scipy.interpolate.lagrange() function
 [scipy.interpolate.lagrange()](https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.lagrange.html)
 
-```python
+```{code-cell} ipython3
 ## Using the built in implementation:
 from scipy.interpolate import lagrange
 x = [1,4,6]
@@ -490,7 +503,7 @@ Normally, we do interpolation to calculate $f(x)$ for some $x$ value that lies b
 
 The first thing that comes to mind is to reinterpret $x$ as $f(x)$ and $f(x)$ as $x$, then to proceed as a normal interpolation. This can have its own penalties. Consider $f(x) = 1/x$ function. So for a number of observations from $x=1,\dots, 7$, we will have:
 
-```python
+```{code-cell} ipython3
 np.set_printoptions(precision=3)
 x = np.arange(1,8)
 y = 1/x
@@ -499,18 +512,18 @@ print(np.array([x,y]))
 
 now suppose that we want to find the value of $x$ such that $f(x)=0.3$. Inverting $x\leftrightarrow f(x)$ yields:
 
-```python
+```{code-cell} ipython3
 print(np.array([y,x]))
 p = np.polyfit(y,x,6)
 pol = np.poly1d(p)
 ```
 
-```python
+```{code-cell} ipython3
 print(p)
 print(pol)
 ```
 
-```python
+```{code-cell} ipython3
 np.polyval(p,0.3)
 ```
 
@@ -518,7 +531,7 @@ np.polyval(p,0.3)
 
 What we lacked in the above approximation is we failed to _read_ the data. The data, with the given (x,y) order was evenly spaced. Therefore we could have gone for a 2nd order fit around $x=\{2,3,4\}$. Focusing there:
 
-```python
+```{code-cell} ipython3
 q = np.polyfit(x[1:4],y[1:4],2)
 pol2 = np.poly1d(q)
 print(pol2)
@@ -530,13 +543,14 @@ $$0.3 = 0.04167 x^2 - 0.375 x + 1.083$$
 
 and this is just a problem of finding the root!
 
-```python
+```{code-cell} ipython3
 x = np.roots([0.04167,-0.375,1.083-0.3])
 print(x)
 ```
 
 Continuing to using our heads, we remember that, we were looking for the solutions between 2 and 4, hence we take 3.293 -- considering that the true value being 3.333, we did a great job, by keeping to our human sides, not by being a number cruncher! 8)
 
++++
 
 # Bonus: Finite Difference Method
 _(not quite interpolation but still... ;)_
@@ -550,6 +564,7 @@ Suppose that we want to calculate the derivative of a function at the $x_i$ poin
 **a) Forward Finite Difference Approximation**
 
 Here, we have the slope as:
+
 $$\frac{\text{d}f(x)}{\text{d}x}\biggr\vert_{x_i} \approx \frac{f(x_{i+1})-f(x_{i})}{h}$$
 
 **b) Backward Finite Difference Approximation**
@@ -565,6 +580,7 @@ but the best of the both worlds would be to take both into account:
 
 $$\frac{\text{d}f(x)}{\text{d}x}\biggr\vert_{x_i} \approx \frac{f(x_{i+1})-f(x_{i-1})}{2h}$$
 
++++
 
 ## Example (Chapra, 2012)
 ![05_TemperatureDiffusion_Chapra.png](imgs/05_TemperatureDiffusion_Chapra.png)
@@ -577,6 +593,7 @@ where $T$ is the temperature ($^oC$), $x$ is the distance along the rod (m), $h'
 
 Given $h'=0.01m^{-2}$, $T_a = 20^oC$, $T(x=0) = 40^oC$ and $T(x=10\,m) = 200^oC$, calculate the temperature at the marked points in between.
 
++++
 
 **Solution**
 
@@ -589,6 +606,7 @@ and the main differential equation takes the form of:
 $$\frac{T_{i+1}-2T_{i}+T_{i-1}}{\Delta x^2}+h'(T_a - T_i)=0$$
 
 Expanding and re-arranging yields:
+
 $$-T_{i-1}+(2+\Delta x^2 h')T_i-T_{i+1} = \Delta x^2 h' T_a$$
 
 substituting the values of $\Delta x = 2\,m$, $T_a = 20^oC$ and $h'  =0.01 m^{-2}$:
@@ -622,7 +640,7 @@ $$\begin{bmatrix}2.04 & -1 & 0 & 0\\
 \end{bmatrix}
 \begin{bmatrix} T_1\\T_2\\T_3\\T_4\end{bmatrix}=\begin{bmatrix} 40.8\\0.8\\0.8\\200.8\end{bmatrix}$$
 
-```python
+```{code-cell} ipython3
 A1 = np.diag([2.04,2.04,2.04,2.04])
 A2 = np.diag([-1,-1,-1],1)
 A3 = np.diag([-1,-1,-1],-1)
@@ -630,12 +648,12 @@ A = A1+A2+A3
 print(A)
 ```
 
-```python
+```{code-cell} ipython3
 b = np.array([40.8,0.8,0.8,200.8])
 print(b)
 ```
 
-```python
+```{code-cell} ipython3
 T = np.linalg.solve(A,b)
 print(T)
 ```
@@ -646,7 +664,7 @@ $$T(X) = 73.4523e^{0.1x}-53.4523e^{-0.1x}+20$$
 
 Let's check how good did we do:
 
-```python
+```{code-cell} ipython3
 def fT(x):
     return 73.4523*np.exp(0.1*x)-53.4523*np.exp(-0.1*x)+20
 

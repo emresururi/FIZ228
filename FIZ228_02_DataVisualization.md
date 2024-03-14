@@ -26,6 +26,10 @@ It's always beneficial to check the data before and after we process it as it ca
 
 Let's try to do it old way, using numpy & matplotlib. As we have observed in our previous lecture, pandas were the go-to module when dealing with datasets, but for reference purposes, we'll start with numpy arrays. As numpy arrays can not (by default) store elements of different types, our string timestamps are lost in import.
 
+For the beginners, we are going to use the meteorological data of the Basel city, obtained from [meteoblue.com](https://www.meteoblue.com/en/weather/archive/export?daterange=2022-01-01%20-%202023-03-03&locations%5B%5D=basel_switzerland_2661604&domain=ERA5T&min=2022-01-01&max=2023-03-03&params%5B%5D=&params%5B%5D=temp2m&params%5B%5D=&params%5B%5D=relhum2m&params%5B%5D=&params%5B%5D=&params%5B%5D=totalClouds&params%5B%5D=&params%5B%5D=sunshine&params%5B%5D=swrad&params%5B%5D=&params%5B%5D=&params%5B%5D=&utc_offset=1&timeResolution=hourly&temperatureunit=CELSIUS&velocityunit=KILOMETER_PER_HOUR&energyunit=watts&lengthunit=metric&degree_day_type=10%3B30&gddBase=10&gddLimit=30)
+
+{download}`01_meteoblue_Basel_20230303T060433.csv<data/01_meteoblue_Basel_20230303T060433.csv>`
+
 ```{code-cell} ipython3
 import numpy as np
 ```
@@ -45,6 +49,8 @@ We're going to implement meaningful indexes as the first column, by joining the 
 Checking the timestamp of the top entries, we see that it goes from '20220101T0000' to '20230303T2300' (with most of the last entries being blank but we'll deal with it later).
 
 ```{code-cell} ipython3
+:tags: [output_scroll]
+
 flag_break = False
 for y in range(22,24):
     if(flag_break):
@@ -96,6 +102,8 @@ data_np
 ```
 
 ```{code-cell} ipython3
+:tags: [output_scroll]
+
 data_np[-1000:,0]
 ```
 
@@ -233,6 +241,8 @@ plt3 = sns.relplot(data=data_202208w1,x="Temperature",y="Relative Humidity",
 And this is our attempt to further classify things by adding the `style` alas it kind of fails
 
 ```{code-cell} ipython3
+:tags: [output_scroll]
+
 plt3 = sns.relplot(data=data_202208w1,x="Temperature",y="Relative Humidity",
                   style="Temperature")
 ```
@@ -354,7 +364,8 @@ data_202208w1
 ```
 
 ```{code-cell} ipython3
-plt5 = sns.relplot(data=data_202208w1,x="Timestamp",y="Temperature", kind="line", 
+plt5 = sns.relplot(data=data_202208w1,x="Timestamp",y="Temperature",\
+                   kind="line", 
                    style="RHClass", hue="RHClass")
 ```
 
@@ -382,6 +393,8 @@ data_g = np.random.normal(0,10,1000)
 ```
 
 ```{code-cell} ipython3
+:tags: [output_scroll]
+
 data_g
 ```
 
@@ -449,6 +462,5 @@ plt3 = sns.relplot(data=data2,x='x',y='y',hue='val',
 plt.show()
 ```
 
-```{code-cell} ipython3
-
-```
+# References
+* [meteoblue.com - Historical Weather Data for Basel](https://www.meteoblue.com/en/weather/archive/export?daterange=2022-01-01%20-%202023-03-03&locations%5B%5D=basel_switzerland_2661604&domain=ERA5T&min=2022-01-01&max=2023-03-03&params%5B%5D=&params%5B%5D=temp2m&params%5B%5D=&params%5B%5D=relhum2m&params%5B%5D=&params%5B%5D=&params%5B%5D=totalClouds&params%5B%5D=&params%5B%5D=sunshine&params%5B%5D=swrad&params%5B%5D=&params%5B%5D=&params%5B%5D=&utc_offset=1&timeResolution=hourly&temperatureunit=CELSIUS&velocityunit=KILOMETER_PER_HOUR&energyunit=watts&lengthunit=metric&degree_day_type=10%3B30&gddBase=10&gddLimit=30)

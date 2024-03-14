@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-## Clustering and Classification
+# Clustering and Classification
 **FIZ228 - Numerical Analysis**  
 Dr. Emre S. Tasci, Hacettepe University
 
@@ -403,13 +403,13 @@ To overcome the bad cases, and also to deal with the following issues (also rela
 
 These two issues are actually different manifestations of the same problem. The *hardness* of the k-means algorithm can be *softened* by allowing <u>partial ownership</u>, hence the **soft k-means clustering**:
 
-1. Assignment Step: Responsibility vector (the responsibility of cluster $k$ for point $n$) $r_k^{(n)}$ is redefined by: 
+1\. Assignment Step: Responsibility vector (the responsibility of cluster $k$ for point $n$) $r_k^{(n)}$ is redefined by: 
 
 $$r_k^{(n)}=\frac{\exp\left(-\beta\,d\left(\vec{m}^{(k)},x^{(n)}\right)\right)}{\sum_{k'}{\exp\left(-\beta\,d\left(\vec{m}^{(k')},x^{(n)}\right)\right)} }$$ 
 
 where $\beta$ is the *softness parameter* $(\beta\rightarrow\infty\Rightarrow\text{Hard k-means algorithm.})$ The sum of the k-responsibilities for the $n^{th}$ point is 1 (due to the normalizing constant, that is the denominator).
 
-2. Update step: It is identical to the *hard k-means algorithm*: 
+2\. Update step: It is identical to the *hard k-means algorithm*: 
 
 $$\vec{m}^{(k)} = \frac{\sum_{n}{r_k^{(n)}\vec{x^{(n)}}}}{R^{(k)}},\quad R^{(k)} = \sum_{n}{r_k^{(n)}}$$
 

@@ -1,16 +1,15 @@
 ---
-jupyter:
-  jupytext:
-    formats: ipynb,md
-    text_representation:
-      extension: .md
-      format_name: markdown
-      format_version: '1.3'
-      jupytext_version: 1.11.5
-  kernelspec:
-    display_name: Python 3 (ipykernel)
-    language: python
-    name: python3
+jupytext:
+  formats: ipynb,md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.11.5
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
 ---
 
 # Ordinary Differential Equations
@@ -18,7 +17,7 @@ _Derivatives, Ordinary Differential Equations with Finite Difference, Shooting, 
 **FIZ228 - Numerical Analysis**  
 Dr. Emre S. Tasci, Hacettepe University
 
-```python
+```{code-cell} ipython3
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import optimize
@@ -32,6 +31,7 @@ $\newcommand{\diff}{\text{d}}
 
 A differential equation is an equation that involves one or more derivatives of a function as well as the parameters itself. If it consists of a single parameter and its function's derivatives, we label such systems as Ordinary Differential Equations (ODEs). If more than one parameter is involved, then it is called Partial Differential Equations (PDEs).
 
++++
 
 ## Example
 
@@ -41,6 +41,7 @@ $$\ddydx{x}{t}+5x=0,\quad t\in[0,20]$$
 
 $x(t=0) = 12,\quad x(t=20) = 40$
 
++++
 
 **Analytical Solution**
 
@@ -75,7 +76,7 @@ $$\cos(\phi) = 0.3\cos(20\sqrt5)\cos(\phi) - 0.3\sin(20\sqrt5)\sin(\phi)\\
 \frac{\sin(\phi)}{\cos(\phi)}=\frac{0.3\cos(20\sqrt5)-1}{0.3\sin(20\sqrt5)}\\
 \phi=\tan^{-1}{\frac{0.3\cos(20\sqrt5)-1}{0.3\sin(20\sqrt5)}}$$
 
-```python
+```{code-cell} ipython3
 phi = np.arctan2(0.3*np.cos(20*np.sqrt(5))-1,\
                  0.3*np.sin(20*np.sqrt(5)))
 print(phi)
@@ -85,16 +86,16 @@ Now that we have $\phi$, we can also calculate the remaining unknown, $A$ using 
 
 $$(1):\quad A = \frac{12}{\cos(\phi)}$$
 
-```python
+```{code-cell} ipython3
 A = 12/np.cos(phi)
 print(A)
 ```
 
-```python
+```{code-cell} ipython3
 40/np.cos(20*5**0.5+phi)
 ```
 
-```python
+```{code-cell} ipython3
 w = np.sqrt(5)
 
 t_a = np.linspace(0,20,200)
@@ -104,7 +105,6 @@ plt.plot(t_a,x_a,"r:")
 plt.show()
 ```
 
-<!-- #region -->
 Now let's solve it using the **finite difference method**.
 
 ### Finite Difference Method (Derivatives Approximations)
@@ -114,9 +114,9 @@ $$y' \approx \frac{y_{i+1}-y_{i-1}}{2h}$$
 $$y'' \approx \frac{y_{i-1}-2y_i+y_{i+1}}{h^2}$$
 
 
-(For the detailed derivations of the approximations, refer to [Programming Lecture Notes](https://emresururi.github.io/FIZ220/FIZ220_EST_UygulamaNotlari_09_FonksiyonTurevIntegral.html))
-<!-- #endregion -->
+(For the detailed derivations of the approximations, refer to [Programming Lecture Notes](https://emresururi.github.io/FIZ220/FIZ220_EST_UygulamaNotlari_09_FonksiyonTurevIntegral.html) | or in our previous lecture on [Interpolation (Bonus: Finite Difference Method section)](FIZ228_05_Interpolation.md))
 
++++
 
 $$\ddydx{x}{t}+5x=0,\quad t\in[0,20]$$
 
@@ -137,7 +137,7 @@ i&=1:\quad &x_1+(5h^2-2)x_2+x_3&=0\\
 i&=N-3:\quad &x_{N-3}+(5h^2-2)x_{N-2}+x_{N-1}&=0
 \end{align*}$$
 
-```python
+```{code-cell} ipython3
 N = 1000
 t = np.linspace(0,20,N)
 
@@ -163,7 +163,7 @@ def fun(x):
     return eqns
 ```
 
-```python
+```{code-cell} ipython3
 x = optimize.fsolve(fun,np.linspace(x0,x_Nm1,N-2))
 x = np.insert(x,0,x0)
 x = np.append(x,x_Nm1)
@@ -180,7 +180,7 @@ plt.show()
 
 Let's compare this analytical solution with our numerical one:
 
-```python
+```{code-cell} ipython3
 t_a = np.linspace(0,20,200)
 x_a = A*np.cos(w*t+phi)
 
@@ -188,7 +188,7 @@ plt.plot(t,x_a,"r:")
 plt.show()
 ```
 
-```python
+```{code-cell} ipython3
 t_a = np.linspace(0,20,200)
 x_a = A*np.cos(w*t_a+phi)
 
@@ -237,7 +237,7 @@ i=N-2 &: &y_{N-3} - 2y_{N-2} + \underbrace{y_{N-1}}_{1.4773} + \tfrac{h}{2} y_{N
 \end{array}
 \end{aligned}$$
 
-```python
+```{code-cell} ipython3
 y_0 = -1
 y_Nm1 = 1.4773
 
@@ -258,14 +258,14 @@ def fun(y):
     return eqns
 ```
 
-```python
+```{code-cell} ipython3
 y = optimize.fsolve(fun,np.ones(N-2)*(y_Nm1+y_0)/2)
 y = np.insert(y,0,y_0)
 y = np.append(y,y_Nm1)
 #y
 ```
 
-```python
+```{code-cell} ipython3
 x = np.linspace(0,20,N)
 x_FD = x.copy() # For later purposes
 y_FD = y.copy() # For later purposes
@@ -277,6 +277,7 @@ plt.show()
 ![image_1.png](imgs/08_ODEs_Euler.png)  
 (Source: Chapra)
 
++++
 
 ## Example
 
@@ -284,7 +285,7 @@ $y'=4e^{0.8t}-0.5y, \;y(t=0)=2$, calculate $y$ for $t\in[0,4]$ with a step size 
 
 Analytical solution: $$y=\frac{4}{1.3}\left(e^{0.8t} - e^{-0.5t}\right)+2e^{-0.5t}$$
 
-```python
+```{code-cell} ipython3
 def yp(t,y):
     # The given y'(t,y) equation
     return 4*np.exp(0.8*t)-0.5*y
@@ -292,19 +293,19 @@ def yp(t,y):
 
 Let's show that the given analytical solution is indeed the solution. We calculate the left side ($y'$) of the equation using the differentiation of the analytical solution and right side of the equation by directly plugging in the given analytical solution and compare with each other for various $t$ values.
 
-```python
+```{code-cell} ipython3
 def dy(t):
     # y' from the analytical solution
     return 4/1.3*(0.8*np.exp(0.8*t)+0.5*np.exp(-0.5*t))-np.exp(-0.5*t)
 ```
 
-```python
+```{code-cell} ipython3
 def y_t(t):
     # true y function (analytical solution)
     return 4/1.3*(np.exp(0.8*t)-np.exp(-0.5*t))+2*np.exp(-0.5*t)
 ```
 
-```python
+```{code-cell} ipython3
 t = np.arange(0,10,0.5)
 yp1 = dy(t)
 yp2 = 4*np.exp(0.8*t)-0.5*y_t(t)
@@ -314,14 +315,14 @@ for tt,i,j in zip(t,yp1,yp2):
 
 It is even easier to see that the given analytic solution is indeed the solution via plotting both sides of the equation together:
 
-```python
+```{code-cell} ipython3
 plt.plot(t,yp1,"b",t,yp2,"--r")
 plt.show()
 ```
 
 **Solving the ODE using Euler Method:**
 
-```python
+```{code-cell} ipython3
 t = np.arange(1,5)
 h = t[1] - t[0]
 y = [2]
@@ -338,7 +339,7 @@ for i in t:
       .format(i,y[i],y_t(i),np.abs(y_t(i)-y[i])/y_t(i)*100))
 ```
 
-```python
+```{code-cell} ipython3
 plt.plot(range(5),y,"-o",\
          np.linspace(0,4,100),y_t(np.linspace(0,4,100)),"-")
 plt.legend(["Euler solution","True solution"])
@@ -360,6 +361,7 @@ k_4 = f(t_i+h,y_i+k_3 h)$$
 ![image_2.png](imgs/08_ODEs_RK4.png) 
 [Image: Wikipedia](https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods#/media/File:Runge-Kutta_slopes.svg)
 
++++
 
 ## Example
 
@@ -369,12 +371,12 @@ Analytical solution:
 
 $$y=\frac{4}{1.3}\left(e^{0.8t} - e^{-0.5t}\right)+2e^{-0.5t}$$
 
-```python
+```{code-cell} ipython3
 def f(t,y):
     return 4*np.exp(0.8*t) - 0.5*y
 ```
 
-```python
+```{code-cell} ipython3
 y = [2]
 t = np.arange(5)
 h = t[1]-t[0]
@@ -392,7 +394,7 @@ for i in range(len(y)):
       .format(i,y[i],y_t(i),np.abs(y_t(i)-y[i])/y_t(i)*100))
 ```
 
-```python
+```{code-cell} ipython3
 plt.plot(range(5),y,"-o",\
          np.linspace(0,4,100),y_t(np.linspace(0,4,100)),"-")
 plt.legend(["RK4 solution","True solution"])
@@ -419,7 +421,7 @@ $$x(t)=\frac{\ln\left(\cosh{\sqrt{\frac{gC_d}{m}}t}\right)}{C_d/m}$$
 $$v(t) =\dydx{x}{t} =\sqrt{\frac{mg}{C_d}}\tanh\left(\sqrt{\frac{gC_d}{m}}t\right)$$
 [Source: WolframAlpha](https://www.wolframalpha.com/input?i=derivative+of+ln%28cosh%28sqrt%28gC%2Fm%29*t%29%29%2F%28C%2Fm%29)
 
-```python
+```{code-cell} ipython3
 g = 9.81 # m/s^2
 m = 68.1 # kg
 C_d = 0.25 # kg/m
@@ -432,7 +434,7 @@ N = 6
 
 ### Euler
 
-```python
+```{code-cell} ipython3
 t = np.linspace(0,10,N)
 h = t[1]-t[0]
 x  = np.array([0])
@@ -445,13 +447,13 @@ for ti in t[:-1]:
     x = np.append(x,x_ip1)
 ```
 
-```python
+```{code-cell} ipython3
 plt.plot(t,x,"-b",t,xp,"-r")
 plt.legend(("Position","Velocity"))
 plt.show()
 ```
 
-```python
+```{code-cell} ipython3
 def x_a(t):
     # Analytical Solution
     return np.log(np.cosh(np.sqrt(g*C_d/m)*t))/(C_d/m)
@@ -473,7 +475,7 @@ plt.show()
 
 ### RK4
 
-```python
+```{code-cell} ipython3
 t = np.linspace(0,10,N)
 h = t[1]-t[0]
 x_RK4  = np.array([0])
@@ -492,13 +494,13 @@ for ti in t[:-1]:
     x_RK4 = np.append(x_RK4,x_ip1)
 ```
 
-```python
+```{code-cell} ipython3
 plt.plot(t,x_RK4,"-b",t,xp_RK4,"-r")
 plt.legend(("Position","Velocity"))
 plt.show()
 ```
 
-```python
+```{code-cell} ipython3
 plt.plot(t,x_RK4,"-",t,x_a(t),"--r")
 plt.title("x(t)")
 plt.legend(["Numerical Solution","Analytical Solution"])
@@ -512,7 +514,7 @@ plt.show()
 
 ### Comparison of Euler & RK4
 
-```python
+```{code-cell} ipython3
 plt.plot(t,x,"-b",t,x_RK4,"-g",t,x_a(t),":r")
 plt.xlabel("t (s)")
 plt.ylabel("x (m)")
@@ -522,7 +524,7 @@ plt.legend(["Numerical Solution (Euler)",
 plt.show()
 ```
 
-```python
+```{code-cell} ipython3
 plt.plot(t,xp,"-b",t,xp_RK4,"-g",t,v_a(t),":r")
 plt.xlabel("t (s)")
 plt.ylabel("v (m/s)")
@@ -538,12 +540,12 @@ $$y' = y, y(0) = 1$$
 
 **Analytical Solution:** $y(x) = e^x$
 
-```python
+```{code-cell} ipython3
 def f(t,y):
     return y
 ```
 
-```python
+```{code-cell} ipython3
 t = np.linspace(0,4,1000)
 h = t[1] - t[0]
 y = np.array([1])
@@ -563,13 +565,13 @@ $$y'' = y, y(0) = 1, y'(0) = 1$$
 
 **Analytical Solution:** $y(x) = e^x$
 
-```python
+```{code-cell} ipython3
 def f(x,y,yp):
     # y'' = f(x,y,yp)
     return y
 ```
 
-```python
+```{code-cell} ipython3
 x = np.linspace(0,4,100)
 h = x[1] - x[0]
 
@@ -583,7 +585,7 @@ for xx in x[:-1]:
     y = np.append(y,y_ip1)
 ```
 
-```python
+```{code-cell} ipython3
 plt.plot(x,y,"-",x,np.exp(x),"--r")
 plt.show()
 ```
@@ -594,13 +596,13 @@ $$y''+ y' -6y=0, y(0) = 8, y'(0)=-9$$
 
 **Analytical Solution:** $y(x) = 3e^{2x} + 5e^{-3x}$
 
-```python
+```{code-cell} ipython3
 def f(x,y,yp):
     # y'' = f(x,y,yp)
     return 6*y - yp
 ```
 
-```python
+```{code-cell} ipython3
 x = np.linspace(0,4,1000)
 h = x[1] - x[0]
 
@@ -614,7 +616,7 @@ for xx in x[:-1]:
     y = np.append(y,y_ip1)
 ```
 
-```python
+```{code-cell} ipython3
 plt.plot(x,y,"-",x,3*np.exp(2*x)+5*np.exp(-3*x),"--r")
 plt.show()
 ```
@@ -624,7 +626,7 @@ plt.show()
 
 $$y''+y.y'+3y = \sin(x), y(0) = -1, y'(0) = 1, x\in[0,20]$$
 
-```python
+```{code-cell} ipython3
 def f(x,y,yp):
     # y'' = f(x,y,yp)
     return np.sin(x)-3.*y-y*yp
@@ -632,7 +634,7 @@ def f(x,y,yp):
 
 ### Euler
 
-```python
+```{code-cell} ipython3
 x = np.linspace(0,20,350)
 h = x[1] - x[0]
 
@@ -646,7 +648,7 @@ for i in range(x.size-1):
     y = np.append(y,y_ip1)
 ```
 
-```python
+```{code-cell} ipython3
 x_Euler = x.copy()
 y_Euler = y.copy()
 plt.plot(x,y,"-b")
@@ -655,7 +657,7 @@ plt.show()
 
 ### RK4
 
-```python
+```{code-cell} ipython3
 x = np.linspace(0,20,350)
 h = x[1] - x[0]
 
@@ -674,7 +676,7 @@ for i in range(x.size-1):
     y = np.append(y,y_ip1)
 ```
 
-```python
+```{code-cell} ipython3
 x_RK = x.copy()
 y_RK = y.copy()
 plt.plot(x,y,"-b")
@@ -682,7 +684,7 @@ plt.plot(x,y,"-b")
 plt.show()
 ```
 
-```python
+```{code-cell} ipython3
 plt.plot(x_FD,y_FD,"-b")
 plt.plot(x_Euler,y_Euler,"-r")
 plt.plot(x_RK,y_RK,"-g")
@@ -696,6 +698,7 @@ $$y'' + y' -6y=0, y(0) = 8, y(4)=8942.874,\,x\in[0,4]$$
 
 **Analytical Solution:** $y(x) = 3e^{2x} + 5e^{-3x}$
 
++++
 
 #### Finite Difference Method
 
@@ -732,7 +735,7 @@ $$\begin{bmatrix} -(2+6h^2) & (1+h) & 0 & 0 & 0 & \dots & 0 & 0 & 0\\
 \end{bmatrix}
 $$
 
-```python
+```{code-cell} ipython3
 y_0 = 8
 y_Nm1 = 8942.873991846245
 
@@ -758,7 +761,7 @@ y = np.append(y,y_Nm1)
 #print(y)
 ```
 
-```python
+```{code-cell} ipython3
 plt.plot(x,y,"-",x,3*np.exp(2*x)+5*np.exp(-3*x),"--r")
 plt.legend(("Finite difference","Analytical"))
 plt.show()
@@ -770,6 +773,7 @@ $$y'' + y -\cos(x)=0, y(0) = 1, y(10)=-0.5,\,x\in[0,10]$$
 
 **[Analytical Solution](https://www.wolframalpha.com/input?i2d=true&i=y%27%27%2By-cos%5C%2840%29x%5C%2841%29%3D0%5C%2844%29y%5C%2840%290%5C%2841%29%3D1%5C%2844%29y%5C%2840%2910%5C%2841%29%3D-0.5):** $y(x) = (0.5x - 5.62327)\sin(x) + \cos(x)$
 
++++
 
 $$\frac{y_{i-1}-2y_i+y_{i+1}}{h^2} + y_i -\cos(x_i)= 0$$
 
@@ -800,7 +804,7 @@ $$\begin{bmatrix} -(2-h^2) & 1 & 0 & 0 & 0 & \dots & 0 & 0 & 0\\
 \end{bmatrix}
 $$
 
-```python
+```{code-cell} ipython3
 y_0 = 1
 y_Nm1 = -0.5
 
@@ -827,7 +831,7 @@ y = np.append(y,y_Nm1)
 #print(y)
 ```
 
-```python
+```{code-cell} ipython3
 plt.plot(x,y,"-",x,(0.5*x-5.62327)*np.sin(x)+np.cos(x),"--r")
 plt.legend(("Finite difference","Analytical"))
 plt.show()
@@ -839,6 +843,6 @@ plt.show()
 * [Gilberto E. Urroz](https://en.smath.com/wiki/GetFile.aspx?File=Examples/RK4-2ndOrderODE.pdf)
 * Cüneyt Sert, [ME310 Lecture Notes](http://users.metu.edu.tr/csert/me310/me310_9_ODE.pdf)
 
-```python
+```{code-cell} ipython3
 
 ```

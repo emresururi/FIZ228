@@ -1,22 +1,22 @@
 ---
-jupyter:
-  jupytext:
-    formats: ipynb,md
-    text_representation:
-      extension: .md
-      format_name: markdown
-      format_version: '1.3'
-      jupytext_version: 1.11.5
-  kernelspec:
-    display_name: Python 3 (ipykernel)
-    language: python
-    name: python3
+jupytext:
+  formats: ipynb,md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.11.5
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
 ---
 
 # Least Squares Method & Error Estimations
 **FIZ228 - Numerical Analysis**  
 Dr. Emre S. Tasci, Hacettepe University
 
++++
 
 # Data & Import
 The free-fall data we will be using is taken from: D. Horvat & R. Jecmenica, "The Free Fall Experiment" _Resonance_ **21** 259-275 (2016) [\[https://doi.org/10.1007/s12045-016-0321-9\]](https://doi.org/10.1007/s12045-016-0321-9).
@@ -25,6 +25,7 @@ The free-fall data we will be using is taken from: D. Horvat & R. Jecmenica, "Th
 
 Here's the content of our data file:
 
++++
 
 ```
 Vert.dist. y/m,0.2,0.7,0.8,1.2,1.3,1.8
@@ -42,7 +43,9 @@ Vert.dist. y/m,0.2,0.7,0.8,1.2,1.3,1.8
 <t>/s,0.20190,0.37776,0.40388,0.49471,0.51498,0.60607
 ```
 
-```python
+{download}`03_FreeFallData.csv<data/03_FreeFallData.csv>`
+
+```{code-cell} ipython3
 import pandas as pd
 data1 = pd.read_csv("data/03_FreeFallData.csv")
 data1.columns
@@ -51,7 +54,7 @@ data1
 
 We don't need the first row and first column, so let's remove them via [pandas.DataFrame.drop](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.drop.html):
 
-```python
+```{code-cell} ipython3
 data1.drop(0, inplace=True)
 data1.drop(11, inplace=True)
 data1.drop(['Vert.dist. y/m'],axis=1, inplace=True)
@@ -60,58 +63,58 @@ data1
 
 Be careful that the data have been imported as string (due to the first row initially being formed of strings 8P ):
 
-```python
+```{code-cell} ipython3
 data1.loc[2,"0.7"]
 ```
 
-```python
+```{code-cell} ipython3
 type(data1.loc[2,"0.7"])
 ```
 
-```python
+```{code-cell} ipython3
 data1.dtypes
 ```
 
 So, let's set them all to float:
 
-```python
+```{code-cell} ipython3
 data1 = data1.astype('float')
 data1.dtypes
 ```
 
-```python
+```{code-cell} ipython3
 data1
 ```
 
 While we're at it, let's do a couple of make-overs:
 
-```python
+```{code-cell} ipython3
 data1.reset_index(inplace=True,drop=True)
 data1
 ```
 
 ## Plotting
 
-```python
+```{code-cell} ipython3
 import seaborn as sns
 sns.set_theme() # To make things appear "more beautiful" 8)
 ```
 
-```python
+```{code-cell} ipython3
 data2 = data1.copy()
 data2
 ```
 
-```python
+```{code-cell} ipython3
 plt1 = sns.relplot(data=data2,kind="line",marker="o")
 k =plt1.set(xticks=data2.index)
 ```
 
-```python
+```{code-cell} ipython3
 data2.mean()
 ```
 
-```python
+```{code-cell} ipython3
 data_stats = pd.DataFrame(data2.mean())
 data_stats.rename(columns={0:'dmean'}, inplace=True )
 data_stats['dvar'] = data2.var()
@@ -119,13 +122,17 @@ data_stats['dstd'] = data2.std()
 data_stats
 ```
 
-```python
+```{code-cell} ipython3
 data_stats.dstd # Unbiased
 ```
 
-$$\sigma = \sqrt{\frac{\sum_{i}{\left(x_i - \bar{x}\right)^2}}{N}}\;\text{(Population)}$$ or $$\sigma = \sqrt{\frac{\sum_{i}{\left(x_i - \bar{x}\right)^2}}{N-1}}\;\text{(Sample)}$$
+$$\sigma = \sqrt{\frac{\sum_{i}{\left(x_i - \bar{x}\right)^2}}{N}}\;\text{(Population)}$$ 
 
-```python
+or 
+
+$$\sigma = \sqrt{\frac{\sum_{i}{\left(x_i - \bar{x}\right)^2}}{N-1}}\;\text{(Sample)}$$
+
+```{code-cell} ipython3
 import numpy as np
 N = data2.shape[0]
 for coll in list(data2.columns):
@@ -139,7 +146,7 @@ for coll in list(data2.columns):
     print("{:s}: {:.6f}".format(coll,s_dev))
 ```
 
-```python
+```{code-cell} ipython3
 data2.std(ddof=0) # Biased
 ```
 
@@ -147,6 +154,7 @@ Average over all the sample deviations should be equal to the deviation of the p
 
 For more information on this _Bessel's Correction_, check: http://mathcenter.oxford.emory.edu/site/math117/besselCorrection/
 
++++
 
 # Types of Errors
 ## True error ($E_t$)
@@ -166,25 +174,28 @@ $$\varepsilon_a = \frac{\text{present approximation} - \text{previous approximat
 Computations are repeated until $\left|\varepsilon_a\right| < \left|\varepsilon_s\right|$ ($\varepsilon_s$ is the satisfactory precision criterion).
 
 The result is correct to at least $n$ significant figures given that:
+
 $$\varepsilon_s=\left(0.5\times10^{2-n}\right)\,\%$$
 
++++
 
 ### Example:
 $$e^x = 1+x+\frac{x^2}{2}+\frac{x^3}{3!}+\dots+\frac{x^n}{n!}+\dots$$
 
 To estimate $e^{0.5}$ so that the absolute value of the approximate error estimate falls below an error criterion conforming to 3 significant figures, how many terms do you need to include?
 
++++
 
 **Solution:**
 
 $\varepsilon_s=(0.5\times 10^{2-3})\,\%$
 
-```python
+```{code-cell} ipython3
 eps_s = 0.5*10**(2-3)
 print("{:.2f}%".format(eps_s))
 ```
 
-```python
+```{code-cell} ipython3
 eps_s = 0.5*10**(2-3)
 
 x = 0.5
@@ -200,7 +211,7 @@ while(eps_a > eps_s):
     no_of_terms += 1
 ```
 
-```python
+```{code-cell} ipython3
 eps_s = 0.5*10**(2-3)
 e_sqrt_real = np.sqrt(np.e)
 
@@ -221,21 +232,21 @@ while(eps_a > eps_s):
 # How good is a mean?
 Once again, consider our free fall data:
 
-```python
+```{code-cell} ipython3
 data2
 ```
 
-```python
+```{code-cell} ipython3
 data_stats
 ```
 
 # [scipy.optimize.minimize](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize) to the rescue!
 
-```python
+```{code-cell} ipython3
 data2['0.2'].shape
 ```
 
-```python
+```{code-cell} ipython3
 from scipy.optimize import minimize
 
 def fun_err(m,x):
@@ -246,31 +257,31 @@ def fun_err(m,x):
     return err
 ```
 
-```python
+```{code-cell} ipython3
 fun_err(data2['0.2'].mean(),data2['0.2'])
 ```
 
-```python
+```{code-cell} ipython3
 fun_err(data2['0.2'].mean()+1,data2['0.2'])
 ```
 
-```python
+```{code-cell} ipython3
 minimize(fun_err,data2['0.2'].mean(),args=(data2['0.2']),tol=1E-3)
 ```
 
-```python
+```{code-cell} ipython3
 data2['0.2'].mean()
 ```
 
-```python
+```{code-cell} ipython3
 list(data2.columns)
 ```
 
-```python
+```{code-cell} ipython3
 data_stats.loc['0.2','dmean']
 ```
 
-```python
+```{code-cell} ipython3
 print("{:^5}: {:^8} ({:^8})".format("col","min","mean"))
 for col in list(data2.columns):
     res_min = minimize(fun_err,1,args=(data2[col]))
@@ -279,7 +290,7 @@ for col in list(data2.columns):
 
 ## Couldn't the cost function be better?
 
-```python
+```{code-cell} ipython3
 def fun_err2(m,x):
     err = 0
     for x_i in x:
@@ -288,22 +299,22 @@ def fun_err2(m,x):
     return err
 ```
 
-```python
+```{code-cell} ipython3
 fun_err2(data2['0.2'].mean(),data2['0.2'])
 ```
 
-```python
+```{code-cell} ipython3
 minimize(fun_err2,data2['0.2'].mean(),args=(data2['0.2']))
 ```
 
-```python
+```{code-cell} ipython3
 print("{:^5}: {:^8} ({:^8})".format("col","min","mean"))
 for col in list(data2.columns):
     res_min = minimize(fun_err2,1,args=(data2[col]))
     print("{:^5}: {:8.6f} ({:8.6f})".format(col,float(res_min.x),data_stats.loc[col,'dmean']))
 ```
 
-```python
+```{code-cell} ipython3
 def fun_err3(m,x):
     err = 0
     for x_i in x:
@@ -312,23 +323,23 @@ def fun_err3(m,x):
     return err
 ```
 
-```python
+```{code-cell} ipython3
 fun_err3(data2['0.2'].mean(),data2['0.2'])
 ```
 
-```python
+```{code-cell} ipython3
 minimize(fun_err3,data2['0.2'].mean(),args=(data2['0.2']))
 ```
 
-```python
+```{code-cell} ipython3
 data_exp = pd.DataFrame(data_stats.dmean)
 ```
 
-```python
+```{code-cell} ipython3
 data_exp
 ```
 
-```python
+```{code-cell} ipython3
 def freefall_err(g,y_exp,t):
     err = 0
     y_theo = 0.5*g*t**2
@@ -336,60 +347,60 @@ def freefall_err(g,y_exp,t):
     return np.sum(err)
 ```
 
-```python
+```{code-cell} ipython3
 y_exp = np.array(list(data_exp.index))
 print(y_exp)
 ```
 
-```python
+```{code-cell} ipython3
 y_exp.dtype
 ```
 
-```python
+```{code-cell} ipython3
 y_exp = np.array(list(data_exp.index),dtype=float)
 y_exp.dtype
 ```
 
-```python
+```{code-cell} ipython3
 print(y_exp)
 ```
 
-```python
+```{code-cell} ipython3
 t = np.array(list(data_exp.dmean[:]))
 print(t)
 ```
 
 ## We can do that manually!... (???)
 
-```python
+```{code-cell} ipython3
 freefall_err(9,y_exp,t)
 ```
 
-```python
+```{code-cell} ipython3
 freefall_err(9.1,y_exp,t)
 ```
 
-```python
+```{code-cell} ipython3
 for g in np.arange(9,10,0.1):
     print("{:5.3f}:{:10.6f}".format(g,freefall_err(g,y_exp,t)))
 ```
 
-```python
+```{code-cell} ipython3
 for g in np.arange(9.7,9.9,0.01):
     print("{:5.3f}:{:10.6f}".format(g,freefall_err(g,y_exp,t)))
 ```
 
-```python
+```{code-cell} ipython3
 for g in np.arange(9.79,9.81,0.001):
     print("{:5.3f}:{:10.8f}".format(g,freefall_err(g,y_exp,t)))
 ```
 
-```python
+```{code-cell} ipython3
 res_min = minimize(freefall_err,x0=1,args=(y_exp,t))
 print(res_min)
 ```
 
-```python
+```{code-cell} ipython3
 import matplotlib.pyplot as plt
 plt.plot(t,y_exp,"or")
 tt = np.linspace(0,0.7,100)
@@ -399,26 +410,27 @@ plt.show()
 
 ## Least Squares ([numpy.linalg.lstsq](https://numpy.org/doc/stable/reference/generated/numpy.linalg.lstsq.html) & [scipy.linalg.lstsq](https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.lstsq.html#scipy.linalg.lstsq) & [scipy.optimize.least_squares](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html)) but not least! 8)
 
++++
 
 NumPy and SciPy's `linalg.lstsq` functions works similar to each other, solving the matrix equation $Ax=b$ but as the _coefficients matrix_ $A$ must be defined as a <u>matrix</u>, we add a "zeros" column next to $\tfrac{1}{2}t^2$ values, to indicate that our equation is of the form:
 
 $$\left(\frac{1}{2}t^2\right)g^1 + (0)g^0 = y_{exp}$$
 
-```python
+```{code-cell} ipython3
 A = np.vstack([(0.5*t**2),np.zeros(len(t))]).T
 A
 ```
 
 ### [numpy.linalg.lstsq](https://numpy.org/doc/stable/reference/generated/numpy.linalg.lstsq.html)
 
-```python
+```{code-cell} ipython3
 g_ls_np, _ = np.linalg.lstsq(A,y_exp,rcond=None)[0]
 g_ls_np
 ```
 
-### [scipy.linalg.lstsq](https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.lstsq.html#scipy.linalg.lstsq) 
+### [scipy.linalg.lstsq](https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.lstsq.html#scipy.linalg.lstsq)
 
-```python
+```{code-cell} ipython3
 import scipy as sp
 g_ls_sp, _ = sp.linalg.lstsq(A,y_exp)[0]
 g_ls_np
@@ -428,12 +440,12 @@ g_ls_np
 
 SciPy's `optimize.least_squares` is a totally different beast, though. It tries to minimize the cost function (e.g., errors). Its main difference from the above two is that it supports nonlinear least-squares problems and also accepts boundaries on the variables. It is included here only to give you an idea (as it is more or less the same with the `optimize.minimize` ;)
 
-```python
+```{code-cell} ipython3
 def fun_err_g(g):
     return (0.5*g*t**2 - y_exp)**2
 ```
 
-```python
+```{code-cell} ipython3
 g_ls_sp_opt = sp.optimize.least_squares(fun_err_g,10).x[0]
 g_ls_sp_opt
 ```
@@ -457,6 +469,7 @@ $$s_{y/x}= \sqrt{\frac{S_r}{n-2}}$$
 ## Coefficient of Determination ($r^2$)
 $$r^2 = \frac{S_t-S_r}{S_t}$$
 
++++
 
 # References
 * D. Horvat & R. Jecmenica, "The Free Fall Experiment" Resonance 21 259-275 (2016) [https://doi.org/10.1007/s12045-016-0321-9]

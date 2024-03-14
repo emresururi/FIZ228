@@ -1,32 +1,32 @@
 ---
-jupyter:
-  jupytext:
-    formats: ipynb,md
-    text_representation:
-      extension: .md
-      format_name: markdown
-      format_version: '1.3'
-      jupytext_version: 1.11.5
-  kernelspec:
-    display_name: Python 3 (ipykernel)
-    language: python
-    name: python3
+jupytext:
+  formats: ipynb,md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.11.5
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
 ---
 
 # Minimization & Optimization
 **FIZ228 - Numerical Analysis**  
 Dr. Emre S. Tasci, Hacettepe University
 
++++
 
 Although we have already studied and employed various minimization commands and used them in conjunction within the optimization problems (by minimizing the errors to fit given models), a deeper insight and variations might prove useful.
 
-```python
+```{code-cell} ipython3
 import numpy as np
 import scipy.optimize as opt
 import matplotlib.pyplot as plt
 ```
 
-```python
+```{code-cell} ipython3
 np.random.seed(228)
 ```
 
@@ -34,18 +34,19 @@ np.random.seed(228)
 
 `minimize()` function from scipy's _optimize_ module handles a variety of minimization methods (if not specifically denoted, then by default uses the [BFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) method (for unconstrained problems)).
 
++++
 
 ### Single variable function
 Consider a "negative gaussian" function, so instead of a peak, it will have a bottom, _i.e.,_ a definite minimum that we are seeking. We know that it will be located at the $\mu$. **However, don't forget that, in real-life situations we have no idea what the function is let alone where its minimum is.**
 
 Pay attention that the variable $x$ is defined first and the parameters $(\mu,\sigma)$ come afterwards in the function declaration.
 
-```python
+```{code-cell} ipython3
 def f(x,mu,sigma):
     return -np.exp(-(x-mu)**2/(2*sigma)**2)
 ```
 
-```python
+```{code-cell} ipython3
 mu = 5
 sigma = 0.7
 x = np.linspace(0,10,300)
@@ -57,7 +58,7 @@ When calling the `minimize` function, we feed an initial guess / starting point 
 
 _Once again: we are searching for the minimum -- not looking for the optimal parameters that fits a function to a given set of data!_
 
-```python
+```{code-cell} ipython3
 # mu and sigma here have definite values (5 & 0.7)
 opt.minimize(f,3,(mu,sigma))
 ```
@@ -72,21 +73,21 @@ $$f(x,y;a,b) = (x-a)^2 + (y-b)^2$$
 
 is defined as follows (a variable, followed by the parameters):
 
-```python
+```{code-cell} ipython3
 def f(xy,a,b):
     return (xy[0]-a)**2+(xy[1]-b)**2
 ```
 
 Let's place the minimum at $(x_0,y_0) = (3,4)$:
 
-```python
+```{code-cell} ipython3
 x = np.linspace(-1,7,100)
 y = np.linspace(-1,9,100)
 (xx,yy) = np.meshgrid(x,y)
 zz = f((xx,yy),3,4)
 ```
 
-```python
+```{code-cell} ipython3
 fig = plt.figure(figsize = (12,10))
 ax = plt.axes(projection='3d')
 
@@ -98,7 +99,7 @@ fig.colorbar(surf, shrink=0.5, aspect=8)
 plt.show()
 ```
 
-```python
+```{code-cell} ipython3
 #levels = np.arange(0,15,3)
 levels = np.array([0,0.1,0.2,0.5,0.7,1,2,3,5,8,12,15])
 
@@ -120,7 +121,7 @@ plt.show()
 
 And here is how we find its minimum (by starting from (x<sub>0</sub>,y<sub>0</sub>) = (1,2) and characterizing the function by setting the (a,b) parameters to (3,4)):
 
-```python
+```{code-cell} ipython3
 opt.minimize(f,[1,2],(3,4))
 ```
 
@@ -140,14 +141,14 @@ $$5 \le \begin{pmatrix}2&3\end{pmatrix}\cdot\begin{pmatrix}x\\y\end{pmatrix}\le 
 
 _See that, by setting the lower and upper bound to the same value, we have thus defined an equality._
 
-```python
+```{code-cell} ipython3
 # This is our coefficient matrix
 A = np.array([2,3])
 ```
 
 We introduce our constraint via the `opt.LinearConstraint()` method, where the first parameter is the coefficient matrix, followed by the lower and upper bounds, respectively:
 
-```python
+```{code-cell} ipython3
 opt.minimize(f,[1,2],(3,4),constraints=opt.LinearConstraint(A,5,5))
 ```
 
@@ -163,7 +164,7 @@ or, alternatively as:
 
 $$A=\tfrac{1}{4}\sqrt{4a^2b^2-(a^2+b^2-c^2)^2}$$
 
-```python
+```{code-cell} ipython3
 def HeronTri(x):
     # Heron's Formula
     return np.sqrt(4*x[0]**2*x[1]**2 - (x[0]**2+x[1]**2-x[2]**2)**2)/4
@@ -175,23 +176,24 @@ _Why at least 2 cm?_
 
 Otherwise it would be a boring question as we could take one side to be almost 0 and divide the remaining length to 2:
 
-```python
+```{code-cell} ipython3
 abc = (1E-8,(18-1E-8)/2,(18-1E-8)/2)
 abc,HeronTri(abc),np.sum(abc)
 ```
 
 Here are two possible cases that come to mind and their corresponding areas:
 
-```python
+```{code-cell} ipython3
 HeronTri([6,6,6])
 ```
 
-```python
+```{code-cell} ipython3
 HeronTri([5,6,7])
 ```
 
 Can we do better?
 
++++
 
 Since we are dealing with a triangle, the triangle inequalities must also be obeyed, _i.e.,_:
 
@@ -203,7 +205,7 @@ along with the constraint due to the rope-length: $a+b+c = 18$
 
 Combining all, we have the following constraints:
 
-```python
+```{code-cell} ipython3
 con_a = opt.LinearConstraint([1,0,0],2,18) # 2 <= a <= 18
 con_b = opt.LinearConstraint([0,1,0],2,18) # 2 <= b <= 18
 con_c = opt.LinearConstraint([0,0,1],2,18) # 2 <= c <= 18
@@ -218,80 +220,84 @@ cons = [con_a,con_b,con_c,con_d,con_e,con_f,con_g]
 
 We have set the upper limits of the sides and the inequalities to the rope length because it makes sense! ;)
 
-```python
+```{code-cell} ipython3
 res = opt.minimize(HeronTri,[3,4,5],constraints=cons)
 res
 ```
 
-```python
+```{code-cell} ipython3
 HeronTri(res.x),res.x.sum()
 ```
 
 Even though it's a very boring triangle, it satisfies all the conditions, including the triangle inequalities:
 
-```python
+```{code-cell} ipython3
 (x,y,z) = res.x
 ```
 
-```python
+```{code-cell} ipython3
 x + y > z
 ```
 
-```python
+```{code-cell} ipython3
 y + z > x
 ```
 
-```python
+```{code-cell} ipython3
 x + z > y
 ```
 
 **Challenge #1:** Can you find the triangle with the minimum area subject to to the above constraints, but also satisfies the condition such that the difference between any two sides is less than 3?
 
++++
 
 **Challenge #2:** What about the maximum area yielding triangle, subject to the condition that the sum of its side lengths is equal to 18?
 
++++
 
 **Side information:**
 
 Analytically, these kind of minimization problems with constraints are usually solved using a wonderful technique called _Lagrange Multipliers<sup>[1](https://tutorial.math.lamar.edu/classes/calciii/lagrangemultipliers.aspx),</sup><sup>[2](https://math.libretexts.org/Bookshelves/Calculus/Calculus_\(OpenStax\)/14%3A_Differentiation_of_Functions_of_Several_Variables/14.08%3A_Lagrange_Multipliers)</sup>_.
 
++++
 
 **Lesson to learn: Starting values** 
 
 If we had chosen a different starting point than (3,4,5) in our search above, we'd -most likely- still be able to land at the same minimum, e.g.,
 
-```python
+```{code-cell} ipython3
 res = opt.minimize(HeronTri,[3,8,10],constraints=cons)
 res
 ```
 
-```python
+```{code-cell} ipython3
 res = opt.minimize(HeronTri,[7,11,5],constraints=cons)
 res
 ```
 
 However, check what happens when we introduce symmetry:
 
-```python
+```{code-cell} ipython3
 res = opt.minimize(HeronTri,[3,3,3],constraints=cons)
 res
 ```
 
 Taking a starting value of $a=b=c$ effects the algorithm such that, due to the symmetry, it opts to move in the same direction, hence, ending at the worst solution. A similar issue ensues for lower symmetries ($a=b\ne c;a\ne b=c;a=c\ne b$) as well:
 
-```python
+```{code-cell} ipython3
 res = opt.minimize(HeronTri,[3,3,5],constraints=cons)
 res
 ```
 
 Thus, always make sure that you chose various starting points and don't incorporate symmetries unless there's a specific reason to do so!
 
++++
 
 **Collecting constraints**<a id='collecting_constraints'></a>
 
 In the above example, we defined each constraint separately and then collected them in an array but remembering that $A$ is the coefficient matrix, we could have all collected them in $A$:
 
-```python
+```{code-cell} ipython3
 A=np.array([[1,0,0],
             [0,1,0],
             [0,0,1],
@@ -312,6 +318,7 @@ A couple of things to consider:
 
 * We have individually declared the lowerbounds whereas for the upperbound, we entered a single value as it is common (if we wanted, we could have of course, typed 18 six times as an array)
 
++++
 
 # Gradient Descent Algorithm
 
@@ -323,10 +330,11 @@ Imagine that you find yourself on the side of a hill, surrounded by a mist, unab
 
 As it's much easier to understand the procedure by working on an example, we'll cover a parabola and the "negative gaussian" function we have already defined at the beginning of this lecture.
 
++++
 
 ## Parabola
 
-```python
+```{code-cell} ipython3
 def f(x,abc):
     return abc[0]*x**2+abc[1]*x+abc[2]
 
@@ -335,7 +343,7 @@ def g(x,abc):
     return 2*abc[0]*x+abc[1]
 ```
 
-```python
+```{code-cell} ipython3
 xx = np.linspace(-5,10,100)
 abc = np.array([2,3,-4])
 plt.plot(xx,f(xx,abc))
@@ -348,13 +356,13 @@ It is assumed that we ask ("shoot") for the value at the position we are interes
 
 We have to start from somewhere... Let's start from x = 5: at this point, the slope is:
 
-```python
+```{code-cell} ipython3
 g(5,abc)
 ```
 
 It is positive (we will walk towards left) and has a value of 23 (we will take a big step). The slope's value at that point determine the step size since as we move closer to the minimum, the slope magnitude decreases:
 
-```python
+```{code-cell} ipython3
 plt.plot(xx,f(xx,abc))
 i = 7
 for x in np.arange(9.75,-0.76,-1.75):
@@ -377,7 +385,9 @@ Also, we can decide when to stop by defining a threshold tolerance for the magni
 
 Let's apply these procedures to the parabola, step by step (keep in mind that we know the values of the function only at the specified positions):
 
-```python
+```{code-cell} ipython3
+:tags: [output_scroll]
+
 x = 5
 N = 50
 eta = .4
@@ -412,14 +422,14 @@ for i in range(N):
     print("-"*45)
 ```
 
-```python
+```{code-cell} ipython3
 # Real minimum:# Real minimum:
 np.roots([2*abc[0],abc[1]]) # root of 2ax + b
 ```
 
 ## "Negative" Gaussian
 
-```python
+```{code-cell} ipython3
 def f(x,mu,sigma):
     return -np.exp(-(x-mu)**2/(2*sigma**2))
 
@@ -427,18 +437,20 @@ def g(x,mu,sigma):
     return (x-mu)/(sigma**2)*np.exp(-(x-mu)**2/(2*sigma**2))
 ```
 
-```python
+```{code-cell} ipython3
 mu = 5
 sigma = 1
 ```
 
-```python
+```{code-cell} ipython3
 xx = np.linspace(0,15,100)
 plt.plot(xx,f(xx,mu,sigma))
 plt.show()
 ```
 
-```python
+```{code-cell} ipython3
+:tags: [output_scroll]
+
 x = 8
 N = 60
 eta = .4
@@ -475,7 +487,7 @@ for i in range(N):
 
 # Fitting parameters via the gradient descent algorithm
 
-```python
+```{code-cell} ipython3
 mu = 5
 sigma = 1
 
@@ -490,7 +502,6 @@ plt.plot(x,t,"o")
 plt.show()
 ```
 
-<!-- #region -->
 $\newcommand{\diff}{\text{d}}
 \newcommand{\dydx}[2]{\frac{\text{d}#1}{\text{d}#2}}
 \newcommand{\ddydx}[2]{\frac{\text{d}^2#1}{\text{d}#2^2}}
@@ -536,9 +547,7 @@ $$\pypx{F}{\mu} = \frac{2(x_i-\mu)}{\sigma^2}\exp{\left[-\frac{(x_i-\mu)^2}{2\si
 
 _(Evaluated via WolframAlpha: [1](https://www.wolframalpha.com/input?i=d%2Fdu+%28t%2Bexp%28-%28x-u%29%5E2%2F%282*s%5E2%29%29%29%5E2), [2](https://www.wolframalpha.com/input?i=d%2Fds+%28t%2Bexp%28-%28x-u%29%5E2%2F%282*s%5E2%29%29%29%5E2))_
 
-<!-- #endregion -->
-
-```python
+```{code-cell} ipython3
 def F_mu(x,t,mu,sigma):
     return 2*(x-mu)/sigma**2*np.exp(-(x-mu)**2/(2*sigma**2))*\
 (t+np.exp(-(x-mu)**2/(2*sigma**2)))
@@ -548,11 +557,11 @@ def F_sigma(x,t,mu,sigma):
 (t+np.exp(-(x-mu)**2/(2*sigma**2)))
 ```
 
-```python
+```{code-cell} ipython3
 np.array([x,t]).T
 ```
 
-```python
+```{code-cell} ipython3
 eta = 1
 
 # Starting values
@@ -583,37 +592,37 @@ plt.plot(x,t,"o")
 plt.show()
 ```
 
-```python
+```{code-cell} ipython3
 def f(x,mu,sigma):
     return -np.exp(-(x-mu)**2/(2*sigma**2))
 ```
 
-```python
+```{code-cell} ipython3
 # Doing the same thing via curve_fit():
 # Unbounded
 res,_ = opt.curve_fit(f,x,t,[2.7,2.3])
 res
 ```
 
-```python
+```{code-cell} ipython3
 # Bounded
 res,_ = opt.curve_fit(f,x,t,[2.7,2.3],bounds=[(2,0),(7,5)])
 res
 ```
 
-```python
+```{code-cell} ipython3
 # And via optimize.minimize():
 def F(musigma,x,t):
     return np.sum((t + np.exp(-(x-musigma[0])**2/(2*musigma[1]**2)))**2)
 ```
 
-```python
+```{code-cell} ipython3
 # Unbounded
 res = opt.minimize(F,x0=(2.7,2.3),args=(x,t))
 res.x,res.fun
 ```
 
-```python
+```{code-cell} ipython3
 # Bounded
 res = opt.minimize(F,x0=(2.7,2.3),args=(x,t),bounds=[(3,6.5),(None,None)])
 res.x,res.fun
@@ -623,7 +632,7 @@ res.x,res.fun
 
 In this approach, instead of optimizing the variables at every step for one data point, we optimize them as a whole:
 
-```python
+```{code-cell} ipython3
 eta = 0.1
 
 # Starting values
@@ -656,6 +665,7 @@ plt.show()
 
 # Case Study: 2 Springs, 1 Mass, 1 Side
 
++++
 
 Consider the system that consists of a mass attached to springs from one side as shown in the figure:
 
@@ -671,12 +681,12 @@ a) Find the equilibrium positions of the particle, i.e., the locations where the
 
 $k_1 = 1 \text{ N/m},\, k_2 = 2 \text{ N/m},\, x_1= 0.3 \text{ m},\, x_2=0.7 \text{ m}$
 
-```python
+```{code-cell} ipython3
 def V(x,k1,k2,x1,x2):
     return 0.5*k1*(x-x1)**2 + 0.5*k2*(x-x2)**2
 ```
 
-```python
+```{code-cell} ipython3
 k1 = 1 # N/m
 k2 = 2 # N/m
 x1 = 0.3 # m
@@ -691,42 +701,42 @@ plt.ylabel("V(x) (J)")
 plt.show()
 ```
 
-```python
+```{code-cell} ipython3
 res = opt.minimize(V,0,(k1,k2,x1,x2))
 res
 ```
 
-```python
+```{code-cell} ipython3
 V(17/30,k1,k2,x1,x2)
 ```
 
-```python
+```{code-cell} ipython3
 res = opt.root(V,0.6,(k1,k2,x1,x2))
 res
 ```
 
-```python
+```{code-cell} ipython3
 V(res.x,k1,k2,x1,x2)
 ```
 
 b) If its mechanical energy is given as 3 J, find the positions where its velocity is 0, i.e., _turning points_.
 
-```python
+```{code-cell} ipython3
 E = 3
 def K(x,k1,k2,x1,x2):
     return E - V(x,k1,k2,x1,x2)
 ```
 
-```python
+```{code-cell} ipython3
 res = opt.root(K,x0=1,args=(k1,k2,x1,x2))
 res 
 ```
 
-```python
+```{code-cell} ipython3
 K(res.x,k1,k2,x1,x2)
 ```
 
-```python
+```{code-cell} ipython3
 x = np.linspace(-1,3,30)
 x_m = [-0.83491974,1.96825307]
 plt.plot(x,K(x,k1,k2,x1,x2),"k-")
@@ -741,7 +751,7 @@ plt.ylabel("K(x) (J)")
 plt.show()
 ```
 
-```python
+```{code-cell} ipython3
 x = np.linspace(-1,3,30)
 x_m = [-0.83491974,1.96825307]
 plt.plot(x,K(x,k1,k2,x1,x2),"k-")
@@ -754,7 +764,7 @@ plt.legend(["K(x)","V(x)","E"])
 plt.show()
 ```
 
-### Analytical Solutions
+## Analytical Solutions
 
 a)
 
@@ -766,8 +776,7 @@ $$\begin{align*} \rightarrow \dydx{V}{x}=k_1(x_0-x_1)+k_2(x_0-x_2) &= 0\\
  \Rightarrow x_0 = \frac{k_1x_1 + k_2x_2}{k_1+k_2}&
 \end{align*}$$
 
-
-```python
+```{code-cell} ipython3
 (k1*x1+k2*x2)/(k1+k2)
 ```
 
@@ -783,7 +792,7 @@ $$\begin{align} V(x_0) &= E\\
  \leftrightarrow ax_0^2+bx_0+c = 0
 \end{align}$$
 
-```python
+```{code-cell} ipython3
 a = (k1+k2)
 b = -2*(k1*x1+k2*x2)
 c = (k1*x1**2+k2*x2**2-2*E)
@@ -792,6 +801,6 @@ delta = b**2-4*a*c
 (-b+np.sqrt(delta))/(2*a),(-b-np.sqrt(delta))/(2*a)
 ```
 
-```python
+```{code-cell} ipython3
 np.roots([(k1+k2),-2*(k1*x1+k2*x2),(k1*x1**2+k2*x2**2-2*E)])
 ```

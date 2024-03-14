@@ -37,7 +37,7 @@ An example is given below:
 20.15744,282.11963,20.15744,0.00205,20.15744,0.01121
 ```
 
-[GaFeO3 XRD data (Sun et al.)](data/01_GaFeO3_XRD.csv)
+{download}`GaFeO3 XRD data (Sun et al.)<data/01_GaFeO3_XRD.csv>`
 
 +++
 
@@ -78,6 +78,13 @@ pd.set_option('display.max_rows',None)
 ```
 
 +++
+
+We can also override it temporarily using the "with" procedure:
+
+```{code-cell} ipython3
+with pd.option_context('display.max_rows',None):
+    print(data_XRD)
+```
 
 ### Getting rid of the unnecessary header stuff
 Sometimes, the source file can have informational lines at the beginning -- to skip these lines, there is the `skiprows` parameter in `read_csv()`:
@@ -559,27 +566,37 @@ data_aux
 ```
 
 ```{code-cell} ipython3
+:tags: [output_scroll]
+
 # With the row labels (index) and column labels included:
 data_aux.to_csv('out/01_out.csv')
 print(data_aux.to_csv())
 ```
 
 ```{code-cell} ipython3
+:tags: [output_scroll]
+
 # Without the row labels but with the column labels:
 print(data_aux.to_csv(index=False))
 ```
 
 ```{code-cell} ipython3
+:tags: [output_scroll]
+
 # Without the row labels and the column labels:
 print(data_aux.to_csv(index=False, header=False))
 ```
 
 ```{code-cell} ipython3
+:tags: [output_scroll]
+
 # Specify header for the index column:
 print(data_aux.to_csv(index_label='Two Theta'))
 ```
 
 ```{code-cell} ipython3
+:tags: [output_scroll]
+
 # Use ';' as the seperator, instead of ','
 data_aux.to_csv(sep=';',path_or_buf='out/01_out.csv')
 print(data_aux.to_csv(sep=';'))

@@ -1,22 +1,22 @@
 ---
-jupyter:
-  jupytext:
-    formats: ipynb,md
-    text_representation:
-      extension: .md
-      format_name: markdown
-      format_version: '1.3'
-      jupytext_version: 1.11.5
-  kernelspec:
-    display_name: Python 3 (ipykernel)
-    language: python
-    name: python3
+jupytext:
+  formats: ipynb,md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.11.5
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
 ---
 
 # Regression
 **FIZ228 - Numerical Analysis**  
 Dr. Emre S. Tasci, Hacettepe University
 
++++
 
 **Case Data (Chapra, 14.6):**
 
@@ -33,7 +33,8 @@ Dr. Emre S. Tasci, Hacettepe University
 
 Let's try to fit it to a linear model, $y = ax+b$. Doesn't matter whether we're using least squares method or minimizer, they will both yield the best answer.
 
-```python
+```{code-cell} ipython3
+%matplotlib inline
 import numpy as np
 
 import seaborn as sns
@@ -56,23 +57,24 @@ a(80) + b = 1450
 
 We also need to include b's coefficients (our polynomial function actually being $a_1 x^1 + a_0 x^0$) in the data as well. We do this by _stacking_ a column of ones for b's coefficients:
 
-```python
+```{code-cell} ipython3
 A = np.vstack([x,np.ones(len(x))]).T
 A
 ```
 
-```python
+```{code-cell} ipython3
 a,b = np.linalg.lstsq(A,y,rcond=None)[0]
 print("a: {:.5f}\tb: {:.5f}".format(a,b))
 ```
 
 While we are at it, let's plot it:
 
-```python
+```{code-cell} ipython3
 import matplotlib.pyplot as plt
 
 xx = np.linspace(0,80,100)
 yy = a*xx + b
+
 plt.plot(xx,yy,"b-",x,y,"ko",markerfacecolor="k")
 plt.show()
 ```
@@ -81,7 +83,7 @@ And here's the error (sum of the squares of the estimate residuals ($S_r$)):
 
 $$S_r = \sum_{i}{e_i^2}=\sum_{i}\left(y_i-a_0-a_1 x_i\right)^2$$
 
-```python
+```{code-cell} ipython3
 t = a*x + b
 e = y-t
 S_r = np.sum(e**2)
@@ -90,7 +92,7 @@ print(S_r)
 
 and here's how to do the same thing (albeit, systematically ;) using functions:
 
-```python
+```{code-cell} ipython3
 def fun_lin(alpha, beta, x):
     return alpha*x + beta
 
@@ -115,6 +117,7 @@ It doesn't much matter even if the model we're trying to fit is non-linear. We c
 
 (Source: [S.C. Chapra, Applied Numerical Methods with MATLAB](https://www.mheducation.com/highered/product/applied-numerical-methods-matlab-engineers-scientists-chapra/M9780073397962.html))
 
++++
 
 ## Same yet different
 Instead of fitting the given data into a linear model, let's fit them to a power model:
@@ -135,7 +138,7 @@ Data:
 
 Find the optimum $\alpha$ and $\beta$ for the best fit of $y=\alpha x^\beta$ for the given data.
 
-```python
+```{code-cell} ipython3
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -146,14 +149,15 @@ data1.set_index('i', inplace=True)
 data1
 ```
 
-```python
+```{code-cell} ipython3
 plt.plot(data1.x,data1.y,"o")
 plt.show()
 ```
 
-<!-- #region -->
 ## Least-squares proper way:
-We can convert it such that $$\log{y}=\log{\alpha} + \beta\log{x}$$ 
+We can convert it such that 
+
+$$\log{y}=\log{\alpha} + \beta\log{x}$$ 
 
 and as the least square fit for a linear model given as $y' = a_0 + a_1 x'$ is:
 
@@ -166,9 +170,7 @@ $$a_0 = \bar{y}' - a_1\bar{x}'$$
 
 and since $x_i' = \log{x_i},\;y_i' = \log{y_i}$:
 
-<!-- #endregion -->
-
-```python
+```{code-cell} ipython3
 n = data1.shape[0]
 xp = np.log(data1.x)
 yp = np.log(data1.y)
@@ -181,18 +183,18 @@ print("a0: {:7.4f}\na1: {:7.4f}".format(a0,a1))
 
 as $a_0 = \log{\alpha}\rightarrow \alpha = e^{a_0}$ and $a_1 x' = \beta\log{x}\rightarrow  \beta = a_1$
 
-```python
+```{code-cell} ipython3
 alpha = np.exp(a0)
 beta = a1
 print("alpha: {:7.4f}\nbeta:  {:7.4f}".format(alpha,beta))
 ```
 
-```python
+```{code-cell} ipython3
 def fun(alpha, beta, x):
     return alpha*x**beta
 ```
 
-```python
+```{code-cell} ipython3
 xx = np.linspace(0,80,100);
 yy = fun(alpha,beta,xx)
 plt.plot(data1.x,data1.y,"or",xx,yy,"-b")
@@ -201,7 +203,7 @@ plt.show()
 
 ## Minimizing the error function:
 
-```python
+```{code-cell} ipython3
 def fun_pow(alpha, beta, x):
     return alpha*x**beta
 
@@ -218,7 +220,7 @@ print(res)
 alpha2,beta2 = res.x
 ```
 
-```python
+```{code-cell} ipython3
 xx = np.linspace(0,80,100);
 yy2 = fun(alpha2,beta2,xx)
 plt.plot(data1.x,data1.y,"or",xx,yy2,"-k")
@@ -227,7 +229,7 @@ plt.show()
 
 ### Which one is better?
 
-```python
+```{code-cell} ipython3
 err_ls = err([alpha,beta])
 err_min = err([alpha2,beta2])
 print("Least-square sum of squares error: {:10.2f}".format(err_ls))
@@ -236,7 +238,7 @@ print("   Minimizer sum of squares error: {:10.2f}".format(err_min))
 
 Let's plot the two side by side:
 
-```python
+```{code-cell} ipython3
 xx = np.linspace(0,80,100);
 yy_ls = fun(alpha,beta,xx)
 yy_min = fun(alpha2,beta2,xx)
@@ -249,7 +251,7 @@ plt.show()
 # Really, which one is better?
 Apart from the power fits, we performed an even simpler operation, namely, fit the data to a linear model. Let's put all the three together:
 
-```python
+```{code-cell} ipython3
 xx = np.linspace(0,80,100);
 yy_ls_pow = fun(alpha,beta,xx)
 yy_min_pow = fun(alpha2,beta2,xx)
@@ -278,7 +280,7 @@ Now what would you say if I told you, this was some kind of force vs. velocity" 
 
 Here, let's make the graph in the proper way:
 
-```python
+```{code-cell} ipython3
 plt.plot(data1.x,data1.y,"or",xx,yy_ls_pow,"-b",\
          xx,yy_min_pow,"-k",\
          xx,yy_ls_lin,"-m")
@@ -317,7 +319,8 @@ with $C$ being the drag coefficient (empirically determined); $\rho$ the density
 
 **Moral of the story: We are not mathematicians, nor computers but we are humans and physicists! Always eye-ball the model and more importantly use your heads! 8)**
 
-<!-- #region -->
++++
+
 # Over regression
 If you have $n$ datapoints, you can _perfectly_ fit a polynomial of (n-1)th order:
 
@@ -334,15 +337,14 @@ Once again, let's check our good old data:
 |6|60|1220|
 |7|70|830|
 |8|80|1450|
-<!-- #endregion -->
 
-```python
+```{code-cell} ipython3
 data = np.array([range(10,90,10),[25,70,380,550,610,1220,830,1450]]).T
 x = data[:,0]
 y = data[:,1]
 ```
 
-```python
+```{code-cell} ipython3
 def err_Sr(y,t):
      # Sum of the squares of the estimate residuals
     return np.sum((y-t)**2)
@@ -350,12 +352,12 @@ def err_Sr(y,t):
 
 ## Order : 7
 
-```python
+```{code-cell} ipython3
 p = np.polyfit(x,y,len(x)-1)
 print(p)
 ```
 
-```python
+```{code-cell} ipython3
 xx = np.linspace(10,80,100)
 yy = np.zeros(len(xx))
 n = len(x)
@@ -375,7 +377,7 @@ plt.show()
 
 ## Order : 6 ... 2
 
-```python
+```{code-cell} ipython3
 for s in np.arange(2,8):
     print("Order: {:d}".format(len(x)-s))
     p = np.polyfit(x,y,len(x)-s)
@@ -394,7 +396,7 @@ for s in np.arange(2,8):
 # How good are we?
 
 ## Coefficient of determination ($r^2$)
-We have already met with $r^2$ in our [lecture on least squares](FIZ228_03_LeastSquaresErrors.html): it is concerned with the variations from the average value and residuals' distance.
+We have already met with $r^2$ in our [lecture on least squares](FIZ228_03_LeastSquaresErrors.md): it is concerned with the variations from the average value and residuals' distance.
 
 The data points' distances from the average value leads to the sum of the squares of the data residuals ($S_t$), and defined as:
 
@@ -417,20 +419,21 @@ $$r^2 = \frac{S_t-S_r}{S_t}$$
 
 Where a result of 1 (hence, $S_r = 0$) indicating a perfect fit, $r^2=0$ meaning we could have actually picked the average value and a negative $r^2$ indicating that even picking the average value would be better than this fit!
 
++++
 
 # Case Study: FTIR data of Silica
 
 Fourier Transform Infrared Spectroscopy is one of the fundamental IR spectrum analysis methods. We are going to investigate the FTIR data of Silica, courtesy of Prof. Sevgi Bayarı.
 
-Data: `05_Silica_FTIR.csv`
+{download}`Data: 05_Silica_FTIR.csv<data/05_Silica_FTIR.csv>`
 
-```python
+```{code-cell} ipython3
 data_IR = pd.read_csv("data/05_Silica_FTIR.csv",header=None)
 data_IR.columns = ["Wavenumber (cm-1)","Absorbance"]
 print(data_IR)
 ```
 
-```python
+```{code-cell} ipython3
 import seaborn as sns
 sns.set_theme()
 
@@ -439,14 +442,14 @@ plt1 = sns.relplot(data=data_IR,x="Wavenumber (cm-1)",\
 aux = plt1.set_axis_labels("Wavenumber ($cm^{-1}$)","Absorbance")
 ```
 
-```python
+```{code-cell} ipython3
 data_IR["Wavelength (um)"] = 1/data_IR["Wavenumber (cm-1)"]*1E-2*1E6
 print(data_IR)
 ```
 
 Let's focus on the highest peak:
 
-```python
+```{code-cell} ipython3
 filter1 = (data_IR.iloc[:,0] >=900) & (data_IR.iloc[:,0] <= 1500)
 data_IR_filtered = data_IR[filter1]
 
@@ -461,20 +464,20 @@ $$G(x;\mu,\sigma) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp{\left[-\frac{(x-\mu)^2}{2\
 
 Here, $\frac{1}{\sqrt{2\pi\sigma^2}}$ is the normalization factor that makes it a probability distribution function. Since we are interested in the form of the function itself for the fitting, we're just define an amplitude $A$ instead:
 
-```python
+```{code-cell} ipython3
 def Gauss(x,A,mu,sigma):
     y = A*np.exp(-(x-mu)**2/(2*sigma**2))
     return y
 ```
 
-```python
+```{code-cell} ipython3
 data_IR_x = data_IR_filtered.iloc[:,0]
 data_IR_y = data_IR_filtered.iloc[:,1]
 ```
 
 Let's try with a crude approximation for the peak position $(\mu)$, peak value $(A)$ and spreadness $(\sigma)$:
 
-```python
+```{code-cell} ipython3
 x = data_IR_x
 y_0 = Gauss(x,1.30,1150,200)
 plt.plot(x,y_0,"b-",data_IR_x,data_IR_y,"r-")
@@ -483,7 +486,7 @@ plt.show()
 
 We can surely do better than that!
 
-```python
+```{code-cell} ipython3
 y_max = np.max(data_IR_y)
 i_ymax = np.argmax(data_IR_y)
 print(i_ymax,y_max)
@@ -491,7 +494,7 @@ x_ymax = data_IR_x.iloc[i_ymax]
 print(x_ymax,y_max)
 ```
 
-```python
+```{code-cell} ipython3
 x = data_IR_x
 y_1 = Gauss(x,y_max,x_ymax,100)
 plt.plot(x,y_1,"b-",data_IR_x,data_IR_y,"r-")
@@ -506,7 +509,7 @@ $$<x^2> = \frac{1}{N}{\sum_{i}{x_i^2}}$$
 
 $$\sigma^2 = <x^2>-<x>^2$$
 
-```python
+```{code-cell} ipython3
 N = np.sum(data_IR_y)
 mu_x = np.sum(data_IR_x*data_IR_y)/N
 mu_x2 = sum(x**2*data_IR_y)/N
@@ -523,19 +526,19 @@ plt.plot(x,y_2,"b-",data_IR_x,data_IR_y,"r-")
 plt.show()
 ```
 
-```python
+```{code-cell} ipython3
 y_max_opt
 ```
 
-### `scipy.optimize.curve_fit()` to the rescue!
+**`scipy.optimize.curve_fit()` to the rescue!**
 
-```python
+```{code-cell} ipython3
 from scipy import optimize
 popt,_=optimize.curve_fit(Gauss,data_IR_x,data_IR_y,p0=[y_max,x_ymax,sigma])
 print(popt)
 ```
 
-```python
+```{code-cell} ipython3
 x = data_IR_x
 y_3 = Gauss(x,popt[0],popt[1],popt[2])
 plt.plot(x,y_3,"b-",data_IR_x,data_IR_y,"r-")
@@ -544,7 +547,7 @@ plt.show()
 
 Let's calculate the coefficient of determination $r^2$:
 
-```python
+```{code-cell} ipython3
 def r2(y,t):
     # y: true data
     # t: model data
@@ -555,7 +558,7 @@ def r2(y,t):
     return r2
 ```
 
-```python
+```{code-cell} ipython3
 print(r2(data_IR_y,y_0))
 print(r2(data_IR_y,y_1))
 print(r2(data_IR_y,y_2))
