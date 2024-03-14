@@ -1,16 +1,15 @@
 ---
-jupyter:
-  jupytext:
-    formats: ipynb,md
-    text_representation:
-      extension: .md
-      format_name: markdown
-      format_version: '1.3'
-      jupytext_version: 1.11.5
-  kernelspec:
-    display_name: Python 3 (ipykernel)
-    language: python
-    name: python3
+jupytext:
+  formats: ipynb,md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.11.5
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
 ---
 
 # Take-Home Exam #1
@@ -19,17 +18,16 @@ Dr. Emre S. Tasci, Hacettepe University
 
 _It is strictly forbidden to contact anybody outside your group or seeking the direct answer on the internet. Every member of the group is responsible for every one of the questions._
 
-```python
+```{code-cell} ipython3
 import numpy as np
 import pandas as pd
 ```
 
-```python
+```{code-cell} ipython3
 import seaborn as sns
 sns.set_theme()
 ```
 
-<!-- #region -->
 Monoclinic structures' space groups are designated in the range of $[3,15]$. 
 
 a) From the random structures database (file: `01_RandomStructureDB.csv`), filter the monoclinic structures and copy them to a new `strdb_monoclinic` dataframe, resetting the index (as there are 88 such entries, the index will run from 0 to 87).
@@ -54,7 +52,9 @@ c) Drop the structures that have volumes greater than $1000\, \unicode[serif]{xC
 
 d) Plot the histogram of the volumes (using 10 bins). 
 
-(You can check what it should look like in the included PNG file)
+It should like this:
+
+![HW1_d_histogram.png](imgs/HW1_d_histogram.png)
 
 **Bonus:** ["Pearson symbol"](https://en.wikipedia.org/wiki/Pearson_symbol) contains the lattice type, centering and the number of atoms in the unit cell. For example, the Pearson symbol "mP64" indicates that the lattice is **m**onoclinic, **P**rimitive and contains 64 atoms in the unit cell. We are going to parse the number of atoms information from the Pearson cell (by discarding all the characters that are not numeric -- this is easily done using [regular expressions](https://en.wikipedia.org/wiki/Regular_expression): they look cryptic but can be used to describe any pattern if used correctly). To do this operation, we will employ Pandas' `replace()` method:
 
@@ -69,21 +69,20 @@ strdb_monoclinic.loc[:,['PearsonSymb']].replace(r"[^0-9]","",regex=True)
 Here is a sample:
 
 (As in this tutorial we are constructing our dataframe from a string, not a file, we make it appear as a file via the `StringIO` command)
-<!-- #endregion -->
 
-```python
+```{code-cell} ipython3
 from io import StringIO
 sample_data = StringIO('StructuralForm,PearsonSymb\nCe Ru2 Ge2,tI10\nLa1.85 Si4 Y3.15,tP36\nGd Mn2,cF24\nCe5 Ni1.85 Si3,hP39\nLi3 Mg2 (Nb O6),oF96\n')
 sample_df = pd.read_csv(sample_data)
 sample_df
 ```
 
-```python
+```{code-cell} ipython3
 # find and replace the non-numeric characters in 'PearsonSymb'
 sample_df.loc[:,['PearsonSymb']].replace(r"[^0-9]","",regex=True)
 ```
 
-```python
+```{code-cell} ipython3
 # while we are at it, we can define a new column
 # using these processed values as well! 8)
 
@@ -98,8 +97,10 @@ Now that we have learned how to parse the number of atoms in the unit cell, use 
 
 _**(\*) Challenge:** In standard settings, for monoclinic structures, beta angle is defined as the non-perpendicular angle. However, as you can observe, sometimes the data is entered in non-standard settings and alpha or gamma can be defined as the non-perpendicular angle as well. To remedy this issue, instead of using beta angle, use the maximum angle among the (alpha,beta,gamma) for your size criteria, if you can! ;)_
 
-(You can check what it should look like in the included PNG file)
+It should look like this:
 
-```python
+![HW1_xbonus_volVSnumatoms.png](imgs/HW1_xbonus_volVSnumatoms.png)
+
+```{code-cell} ipython3
 
 ```
