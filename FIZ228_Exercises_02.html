@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Introduction &#8212; FIZ228 - Numerical Analysis Lecture Notes</title>
+    <title>Exercise Set #2 &#8212; FIZ228 - Numerical Analysis Lecture Notes</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -52,9 +52,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Importing, parsing, processing and exporting datasets" href="FIZ228_01_DataProcesses.html" />
+    <link rel="next" title="Take-Home Exam #1" href="FIZ228_TakeHomeExam_01.html" />
+    <link rel="prev" title="Exercise Set #1" href="FIZ228_Exercises_01.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -92,13 +95,13 @@ const thebe_selector_output = ".output, .cell_output"
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
- <li class="toctree-l1 current">
-  <a class="reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Cover.html">
    Introduction
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="FIZ228_01_DataProcesses.html">
    Importing, parsing, processing and exporting datasets
@@ -144,8 +147,8 @@ const thebe_selector_output = ".output, .cell_output"
    Exercise Set #1
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_Exercises_02.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Exercise Set #2
   </a>
  </li>
@@ -204,11 +207,11 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         <a class="dropdown-buttons"
-            href="_sources/Cover.ipynb"><button type="button"
+            href="_sources/FIZ228_Exercises_02.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/Cover.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/FIZ228_Exercises_02.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -233,7 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Cover.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/FIZ228_Exercises_02.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -255,9 +258,14 @@ const thebe_selector_output = ".output, .cell_output"
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fiz228-numerical-analysis">
-   FIZ228 - Numerical Analysis
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Exercise Set #2
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#anscombe-s-quartet">
+   Anscombe’s Quartet
   </a>
  </li>
 </ul>
@@ -270,7 +278,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Introduction</h1>
+                <h1>Exercise Set #2</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -280,9 +288,14 @@ const thebe_selector_output = ".output, .cell_output"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fiz228-numerical-analysis">
-   FIZ228 - Numerical Analysis
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Exercise Set #2
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#anscombe-s-quartet">
+   Anscombe’s Quartet
   </a>
  </li>
 </ul>
@@ -294,69 +307,153 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<section id="fiz228-numerical-analysis">
-<h2>FIZ228 - Numerical Analysis<a class="headerlink" href="#fiz228-numerical-analysis" title="Permalink to this headline">¶</a></h2>
-<p><strong>Dr. Emre S. Tasci</strong> <a class="reference external" href="mailto:emre&#46;tasci&#37;&#52;&#48;hacettepe&#46;edu&#46;tr">mailto:emre<span>&#46;</span>tasci<span>&#64;</span>hacettepe<span>&#46;</span>edu<span>&#46;</span>tr</a><br />
-Department of Engineering Physics<br />
-Hacettepe University<br />
-Ankara / Turkey</p>
-<p>This jupyter book is prepared to be used as a companion to the “FIZ228 - Numerical Analysis” course, prepared during its first run in the Spring term of 2022-2023. Wishing you all the best! 8)</p>
-<p>February 2023,<br />
-Dr. Emre S. Tasci</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_01_DataProcesses.html">Importing, parsing, processing and exporting datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_01_DataProcesses.html#sample-case-meterological-dataset">Sample Case: Meterological Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_02_DataVisualization.html">Visualization of datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_02_DataVisualization.html#summary-practical-case">Summary / Practical Case</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_02_DataVisualization.html#references">References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_03_LeastSquaresErrors.html">Least Squares Method &amp; Error Estimations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_03_LeastSquaresErrors.html#data-import">Data &amp; Import</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_03_LeastSquaresErrors.html#types-of-errors">Types of Errors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_03_LeastSquaresErrors.html#how-good-is-a-mean">How good is a mean?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_03_LeastSquaresErrors.html#scipy-optimize-minimize-to-the-rescue">scipy.optimize.minimize to the rescue!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_03_LeastSquaresErrors.html#various-definitions">Various Definitions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_03_LeastSquaresErrors.html#references">References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_04_Regression.html">Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_04_Regression.html#linearization-of-non-linear-relationships">Linearization of Non-linear Relationships</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_04_Regression.html#really-which-one-is-better">Really, which one is better?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_04_Regression.html#over-regression">Over regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_04_Regression.html#how-good-are-we">How good are we?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_04_Regression.html#case-study-ftir-data-of-silica">Case Study: FTIR data of Silica</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_04_Regression.html#references-acknowledgements">References &amp; Acknowledgements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_05_Interpolation.html">Interpolation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_05_Interpolation.html#newton-interpolating-polynomials">Newton Interpolating Polynomials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_05_Interpolation.html#lagrange-interpolating-polynomials">Lagrange Interpolating Polynomials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_05_Interpolation.html#inverse-interpolation">Inverse Interpolation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_05_Interpolation.html#bonus-finite-difference-method">Bonus: Finite Difference Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_05_Interpolation.html#references">References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_06_MinimizeOptimize.html">Minimization &amp; Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_06_MinimizeOptimize.html#gradient-descent-algorithm">Gradient Descent Algorithm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_06_MinimizeOptimize.html#fitting-parameters-via-the-gradient-descent-algorithm">Fitting parameters via the gradient descent algorithm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_06_MinimizeOptimize.html#case-study-2-springs-1-mass-1-side">Case Study: 2 Springs, 1 Mass, 1 Side</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_07_ClusteringAndClassification.html">Clustering and Classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_07_ClusteringAndClassification.html#introduction">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_07_ClusteringAndClassification.html#advantages-of-clustering">Advantages of Clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_07_ClusteringAndClassification.html#k-means-clustering">k-means Clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_07_ClusteringAndClassification.html#implementation-of-the-k-means-clustering-algorithm">Implementation of the k-means clustering algorithm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_07_ClusteringAndClassification.html#soft-k-means-clustering">Soft k-means Clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_07_ClusteringAndClassification.html#reference">Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_08_OrdinaryDifferentialEquations.html">Ordinary Differential Equations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_08_OrdinaryDifferentialEquations.html#runge-kutta-method">Runge-Kutta Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_08_OrdinaryDifferentialEquations.html#references">References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_Exercises_01.html">Exercise Set #1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_Exercises_01.html#id1">1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_Exercises_01.html#id2">2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_Exercises_02.html">Exercise Set #2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_Exercises_02.html#anscombe-s-quartet">Anscombe’s Quartet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_TakeHomeExam_01.html">Take-Home Exam #1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_TakeHomeExam_02.html">Take-Home Exam #2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FIZ228_TakeHomeExam_03.html">Take-Home Exam #3</a></li>
-</ul>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="exercise-set-2">
+<h1>Exercise Set #2<a class="headerlink" href="#exercise-set-2" title="Permalink to this headline">¶</a></h1>
+<p><strong>FIZ228 - Numerical Analysis</strong><br />
+Dr. Emre S. Tasci, Hacettepe University</p>
 </section>
+<section class="tex2jax_ignore mathjax_ignore" id="anscombe-s-quartet">
+<h1>Anscombe’s Quartet<a class="headerlink" href="#anscombe-s-quartet" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>Anscombe’s quartet comprises four data sets that have nearly identical simple descriptive statistics, yet have very different distributions and appear very different when graphed. Each dataset consists of eleven (x, y) points. They were constructed in 1973 by the statistician Francis Anscombe to demonstrate both the importance of graphing data when analyzing it, and the effect of outliers and other influential observations on statistical properties. He described the article as being intended to counter the impression among statisticians that “numerical calculations are exact, but graphs are rough”.[1]</p>
+</div></blockquote>
+<p>[1] Anscombe, F. J. (1973). “Graphs in Statistical Analysis”. American Statistician. 27 (1): 17–21.<br />
+<a class="reference external" href="https://dx.doi.org/10.1080/00031305.1973.10478966">doi:10.1080/00031305.1973.10478966</a><br />
+<a class="reference external" href="https://www.jstor.org/stable/2682899">JSTOR 2682899</a>.</p>
+<p>(From <a class="reference external" href="https://en.wikipedia.org/wiki/Anscombe%27s_quartet">Wikipedia entry</a>)</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Ax</p></th>
+<th class="head"><p>Ay</p></th>
+<th class="head"><p>Bx</p></th>
+<th class="head"><p>By</p></th>
+<th class="head"><p>Cx</p></th>
+<th class="head"><p>Cy</p></th>
+<th class="head"><p>Dx</p></th>
+<th class="head"><p>Dy</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>10.0</p></td>
+<td><p>8.04</p></td>
+<td><p>10.0</p></td>
+<td><p>9.14</p></td>
+<td><p>10.0</p></td>
+<td><p>7.46</p></td>
+<td><p>8.0</p></td>
+<td><p>6.58</p></td>
+</tr>
+<tr class="row-odd"><td><p>8.0</p></td>
+<td><p>6.95</p></td>
+<td><p>8.0</p></td>
+<td><p>8.14</p></td>
+<td><p>8.0</p></td>
+<td><p>6.77</p></td>
+<td><p>8.0</p></td>
+<td><p>5.76</p></td>
+</tr>
+<tr class="row-even"><td><p>13.0</p></td>
+<td><p>7.58</p></td>
+<td><p>13.0</p></td>
+<td><p>8.74</p></td>
+<td><p>13.0</p></td>
+<td><p>12.74</p></td>
+<td><p>8.0</p></td>
+<td><p>7.71</p></td>
+</tr>
+<tr class="row-odd"><td><p>9.0</p></td>
+<td><p>8.81</p></td>
+<td><p>9.0</p></td>
+<td><p>8.77</p></td>
+<td><p>9.0</p></td>
+<td><p>7.11</p></td>
+<td><p>8.0</p></td>
+<td><p>8.84</p></td>
+</tr>
+<tr class="row-even"><td><p>11.0</p></td>
+<td><p>8.33</p></td>
+<td><p>11.0</p></td>
+<td><p>9.26</p></td>
+<td><p>11.0</p></td>
+<td><p>7.81</p></td>
+<td><p>8.0</p></td>
+<td><p>8.47</p></td>
+</tr>
+<tr class="row-odd"><td><p>14.0</p></td>
+<td><p>9.96</p></td>
+<td><p>14.0</p></td>
+<td><p>8.10</p></td>
+<td><p>14.0</p></td>
+<td><p>8.84</p></td>
+<td><p>8.0</p></td>
+<td><p>7.04</p></td>
+</tr>
+<tr class="row-even"><td><p>6.0</p></td>
+<td><p>7.24</p></td>
+<td><p>6.0</p></td>
+<td><p>6.13</p></td>
+<td><p>6.0</p></td>
+<td><p>6.08</p></td>
+<td><p>8.0</p></td>
+<td><p>5.25</p></td>
+</tr>
+<tr class="row-odd"><td><p>4.0</p></td>
+<td><p>4.26</p></td>
+<td><p>4.0</p></td>
+<td><p>3.10</p></td>
+<td><p>4.0</p></td>
+<td><p>5.39</p></td>
+<td><p>19.0</p></td>
+<td><p>12.50</p></td>
+</tr>
+<tr class="row-even"><td><p>12.0</p></td>
+<td><p>10.84</p></td>
+<td><p>12.0</p></td>
+<td><p>9.13</p></td>
+<td><p>12.0</p></td>
+<td><p>8.15</p></td>
+<td><p>8.0</p></td>
+<td><p>5.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>7.0</p></td>
+<td><p>4.82</p></td>
+<td><p>7.0</p></td>
+<td><p>7.26</p></td>
+<td><p>7.0</p></td>
+<td><p>6.42</p></td>
+<td><p>8.0</p></td>
+<td><p>7.91</p></td>
+</tr>
+<tr class="row-even"><td><p>5.0</p></td>
+<td><p>5.68</p></td>
+<td><p>5.0</p></td>
+<td><p>4.74</p></td>
+<td><p>5.0</p></td>
+<td><p>5.73</p></td>
+<td><p>8.0</p></td>
+<td><p>6.89</p></td>
+</tr>
+</tbody>
+</table>
+<p><em>(You can download the data as CSV from the course page: Exercise_02_AnscombeQuartet.csv)</em></p>
+<ol class="simple">
+<li><p>Import the data set as a pandas dataframe.</p></li>
+<li><p>Plot each in separate graps.</p></li>
+<li><p>Calculate the mean of each group’s x and y values.</p></li>
+<li><p>Calculate the variance of each group’s x and y values.</p></li>
+<li><p>Find the equation for the best fitting line for each group</p></li>
+<li><p>Calculate the following quantities for each fit:</p>
+<ul class="simple">
+<li><p>Sum of the squares of the data residuals (<span class="math notranslate nohighlight">\(S_t\)</span>)</p></li>
+<li><p>Coefficient of variation (think about what <span class="math notranslate nohighlight">\(s_y\)</span> in the formula represents ;)</p></li>
+<li><p>Sum of the squares of the estimate residuals (<span class="math notranslate nohighlight">\(S_r\)</span>)</p></li>
+<li><p>Standard error of the estimate (<span class="math notranslate nohighlight">\(s_{y/x}\)</span>)</p></li>
+<li><p>Coefficient of determination (<span class="math notranslate nohighlight">\(r^2\)</span>)</p></li>
+</ul>
+</li>
+</ol>
+<p>Interpret your findings.</p>
+<p><em>For a more modern and interesting similar case, check <a class="reference external" href="https://blog.revolutionanalytics.com/2017/05/the-datasaurus-dozen.html">the Datasaurus Dozen</a>! 8)</em></p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -383,11 +480,18 @@ Dr. Emre S. Tasci</p>
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="FIZ228_01_DataProcesses.html" title="next page">
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="FIZ228_Exercises_01.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Exercise Set #1</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="FIZ228_TakeHomeExam_01.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Importing, parsing, processing and exporting datasets</p>
+        <p class="prev-next-title">Take-Home Exam #1</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
