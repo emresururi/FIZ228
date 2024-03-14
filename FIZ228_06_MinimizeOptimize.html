@@ -1,0 +1,2339 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Minimization &amp; Optimization &#8212; FIZ228 - Numerical Analysis Lecture Notes</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Clustering and Classification" href="FIZ228_07_ClusteringAndClassification.html" />
+    <link rel="prev" title="Interpolation" href="FIZ228_05_Interpolation.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">FIZ228 - Numerical Analysis Lecture Notes</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Cover.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="FIZ228_01_DataProcesses.html">
+   Importing, parsing, processing and exporting datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FIZ228_02_DataVisualization.html">
+   Visualization of datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FIZ228_03_LeastSquaresErrors.html">
+   Least Squares Method &amp; Error Estimations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FIZ228_04_Regression.html">
+   Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FIZ228_05_Interpolation.html">
+   Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Minimization &amp; Optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FIZ228_07_ClusteringAndClassification.html">
+   Clustering and Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FIZ228_08_OrdinaryDifferentialEquations.html">
+   Ordinary Differential Equations
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="_sources/FIZ228_06_MinimizeOptimize.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/FIZ228_06_MinimizeOptimize.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/FIZ228_06_MinimizeOptimize.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Minimization &amp; Optimization
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scipy-optimize-minimize">
+     scipy.optimize.minimize*
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#single-variable-function">
+       Single variable function
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#multi-variate-function">
+       Multi-variate function
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#minimization-with-constraints">
+       Minimization with constraints
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gradient-descent-algorithm">
+   Gradient Descent Algorithm
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#parabola">
+     Parabola
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#negative-gaussian">
+     “Negative” Gaussian
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fitting-parameters-via-the-gradient-descent-algorithm">
+   Fitting parameters via the gradient descent algorithm
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stochastic-gradient-descent-algorithm-optional">
+     Stochastic Gradient Descent Algorithm (Optional)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#case-study-2-springs-1-mass-1-side">
+   Case Study: 2 Springs, 1 Mass, 1 Side
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analytical-solutions">
+     Analytical Solutions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Minimization & Optimization</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Minimization &amp; Optimization
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scipy-optimize-minimize">
+     scipy.optimize.minimize*
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#single-variable-function">
+       Single variable function
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#multi-variate-function">
+       Multi-variate function
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#minimization-with-constraints">
+       Minimization with constraints
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gradient-descent-algorithm">
+   Gradient Descent Algorithm
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#parabola">
+     Parabola
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#negative-gaussian">
+     “Negative” Gaussian
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fitting-parameters-via-the-gradient-descent-algorithm">
+   Fitting parameters via the gradient descent algorithm
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stochastic-gradient-descent-algorithm-optional">
+     Stochastic Gradient Descent Algorithm (Optional)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#case-study-2-springs-1-mass-1-side">
+   Case Study: 2 Springs, 1 Mass, 1 Side
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analytical-solutions">
+     Analytical Solutions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="minimization-optimization">
+<h1>Minimization &amp; Optimization<a class="headerlink" href="#minimization-optimization" title="Permalink to this headline">¶</a></h1>
+<p><strong>FIZ228 - Numerical Analysis</strong><br />
+Dr. Emre S. Tasci, Hacettepe University</p>
+<p>Although we have already studied and employed various minimization commands and used them in conjunction within the optimization problems (by minimizing the errors to fit given models), a deeper insight and variations might prove useful.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.optimize</span> <span class="k">as</span> <span class="nn">opt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">228</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="scipy-optimize-minimize">
+<h2>scipy.optimize.minimize<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html">*</a><a class="headerlink" href="#scipy-optimize-minimize" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">minimize()</span></code> function from scipy’s <em>optimize</em> module handles a variety of minimization methods (if not specifically denoted, then by default uses the <a class="reference external" href="https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm">BFGS</a> method (for unconstrained problems)).</p>
+<section id="single-variable-function">
+<h3>Single variable function<a class="headerlink" href="#single-variable-function" title="Permalink to this headline">¶</a></h3>
+<p>Consider a “negative gaussian” function, so instead of a peak, it will have a bottom, <em>i.e.,</em> a definite minimum that we are seeking. We know that it will be located at the <span class="math notranslate nohighlight">\(\mu\)</span>. <strong>However, don’t forget that, in real-life situations we have no idea what the function is let alone where its minimum is.</strong></p>
+<p>Pay attention that the variable <span class="math notranslate nohighlight">\(x\)</span> is defined first and the parameters <span class="math notranslate nohighlight">\((\mu,\sigma)\)</span> come afterwards in the function declaration.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.7</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">),</span><span class="s2">&quot;k-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_06_MinimizeOptimize_7_0.png" src="_images/FIZ228_06_MinimizeOptimize_7_0.png" />
+</div>
+</div>
+<p>When calling the <code class="docutils literal notranslate"><span class="pre">minimize</span></code> function, we feed an initial guess / starting point for the x variable (here: 3) and supply the values of the characteristic parameters <span class="math notranslate nohighlight">\((\mu,\sigma)\)</span>.</p>
+<p><em>Once again: we are searching for the minimum – not looking for the optimal parameters that fits a function to a given set of data!</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># mu and sigma here have definite values (5 &amp; 0.7)</span>
+<span class="n">opt</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="mi">3</span><span class="p">,(</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: -1.0
+ hess_inv: array([[0.98007282]])
+      jac: array([2.23517418e-08])
+  message: &#39;Optimization terminated successfully.&#39;
+     nfev: 18
+      nit: 4
+     njev: 9
+   status: 0
+  success: True
+        x: array([5.00000001])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="multi-variate-function">
+<h3>Multi-variate function<a class="headerlink" href="#multi-variate-function" title="Permalink to this headline">¶</a></h3>
+<p>As we have observed from the single variable function example, <code class="docutils literal notranslate"><span class="pre">minimize</span></code> takes the first parameter as the variable. Thus, when we are dealing with a multi-variate function, we need to implement it as a vector variable when defining the function.</p>
+<p>Therefore a sample function of:</p>
+<div class="math notranslate nohighlight">
+\[f(x,y;a,b) = (x-a)^2 + (y-b)^2\]</div>
+<p>is defined as follows (a variable, followed by the parameters):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">xy</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">xy</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">xy</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s place the minimum at <span class="math notranslate nohighlight">\((x_0,y_0) = (3,4)\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">)</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">zz</span> <span class="o">=</span> <span class="n">f</span><span class="p">((</span><span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">),</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+
+<span class="n">surf</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">zz</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">surf</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_06_MinimizeOptimize_14_0.png" src="_images/FIZ228_06_MinimizeOptimize_14_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#levels = np.arange(0,15,3)</span>
+<span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.7</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">15</span><span class="p">])</span>
+
+<span class="n">lo1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">zz</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">summer</span><span class="p">,</span><span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.grid&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+
+<span class="n">lo2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">zz</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">lo2</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_06_MinimizeOptimize_15_0.png" src="_images/FIZ228_06_MinimizeOptimize_15_0.png" />
+</div>
+</div>
+<p>And here is how we find its minimum (by starting from (x<sub>0</sub>,y<sub>0</sub>) = (1,2) and characterizing the function by setting the (a,b) parameters to (3,4)):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">opt</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">f</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: 3.933451217590424e-15
+ hess_inv: array([[ 0.74999999, -0.25      ],
+       [-0.25      ,  0.75000001]])
+      jac: array([-9.85826034e-08,  6.83356074e-08])
+  message: &#39;Optimization terminated successfully.&#39;
+     nfev: 9
+      nit: 2
+     njev: 3
+   status: 0
+  success: True
+        x: array([2.99999994, 4.00000003])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="minimization-with-constraints">
+<h3>Minimization with constraints<a class="headerlink" href="#minimization-with-constraints" title="Permalink to this headline">¶</a></h3>
+<p>Sometimes, one or more constraints is present. Suppose that for our previously defined function <span class="math notranslate nohighlight">\(f(x,y;a,b) = (x-a)^2 + (y-b)^2\)</span>, we want to minimize it but we also want to satisfy the condition of <span class="math notranslate nohighlight">\(2x + 3y = 5\)</span>. This is where the <code class="docutils literal notranslate"><span class="pre">constraints</span></code> parameter comes into play: the constraint (in our case, we’ll be dealing only with linear constraints such as <span class="math notranslate nohighlight">\(a_0x_0 + a_1x_1 + \dots + a_nx_n = E\)</span> – we can even flex this constraint into a more generalized inequality, such as:</p>
+<div class="math notranslate nohighlight">
+\[E_{min} \le a_0x_0 + a_1x_1 + \dots + a_nx_n \le E_{max}\]</div>
+<p>or more formally as a cofficient matrix - vector multiplication:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}E_{min} \le \begin{pmatrix}a_0&amp;a_1&amp;\dots&amp;a_n\end{pmatrix}\cdot\begin{pmatrix}x_0\\x_1\\\vdots\\ x_n\end{pmatrix}\le E_{max}\end{split}\]</div>
+<p>Returning to our example, we can write our constraint <span class="math notranslate nohighlight">\(2x + 3y = 5\)</span> as a coefficient matrix - vector multiplication, bounded from bottom and top in the form of:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}5 \le \begin{pmatrix}2&amp;3\end{pmatrix}\cdot\begin{pmatrix}x\\y\end{pmatrix}\le 5\end{split}\]</div>
+<p><em>See that, by setting the lower and upper bound to the same value, we have thus defined an equality.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is our coefficient matrix</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We introduce our constraint via the <code class="docutils literal notranslate"><span class="pre">opt.LinearConstraint()</span></code> method, where the first parameter is the coefficient matrix, followed by the lower and upper bounds, respectively:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">opt</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">f</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span><span class="n">constraints</span><span class="o">=</span><span class="n">opt</span><span class="o">.</span><span class="n">LinearConstraint</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     fun: 13.0
+     jac: array([-4., -6.])
+ message: &#39;Optimization terminated successfully&#39;
+    nfev: 16
+     nit: 5
+    njev: 5
+  status: 0
+ success: True
+       x: array([1.00000001, 0.99999999])
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Example: Heron’s Formula</strong></p>
+<p>Heron’s formula (formulated by <a class="reference external" href="https://en.wikipedia.org/wiki/Heron_of_Alexandria">Heron of Alexandria</a>, 1st century) is used to calculate the area of a triangle when its side lengths <span class="math notranslate nohighlight">\((a,b,c)\)</span> are known.</p>
+<p>If <span class="math notranslate nohighlight">\(s\)</span> is defined as <span class="math notranslate nohighlight">\(s = \tfrac{1}{2}(a+b+c)\)</span>, then the area <span class="math notranslate nohighlight">\(A\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[A=\sqrt{s(s-a)(s-b)(s-c)}\]</div>
+<p>or, alternatively as:</p>
+<div class="math notranslate nohighlight">
+\[A=\tfrac{1}{4}\sqrt{4a^2b^2-(a^2+b^2-c^2)^2}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">HeronTri</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="c1"># Heron&#39;s Formula</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Suppose that we have a rope of length 18 cm, and we want to form a triangle with the lowest area, given that its side lengths are at least 2 cm.</p>
+<p><em>Why at least 2 cm?</em></p>
+<p>Otherwise it would be a boring question as we could take one side to be almost 0 and divide the remaining length to 2:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">abc</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1E-8</span><span class="p">,(</span><span class="mi">18</span><span class="o">-</span><span class="mf">1E-8</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,(</span><span class="mi">18</span><span class="o">-</span><span class="mf">1E-8</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">abc</span><span class="p">,</span><span class="n">HeronTri</span><span class="p">(</span><span class="n">abc</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">abc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((1e-08, 8.999999995, 8.999999995), 4.4999999975e-08, 18.0)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here are two possible cases that come to mind and their corresponding areas:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">HeronTri</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15.588457268119896
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">HeronTri</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14.696938456699069
+</pre></div>
+</div>
+</div>
+</div>
+<p>Can we do better?</p>
+<p>Since we are dealing with a triangle, the triangle inequalities must also be obeyed, <em>i.e.,</em>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( a + b &gt; c \rightarrow a + b - c &gt; 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( b + c &gt; a \rightarrow -a + b + c &gt; 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( c + a &gt; b \rightarrow a - b + c &gt; 0\)</span></p></li>
+</ul>
+<p>along with the constraint due to the rope-length: <span class="math notranslate nohighlight">\(a+b+c = 18\)</span></p>
+<p>Combining all, we have the following constraints:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">con_a</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">LinearConstraint</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="mi">2</span><span class="p">,</span><span class="mi">18</span><span class="p">)</span> <span class="c1"># 2 &lt;= a &lt;= 18</span>
+<span class="n">con_b</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">LinearConstraint</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="mi">2</span><span class="p">,</span><span class="mi">18</span><span class="p">)</span> <span class="c1"># 2 &lt;= b &lt;= 18</span>
+<span class="n">con_c</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">LinearConstraint</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="mi">2</span><span class="p">,</span><span class="mi">18</span><span class="p">)</span> <span class="c1"># 2 &lt;= c &lt;= 18</span>
+<span class="n">con_d</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">LinearConstraint</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="mf">1E-3</span><span class="p">,</span><span class="mi">18</span><span class="p">)</span> <span class="c1"># 0 &lt;  a + b - c &lt;= 18</span>
+<span class="n">con_e</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">LinearConstraint</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="mf">1E-3</span><span class="p">,</span><span class="mi">18</span><span class="p">)</span> <span class="c1"># 0 &lt; -a + b + c &lt;= 18</span>
+<span class="n">con_f</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">LinearConstraint</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="mf">1E-3</span><span class="p">,</span><span class="mi">18</span><span class="p">)</span> <span class="c1"># 0 &lt;  a - b - c &lt;= 18</span>
+<span class="n">con_g</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">LinearConstraint</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="mi">18</span><span class="p">,</span><span class="mi">18</span><span class="p">)</span> <span class="c1"># a + b + c = 18</span>
+<span class="n">cons</span> <span class="o">=</span> <span class="p">[</span><span class="n">con_a</span><span class="p">,</span><span class="n">con_b</span><span class="p">,</span><span class="n">con_c</span><span class="p">,</span><span class="n">con_d</span><span class="p">,</span><span class="n">con_e</span><span class="p">,</span><span class="n">con_f</span><span class="p">,</span><span class="n">con_g</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>(Instead of specifying each constraint individually, we could have collected them in a matrix – see the “<a class="reference external" href="#collecting_constraints">Collecting constraints</a>” heading below)</p>
+<p>We have set the upper limits of the sides and the inequalities to the rope length because it makes sense! ;)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">HeronTri</span><span class="p">,[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span><span class="n">constraints</span><span class="o">=</span><span class="n">cons</span><span class="p">)</span>
+<span class="n">res</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     fun: 0.25096663215760445
+     jac: array([ 125.51225776,  125.46742659, -125.43649042])
+ message: &#39;Optimization terminated successfully&#39;
+    nfev: 32
+     nit: 9
+    njev: 8
+  status: 0
+ success: True
+       x: array([2.00000052, 7.00049948, 8.9995    ])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">HeronTri</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">),</span><span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.25096663215760445, 18.0)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Even though it’s a very boring triangle, it satisfies all the conditions, including the triangle inequalities:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="n">z</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">+</span> <span class="n">z</span> <span class="o">&gt;</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">+</span> <span class="n">z</span> <span class="o">&gt;</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Challenge #1:</strong> Can you find the triangle with the minimum area subject to to the above constraints, but also satisfies the condition such that the difference between any two sides is less than 3?</p>
+<p><strong>Challenge #2:</strong> What about the maximum area yielding triangle, subject to the condition that the sum of its side lengths is equal to 18?</p>
+<p><strong>Side information:</strong></p>
+<p>Analytically, these kind of minimization problems with constraints are usually solved using a wonderful technique called <em>Lagrange Multipliers<sup><a class="reference external" href="https://tutorial.math.lamar.edu/classes/calciii/lagrangemultipliers.aspx">1</a>,</sup><sup><a class="reference external" href="https://math.libretexts.org/Bookshelves/Calculus/Calculus_%5C(OpenStax%5C)/14%3A_Differentiation_of_Functions_of_Several_Variables/14.08%3A_Lagrange_Multipliers">2</a></sup></em>.</p>
+<p><strong>Lesson to learn: Starting values</strong></p>
+<p>If we had chosen a different starting point than (3,4,5) in our search above, we’d -most likely- still be able to land at the same minimum, e.g.,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">HeronTri</span><span class="p">,[</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span><span class="n">constraints</span><span class="o">=</span><span class="n">cons</span><span class="p">)</span>
+<span class="n">res</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     fun: 0.2509666312379804
+     jac: array([ 125.5122354 ,  125.46740331, -125.43646712])
+ message: &#39;Optimization terminated successfully&#39;
+    nfev: 8
+     nit: 2
+    njev: 2
+  status: 0
+ success: True
+       x: array([2.    , 7.0005, 8.9995])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">HeronTri</span><span class="p">,[</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span><span class="n">constraints</span><span class="o">=</span><span class="n">cons</span><span class="p">)</span>
+<span class="n">res</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     fun: 0.2509666312473801
+     jac: array([ 125.4674261 , -125.43644052,  125.51223542])
+ message: &#39;Optimization terminated successfully&#39;
+    nfev: 24
+     nit: 6
+    njev: 6
+  status: 0
+ success: True
+       x: array([7.0005, 8.9995, 2.    ])
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, check what happens when we introduce symmetry:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">HeronTri</span><span class="p">,[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span><span class="n">constraints</span><span class="o">=</span><span class="n">cons</span><span class="p">)</span>
+<span class="n">res</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     fun: 15.588457268119898
+     jac: array([1.73205078, 1.73205078, 1.73205078])
+ message: &#39;Optimization terminated successfully&#39;
+    nfev: 8
+     nit: 2
+    njev: 2
+  status: 0
+ success: True
+       x: array([6., 6., 6.])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Taking a starting value of <span class="math notranslate nohighlight">\(a=b=c\)</span> effects the algorithm such that, due to the symmetry, it opts to move in the same direction, hence, ending at the worst solution. A similar issue ensues for lower symmetries (<span class="math notranslate nohighlight">\(a=b\ne c;a\ne b=c;a=c\ne b\)</span>) as well:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">HeronTri</span><span class="p">,[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span><span class="n">constraints</span><span class="o">=</span><span class="n">cons</span><span class="p">)</span>
+<span class="n">res</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     fun: 0.30185240645226274
+     jac: array([ 150.93402367,  150.9340221 , -150.88483753])
+ message: &#39;Optimization terminated successfully&#39;
+    nfev: 8
+     nit: 2
+    njev: 2
+  status: 0
+ success: True
+       x: array([4.50025, 4.50025, 8.9995 ])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Thus, always make sure that you chose various starting points and don’t incorporate symmetries unless there’s a specific reason to do so!</p>
+<p><strong>Collecting constraints</strong><a id='collecting_constraints'></a></p>
+<p>In the above example, we defined each constraint separately and then collected them in an array but remembering that <span class="math notranslate nohighlight">\(A\)</span> is the coefficient matrix, we could have all collected them in <span class="math notranslate nohighlight">\(A\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+            <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">con_inequalities</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">LinearConstraint</span><span class="p">(</span><span class="n">A</span><span class="p">,[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">1E-3</span><span class="p">,</span><span class="mf">1E-3</span><span class="p">,</span><span class="mf">1E-3</span><span class="p">],</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">con_equality</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">LinearConstraint</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="mi">18</span><span class="p">,</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">cons</span> <span class="o">=</span> <span class="p">[</span><span class="n">con_inequalities</span><span class="p">,</span><span class="n">con_equality</span><span class="p">]</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">HeronTri</span><span class="p">,[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span><span class="n">constraints</span><span class="o">=</span><span class="n">cons</span><span class="p">)</span>
+<span class="n">res</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     fun: 0.25096663215760445
+     jac: array([ 125.51225776,  125.46742659, -125.43649042])
+ message: &#39;Optimization terminated successfully&#39;
+    nfev: 32
+     nit: 9
+    njev: 8
+  status: 0
+ success: True
+       x: array([2.00000052, 7.00049948, 8.9995    ])
+</pre></div>
+</div>
+</div>
+</div>
+<p>A couple of things to consider:</p>
+<ul class="simple">
+<li><p>We grouped the inequality constraints together but left the equality constraint out – this is for efficiency (if we had also included it, then Python would have warned us to keep them separate)</p></li>
+<li><p>We have individually declared the lowerbounds whereas for the upperbound, we entered a single value as it is common (if we wanted, we could have of course, typed 18 six times as an array)</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="gradient-descent-algorithm">
+<h1>Gradient Descent Algorithm<a class="headerlink" href="#gradient-descent-algorithm" title="Permalink to this headline">¶</a></h1>
+<p>In order to grasp the meaning of the minimization procedure, we will explicitly investigate the gradient descent algorithm.</p>
+<p>This algorithm works by moving along the steepest direction and steeper the slope, the bigger steps we take.</p>
+<p>Imagine that you find yourself on the side of a hill, surrounded by a mist, unable to see 1 meter ahead and you want to reach to the bottom of the hill (and for some reason, you can’t walk but teleport (meaning that, you don’t interact with whatever is between you and your destination – can’t see, can’t feel)). What you do is, you move along the down slope. Mathematically speaking, for a 1-dimensional graph of a function, if the slope at the place you are positioned is positive (positive slope means that as x increases, the function value increases), it means that the down is towards left (i.e., if you pour some water to the ground, it will flow downwards: so, <u>slope positive -&gt; move towards left (-x direction)</u> and vice versa (<u>slope negative -&gt; move towards right</u>)). Since the slope of a function at any point is defined by its derivative, it’s very helpful to have the function’s derivative also defined, if possible.</p>
+<p>As it’s much easier to understand the procedure by working on an example, we’ll cover a parabola and the “negative gaussian” function we have already defined at the beginning of this lecture.</p>
+<section id="parabola">
+<h2>Parabola<a class="headerlink" href="#parabola" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">abc</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">abc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">abc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">abc</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">abc</span><span class="p">):</span>
+    <span class="c1"># Derivative</span>
+    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">abc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">abc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">abc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">abc</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_06_MinimizeOptimize_57_0.png" src="_images/FIZ228_06_MinimizeOptimize_57_0.png" />
+</div>
+</div>
+<p>So, this is the function we are trying to find its minimum. Once again, don’t forget that, we do not necessarily know the function or what it looks like: it might be a property of a material/medium like the location of a room with the minimal electrical field, the concentration of a component in a compound that yields the most optimal conductivity, or it can be a function so complicated that even though we want to calculate its minimum, can’t calculate its derivative to set it to zero and solve that way analytically…</p>
+<p>It is assumed that we ask (“shoot”) for the value at the position we are interested, and for each of our queries, we have to spend some time/money/material, so the sooner we reach the minimum the better!</p>
+<p>We have to start from somewhere… Let’s start from x = 5: at this point, the slope is:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="n">abc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is positive (we will walk towards left) and has a value of 23 (we will take a big step). The slope’s value at that point determine the step size since as we move closer to the minimum, the slope magnitude decreases:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">abc</span><span class="p">))</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">9.75</span><span class="p">,</span><span class="o">-</span><span class="mf">0.76</span><span class="p">,</span><span class="o">-</span><span class="mf">1.75</span><span class="p">):</span>
+    <span class="n">x12</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="o">-</span><span class="mf">0.35</span><span class="p">,</span><span class="n">x</span><span class="o">+</span><span class="mf">0.35</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x12</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="n">x12</span><span class="p">,</span><span class="n">abc</span><span class="p">),</span><span class="s2">&quot;r-&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">abc</span><span class="p">)</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;: &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">abc</span><span class="p">)))</span>
+    <span class="n">i</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x: </span><span class="si">{:5.2f}</span><span class="s2"> | Slope: </span><span class="si">{:5.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">abc</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span><span class="mi">250</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x:  9.75 | Slope: 42.00
+x:  8.00 | Slope: 35.00
+x:  6.25 | Slope: 28.00
+x:  4.50 | Slope: 21.00
+x:  2.75 | Slope: 14.00
+x:  1.00 | Slope:  7.00
+x: -0.75 | Slope:  0.00
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_61_1.png" src="_images/FIZ228_06_MinimizeOptimize_61_1.png" />
+</div>
+</div>
+<p>As you can check from the red lines depicting the slopes, their value decrease as one moves towards the minimum.</p>
+<p>Only at the minimum(/maximum) the slope becomes 0 as it is the characteristic of extrema. Since we are moving along the decrease direction of the slope, we are moving towards the minimum.</p>
+<p>Depending on the function, taking a step size equal to the slope value at that position might prove to be too big or too little. We compensate this fact by using a factor usually labelled as <span class="math notranslate nohighlight">\(\eta\)</span>. <span class="math notranslate nohighlight">\(\eta\)</span> isn’t necessarily taken as constant, it can be coded to be updated as the slope values process (adaptive approach).</p>
+<p>Also, we can decide when to stop by defining a threshold tolerance for the magnitude of slope.</p>
+<p>Let’s apply these procedures to the parabola, step by step (keep in mind that we know the values of the function only at the specified positions):</p>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">eta</span> <span class="o">=</span> <span class="mf">.4</span>
+<span class="n">tolerance</span> <span class="o">=</span> <span class="mf">1E-4</span>
+<span class="n">xs_so_far</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>
+<span class="n">fs_so_far</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">abc</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">gg</span> <span class="o">=</span> <span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">abc</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Step #</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The derivative (gradient) at x = </span><span class="si">{:7.5f}</span><span class="s2"> is </span><span class="si">{:7.5f}</span><span class="s2">&quot;</span>\
+          <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">gg</span><span class="p">))</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">gg</span><span class="p">)</span><span class="o">&lt;</span><span class="n">tolerance</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">As it is sufficiently close to zero, we have found the minima!&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="k">elif</span><span class="p">(</span><span class="n">gg</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">As it is positive, go left by: &quot;</span><span class="o">+</span>
+              <span class="s2">&quot;(this amount)*eta(=</span><span class="si">{:.2f}</span><span class="s2">).&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eta</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">As it is negative, go right by: &quot;</span><span class="o">+</span>
+              <span class="s2">&quot;|this amount|*eta(=</span><span class="si">{:.2f}</span><span class="s2">).&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eta</span><span class="p">))</span>
+
+    <span class="n">delta</span> <span class="o">=</span> <span class="o">-</span><span class="n">gg</span><span class="o">*</span><span class="n">eta</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">delta</span>
+    <span class="n">xs_so_far</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">fs_so_far</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">abc</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">==&gt; The new x is </span><span class="si">{:7.5f}{:+7.5f}</span><span class="s2">=</span><span class="si">{:7.5f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">delta</span><span class="p">,</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">abc</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs_so_far</span><span class="p">,</span><span class="n">fs_so_far</span><span class="p">,</span><span class="s2">&quot;*-&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">45</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Step #1
+The derivative (gradient) at x = 5.00000 is 23.00000
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 5.00000-9.20000=-4.20000
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_63_1.png" src="_images/FIZ228_06_MinimizeOptimize_63_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #2
+The derivative (gradient) at x = -4.20000 is -13.80000
+	As it is negative, go right by: |this amount|*eta(=0.40).
+	==&gt; The new x is -4.20000+5.52000=1.32000
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_63_3.png" src="_images/FIZ228_06_MinimizeOptimize_63_3.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #3
+The derivative (gradient) at x = 1.32000 is 8.28000
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 1.32000-3.31200=-1.99200
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_63_5.png" src="_images/FIZ228_06_MinimizeOptimize_63_5.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #4
+The derivative (gradient) at x = -1.99200 is -4.96800
+	As it is negative, go right by: |this amount|*eta(=0.40).
+	==&gt; The new x is -1.99200+1.98720=-0.00480
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_63_7.png" src="_images/FIZ228_06_MinimizeOptimize_63_7.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #5
+The derivative (gradient) at x = -0.00480 is 2.98080
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is -0.00480-1.19232=-1.19712
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_63_9.png" src="_images/FIZ228_06_MinimizeOptimize_63_9.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #6
+The derivative (gradient) at x = -1.19712 is -1.78848
+	As it is negative, go right by: |this amount|*eta(=0.40).
+	==&gt; The new x is -1.19712+0.71539=-0.48173
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_63_11.png" src="_images/FIZ228_06_MinimizeOptimize_63_11.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #7
+The derivative (gradient) at x = -0.48173 is 1.07309
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is -0.48173-0.42924=-0.91096
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_63_13.png" src="_images/FIZ228_06_MinimizeOptimize_63_13.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #8
+The derivative (gradient) at x = -0.91096 is -0.64385
+	As it is negative, go right by: |this amount|*eta(=0.40).
+	==&gt; The new x is -0.91096+0.25754=-0.65342
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_63_15.png" src="_images/FIZ228_06_MinimizeOptimize_63_15.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #9
+The derivative (gradient) at x = -0.65342 is 0.38631
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is -0.65342-0.15452=-0.80795
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_63_17.png" src="_images/FIZ228_06_MinimizeOptimize_63_17.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #10
+The derivative (gradient) at x = -0.80795 is -0.23179
+	As it is negative, go right by: |this amount|*eta(=0.40).
+	==&gt; The new x is -0.80795+0.09271=-0.71523
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_63_19.png" src="_images/FIZ228_06_MinimizeOptimize_63_19.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #11
+The derivative (gradient) at x = -0.71523 is 0.13907
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is -0.71523-0.05563=-0.77086
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_63_21.png" src="_images/FIZ228_06_MinimizeOptimize_63_21.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #12
+The derivative (gradient) at x = -0.77086 is -0.08344
+	As it is negative, go right by: |this amount|*eta(=0.40).
+	==&gt; The new x is -0.77086+0.03338=-0.73748
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_63_23.png" src="_images/FIZ228_06_MinimizeOptimize_63_23.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #13
+The derivative (gradient) at x = -0.73748 is 0.05007
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is -0.73748-0.02003=-0.75751
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_63_25.png" src="_images/FIZ228_06_MinimizeOptimize_63_25.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #14
+The derivative (gradient) at x = -0.75751 is -0.03004
+	As it is negative, go right by: |this amount|*eta(=0.40).
+	==&gt; The new x is -0.75751+0.01202=-0.74549
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_63_27.png" src="_images/FIZ228_06_MinimizeOptimize_63_27.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #15
+The derivative (gradient) at x = -0.74549 is 0.01802
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is -0.74549-0.00721=-0.75270
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_63_29.png" src="_images/FIZ228_06_MinimizeOptimize_63_29.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #16
+The derivative (gradient) at x = -0.75270 is -0.01081
+	As it is negative, go right by: |this amount|*eta(=0.40).
+	==&gt; The new x is -0.75270+0.00433=-0.74838
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_63_31.png" src="_images/FIZ228_06_MinimizeOptimize_63_31.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #17
+The derivative (gradient) at x = -0.74838 is 0.00649
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is -0.74838-0.00260=-0.75097
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_63_33.png" src="_images/FIZ228_06_MinimizeOptimize_63_33.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #18
+The derivative (gradient) at x = -0.75097 is -0.00389
+	As it is negative, go right by: |this amount|*eta(=0.40).
+	==&gt; The new x is -0.75097+0.00156=-0.74942
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_63_35.png" src="_images/FIZ228_06_MinimizeOptimize_63_35.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #19
+The derivative (gradient) at x = -0.74942 is 0.00234
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is -0.74942-0.00093=-0.75035
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_63_37.png" src="_images/FIZ228_06_MinimizeOptimize_63_37.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #20
+The derivative (gradient) at x = -0.75035 is -0.00140
+	As it is negative, go right by: |this amount|*eta(=0.40).
+	==&gt; The new x is -0.75035+0.00056=-0.74979
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_63_39.png" src="_images/FIZ228_06_MinimizeOptimize_63_39.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #21
+The derivative (gradient) at x = -0.74979 is 0.00084
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is -0.74979-0.00034=-0.75013
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_63_41.png" src="_images/FIZ228_06_MinimizeOptimize_63_41.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #22
+The derivative (gradient) at x = -0.75013 is -0.00050
+	As it is negative, go right by: |this amount|*eta(=0.40).
+	==&gt; The new x is -0.75013+0.00020=-0.74992
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_63_43.png" src="_images/FIZ228_06_MinimizeOptimize_63_43.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #23
+The derivative (gradient) at x = -0.74992 is 0.00030
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is -0.74992-0.00012=-0.75005
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_63_45.png" src="_images/FIZ228_06_MinimizeOptimize_63_45.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #24
+The derivative (gradient) at x = -0.75005 is -0.00018
+	As it is negative, go right by: |this amount|*eta(=0.40).
+	==&gt; The new x is -0.75005+0.00007=-0.74997
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_63_47.png" src="_images/FIZ228_06_MinimizeOptimize_63_47.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #25
+The derivative (gradient) at x = -0.74997 is 0.00011
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is -0.74997-0.00004=-0.75002
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_63_49.png" src="_images/FIZ228_06_MinimizeOptimize_63_49.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #26
+The derivative (gradient) at x = -0.75002 is -0.00007
+	As it is sufficiently close to zero, we have found the minima!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Real minimum:# Real minimum:</span>
+<span class="n">np</span><span class="o">.</span><span class="n">roots</span><span class="p">([</span><span class="mi">2</span><span class="o">*</span><span class="n">abc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">abc</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span> <span class="c1"># root of 2ax + b</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.75])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="negative-gaussian">
+<h2>“Negative” Gaussian<a class="headerlink" href="#negative-gaussian" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_06_MinimizeOptimize_68_0.png" src="_images/FIZ228_06_MinimizeOptimize_68_0.png" />
+</div>
+</div>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="n">eta</span> <span class="o">=</span> <span class="mf">.4</span>
+<span class="n">tolerance</span> <span class="o">=</span> <span class="mf">1E-4</span>
+<span class="n">xs_so_far</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>
+<span class="n">fs_so_far</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">gg</span> <span class="o">=</span> <span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Step #</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The derivative (gradient) at x = </span><span class="si">{:7.5f}</span><span class="s2"> is </span><span class="si">{:5.4f}</span><span class="s2">&quot;</span>\
+          <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">gg</span><span class="p">))</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">gg</span><span class="p">)</span><span class="o">&lt;</span><span class="n">tolerance</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">As it is sufficiently close to zero, we have found the minima!&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="k">elif</span><span class="p">(</span><span class="n">gg</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">As it is positive, go left by: &quot;</span><span class="o">+</span>
+              <span class="s2">&quot;(this amount)*eta(=</span><span class="si">{:.2f}</span><span class="s2">).&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eta</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">As it is negative, go right by: &quot;</span><span class="o">+</span>
+              <span class="s2">&quot;|this amount|*eta(=</span><span class="si">{:.2f}</span><span class="s2">).&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eta</span><span class="p">))</span>
+
+    <span class="n">delta</span> <span class="o">=</span> <span class="o">-</span><span class="n">gg</span><span class="o">*</span><span class="n">eta</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">delta</span>
+    <span class="n">xs_so_far</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">fs_so_far</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">==&gt; The new x is </span><span class="si">{:7.5f}{:+7.5f}</span><span class="s2">=</span><span class="si">{:7.5f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">delta</span><span class="p">,</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs_so_far</span><span class="p">,</span><span class="n">fs_so_far</span><span class="p">,</span><span class="s2">&quot;*-&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">45</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Step #1
+The derivative (gradient) at x = 8.00000 is 0.0333
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 8.00000-0.01333=7.98667
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_1.png" src="_images/FIZ228_06_MinimizeOptimize_69_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #2
+The derivative (gradient) at x = 7.98667 is 0.0345
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.98667-0.01381=7.97286
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_3.png" src="_images/FIZ228_06_MinimizeOptimize_69_3.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #3
+The derivative (gradient) at x = 7.97286 is 0.0358
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.97286-0.01433=7.95853
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_5.png" src="_images/FIZ228_06_MinimizeOptimize_69_5.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #4
+The derivative (gradient) at x = 7.95853 is 0.0372
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.95853-0.01488=7.94366
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_7.png" src="_images/FIZ228_06_MinimizeOptimize_69_7.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #5
+The derivative (gradient) at x = 7.94366 is 0.0387
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.94366-0.01546=7.92819
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_9.png" src="_images/FIZ228_06_MinimizeOptimize_69_9.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #6
+The derivative (gradient) at x = 7.92819 is 0.0402
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.92819-0.01610=7.91209
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_11.png" src="_images/FIZ228_06_MinimizeOptimize_69_11.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #7
+The derivative (gradient) at x = 7.91209 is 0.0420
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.91209-0.01678=7.89531
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_13.png" src="_images/FIZ228_06_MinimizeOptimize_69_13.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #8
+The derivative (gradient) at x = 7.89531 is 0.0438
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.89531-0.01752=7.87780
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_15.png" src="_images/FIZ228_06_MinimizeOptimize_69_15.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #9
+The derivative (gradient) at x = 7.87780 is 0.0458
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.87780-0.01831=7.85948
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_17.png" src="_images/FIZ228_06_MinimizeOptimize_69_17.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #10
+The derivative (gradient) at x = 7.85948 is 0.0479
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.85948-0.01918=7.84031
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_19.png" src="_images/FIZ228_06_MinimizeOptimize_69_19.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #11
+The derivative (gradient) at x = 7.84031 is 0.0503
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.84031-0.02012=7.82019
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_21.png" src="_images/FIZ228_06_MinimizeOptimize_69_21.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #12
+The derivative (gradient) at x = 7.82019 is 0.0529
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.82019-0.02115=7.79904
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_23.png" src="_images/FIZ228_06_MinimizeOptimize_69_23.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #13
+The derivative (gradient) at x = 7.79904 is 0.0557
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.79904-0.02227=7.77676
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_25.png" src="_images/FIZ228_06_MinimizeOptimize_69_25.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #14
+The derivative (gradient) at x = 7.77676 is 0.0588
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.77676-0.02351=7.75325
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_27.png" src="_images/FIZ228_06_MinimizeOptimize_69_27.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #15
+The derivative (gradient) at x = 7.75325 is 0.0622
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.75325-0.02488=7.72837
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_29.png" src="_images/FIZ228_06_MinimizeOptimize_69_29.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #16
+The derivative (gradient) at x = 7.72837 is 0.0660
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.72837-0.02639=7.70198
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_31.png" src="_images/FIZ228_06_MinimizeOptimize_69_31.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #17
+The derivative (gradient) at x = 7.70198 is 0.0702
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.70198-0.02808=7.67389
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_33.png" src="_images/FIZ228_06_MinimizeOptimize_69_33.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #18
+The derivative (gradient) at x = 7.67389 is 0.0749
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.67389-0.02997=7.64393
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_35.png" src="_images/FIZ228_06_MinimizeOptimize_69_35.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #19
+The derivative (gradient) at x = 7.64393 is 0.0802
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.64393-0.03209=7.61184
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_37.png" src="_images/FIZ228_06_MinimizeOptimize_69_37.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #20
+The derivative (gradient) at x = 7.61184 is 0.0862
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.61184-0.03449=7.57735
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_39.png" src="_images/FIZ228_06_MinimizeOptimize_69_39.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #21
+The derivative (gradient) at x = 7.57735 is 0.0931
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.57735-0.03722=7.54012
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_41.png" src="_images/FIZ228_06_MinimizeOptimize_69_41.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #22
+The derivative (gradient) at x = 7.54012 is 0.1009
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.54012-0.04035=7.49978
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_43.png" src="_images/FIZ228_06_MinimizeOptimize_69_43.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #23
+The derivative (gradient) at x = 7.49978 is 0.1099
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.49978-0.04396=7.45582
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_45.png" src="_images/FIZ228_06_MinimizeOptimize_69_45.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #24
+The derivative (gradient) at x = 7.45582 is 0.1204
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.45582-0.04815=7.40766
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_47.png" src="_images/FIZ228_06_MinimizeOptimize_69_47.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #25
+The derivative (gradient) at x = 7.40766 is 0.1327
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.40766-0.05307=7.35459
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_49.png" src="_images/FIZ228_06_MinimizeOptimize_69_49.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #26
+The derivative (gradient) at x = 7.35459 is 0.1472
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.35459-0.05890=7.29569
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_51.png" src="_images/FIZ228_06_MinimizeOptimize_69_51.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #27
+The derivative (gradient) at x = 7.29569 is 0.1646
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.29569-0.06585=7.22984
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_53.png" src="_images/FIZ228_06_MinimizeOptimize_69_53.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #28
+The derivative (gradient) at x = 7.22984 is 0.1856
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.22984-0.07424=7.15560
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_55.png" src="_images/FIZ228_06_MinimizeOptimize_69_55.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #29
+The derivative (gradient) at x = 7.15560 is 0.2111
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.15560-0.08446=7.07115
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_57.png" src="_images/FIZ228_06_MinimizeOptimize_69_57.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #30
+The derivative (gradient) at x = 7.07115 is 0.2425
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 7.07115-0.09700=6.97414
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_59.png" src="_images/FIZ228_06_MinimizeOptimize_69_59.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #31
+The derivative (gradient) at x = 6.97414 is 0.2813
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 6.97414-0.11250=6.86164
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_61.png" src="_images/FIZ228_06_MinimizeOptimize_69_61.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #32
+The derivative (gradient) at x = 6.86164 is 0.3291
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 6.86164-0.13164=6.73000
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_63.png" src="_images/FIZ228_06_MinimizeOptimize_69_63.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #33
+The derivative (gradient) at x = 6.73000 is 0.3874
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 6.73000-0.15495=6.57505
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_65.png" src="_images/FIZ228_06_MinimizeOptimize_69_65.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #34
+The derivative (gradient) at x = 6.57505 is 0.4556
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 6.57505-0.18225=6.39280
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_67.png" src="_images/FIZ228_06_MinimizeOptimize_69_67.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #35
+The derivative (gradient) at x = 6.39280 is 0.5280
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 6.39280-0.21121=6.18159
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_69.png" src="_images/FIZ228_06_MinimizeOptimize_69_69.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #36
+The derivative (gradient) at x = 6.18159 is 0.5879
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 6.18159-0.23516=5.94644
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_71.png" src="_images/FIZ228_06_MinimizeOptimize_69_71.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #37
+The derivative (gradient) at x = 5.94644 is 0.6048
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 5.94644-0.24190=5.70453
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_73.png" src="_images/FIZ228_06_MinimizeOptimize_69_73.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #38
+The derivative (gradient) at x = 5.70453 is 0.5497
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 5.70453-0.21988=5.48466
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_75.png" src="_images/FIZ228_06_MinimizeOptimize_69_75.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #39
+The derivative (gradient) at x = 5.48466 is 0.4310
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 5.48466-0.17238=5.31228
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_77.png" src="_images/FIZ228_06_MinimizeOptimize_69_77.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #40
+The derivative (gradient) at x = 5.31228 is 0.2974
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 5.31228-0.11897=5.19331
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_79.png" src="_images/FIZ228_06_MinimizeOptimize_69_79.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #41
+The derivative (gradient) at x = 5.19331 is 0.1897
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 5.19331-0.07589=5.11742
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_81.png" src="_images/FIZ228_06_MinimizeOptimize_69_81.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #42
+The derivative (gradient) at x = 5.11742 is 0.1166
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 5.11742-0.04664=5.07077
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_83.png" src="_images/FIZ228_06_MinimizeOptimize_69_83.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #43
+The derivative (gradient) at x = 5.07077 is 0.0706
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 5.07077-0.02824=5.04253
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_85.png" src="_images/FIZ228_06_MinimizeOptimize_69_85.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #44
+The derivative (gradient) at x = 5.04253 is 0.0425
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 5.04253-0.01700=5.02554
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_87.png" src="_images/FIZ228_06_MinimizeOptimize_69_87.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #45
+The derivative (gradient) at x = 5.02554 is 0.0255
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 5.02554-0.01021=5.01533
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_89.png" src="_images/FIZ228_06_MinimizeOptimize_69_89.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #46
+The derivative (gradient) at x = 5.01533 is 0.0153
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 5.01533-0.00613=5.00920
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_91.png" src="_images/FIZ228_06_MinimizeOptimize_69_91.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #47
+The derivative (gradient) at x = 5.00920 is 0.0092
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 5.00920-0.00368=5.00552
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_93.png" src="_images/FIZ228_06_MinimizeOptimize_69_93.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #48
+The derivative (gradient) at x = 5.00552 is 0.0055
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 5.00552-0.00221=5.00331
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_95.png" src="_images/FIZ228_06_MinimizeOptimize_69_95.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #49
+The derivative (gradient) at x = 5.00331 is 0.0033
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 5.00331-0.00132=5.00199
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_97.png" src="_images/FIZ228_06_MinimizeOptimize_69_97.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #50
+The derivative (gradient) at x = 5.00199 is 0.0020
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 5.00199-0.00079=5.00119
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_99.png" src="_images/FIZ228_06_MinimizeOptimize_69_99.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #51
+The derivative (gradient) at x = 5.00119 is 0.0012
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 5.00119-0.00048=5.00072
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_101.png" src="_images/FIZ228_06_MinimizeOptimize_69_101.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #52
+The derivative (gradient) at x = 5.00072 is 0.0007
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 5.00072-0.00029=5.00043
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_103.png" src="_images/FIZ228_06_MinimizeOptimize_69_103.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #53
+The derivative (gradient) at x = 5.00043 is 0.0004
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 5.00043-0.00017=5.00026
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_105.png" src="_images/FIZ228_06_MinimizeOptimize_69_105.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #54
+The derivative (gradient) at x = 5.00026 is 0.0003
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 5.00026-0.00010=5.00015
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_107.png" src="_images/FIZ228_06_MinimizeOptimize_69_107.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #55
+The derivative (gradient) at x = 5.00015 is 0.0002
+	As it is positive, go left by: (this amount)*eta(=0.40).
+	==&gt; The new x is 5.00015-0.00006=5.00009
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_69_109.png" src="_images/FIZ228_06_MinimizeOptimize_69_109.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------
+Step #56
+The derivative (gradient) at x = 5.00009 is 0.0001
+	As it is sufficiently close to zero, we have found the minima!
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="fitting-parameters-via-the-gradient-descent-algorithm">
+<h1>Fitting parameters via the gradient descent algorithm<a class="headerlink" href="#fitting-parameters-via-the-gradient-descent-algorithm" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span><span class="o">+</span><span class="mi">3</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">)</span>
+
+<span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_06_MinimizeOptimize_71_0.png" src="_images/FIZ228_06_MinimizeOptimize_71_0.png" />
+</div>
+</div>
+<p><span class="math notranslate nohighlight">\(\newcommand{\diff}{\text{d}}
+\newcommand{\dydx}[2]{\frac{\text{d}#1}{\text{d}#2}}
+\newcommand{\ddydx}[2]{\frac{\text{d}^2#1}{\text{d}#2^2}}
+\newcommand{\pypx}[2]{\frac{\partial#1}{\partial#2}}
+\newcommand{\unit}[1]{\,\text{#1}}\)</span></p>
+<p>We have the data points, we know the function but we don’t have the mu &amp; sigma.</p>
+<div class="math notranslate nohighlight">
+\[f(x;\mu,\sigma)=-\exp{\left[-\frac{(x-\mu)^2}{2\sigma^2}\right]}\]</div>
+<p>The function we are going to try to minimize will be the difference between the real values (<span class="math notranslate nohighlight">\(\{t_i\}\)</span>) corresponding to <span class="math notranslate nohighlight">\(\{x_i\}\)</span> and the projected values (<span class="math notranslate nohighlight">\(\{y_i\}\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[F(x_i,t_i,\mu,\sigma) = t_i - f(x_i;\mu,\sigma)\]</div>
+<p>Begin by calculating the derivatives:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\pypx{F}{\mu}=\frac{x_i-\mu}{\sigma^2}\exp{\left[-\frac{(x_i-\mu)^2}{2\sigma^2}\right]}\\
+\pypx{F}{\sigma}=\frac{(x_i-\mu)^2}{\sigma^3}\exp{\left[-\frac{(x_i-\mu)^2}{2\sigma^2}\right]}\end{split}\]</div>
+<p><em>(don’t forget that <span class="math notranslate nohighlight">\(\{x_i\}\)</span> and <span class="math notranslate nohighlight">\(\{t_i\}\)</span> are fixed!)</em></p>
+<p>Can you see the problem in this approach? As <span class="math notranslate nohighlight">\(\{t_i\}\)</span> are fixed, the problem is reduced to finding the <span class="math notranslate nohighlight">\((\mu,\sigma)\)</span> set that will make <span class="math notranslate nohighlight">\(f(x_i;\mu,\sigma)\)</span> minimum, regardless of <span class="math notranslate nohighlight">\(\{t_i\}\)</span> values. If we follow this approach, we will end up with <span class="math notranslate nohighlight">\((\mu,\sigma)\)</span> that will most likely fix the values all very close to 0.</p>
+<p>You are invited to try this approach, i.e.,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">F_mu</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">/</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">F_sigma</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">sigma</span><span class="o">**</span><span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>But what we really have in mind is the fact that, for a given <span class="math notranslate nohighlight">\(x_i\)</span>, we want to find values as close to the corresponding <span class="math notranslate nohighlight">\(t_i\)</span> as possible. One way to obtain this would be to define the error function as:</p>
+<div class="math notranslate nohighlight">
+\[F(x_i,t_i,\mu,\sigma) = \left[t_i - f(x_i;\mu,\sigma)\right]^2=\left\lbrace t_i -
+\left[-\exp{\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)}\right]
+\right\rbrace^2\]</div>
+<p>and then we would have the following derivatives:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\pypx{F}{\mu} = \frac{2(x_i-\mu)}{\sigma^2}\exp{\left[-\frac{(x_i-\mu)^2}{2\sigma^2}\right]}\left\lbrace t_i+\exp{\left[-\frac{(x_i-\mu)^2}{2\sigma^2}\right]}\right\rbrace\\
+\pypx{F}{\sigma}=\frac{2(x_i-\mu)^2}{\sigma^3}\exp{\left[-\frac{(x_i-\mu)^2}{2\sigma^2}\right]}\left\lbrace t_i+\exp{\left[-\frac{(x_i-\mu)^2}{2\sigma^2}\right]}\right\rbrace\end{split}\]</div>
+<p><em>(Evaluated via WolframAlpha: <a class="reference external" href="https://www.wolframalpha.com/input?i=d%2Fdu+%28t%2Bexp%28-%28x-u%29%5E2%2F%282*s%5E2%29%29%29%5E2">1</a>, <a class="reference external" href="https://www.wolframalpha.com/input?i=d%2Fds+%28t%2Bexp%28-%28x-u%29%5E2%2F%282*s%5E2%29%29%29%5E2">2</a>)</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">F_mu</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">/</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span>\
+<span class="p">(</span><span class="n">t</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
+
+<span class="k">def</span> <span class="nf">F_sigma</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">sigma</span><span class="o">**</span><span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span>\
+<span class="p">(</span><span class="n">t</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">t</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 4.69524325, -0.95462342],
+       [ 5.16697107, -0.98615704],
+       [ 5.75421959, -0.75244784],
+       [ 4.3843321 , -0.82735329],
+       [ 4.75611602, -0.97069817],
+       [ 5.35619635, -0.93853238],
+       [ 5.61464869, -0.82787218],
+       [ 3.44106334, -0.29666796],
+       [ 3.57161062, -0.36054154],
+       [ 6.49670943, -0.3262571 ]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eta</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Starting values</span>
+<span class="n">mu_opt</span> <span class="o">=</span> <span class="mf">2.7</span>
+<span class="n">sigma_opt</span> <span class="o">=</span> <span class="mf">2.3</span>
+<span class="n">tolerance</span> <span class="o">=</span> <span class="mf">1E-4</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+        <span class="n">xi</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span>
+        <span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span>
+        <span class="c1">#print(xi,ti)</span>
+        <span class="n">F_mu_xi</span> <span class="o">=</span> <span class="n">F_mu</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span><span class="n">ti</span><span class="p">,</span><span class="n">mu_opt</span><span class="p">,</span><span class="n">sigma_opt</span><span class="p">)</span>
+        <span class="n">F_sigma_xi</span> <span class="o">=</span> <span class="n">F_sigma</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span><span class="n">ti</span><span class="p">,</span><span class="n">mu_opt</span><span class="p">,</span><span class="n">sigma_opt</span><span class="p">)</span>
+        <span class="n">mu_opt</span> <span class="o">-=</span> <span class="n">eta</span><span class="o">*</span><span class="n">F_mu_xi</span>
+        <span class="n">sigma_opt</span> <span class="o">-=</span> <span class="n">eta</span><span class="o">*</span><span class="n">F_sigma_xi</span>
+    <span class="n">total_absolute_error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">mu_opt</span><span class="p">,</span><span class="n">sigma_opt</span><span class="p">)))</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">total_absolute_error</span> <span class="o">&lt;</span> <span class="n">tolerance</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">((</span><span class="s2">&quot;As the sum of the absolute errors is sufficiently close to zero (</span><span class="si">{:.7f}</span><span class="s2">),</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span>
+              <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">breaking the iteration at the </span><span class="si">{:d}</span><span class="s2">. step!&quot;</span><span class="p">)</span><span class="o">.</span>
+              <span class="nb">format</span><span class="p">(</span><span class="n">total_absolute_error</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+        <span class="k">break</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mu: </span><span class="si">{:.4f}</span><span class="se">\t</span><span class="s2">sigma: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mu_opt</span><span class="p">,</span><span class="n">sigma_opt</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">mu_opt</span><span class="p">,</span><span class="n">sigma_opt</span><span class="p">),</span><span class="s2">&quot;:b&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>As the sum of the absolute errors is sufficiently close to zero (0.0000085),
+	breaking the iteration at the 19. step!
+mu: 5.0000	sigma: 1.0000
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_75_1.png" src="_images/FIZ228_06_MinimizeOptimize_75_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Doing the same thing via curve_fit():</span>
+<span class="c1"># Unbounded</span>
+<span class="n">res</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">curve_fit</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">t</span><span class="p">,[</span><span class="mf">2.7</span><span class="p">,</span><span class="mf">2.3</span><span class="p">])</span>
+<span class="n">res</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-27370639.4290217 ,  34064337.46171098])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bounded</span>
+<span class="n">res</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">curve_fit</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">t</span><span class="p">,[</span><span class="mf">2.7</span><span class="p">,</span><span class="mf">2.3</span><span class="p">],</span><span class="n">bounds</span><span class="o">=</span><span class="p">[(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">),(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">)])</span>
+<span class="n">res</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.        , 4.48817981])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># And via optimize.minimize():</span>
+<span class="k">def</span> <span class="nf">F</span><span class="p">(</span><span class="n">musigma</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">t</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">musigma</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">musigma</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Unbounded</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="n">x0</span><span class="o">=</span><span class="p">(</span><span class="mf">2.7</span><span class="p">,</span><span class="mf">2.3</span><span class="p">),</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">t</span><span class="p">))</span>
+<span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">res</span><span class="o">.</span><span class="n">fun</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([-1351.52257325,  1692.29277162]), 0.7244191813899243)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bounded</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="n">x0</span><span class="o">=</span><span class="p">(</span><span class="mf">2.7</span><span class="p">,</span><span class="mf">2.3</span><span class="p">),</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">t</span><span class="p">),</span><span class="n">bounds</span><span class="o">=</span><span class="p">[(</span><span class="mi">3</span><span class="p">,</span><span class="mf">6.5</span><span class="p">),(</span><span class="kc">None</span><span class="p">,</span><span class="kc">None</span><span class="p">)])</span>
+<span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">res</span><span class="o">.</span><span class="n">fun</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([4.99999987, 1.00000024]), 1.5195586603351214e-13)
+</pre></div>
+</div>
+</div>
+</div>
+<section id="stochastic-gradient-descent-algorithm-optional">
+<h2>Stochastic Gradient Descent Algorithm (Optional)<a class="headerlink" href="#stochastic-gradient-descent-algorithm-optional" title="Permalink to this headline">¶</a></h2>
+<p>In this approach, instead of optimizing the variables at every step for one data point, we optimize them as a whole:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eta</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="c1"># Starting values</span>
+<span class="n">mu_opt</span> <span class="o">=</span> <span class="mf">3.0</span>
+<span class="n">sigma_opt</span> <span class="o">=</span> <span class="mf">2.3</span>
+<span class="n">tolerance</span> <span class="o">=</span> <span class="mf">1E-4</span>
+<span class="n">total_absolute_error0</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+    <span class="n">d_mu</span>    <span class="o">=</span> <span class="o">-</span><span class="n">eta</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">F_mu</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">mu_opt</span><span class="p">,</span><span class="n">sigma_opt</span><span class="p">))</span>
+    <span class="n">d_sigma</span> <span class="o">=</span> <span class="o">-</span><span class="n">eta</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">F_sigma</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">mu_opt</span><span class="p">,</span><span class="n">sigma_opt</span><span class="p">))</span>
+
+    <span class="n">mu_opt</span>    <span class="o">+=</span> <span class="n">d_mu</span>
+    <span class="n">sigma_opt</span> <span class="o">+=</span> <span class="n">d_sigma</span>
+
+    <span class="n">total_absolute_error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">mu_opt</span><span class="p">,</span><span class="n">sigma_opt</span><span class="p">)))</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">total_absolute_error</span> <span class="o">&lt;</span> <span class="n">tolerance</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">((</span><span class="s2">&quot;As the sum of the absolute errors is sufficiently close to zero (</span><span class="si">{:.7f}</span><span class="s2">),</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span>
+              <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">breaking the iteration at the </span><span class="si">{:d}</span><span class="s2">. step!&quot;</span><span class="p">)</span><span class="o">.</span>
+              <span class="nb">format</span><span class="p">(</span><span class="n">total_absolute_error</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+        <span class="k">break</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mu: </span><span class="si">{:.4f}</span><span class="se">\t</span><span class="s2">sigma: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mu_opt</span><span class="p">,</span><span class="n">sigma_opt</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">mu_opt</span><span class="p">,</span><span class="n">sigma_opt</span><span class="p">),</span><span class="s2">&quot;:b&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>As the sum of the absolute errors is sufficiently close to zero (0.0000753),
+	breaking the iteration at the 145. step!
+mu: 5.0000	sigma: 1.0000
+</pre></div>
+</div>
+<img alt="_images/FIZ228_06_MinimizeOptimize_83_1.png" src="_images/FIZ228_06_MinimizeOptimize_83_1.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="case-study-2-springs-1-mass-1-side">
+<h1>Case Study: 2 Springs, 1 Mass, 1 Side<a class="headerlink" href="#case-study-2-springs-1-mass-1-side" title="Permalink to this headline">¶</a></h1>
+<p>Consider the system that consists of a mass attached to springs from one side as shown in the figure:</p>
+<p><img alt="imgs/06_2Springs1Mass.png" src="_images/06_2Springs1Mass.png" /></p>
+<p>The potential energy of the system is given by the equation:</p>
+<div class="math notranslate nohighlight">
+\[ V(x) = \frac{1}{2}k_1(x-x_1)^2 + \frac{1}{2}k_2(x-x_2)^2\]</div>
+<p>where <span class="math notranslate nohighlight">\(k_1\)</span>, <span class="math notranslate nohighlight">\(k_2\)</span>, <span class="math notranslate nohighlight">\(x_1\)</span>, and <span class="math notranslate nohighlight">\(x_2\)</span> are constants and they are the spring constants and equilibrium lengths of the springs, respectively.</p>
+<p>a) Find the equilibrium positions of the particle, i.e., the locations where the potential energy is minimum for:</p>
+<p><span class="math notranslate nohighlight">\(k_1 = 1 \text{ N/m},\, k_2 = 2 \text{ N/m},\, x_1= 0.3 \text{ m},\, x_2=0.7 \text{ m}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">V</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">k1</span><span class="p">,</span><span class="n">k2</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">k1</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">x1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">k2</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">x2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k1</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># N/m</span>
+<span class="n">k2</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># N/m</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="mf">0.3</span> <span class="c1"># m</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="mf">0.7</span> <span class="c1"># m</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">Vx</span> <span class="o">=</span> <span class="n">V</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">k1</span><span class="p">,</span><span class="n">k2</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">Vx</span><span class="p">,</span><span class="s2">&quot;k-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x (m)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;V(x) (J)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_06_MinimizeOptimize_87_0.png" src="_images/FIZ228_06_MinimizeOptimize_87_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">V</span><span class="p">,</span><span class="mi">0</span><span class="p">,(</span><span class="n">k1</span><span class="p">,</span><span class="n">k2</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">))</span>
+<span class="n">res</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: 0.05333333333333341
+ hess_inv: array([[0.33333333]])
+      jac: array([-9.31322575e-10])
+  message: &#39;Optimization terminated successfully.&#39;
+     nfev: 8
+      nit: 3
+     njev: 4
+   status: 0
+  success: True
+        x: array([0.56666666])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">V</span><span class="p">(</span><span class="mi">17</span><span class="o">/</span><span class="mi">30</span><span class="p">,</span><span class="n">k1</span><span class="p">,</span><span class="n">k2</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.05333333333333333
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">root</span><span class="p">(</span><span class="n">V</span><span class="p">,</span><span class="mf">0.6</span><span class="p">,(</span><span class="n">k1</span><span class="p">,</span><span class="n">k2</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">))</span>
+<span class="n">res</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    fjac: array([[-1.]])
+     fun: array([0.05333336])
+ message: &#39;The iteration is not making good progress, as measured by the \n  improvement from the last ten iterations.&#39;
+    nfev: 20
+     qtf: array([-0.05333336])
+       r: array([0.001347])
+  status: 5
+ success: False
+       x: array([0.56681034])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">V</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">k1</span><span class="p">,</span><span class="n">k2</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.05333336])
+</pre></div>
+</div>
+</div>
+</div>
+<p>b) If its mechanical energy is given as 3 J, find the positions where its velocity is 0, i.e., <em>turning points</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">E</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="k">def</span> <span class="nf">K</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">k1</span><span class="p">,</span><span class="n">k2</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">E</span> <span class="o">-</span> <span class="n">V</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">k1</span><span class="p">,</span><span class="n">k2</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">root</span><span class="p">(</span><span class="n">K</span><span class="p">,</span><span class="n">x0</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">k1</span><span class="p">,</span><span class="n">k2</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">))</span>
+<span class="n">res</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    fjac: array([[-1.]])
+     fun: array([0.])
+ message: &#39;The solution converged.&#39;
+    nfev: 11
+     qtf: array([-1.05426778e-12])
+       r: array([4.20475916])
+  status: 1
+ success: True
+       x: array([1.96825307])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">k1</span><span class="p">,</span><span class="n">k2</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">x_m</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.83491974</span><span class="p">,</span><span class="mf">1.96825307</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">K</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">k1</span><span class="p">,</span><span class="n">k2</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">),</span><span class="s2">&quot;k-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_m</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="s2">&quot;bo&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span><span class="s2">&quot;--b&quot;</span><span class="p">)</span>
+<span class="n">Kx3</span> <span class="o">=</span> <span class="n">K</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">k1</span><span class="p">,</span><span class="n">k2</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x_m</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">x_m</span><span class="p">[</span><span class="mi">0</span><span class="p">]],[</span><span class="n">Kx3</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="s2">&quot;:b&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x_m</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">x_m</span><span class="p">[</span><span class="mi">1</span><span class="p">]],[</span><span class="n">Kx3</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="s2">&quot;:b&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">17</span><span class="o">/</span><span class="mi">30</span><span class="p">,</span><span class="mi">17</span><span class="o">/</span><span class="mi">30</span><span class="p">],[</span><span class="n">Kx3</span><span class="p">,</span><span class="n">K</span><span class="p">(</span><span class="mi">17</span><span class="o">/</span><span class="mi">30</span><span class="p">,</span><span class="n">k1</span><span class="p">,</span><span class="n">k2</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">)],</span><span class="s2">&quot;:r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x (m)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;K(x) (J)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_06_MinimizeOptimize_96_0.png" src="_images/FIZ228_06_MinimizeOptimize_96_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">x_m</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.83491974</span><span class="p">,</span><span class="mf">1.96825307</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">K</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">k1</span><span class="p">,</span><span class="n">k2</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">),</span><span class="s2">&quot;k-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">V</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">k1</span><span class="p">,</span><span class="n">k2</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">),</span><span class="s2">&quot;r--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">E</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span><span class="s2">&quot;:g&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_m</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="s2">&quot;bo&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x (m)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;K(x)&quot;</span><span class="p">,</span><span class="s2">&quot;V(x)&quot;</span><span class="p">,</span><span class="s2">&quot;E&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_06_MinimizeOptimize_97_0.png" src="_images/FIZ228_06_MinimizeOptimize_97_0.png" />
+</div>
+</div>
+<section id="analytical-solutions">
+<h2>Analytical Solutions<a class="headerlink" href="#analytical-solutions" title="Permalink to this headline">¶</a></h2>
+<p>a)</p>
+<div class="math notranslate nohighlight">
+\[V(x) = \frac{1}{2}k_1(x-x_1)^2 + \frac{1}{2}k_2(x-x_2)^2\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*} \rightarrow \dydx{V}{x}=k_1(x_0-x_1)+k_2(x_0-x_2) &amp;= 0\\
+ k_1x_0-k_1x_1+k_2x_0-k_2x_2 &amp;= 0\\
+ (k_1+k_2)x_0-(k_1x_1 + k_2x_2) &amp;=0\\
+ \Rightarrow x_0 = \frac{k_1x_1 + k_2x_2}{k_1+k_2}&amp;
+\end{align*}\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">k1</span><span class="o">*</span><span class="n">x1</span><span class="o">+</span><span class="n">k2</span><span class="o">*</span><span class="n">x2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">k1</span><span class="o">+</span><span class="n">k2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5666666666666667
+</pre></div>
+</div>
+</div>
+</div>
+<p>b)</p>
+<div class="math notranslate nohighlight">
+\[E - V(x_0) = K(x_0) = 0\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align} V(x_0) &amp;= E\\
+ \frac{1}{2}k_1(x_0-x_1)^2 + \frac{1}{2}k_2(x_0-x_2)^2 &amp;= E\\
+ k_1(x_0-x_1)^2 + k_2(x_0-x_2)^2 &amp;= 2E\\
+ k_1x_0^2+k_1x_1^2 -2k_1x_1x_0+k_2x_0^2+k_2x_2^2 -2k_2x_2x_0&amp;=2E\\
+ \underbrace{(k_1+k_2)}_{a}x_0^2\underbrace{-2(k_1x_1+k_2x_2)}_{b}x_0+\underbrace{k_1x_1^2+k_2x_2^2-2E}_{c} &amp;= 0\\
+ \leftrightarrow ax_0^2+bx_0+c = 0
+\end{align}\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">k1</span><span class="o">+</span><span class="n">k2</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">k1</span><span class="o">*</span><span class="n">x1</span><span class="o">+</span><span class="n">k2</span><span class="o">*</span><span class="n">x2</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">k1</span><span class="o">*</span><span class="n">x1</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">k2</span><span class="o">*</span><span class="n">x2</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">E</span><span class="p">)</span>
+
+<span class="n">delta</span> <span class="o">=</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span>
+<span class="p">(</span><span class="o">-</span><span class="n">b</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">delta</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">),(</span><span class="o">-</span><span class="n">b</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">delta</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.9682530694419091, -0.8349197361085757)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">roots</span><span class="p">([(</span><span class="n">k1</span><span class="o">+</span><span class="n">k2</span><span class="p">),</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">k1</span><span class="o">*</span><span class="n">x1</span><span class="o">+</span><span class="n">k2</span><span class="o">*</span><span class="n">x2</span><span class="p">),(</span><span class="n">k1</span><span class="o">*</span><span class="n">x1</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">k2</span><span class="o">*</span><span class="n">x2</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">E</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.96825307, -0.83491974])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="FIZ228_05_Interpolation.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Interpolation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="FIZ228_07_ClusteringAndClassification.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Clustering and Classification</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Emre S. Tasci, Ph.D.<br/>
+    
+        &copy; Copyright 2023.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

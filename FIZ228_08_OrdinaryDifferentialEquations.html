@@ -1,0 +1,1637 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Ordinary Differential Equations &#8212; FIZ228 - Numerical Analysis Lecture Notes</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Clustering and Classification" href="FIZ228_07_ClusteringAndClassification.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">FIZ228 - Numerical Analysis Lecture Notes</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Cover.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="FIZ228_01_DataProcesses.html">
+   Importing, parsing, processing and exporting datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FIZ228_02_DataVisualization.html">
+   Visualization of datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FIZ228_03_LeastSquaresErrors.html">
+   Least Squares Method &amp; Error Estimations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FIZ228_04_Regression.html">
+   Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FIZ228_05_Interpolation.html">
+   Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FIZ228_06_MinimizeOptimize.html">
+   Minimization &amp; Optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FIZ228_07_ClusteringAndClassification.html">
+   Clustering and Classification
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Ordinary Differential Equations
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="_sources/FIZ228_08_OrdinaryDifferentialEquations.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/FIZ228_08_OrdinaryDifferentialEquations.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/FIZ228_08_OrdinaryDifferentialEquations.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Ordinary Differential Equations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example">
+     Example
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#finite-difference-method-derivatives-approximations">
+       Finite Difference Method (Derivatives Approximations)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Example
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#runge-kutta-method">
+   Runge-Kutta Method
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Example
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     Example
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#euler">
+       Euler
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#rk4">
+       RK4
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#comparison-of-euler-rk4">
+       Comparison of Euler &amp; RK4
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1st-order-ode-via-euler">
+     Example: 1st order ODE via Euler
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2nd-order-ode-via-euler-y-f-y">
+     Example: 2nd order ODE via Euler
+     <span class="math notranslate nohighlight">
+      \(y''=f(y)\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2nd-order-ode-via-euler-y-f-y-y">
+     Example: 2nd Order ODE via Euler
+     <span class="math notranslate nohighlight">
+      \(y'' = f(y,y')\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2nd-order-ode-initial-conditions">
+     Example: 2nd Order ODE (initial conditions)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id5">
+       Euler
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id6">
+       RK4
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-2nd-order-ode-boundary-conditions-linear">
+       Example: 2nd Order ODE (boundary conditions, linear)
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#finite-difference-method">
+         Finite Difference Method
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id7">
+       Example: 2nd Order ODE (boundary conditions, linear)
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Ordinary Differential Equations</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Ordinary Differential Equations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example">
+     Example
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#finite-difference-method-derivatives-approximations">
+       Finite Difference Method (Derivatives Approximations)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Example
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#runge-kutta-method">
+   Runge-Kutta Method
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Example
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     Example
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#euler">
+       Euler
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#rk4">
+       RK4
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#comparison-of-euler-rk4">
+       Comparison of Euler &amp; RK4
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1st-order-ode-via-euler">
+     Example: 1st order ODE via Euler
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2nd-order-ode-via-euler-y-f-y">
+     Example: 2nd order ODE via Euler
+     <span class="math notranslate nohighlight">
+      \(y''=f(y)\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2nd-order-ode-via-euler-y-f-y-y">
+     Example: 2nd Order ODE via Euler
+     <span class="math notranslate nohighlight">
+      \(y'' = f(y,y')\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2nd-order-ode-initial-conditions">
+     Example: 2nd Order ODE (initial conditions)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id5">
+       Euler
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id6">
+       RK4
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-2nd-order-ode-boundary-conditions-linear">
+       Example: 2nd Order ODE (boundary conditions, linear)
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#finite-difference-method">
+         Finite Difference Method
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id7">
+       Example: 2nd Order ODE (boundary conditions, linear)
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="ordinary-differential-equations">
+<h1>Ordinary Differential Equations<a class="headerlink" href="#ordinary-differential-equations" title="Permalink to this headline">¶</a></h1>
+<p><em>Derivatives, Ordinary Differential Equations with Finite Difference, Shooting, Euler and Runge-Kutta Methods</em><br />
+<strong>FIZ228 - Numerical Analysis</strong><br />
+Dr. Emre S. Tasci, Hacettepe University</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><span class="math notranslate nohighlight">\(\newcommand{\diff}{\text{d}}
+\newcommand{\dydx}[2]{\frac{\text{d}#1}{\text{d}#2}}
+\newcommand{\ddydx}[2]{\frac{\text{d}^2#1}{\text{d}#2^2}}
+\newcommand{\pypx}[2]{\frac{\partial#1}{\partial#2}}
+\newcommand{\unit}[1]{\,\text{#1}}\)</span></p>
+<p>A differential equation is an equation that involves one or more derivatives of a function as well as the parameters itself. If it consists of a single parameter and its function’s derivatives, we label such systems as Ordinary Differential Equations (ODEs). If more than one parameter is involved, then it is called Partial Differential Equations (PDEs).</p>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Solve the following ODE for the given boundary conditions:</p>
+<div class="math notranslate nohighlight">
+\[\ddydx{x}{t}+5x=0,\quad t\in[0,20]\]</div>
+<p><span class="math notranslate nohighlight">\(x(t=0) = 12,\quad x(t=20) = 40\)</span></p>
+<p><strong>Analytical Solution</strong></p>
+<p><em>General Solution (verification)</em></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}x(t)=A\cos(\omega t + \phi), \quad \omega=\sqrt{5}\\
+\ddot{x} = \ddydx{x}{t} = -\omega^2A\cos(\omega t + \phi) = -5x\\
+\ddot{x} + 5x = (-5x) + 5x = 0
+\end{split}\]</div>
+<p>we also see that the period <span class="math notranslate nohighlight">\(T\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[T=\frac{2\pi}{\omega}=2.81\]</div>
+<p><em>Boundary Conditions</em></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}x(0) = 12 \rightarrow A\cos(\phi) = 12\quad(1)\\
+x(20) = 40\rightarrow A\cos(20\omega + \phi) = A\cos(20\sqrt5+\phi)=40\quad(2)\end{split}\]</div>
+<p>Dividing Eqn. (1) by Eqn. (2) yields:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\cos(\phi)}{\cos(20\sqrt5+\phi)} = \frac{12}{40}=\frac{3}{10}=0.3\]</div>
+<p>Using the identity: <span class="math notranslate nohighlight">\(\cos(a+b) \equiv \cos(a)\cos(b)-\sin(a)\sin(b)\)</span>, we have:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\cos(\phi)}{\cos(20\sqrt5)\cos(\phi)-\sin(20\sqrt5)\sin(\phi)} = 0.3\]</div>
+<p>rearranging:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\cos(\phi) = 0.3\cos(20\sqrt5)\cos(\phi) - 0.3\sin(20\sqrt5)\sin(\phi)\\
+0.3\sin(20\sqrt5)\sin(\phi) = \left(0.3\cos(20\sqrt5)-1\right)\cos(\phi)\\
+\frac{\sin(\phi)}{\cos(\phi)}=\frac{0.3\cos(20\sqrt5)-1}{0.3\sin(20\sqrt5)}\\
+\phi=\tan^{-1}{\frac{0.3\cos(20\sqrt5)-1}{0.3\sin(20\sqrt5)}}\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="mf">0.3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>\
+                 <span class="mf">0.3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1.3167551744556192
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have <span class="math notranslate nohighlight">\(\phi\)</span>, we can also calculate the remaining unknown, <span class="math notranslate nohighlight">\(A\)</span> using one of the two equations:</p>
+<div class="math notranslate nohighlight">
+\[(1):\quad A = \frac{12}{\cos(\phi)}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="mi">12</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>47.74837539488783
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">40</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">20</span><span class="o">*</span><span class="mi">5</span><span class="o">**</span><span class="mf">0.5</span><span class="o">+</span><span class="n">phi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>47.74837539488792
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">t_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">x_a</span> <span class="o">=</span> <span class="n">A</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">w</span><span class="o">*</span><span class="n">t_a</span><span class="o">+</span><span class="n">phi</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_a</span><span class="p">,</span><span class="n">x_a</span><span class="p">,</span><span class="s2">&quot;r:&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_9_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_9_0.png" />
+</div>
+</div>
+<p>Now let’s solve it using the <strong>finite difference method</strong>.</p>
+<section id="finite-difference-method-derivatives-approximations">
+<h3>Finite Difference Method (Derivatives Approximations)<a class="headerlink" href="#finite-difference-method-derivatives-approximations" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[y' \approx \frac{y_{i+1}-y_{i-1}}{2h}\]</div>
+<div class="math notranslate nohighlight">
+\[y'' \approx \frac{y_{i-1}-2y_i+y_{i+1}}{h^2}\]</div>
+<p>(For the detailed derivations of the approximations, refer to <a class="reference external" href="https://emresururi.github.io/FIZ220/FIZ220_EST_UygulamaNotlari_09_FonksiyonTurevIntegral.html">Programming Lecture Notes</a> | or in our previous lecture on <a class="reference internal" href="FIZ228_05_Interpolation.html"><span class="doc std std-doc">Interpolation (Bonus: Finite Difference Method section)</span></a>)</p>
+<div class="math notranslate nohighlight">
+\[\ddydx{x}{t}+5x=0,\quad t\in[0,20]\]</div>
+<div class="math notranslate nohighlight">
+\[x(t=0) = 12,\quad x(t=20) = 40\]</div>
+<hr>
+<div class="math notranslate nohighlight">
+\[\begin{split}\ddot{x} \approx \frac{x_{i-1}-2x_i+x_{i+1}}{h^2} \\ 
+\Rightarrow \frac{x_{i-1}-2x_i+x_{i+1}}{h^2}+5x_i=0\\
+{x_{i-1}-2x_i+x_{i+1}}+5x_ih^2=0\\
+x_{i-1}+(5h^2-2)x_i+x_{i+1}=0\end{split}\]</div>
+<hr>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}i&amp;=0:\quad &amp;x_0+(5h^2-2)x_1+x_2&amp;=0\\
+i&amp;=1:\quad &amp;x_1+(5h^2-2)x_2+x_3&amp;=0\\
+&amp;\;\;\vdots&amp;\vdots\\
+i&amp;=N-3:\quad &amp;x_{N-3}+(5h^2-2)x_{N-2}+x_{N-1}&amp;=0
+\end{align*}\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">h2</span> <span class="o">=</span> <span class="n">h</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">x0</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">x_Nm1</span> <span class="o">=</span> <span class="mi">40</span>
+
+<span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">eqns</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="c1"># i = 0</span>
+    <span class="n">eqns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x0</span><span class="o">+</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">h2</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    
+    <span class="c1"># i =  1..(N-4)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="o">-</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">eqns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">h2</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+    
+    <span class="c1"># i = N-3</span>
+    <span class="n">eqns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">N</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">h2</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">N</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="n">x_Nm1</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">eqns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">fsolve</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">x_Nm1</span><span class="p">,</span><span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">x0</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x_Nm1</span><span class="p">)</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T:&quot;</span><span class="p">,</span><span class="n">T</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s2">&quot;b-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="s2">&quot;go&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="s2">&quot;ro&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">T</span><span class="p">],[</span><span class="n">x0</span><span class="p">,</span><span class="n">x0</span><span class="p">],</span><span class="s2">&quot;k--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>T: 2.8099258924162904
+</pre></div>
+</div>
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_13_1.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_13_1.png" />
+</div>
+</div>
+<p>Let’s compare this analytical solution with our numerical one:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">x_a</span> <span class="o">=</span> <span class="n">A</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">w</span><span class="o">*</span><span class="n">t</span><span class="o">+</span><span class="n">phi</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x_a</span><span class="p">,</span><span class="s2">&quot;r:&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_15_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_15_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">x_a</span> <span class="o">=</span> <span class="n">A</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">w</span><span class="o">*</span><span class="n">t_a</span><span class="o">+</span><span class="n">phi</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s2">&quot;b-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_a</span><span class="p">,</span><span class="n">x_a</span><span class="p">,</span><span class="s2">&quot;r:&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;Numerical Sol.&quot;</span><span class="p">,</span><span class="s2">&quot;Analytical Sol.&quot;</span><span class="p">],</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span>\
+          <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.35</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_16_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_16_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="id1">
+<h2>Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Solve the following ODE for the given boundary conditions:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}y''+y.y'+3y = \sin(x),\\ y(0) = -1, y(20) = 1.4773, x\in[0,20]\end{split}\]</div>
+<p>We proceed by substituting the above approximations in the differential equations.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\Rightarrow y''+y.y'+3y = \sin(x) \\ \approx \frac{y_{i-1}-2y_i+y_{i+1}}{h^2} + y_i \left(\frac{y_{i+1}-y_{i-1}}{2h}\right) + 3 y_i = \sin(x_i)\\ \rightarrow y_{i-1}-2y_i+y_{i+1}+\tfrac{h}{2}y_iy_{i+1}-\tfrac{h}{2}y_iy_{i-1}+3h^2y_i=h^2\sin(x_i) \end{split}\]</div>
+<p>Then we build N-2 equations with N-2 unknowns (unknowns being <span class="math notranslate nohighlight">\(y_1,y_2,\dots,y_{N-2}\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp;\begin{array}{ccc}
+\hline \hline \text { i } &amp; \text { x_i } &amp; \text { y_i } \\
+\hline 0 &amp; x_0=0 &amp; y_0=-1 \\
+1 &amp; x_1 &amp; y_1  \\
+\vdots &amp; \vdots &amp; \vdots \\
+N-2 &amp; x_{N-2} &amp; y_{N-2}\\
+N-1 &amp; x_{N-1}=20 &amp; y_{N-1}=1.4773\\
+\hline
+\end{array}
+\end{aligned}\end{split}\]</div>
+<p>We decide <span class="math notranslate nohighlight">\(N\)</span> which determines our precision since <span class="math notranslate nohighlight">\(h=\frac{x_{N-1} - x_0}{N-1}\)</span>, i.e., the higher the number of points taken in between, the smaller the difference between consecutive points.</p>
+<hr>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned} 
+\begin{array}{ccccc}
+i=1 &amp;: &amp;\overbrace{y_0}^{-1} - 2y_1 + y_2 + \tfrac{h}{2} y_1 y_2 - \tfrac{h}{2} y_1 \overbrace{y_0}^{-1} + 3h^2 y_1 &amp;= &amp;h^2 \sin(x_1)\\
+i=2 &amp;: &amp;y_1 - 2y_2 + y_3 + \tfrac{h}{2} y_2 y_3 - \tfrac{h}{2} y_2 y_1 + 3h^2 y_2 &amp;= &amp;h^2 \sin(x_2)\\
+\vdots &amp;: &amp;\vdots &amp;= &amp;\vdots \\
+i=N-2 &amp;: &amp;y_{N-3} - 2y_{N-2} + \underbrace{y_{N-1}}_{1.4773} + \tfrac{h}{2} y_{N-2} \underbrace{y_{N-1}}_{1.4773} - \tfrac{h}{2} y_{N-2} y_{N-3} + 3h^2 y_{N-2} &amp;= &amp;h^2 \sin(x_{N-1})
+\end{array}
+\end{aligned}\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_0</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">y_Nm1</span> <span class="o">=</span> <span class="mf">1.4773</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">250</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">h2</span> <span class="o">=</span> <span class="n">h</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">y_0</span><span class="p">)</span>
+    <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">yy</span><span class="p">,</span><span class="n">y_Nm1</span><span class="p">)</span>
+    <span class="n">eqns</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">eqns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">yy</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">yy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">yy</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>\
+                    <span class="o">+</span><span class="n">h</span><span class="o">*</span><span class="n">yy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">yy</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="n">h</span><span class="o">*</span><span class="n">yy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">yy</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>\
+                    <span class="o">+</span><span class="mi">3</span><span class="o">*</span><span class="n">h2</span><span class="o">*</span><span class="n">yy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">h2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">eqns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">fsolve</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">y_Nm1</span><span class="o">+</span><span class="n">y_0</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">y_0</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y_Nm1</span><span class="p">)</span>
+<span class="c1">#y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+<span class="n">x_FD</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># For later purposes</span>
+<span class="n">y_FD</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># For later purposes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;b-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;Finite Difference Method (BC)&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_20_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_20_0.png" />
+</div>
+</div>
+<p><img alt="image_1.png" src="_images/08_ODEs_Euler.png" /><br />
+(Source: Chapra)</p>
+</section>
+<section id="id2">
+<h2>Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p><span class="math notranslate nohighlight">\(y'=4e^{0.8t}-0.5y, \;y(t=0)=2\)</span>, calculate <span class="math notranslate nohighlight">\(y\)</span> for <span class="math notranslate nohighlight">\(t\in[0,4]\)</span> with a step size of <span class="math notranslate nohighlight">\(h=1\)</span></p>
+<p>Analytical solution: $<span class="math notranslate nohighlight">\(y=\frac{4}{1.3}\left(e^{0.8t} - e^{-0.5t}\right)+2e^{-0.5t}\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">yp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+    <span class="c1"># The given y&#39;(t,y) equation</span>
+    <span class="k">return</span> <span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.8</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s show that the given analytical solution is indeed the solution. We calculate the left side (<span class="math notranslate nohighlight">\(y'\)</span>) of the equation using the differentiation of the analytical solution and right side of the equation by directly plugging in the given analytical solution and compare with each other for various <span class="math notranslate nohighlight">\(t\)</span> values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dy</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="c1"># y&#39; from the analytical solution</span>
+    <span class="k">return</span> <span class="mi">4</span><span class="o">/</span><span class="mf">1.3</span><span class="o">*</span><span class="p">(</span><span class="mf">0.8</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.8</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">y_t</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="c1"># true y function (analytical solution)</span>
+    <span class="k">return</span> <span class="mi">4</span><span class="o">/</span><span class="mf">1.3</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.8</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">yp1</span> <span class="o">=</span> <span class="n">dy</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">yp2</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.8</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">y_t</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">tt</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">yp1</span><span class="p">,</span><span class="n">yp2</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.1f}</span><span class="s2">: </span><span class="si">{:10.4f}</span><span class="s2">, </span><span class="si">{:10.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tt</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0:     3.0000,     3.0000
+0.5:     4.0915,     4.0915
+1.0:     5.8048,     5.8048
+1.5:     8.4269,     8.4269
+2.0:    12.3902,    12.3902
+2.5:    18.3427,    18.3427
+3.0:    27.2541,    27.2541
+3.5:    40.5727,    40.5727
+4.0:    60.4606,    60.4606
+4.5:    90.1447,    90.1447
+5.0:   134.4396,   134.4396
+5.5:   200.5289,   200.5289
+6.0:   299.1294,   299.1294
+6.5:   446.2295,   446.2295
+7.0:   665.6813,   665.6813
+7.5:   993.0682,   993.0682
+8.0:  1481.4746,  1481.4746
+8.5:  2210.0933,  2210.0933
+9.0:  3297.0663,  3297.0663
+9.5:  4918.6407,  4918.6407
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is even easier to see that the given analytic solution is indeed the solution via plotting both sides of the equation together:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">yp1</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">yp2</span><span class="p">,</span><span class="s2">&quot;--r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_29_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_29_0.png" />
+</div>
+</div>
+<p><strong>Solving the ODE using Euler Method:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:&gt;2s}</span><span class="se">\t</span><span class="si">{:&gt;8s}</span><span class="se">\t</span><span class="si">{:^8s}</span><span class="se">\t</span><span class="si">{:&gt;5s}</span><span class="s2">&quot;</span>\
+      <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">,</span><span class="s2">&quot;y_Euler&quot;</span><span class="p">,</span><span class="s2">&quot;y_true&quot;</span><span class="p">,</span><span class="s2">&quot;Err%&quot;</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:&gt;2d}</span><span class="se">\t</span><span class="si">{:8.5f}</span><span class="se">\t</span><span class="si">{:8.5f}</span><span class="se">\t</span><span class="si">{:5.2f}</span><span class="s2">%&quot;</span>\
+      <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">y_t</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y_t</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">-</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">y_t</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+    <span class="n">slope</span> <span class="o">=</span> <span class="n">yp</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">slope</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:&gt;2d}</span><span class="se">\t</span><span class="si">{:8.5f}</span><span class="se">\t</span><span class="si">{:8.5f}</span><span class="se">\t</span><span class="si">{:5.2f}</span><span class="s2">%&quot;</span>\
+      <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">y_t</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y_t</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">-</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">/</span><span class="n">y_t</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> t	 y_Euler	 y_true 	 Err%
+ 0	 2.00000	 2.00000	 0.00%
+ 1	 5.00000	 6.19463	19.28%
+ 2	11.40216	14.84392	23.19%
+ 3	25.51321	33.67717	24.24%
+ 4	56.84931	75.33896	24.54%
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;-o&quot;</span><span class="p">,</span>\
+         <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span><span class="n">y_t</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">100</span><span class="p">)),</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;Euler solution&quot;</span><span class="p">,</span><span class="s2">&quot;True solution&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_32_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_32_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="runge-kutta-method">
+<h1>Runge-Kutta Method<a class="headerlink" href="#runge-kutta-method" title="Permalink to this headline">¶</a></h1>
+<p><strong>(4th order Runge-Kutta: RK4)</strong></p>
+<div class="math notranslate nohighlight">
+\[y_{i+1} = y_i+\frac{1}{6}\left(k_1+2k_2+2k_3+k_4\right)h\]</div>
+<p>where:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}k_1 = f(t_i,y_i)\\
+k_2= f(t_i+\tfrac{1}{2}h,y_i+\tfrac{1}{2}k_1 h)\\
+k_3= f(t_i+\tfrac{1}{2}h,y_i+\tfrac{1}{2}k_2 h)\\
+k_4 = f(t_i+h,y_i+k_3 h)\end{split}\]</div>
+<p><img alt="image_2.png" src="_images/08_ODEs_RK4.png" />
+<a class="reference external" href="https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods#/media/File:Runge-Kutta_slopes.svg">Image: Wikipedia</a></p>
+<section id="id3">
+<h2>Example<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p><span class="math notranslate nohighlight">\(y'=4e^{0.8t}-0.5y\)</span>, <span class="math notranslate nohighlight">\(y(t=0)=2\)</span>, calculate <span class="math notranslate nohighlight">\(y\)</span> for <span class="math notranslate nohighlight">\(t\in[0,4]\)</span> with a step size of <span class="math notranslate nohighlight">\(h=1\)</span></p>
+<p>Analytical solution:</p>
+<div class="math notranslate nohighlight">
+\[y=\frac{4}{1.3}\left(e^{0.8t} - e^{-0.5t}\right)+2e^{-0.5t}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.8</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:&gt;2s}</span><span class="se">\t</span><span class="si">{:&gt;8s}</span><span class="se">\t</span><span class="si">{:^8s}</span><span class="se">\t</span><span class="si">{:&gt;5s}</span><span class="s2">&quot;</span>\
+      <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">,</span><span class="s2">&quot;y_KR4&quot;</span><span class="p">,</span><span class="s2">&quot;y_true&quot;</span><span class="p">,</span><span class="s2">&quot;Err%&quot;</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">k1</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+    <span class="n">k3</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">k2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+    <span class="n">k4</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">h</span><span class="p">,</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">k3</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+    <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="n">k1</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">k2</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">k3</span><span class="o">+</span><span class="n">k4</span><span class="p">)</span><span class="o">*</span><span class="n">h</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:&gt;2d}</span><span class="se">\t</span><span class="si">{:8.5f}</span><span class="se">\t</span><span class="si">{:8.5f}</span><span class="se">\t</span><span class="si">{:5.2f}</span><span class="s2">%&quot;</span>\
+      <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">y_t</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y_t</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">-</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">/</span><span class="n">y_t</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> t	   y_KR4	 y_true 	 Err%
+ 0	 2.00000	 2.00000	 0.00%
+ 1	 6.20104	 6.19463	 0.10%
+ 2	14.86248	14.84392	 0.13%
+ 3	33.72135	33.67717	 0.13%
+ 4	75.43917	75.33896	 0.13%
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;-o&quot;</span><span class="p">,</span>\
+         <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span><span class="n">y_t</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">100</span><span class="p">)),</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;RK4 solution&quot;</span><span class="p">,</span><span class="s2">&quot;True solution&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_37_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_37_0.png" />
+</div>
+</div>
+</section>
+<section id="id4">
+<h2>Example<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>Solve for the velocity and position of the free-falling bungee jumper assuming at <span class="math notranslate nohighlight">\(t=0\)</span>, <span class="math notranslate nohighlight">\(x=0,\;v=0\)</span> for <span class="math notranslate nohighlight">\(t\in[0,10]\)</span> with a step size of 2 seconds.</p>
+<p><strong>Equations</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}v=\dydx{x}{t}\\
+\dydx{v}{t} = g - \frac{C_d}{m}v^2\end{split}\]</div>
+<p><strong>Values:</strong>
+<span class="math notranslate nohighlight">\(g=9.81\unit{ m/s}^2\)</span>, <span class="math notranslate nohighlight">\(m=68.1 \unit{kg}\)</span>, <span class="math notranslate nohighlight">\(C_d = 0.25 \unit{kg/m}\)</span></p>
+<p><strong>Analytical solution:</strong></p>
+<div class="math notranslate nohighlight">
+\[x(t)=\frac{\ln\left(\cosh{\sqrt{\frac{gC_d}{m}}t}\right)}{C_d/m}\]</div>
+<p><a class="reference external" href="https://www.wolframalpha.com/input?i=y%27%27%28t%29+-+a+%2Bb*y%27%28t%29**2+%3D+0%2C+y%280%29%3D0%2Cy%27%280%29%3D0">Source: WolframAlpha</a></p>
+<div class="math notranslate nohighlight">
+\[v(t) =\dydx{x}{t} =\sqrt{\frac{mg}{C_d}}\tanh\left(\sqrt{\frac{gC_d}{m}}t\right)\]</div>
+<p><a class="reference external" href="https://www.wolframalpha.com/input?i=derivative+of+ln%28cosh%28sqrt%28gC%2Fm%29*t%29%29%2F%28C%2Fm%29">Source: WolframAlpha</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span> <span class="c1"># m/s^2</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mf">68.1</span> <span class="c1"># kg</span>
+<span class="n">C_d</span> <span class="o">=</span> <span class="mf">0.25</span> <span class="c1"># kg/m</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">xp</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">g</span> <span class="o">-</span> <span class="n">C_d</span><span class="o">/</span><span class="n">m</span><span class="o">*</span><span class="n">xp</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">6</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="euler">
+<h3>Euler<a class="headerlink" href="#euler" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">x</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">xp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">ti</span> <span class="ow">in</span> <span class="n">t</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+    <span class="n">xp_ip1</span> <span class="o">=</span> <span class="n">xp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">ti</span><span class="p">,</span><span class="n">xp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="n">h</span>
+    <span class="n">x_ip1</span>  <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="o">+</span> <span class="n">xp_ip1</span><span class="o">*</span><span class="n">h</span>
+    <span class="n">xp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span><span class="n">xp_ip1</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x_ip1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s2">&quot;-b&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">xp</span><span class="p">,</span><span class="s2">&quot;-r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s2">&quot;Position&quot;</span><span class="p">,</span><span class="s2">&quot;Velocity&quot;</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_42_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_42_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">x_a</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="c1"># Analytical Solution</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">g</span><span class="o">*</span><span class="n">C_d</span><span class="o">/</span><span class="n">m</span><span class="p">)</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">C_d</span><span class="o">/</span><span class="n">m</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">v_a</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="c1"># Analytical Solution</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">g</span><span class="o">*</span><span class="n">m</span><span class="o">/</span><span class="n">C_d</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">g</span><span class="o">*</span><span class="n">C_d</span><span class="o">/</span><span class="n">m</span><span class="p">)</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">x_a</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="s2">&quot;--r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;x(t)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;Numerical Solution&quot;</span><span class="p">,</span><span class="s2">&quot;Analytical Solution&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">xp</span><span class="p">,</span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">v_a</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="s2">&quot;--r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;v(t)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;Numerical Solution&quot;</span><span class="p">,</span><span class="s2">&quot;Analytical Solution&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_43_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_43_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_43_1.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_43_1.png" />
+</div>
+</div>
+</section>
+<section id="rk4">
+<h3>RK4<a class="headerlink" href="#rk4" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">x_RK4</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">xp_RK4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">ti</span> <span class="ow">in</span> <span class="n">t</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">ti</span><span class="p">,</span><span class="n">xp_RK4</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">ti</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span><span class="n">xp_RK4</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">k1</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+    <span class="n">k3</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">ti</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span><span class="n">xp_RK4</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">k2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+    <span class="n">k4</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">ti</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span><span class="n">xp_RK4</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">k3</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+    <span class="n">xp_ip1</span> <span class="o">=</span> <span class="n">xp_RK4</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">k1</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">k2</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">k3</span><span class="o">+</span><span class="n">k4</span><span class="p">)</span><span class="o">*</span><span class="n">h</span><span class="o">/</span><span class="mi">6</span>
+    
+    <span class="n">x_ip1</span>  <span class="o">=</span> <span class="n">x_RK4</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="o">+</span> <span class="n">xp_ip1</span><span class="o">*</span><span class="n">h</span>
+    
+    <span class="n">xp_RK4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xp_RK4</span><span class="p">,</span><span class="n">xp_ip1</span><span class="p">)</span>
+    <span class="n">x_RK4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_RK4</span><span class="p">,</span><span class="n">x_ip1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x_RK4</span><span class="p">,</span><span class="s2">&quot;-b&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">xp_RK4</span><span class="p">,</span><span class="s2">&quot;-r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s2">&quot;Position&quot;</span><span class="p">,</span><span class="s2">&quot;Velocity&quot;</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_46_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_46_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x_RK4</span><span class="p">,</span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">x_a</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="s2">&quot;--r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;x(t)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;Numerical Solution&quot;</span><span class="p">,</span><span class="s2">&quot;Analytical Solution&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">xp_RK4</span><span class="p">,</span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">v_a</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="s2">&quot;--r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;v(t)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;Numerical Solution&quot;</span><span class="p">,</span><span class="s2">&quot;Analytical Solution&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_47_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_47_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_47_1.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_47_1.png" />
+</div>
+</div>
+</section>
+<section id="comparison-of-euler-rk4">
+<h3>Comparison of Euler &amp; RK4<a class="headerlink" href="#comparison-of-euler-rk4" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s2">&quot;-b&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">x_RK4</span><span class="p">,</span><span class="s2">&quot;-g&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">x_a</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="s2">&quot;:r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;x (m)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;Numerical Solution (Euler)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Numerical Solution (RK4)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Analytical Solution&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_49_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_49_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">xp</span><span class="p">,</span><span class="s2">&quot;-b&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">xp_RK4</span><span class="p">,</span><span class="s2">&quot;-g&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">v_a</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="s2">&quot;:r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;v (m/s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;Numerical Solution (Euler)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Numerical Solution (RK4)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Analytical Solution&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_50_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_50_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="example-1st-order-ode-via-euler">
+<h2>Example: 1st order ODE via Euler<a class="headerlink" href="#example-1st-order-ode-via-euler" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[y' = y, y(0) = 1\]</div>
+<p><strong>Analytical Solution:</strong> <span class="math notranslate nohighlight">\(y(x) = e^x\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">tt</span> <span class="ow">in</span> <span class="n">t</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+    <span class="n">y_ip1</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">tt</span><span class="p">,</span><span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="n">h</span>
+    <span class="c1">#print(y_ip1)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y_ip1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="s2">&quot;--r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_53_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_53_0.png" />
+</div>
+</div>
+</section>
+<section id="example-2nd-order-ode-via-euler-y-f-y">
+<h2>Example: 2nd order ODE via Euler <span class="math notranslate nohighlight">\(y''=f(y)\)</span><a class="headerlink" href="#example-2nd-order-ode-via-euler-y-f-y" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[y'' = y, y(0) = 1, y'(0) = 1\]</div>
+<p><strong>Analytical Solution:</strong> <span class="math notranslate nohighlight">\(y(x) = e^x\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">yp</span><span class="p">):</span>
+    <span class="c1"># y&#39;&#39; = f(x,y,yp)</span>
+    <span class="k">return</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">yp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">xx</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+    <span class="n">yp_ip1</span> <span class="o">=</span> <span class="n">yp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">yp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span><span class="n">h</span>
+    <span class="n">yp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">yp</span><span class="p">,</span><span class="n">yp_ip1</span><span class="p">)</span>
+    <span class="n">y_ip1</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">yp_ip1</span> <span class="o">*</span> <span class="n">h</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y_ip1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="s2">&quot;--r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_57_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_57_0.png" />
+</div>
+</div>
+</section>
+<section id="example-2nd-order-ode-via-euler-y-f-y-y">
+<h2>Example: 2nd Order ODE via Euler <span class="math notranslate nohighlight">\(y'' = f(y,y')\)</span><a class="headerlink" href="#example-2nd-order-ode-via-euler-y-f-y-y" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[y''+ y' -6y=0, y(0) = 8, y'(0)=-9\]</div>
+<p><strong>Analytical Solution:</strong> <span class="math notranslate nohighlight">\(y(x) = 3e^{2x} + 5e^{-3x}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">yp</span><span class="p">):</span>
+    <span class="c1"># y&#39;&#39; = f(x,y,yp)</span>
+    <span class="k">return</span> <span class="mi">6</span><span class="o">*</span><span class="n">y</span> <span class="o">-</span> <span class="n">yp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">8</span><span class="p">])</span>
+<span class="n">yp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">9</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">xx</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+    <span class="n">yp_ip1</span> <span class="o">=</span> <span class="n">yp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">yp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span><span class="n">h</span>
+    <span class="n">yp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">yp</span><span class="p">,</span><span class="n">yp_ip1</span><span class="p">)</span>
+    <span class="n">y_ip1</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">yp_ip1</span> <span class="o">*</span> <span class="n">h</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y_ip1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="mi">5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="p">),</span><span class="s2">&quot;--r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_61_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_61_0.png" />
+</div>
+</div>
+</section>
+<section id="example-2nd-order-ode-initial-conditions">
+<h2>Example: 2nd Order ODE (initial conditions)<a class="headerlink" href="#example-2nd-order-ode-initial-conditions" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://en.smath.com/wiki/GetFile.aspx?File=Examples/RK4-2ndOrderODE.pdf">Gilberto E. Urroz</a></p>
+<div class="math notranslate nohighlight">
+\[y''+y.y'+3y = \sin(x), y(0) = -1, y'(0) = 1, x\in[0,20]\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">yp</span><span class="p">):</span>
+    <span class="c1"># y&#39;&#39; = f(x,y,yp)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mf">3.</span><span class="o">*</span><span class="n">y</span><span class="o">-</span><span class="n">y</span><span class="o">*</span><span class="n">yp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id5">
+<h3>Euler<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">350</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">yp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">yp_ip1</span> <span class="o">=</span> <span class="n">yp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">yp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span><span class="n">h</span>
+    <span class="n">yp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">yp</span><span class="p">,</span><span class="n">yp_ip1</span><span class="p">)</span>
+    <span class="n">y_ip1</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">yp_ip1</span> <span class="o">*</span> <span class="n">h</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y_ip1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_Euler</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">y_Euler</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;-b&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_66_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_66_0.png" />
+</div>
+</div>
+</section>
+<section id="id6">
+<h3>RK4<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">350</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">yp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">yp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span><span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">yp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">k1</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+    <span class="n">k3</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span><span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">yp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">k2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+    <span class="n">k4</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">h</span><span class="p">,</span><span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">yp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">k3</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+    <span class="n">yp_ip1</span> <span class="o">=</span> <span class="n">yp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="n">k1</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">k2</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">k3</span><span class="o">+</span><span class="n">k4</span><span class="p">)</span><span class="o">*</span><span class="n">h</span><span class="o">/</span><span class="mi">6</span>
+    <span class="n">yp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">yp</span><span class="p">,</span><span class="n">yp_ip1</span><span class="p">)</span>
+
+    <span class="n">y_ip1</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">yp_ip1</span> <span class="o">*</span> <span class="n">h</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y_ip1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_RK</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">y_RK</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;-b&quot;</span><span class="p">)</span>
+<span class="c1">#plt.plot(x,yp,&quot;-r&quot;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_69_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_69_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_FD</span><span class="p">,</span><span class="n">y_FD</span><span class="p">,</span><span class="s2">&quot;-b&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_Euler</span><span class="p">,</span><span class="n">y_Euler</span><span class="p">,</span><span class="s2">&quot;-r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_RK</span><span class="p">,</span><span class="n">y_RK</span><span class="p">,</span><span class="s2">&quot;-g&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;Finite Difference (BC)&quot;</span><span class="p">,</span><span class="s2">&quot;Euler (IC)&quot;</span><span class="p">,</span><span class="s2">&quot;Runge-Kutta (IC)&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_70_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_70_0.png" />
+</div>
+</div>
+</section>
+<section id="example-2nd-order-ode-boundary-conditions-linear">
+<h3>Example: 2nd Order ODE (boundary conditions, linear)<a class="headerlink" href="#example-2nd-order-ode-boundary-conditions-linear" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[y'' + y' -6y=0, y(0) = 8, y(4)=8942.874,\,x\in[0,4]\]</div>
+<p><strong>Analytical Solution:</strong> <span class="math notranslate nohighlight">\(y(x) = 3e^{2x} + 5e^{-3x}\)</span></p>
+<section id="finite-difference-method">
+<h4>Finite Difference Method<a class="headerlink" href="#finite-difference-method" title="Permalink to this headline">¶</a></h4>
+<div class="math notranslate nohighlight">
+\[y'' \approx \frac{y_{i-1}-2y_i+y_{i+1}}{h^2}\]</div>
+<div class="math notranslate nohighlight">
+\[y' \approx \frac{y_{i+1}-y_{i-1}}{h}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\Rightarrow y''+y'-6y = 0 \\
+\approx \frac{y_{i-1}-2y_i+y_{i+1}}{h^2} + \left(\frac{y_{i+1}-y_{i-1}}{h}\right) -6 y_i = 0\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\rightarrow y_{i-1}-2y_i+y_{i+1}+hy_{i+1}-hy_{i-1}-6h^2y_i=0\\
+(1-h)y_{i-1}-(2+6h^2)y_i+(1+h)y_{i+1} = 0\end{split}\]</div>
+<hr>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned} 
+\begin{array}{ccccc}
+i=1 &amp;: &amp;(1-h)\overbrace{y_0}^{8} - (2+6h^2)y_1 + (1+h)y_2 &amp;= &amp;0\\
+i=2 &amp;: &amp;(1-h)y_1 - (2+6h^2)y_2 + (1+h)y_3 &amp;= &amp;0\\
+\vdots &amp;: &amp;\vdots &amp;= &amp;\vdots \\
+i=N-2 &amp;: &amp;(1-h)y_{N-3} - (2+6h^2)y_{N-2} + (1+h)\underbrace{y_{N-1}}_{8942.874} &amp;= &amp;0
+\end{array}
+\end{aligned}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix} -(2+6h^2) &amp; (1+h) &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0\\
+(1-h) &amp; -(2+6h^2) &amp; (1+h) &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0\\
+0 &amp; (1-h) &amp; -(2+6h^2) &amp; (1+h) &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0\\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp;(1-h) &amp; -(2+6h^2)
+\end{bmatrix}
+\begin{bmatrix} y_1 \\ y_2 \\ y_3 \\ \vdots \\y_{N-2}
+\end{bmatrix}=
+\begin{bmatrix} -(1-h)y_0 \\ 0 \\ 0 \\ \vdots \\-(1+h)y_{N-1}
+\end{bmatrix}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_0</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">y_Nm1</span> <span class="o">=</span> <span class="mf">8942.873991846245</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="n">ones</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">ones</span><span class="o">*-</span><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="mi">6</span><span class="o">*</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>\
+   <span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">ones</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">h</span><span class="p">),</span><span class="mi">1</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>\
+   <span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">ones</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">h</span><span class="p">),</span><span class="o">-</span><span class="mi">1</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="c1">#print(A)</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">h</span><span class="p">)</span><span class="o">*</span><span class="n">y_0</span>
+<span class="n">b</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">h</span><span class="p">)</span><span class="o">*</span><span class="n">y_Nm1</span>
+<span class="c1">#print(b)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+<span class="c1">#print(y)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">y_0</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y_Nm1</span><span class="p">)</span>
+<span class="c1">#print(y)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="mi">5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="p">),</span><span class="s2">&quot;--r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s2">&quot;Finite difference&quot;</span><span class="p">,</span><span class="s2">&quot;Analytical&quot;</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_74_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_74_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="id7">
+<h3>Example: 2nd Order ODE (boundary conditions, linear)<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[y'' + y -\cos(x)=0, y(0) = 1, y(10)=-0.5,\,x\in[0,10]\]</div>
+<p><strong><a class="reference external" href="https://www.wolframalpha.com/input?i2d=true&amp;i=y%27%27%2By-cos%5C%2840%29x%5C%2841%29%3D0%5C%2844%29y%5C%2840%290%5C%2841%29%3D1%5C%2844%29y%5C%2840%2910%5C%2841%29%3D-0.5">Analytical Solution</a>:</strong> <span class="math notranslate nohighlight">\(y(x) = (0.5x - 5.62327)\sin(x) + \cos(x)\)</span></p>
+<div class="math notranslate nohighlight">
+\[\frac{y_{i-1}-2y_i+y_{i+1}}{h^2} + y_i -\cos(x_i)= 0\]</div>
+<div class="math notranslate nohighlight">
+\[y_{i-1} - (2-h^2)y_i + y_{i+1} -h^2\cos(x_i)= 0\]</div>
+<p>Boundary conditions:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}x_0 = 0 : y_0 = 1\\x_{N-1}=10:y_{N-1} =-0.5\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned} 
+\begin{array}{ccccc}
+i=1 &amp;: &amp;\overbrace{y_0}^{1} - (2-h^2)y_1 + y_2 &amp;= &amp;h^2\cos(x_1)\\
+i=2 &amp;: &amp;y_1 - (2-h^2)y_2 + y_3 &amp;= &amp;h^2\cos(x_2)\\
+\vdots &amp;: &amp;\vdots &amp;= &amp;\vdots \\
+i=N-2 &amp;: &amp;y_{N-3} - (2-h^2)y_{N-2} + \underbrace{y_{N-1}}_{-0.5} &amp;= &amp;h^2\cos(x_{N-2})
+\end{array}
+\end{aligned}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix} -(2-h^2) &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0\\
+1 &amp; -(2-h^2) &amp; 1 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0\\
+0 &amp; 1 &amp; -(2-h^2) &amp; 1 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0\\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp;1 &amp; -(2-h^2)
+\end{bmatrix}
+\begin{bmatrix} y_1 \\ y_2 \\ y_3 \\ \vdots \\y_{N-2}
+\end{bmatrix}=
+\begin{bmatrix} h^2\cos(x_1)-y_0 \\ h^2\cos(x_2) \\ h^2\cos(x_3) \\ \vdots \\h^2\cos(x_{N-2})-y_{N-1}
+\end{bmatrix}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_0</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y_Nm1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="n">ones</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">ones</span><span class="o">*-</span><span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>\
+   <span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">ones</span><span class="p">,</span><span class="mi">1</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>\
+   <span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">ones</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="c1">#print(A)</span>
+
+<span class="n">b</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">b</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="n">y_0</span>
+<span class="n">b</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="n">y_Nm1</span>
+<span class="c1">#print(b)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+<span class="c1">#print(y)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">y_0</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y_Nm1</span><span class="p">)</span>
+<span class="c1">#print(y)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">,(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">x</span><span class="o">-</span><span class="mf">5.62327</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="s2">&quot;--r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s2">&quot;Finite difference&quot;</span><span class="p">,</span><span class="s2">&quot;Analytical&quot;</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_78_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_78_0.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Steven C. Chapra, “Applied Numerical Methods with MATLAB for Engineers and Scientists” 3rd Ed. McGraw Hill, 2012</p></li>
+<li><p>Eda Çelik Akdur, KMU231 Lecture Notes</p></li>
+<li><p><a class="reference external" href="https://en.smath.com/wiki/GetFile.aspx?File=Examples/RK4-2ndOrderODE.pdf">Gilberto E. Urroz</a></p></li>
+<li><p>Cüneyt Sert, <a class="reference external" href="http://users.metu.edu.tr/csert/me310/me310_9_ODE.pdf">ME310 Lecture Notes</a></p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="FIZ228_07_ClusteringAndClassification.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Clustering and Classification</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Emre S. Tasci, Ph.D.<br/>
+    
+        &copy; Copyright 2023.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

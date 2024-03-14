@@ -1,0 +1,2594 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Least Squares Method &amp; Error Estimations &#8212; FIZ228 - Numerical Analysis Lecture Notes</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Regression" href="FIZ228_04_Regression.html" />
+    <link rel="prev" title="Visualization of datasets" href="FIZ228_02_DataVisualization.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">FIZ228 - Numerical Analysis Lecture Notes</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Cover.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="FIZ228_01_DataProcesses.html">
+   Importing, parsing, processing and exporting datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FIZ228_02_DataVisualization.html">
+   Visualization of datasets
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Least Squares Method &amp; Error Estimations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FIZ228_04_Regression.html">
+   Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FIZ228_05_Interpolation.html">
+   Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FIZ228_06_MinimizeOptimize.html">
+   Minimization &amp; Optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FIZ228_07_ClusteringAndClassification.html">
+   Clustering and Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FIZ228_08_OrdinaryDifferentialEquations.html">
+   Ordinary Differential Equations
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="_sources/FIZ228_03_LeastSquaresErrors.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/FIZ228_03_LeastSquaresErrors.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/FIZ228_03_LeastSquaresErrors.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Least Squares Method &amp; Error Estimations
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-import">
+   Data &amp; Import
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting">
+     Plotting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#types-of-errors">
+   Types of Errors
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#true-error-e-t">
+     True error (
+     <span class="math notranslate nohighlight">
+      \(E_t\)
+     </span>
+     )
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#absolute-error-left-e-t-right">
+     Absolute error (
+     <span class="math notranslate nohighlight">
+      \(\left|E_t\right|\)
+     </span>
+     )
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#true-fractional-relative-error">
+     True fractional relative error
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#true-percent-relative-error-varepsilon-t">
+     True percent relative error (
+     <span class="math notranslate nohighlight">
+      \(\varepsilon_t\)
+     </span>
+     )
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#approximate-percent-relative-error-varepsilon-a">
+     Approximate percent relative error (
+     <span class="math notranslate nohighlight">
+      \(\varepsilon_a\)
+     </span>
+     )
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example">
+       Example:
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-good-is-a-mean">
+   How good is a mean?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scipy-optimize-minimize-to-the-rescue">
+   scipy.optimize.minimize to the rescue!
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#couldn-t-the-cost-function-be-better">
+     Couldn’t the cost function be better?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#we-can-do-that-manually">
+     We can do that manually!… (???)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#least-squares-numpy-linalg-lstsq-scipy-linalg-lstsq-scipy-optimize-least-squares-but-not-least-8">
+     Least Squares (numpy.linalg.lstsq &amp; scipy.linalg.lstsq &amp; scipy.optimize.least_squares) but not least! 8)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#numpy-linalg-lstsq">
+       numpy.linalg.lstsq
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#scipy-linalg-lstsq">
+       scipy.linalg.lstsq
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#scipy-optimize-least-squares">
+       scipy.optimize.least_squares
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#various-definitions">
+   Various Definitions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sum-of-the-squares-of-the-data-residuals-s-t">
+     Sum of the squares of the data residuals (
+     <span class="math notranslate nohighlight">
+      \(S_t\)
+     </span>
+     )
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#coefficient-of-variation">
+     Coefficient of variation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sum-of-the-squares-of-the-estimate-residuals-s-r">
+     Sum of the squares of the estimate residuals (
+     <span class="math notranslate nohighlight">
+      \(S_r\)
+     </span>
+     )
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#standard-error-of-the-estimate-s-y-x">
+     Standard error of the estimate: (
+     <span class="math notranslate nohighlight">
+      \(s_{y/x}\)
+     </span>
+     )
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#coefficient-of-determination-r-2">
+     Coefficient of Determination (
+     <span class="math notranslate nohighlight">
+      \(r^2\)
+     </span>
+     )
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Least Squares Method & Error Estimations</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Least Squares Method &amp; Error Estimations
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-import">
+   Data &amp; Import
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting">
+     Plotting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#types-of-errors">
+   Types of Errors
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#true-error-e-t">
+     True error (
+     <span class="math notranslate nohighlight">
+      \(E_t\)
+     </span>
+     )
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#absolute-error-left-e-t-right">
+     Absolute error (
+     <span class="math notranslate nohighlight">
+      \(\left|E_t\right|\)
+     </span>
+     )
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#true-fractional-relative-error">
+     True fractional relative error
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#true-percent-relative-error-varepsilon-t">
+     True percent relative error (
+     <span class="math notranslate nohighlight">
+      \(\varepsilon_t\)
+     </span>
+     )
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#approximate-percent-relative-error-varepsilon-a">
+     Approximate percent relative error (
+     <span class="math notranslate nohighlight">
+      \(\varepsilon_a\)
+     </span>
+     )
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example">
+       Example:
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-good-is-a-mean">
+   How good is a mean?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scipy-optimize-minimize-to-the-rescue">
+   scipy.optimize.minimize to the rescue!
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#couldn-t-the-cost-function-be-better">
+     Couldn’t the cost function be better?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#we-can-do-that-manually">
+     We can do that manually!… (???)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#least-squares-numpy-linalg-lstsq-scipy-linalg-lstsq-scipy-optimize-least-squares-but-not-least-8">
+     Least Squares (numpy.linalg.lstsq &amp; scipy.linalg.lstsq &amp; scipy.optimize.least_squares) but not least! 8)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#numpy-linalg-lstsq">
+       numpy.linalg.lstsq
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#scipy-linalg-lstsq">
+       scipy.linalg.lstsq
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#scipy-optimize-least-squares">
+       scipy.optimize.least_squares
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#various-definitions">
+   Various Definitions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sum-of-the-squares-of-the-data-residuals-s-t">
+     Sum of the squares of the data residuals (
+     <span class="math notranslate nohighlight">
+      \(S_t\)
+     </span>
+     )
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#coefficient-of-variation">
+     Coefficient of variation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sum-of-the-squares-of-the-estimate-residuals-s-r">
+     Sum of the squares of the estimate residuals (
+     <span class="math notranslate nohighlight">
+      \(S_r\)
+     </span>
+     )
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#standard-error-of-the-estimate-s-y-x">
+     Standard error of the estimate: (
+     <span class="math notranslate nohighlight">
+      \(s_{y/x}\)
+     </span>
+     )
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#coefficient-of-determination-r-2">
+     Coefficient of Determination (
+     <span class="math notranslate nohighlight">
+      \(r^2\)
+     </span>
+     )
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="least-squares-method-error-estimations">
+<h1>Least Squares Method &amp; Error Estimations<a class="headerlink" href="#least-squares-method-error-estimations" title="Permalink to this headline">¶</a></h1>
+<p><strong>FIZ228 - Numerical Analysis</strong><br />
+Dr. Emre S. Tasci, Hacettepe University</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data-import">
+<h1>Data &amp; Import<a class="headerlink" href="#data-import" title="Permalink to this headline">¶</a></h1>
+<p>The free-fall data we will be using is taken from: D. Horvat &amp; R. Jecmenica, “The Free Fall Experiment” <em>Resonance</em> <strong>21</strong> 259-275 (2016) <a class="reference external" href="https://doi.org/10.1007/s12045-016-0321-9">[https://doi.org/10.1007/s12045-016-0321-9]</a>.</p>
+<p><img alt="03_FreeFallData.png" src="_images/03_FreeFallData.png" /></p>
+<p>Here’s the content of our data file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Vert</span><span class="o">.</span><span class="n">dist</span><span class="o">.</span> <span class="n">y</span><span class="o">/</span><span class="n">m</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.7</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">1.2</span><span class="p">,</span><span class="mf">1.3</span><span class="p">,</span><span class="mf">1.8</span>
+<span class="p">,</span><span class="n">t</span><span class="o">/</span><span class="n">s</span><span class="p">,</span><span class="n">t</span><span class="o">/</span><span class="n">s</span><span class="p">,</span><span class="n">t</span><span class="o">/</span><span class="n">s</span><span class="p">,</span><span class="n">t</span><span class="o">/</span><span class="n">s</span><span class="p">,</span><span class="n">t</span><span class="o">/</span><span class="n">s</span><span class="p">,</span><span class="n">t</span><span class="o">/</span><span class="n">s</span>
+<span class="mi">1</span><span class="p">,</span><span class="mf">0.20188</span><span class="p">,</span><span class="mf">0.37775</span><span class="p">,</span><span class="mf">0.40391</span><span class="p">,</span><span class="mf">0.49475</span><span class="p">,</span><span class="mf">0.51501</span><span class="p">,</span><span class="mf">0.60603</span>
+<span class="mi">2</span><span class="p">,</span><span class="mf">0.20197</span><span class="p">,</span><span class="mf">0.37779</span><span class="p">,</span><span class="mf">0.40397</span><span class="p">,</span><span class="mf">0.49464</span><span class="p">,</span><span class="mf">0.51491</span><span class="p">,</span><span class="mf">0.60610</span>
+<span class="mi">3</span><span class="p">,</span><span class="mf">0.20193</span><span class="p">,</span><span class="mf">0.37770</span><span class="p">,</span><span class="mf">0.40391</span><span class="p">,</span><span class="mf">0.49480</span><span class="p">,</span><span class="mf">0.51496</span><span class="p">,</span><span class="mf">0.60610</span>
+<span class="mi">4</span><span class="p">,</span><span class="mf">0.20193</span><span class="p">,</span><span class="mf">0.37779</span><span class="p">,</span><span class="mf">0.40386</span><span class="p">,</span><span class="mf">0.49476</span><span class="p">,</span><span class="mf">0.51495</span><span class="p">,</span><span class="mf">0.60608</span>
+<span class="mi">5</span><span class="p">,</span><span class="mf">0.20194</span><span class="p">,</span><span class="mf">0.37779</span><span class="p">,</span><span class="mf">0.40381</span><span class="p">,</span><span class="mf">0.49478</span><span class="p">,</span><span class="mf">0.51492</span><span class="p">,</span><span class="mf">0.60605</span>
+<span class="mi">6</span><span class="p">,</span><span class="mf">0.20181</span><span class="p">,</span><span class="mf">0.37780</span><span class="p">,</span><span class="mf">0.40386</span><span class="p">,</span><span class="mf">0.49469</span><span class="p">,</span><span class="mf">0.51495</span><span class="p">,</span><span class="mf">0.60612</span>
+<span class="mi">7</span><span class="p">,</span><span class="mf">0.20181</span><span class="p">,</span><span class="mf">0.37773</span><span class="p">,</span><span class="mf">0.40390</span><span class="p">,</span><span class="mf">0.49463</span><span class="p">,</span><span class="mf">0.51507</span><span class="p">,</span><span class="mf">0.60601</span>
+<span class="mi">8</span><span class="p">,</span><span class="mf">0.20196</span><span class="p">,</span><span class="mf">0.37774</span><span class="p">,</span><span class="mf">0.40391</span><span class="p">,</span><span class="mf">0.49466</span><span class="p">,</span><span class="mf">0.51494</span><span class="p">,</span><span class="mf">0.60606</span>
+<span class="mi">9</span><span class="p">,</span><span class="mf">0.20195</span><span class="p">,</span><span class="mf">0.37774</span><span class="p">,</span><span class="mf">0.40389</span><span class="p">,</span><span class="mf">0.49462</span><span class="p">,</span><span class="mf">0.51506</span><span class="p">,</span><span class="mf">0.60613</span>
+<span class="mi">10</span><span class="p">,</span><span class="mf">0.20182</span><span class="p">,</span><span class="mf">0.37776</span><span class="p">,</span><span class="mf">0.40380</span><span class="p">,</span><span class="mf">0.49474</span><span class="p">,</span><span class="mf">0.51506</span><span class="p">,</span><span class="mf">0.60603</span>
+<span class="o">&lt;</span><span class="n">t</span><span class="o">&gt;/</span><span class="n">s</span><span class="p">,</span><span class="mf">0.20190</span><span class="p">,</span><span class="mf">0.37776</span><span class="p">,</span><span class="mf">0.40388</span><span class="p">,</span><span class="mf">0.49471</span><span class="p">,</span><span class="mf">0.51498</span><span class="p">,</span><span class="mf">0.60607</span>
+</pre></div>
+</div>
+<p><a class="reference download internal" download="" href="_downloads/34c1df946dc2940e0ab0c8f13d26fa60/03_FreeFallData.csv"><code class="xref download docutils literal notranslate"><span class="pre">03_FreeFallData.csv</span></code></a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">data1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/03_FreeFallData.csv&quot;</span><span class="p">)</span>
+<span class="n">data1</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">data1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Vert.dist. y/m</th>
+      <th>0.2</th>
+      <th>0.7</th>
+      <th>0.8</th>
+      <th>1.2</th>
+      <th>1.3</th>
+      <th>1.8</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>t/s</td>
+      <td>t/s</td>
+      <td>t/s</td>
+      <td>t/s</td>
+      <td>t/s</td>
+      <td>t/s</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>0.20188</td>
+      <td>0.37775</td>
+      <td>0.40391</td>
+      <td>0.49475</td>
+      <td>0.51501</td>
+      <td>0.60603</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>0.20197</td>
+      <td>0.37779</td>
+      <td>0.40397</td>
+      <td>0.49464</td>
+      <td>0.51491</td>
+      <td>0.60610</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>0.20193</td>
+      <td>0.37770</td>
+      <td>0.40391</td>
+      <td>0.49480</td>
+      <td>0.51496</td>
+      <td>0.60610</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>0.20193</td>
+      <td>0.37779</td>
+      <td>0.40386</td>
+      <td>0.49476</td>
+      <td>0.51495</td>
+      <td>0.60608</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5</td>
+      <td>0.20194</td>
+      <td>0.37779</td>
+      <td>0.40381</td>
+      <td>0.49478</td>
+      <td>0.51492</td>
+      <td>0.60605</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>6</td>
+      <td>0.20181</td>
+      <td>0.37780</td>
+      <td>0.40386</td>
+      <td>0.49469</td>
+      <td>0.51495</td>
+      <td>0.60612</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7</td>
+      <td>0.20181</td>
+      <td>0.37773</td>
+      <td>0.40390</td>
+      <td>0.49463</td>
+      <td>0.51507</td>
+      <td>0.60601</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>8</td>
+      <td>0.20196</td>
+      <td>0.37774</td>
+      <td>0.40391</td>
+      <td>0.49466</td>
+      <td>0.51494</td>
+      <td>0.60606</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>9</td>
+      <td>0.20195</td>
+      <td>0.37774</td>
+      <td>0.40389</td>
+      <td>0.49462</td>
+      <td>0.51506</td>
+      <td>0.60613</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>10</td>
+      <td>0.20182</td>
+      <td>0.37776</td>
+      <td>0.40380</td>
+      <td>0.49474</td>
+      <td>0.51506</td>
+      <td>0.60603</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>&lt;t&gt;/s</td>
+      <td>0.20190</td>
+      <td>0.37776</td>
+      <td>0.40388</td>
+      <td>0.49471</td>
+      <td>0.51498</td>
+      <td>0.60607</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We don’t need the first row and first column, so let’s remove them via <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.drop.html">pandas.DataFrame.drop</a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data1</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data1</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Vert.dist. y/m&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0.2</th>
+      <th>0.7</th>
+      <th>0.8</th>
+      <th>1.2</th>
+      <th>1.3</th>
+      <th>1.8</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0.20188</td>
+      <td>0.37775</td>
+      <td>0.40391</td>
+      <td>0.49475</td>
+      <td>0.51501</td>
+      <td>0.60603</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.20197</td>
+      <td>0.37779</td>
+      <td>0.40397</td>
+      <td>0.49464</td>
+      <td>0.51491</td>
+      <td>0.60610</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.20193</td>
+      <td>0.37770</td>
+      <td>0.40391</td>
+      <td>0.49480</td>
+      <td>0.51496</td>
+      <td>0.60610</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.20193</td>
+      <td>0.37779</td>
+      <td>0.40386</td>
+      <td>0.49476</td>
+      <td>0.51495</td>
+      <td>0.60608</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.20194</td>
+      <td>0.37779</td>
+      <td>0.40381</td>
+      <td>0.49478</td>
+      <td>0.51492</td>
+      <td>0.60605</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.20181</td>
+      <td>0.37780</td>
+      <td>0.40386</td>
+      <td>0.49469</td>
+      <td>0.51495</td>
+      <td>0.60612</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.20181</td>
+      <td>0.37773</td>
+      <td>0.40390</td>
+      <td>0.49463</td>
+      <td>0.51507</td>
+      <td>0.60601</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.20196</td>
+      <td>0.37774</td>
+      <td>0.40391</td>
+      <td>0.49466</td>
+      <td>0.51494</td>
+      <td>0.60606</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.20195</td>
+      <td>0.37774</td>
+      <td>0.40389</td>
+      <td>0.49462</td>
+      <td>0.51506</td>
+      <td>0.60613</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0.20182</td>
+      <td>0.37776</td>
+      <td>0.40380</td>
+      <td>0.49474</td>
+      <td>0.51506</td>
+      <td>0.60603</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Be careful that the data have been imported as string (due to the first row initially being formed of strings 8P ):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;0.7&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;0.37779&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">data1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;0.7&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2    object
+0.7    object
+0.8    object
+1.2    object
+1.3    object
+1.8    object
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>So, let’s set them all to float:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="n">data1</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+<span class="n">data1</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2    float64
+0.7    float64
+0.8    float64
+1.2    float64
+1.3    float64
+1.8    float64
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0.2</th>
+      <th>0.7</th>
+      <th>0.8</th>
+      <th>1.2</th>
+      <th>1.3</th>
+      <th>1.8</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0.20188</td>
+      <td>0.37775</td>
+      <td>0.40391</td>
+      <td>0.49475</td>
+      <td>0.51501</td>
+      <td>0.60603</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.20197</td>
+      <td>0.37779</td>
+      <td>0.40397</td>
+      <td>0.49464</td>
+      <td>0.51491</td>
+      <td>0.60610</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.20193</td>
+      <td>0.37770</td>
+      <td>0.40391</td>
+      <td>0.49480</td>
+      <td>0.51496</td>
+      <td>0.60610</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.20193</td>
+      <td>0.37779</td>
+      <td>0.40386</td>
+      <td>0.49476</td>
+      <td>0.51495</td>
+      <td>0.60608</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.20194</td>
+      <td>0.37779</td>
+      <td>0.40381</td>
+      <td>0.49478</td>
+      <td>0.51492</td>
+      <td>0.60605</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.20181</td>
+      <td>0.37780</td>
+      <td>0.40386</td>
+      <td>0.49469</td>
+      <td>0.51495</td>
+      <td>0.60612</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.20181</td>
+      <td>0.37773</td>
+      <td>0.40390</td>
+      <td>0.49463</td>
+      <td>0.51507</td>
+      <td>0.60601</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.20196</td>
+      <td>0.37774</td>
+      <td>0.40391</td>
+      <td>0.49466</td>
+      <td>0.51494</td>
+      <td>0.60606</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.20195</td>
+      <td>0.37774</td>
+      <td>0.40389</td>
+      <td>0.49462</td>
+      <td>0.51506</td>
+      <td>0.60613</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0.20182</td>
+      <td>0.37776</td>
+      <td>0.40380</td>
+      <td>0.49474</td>
+      <td>0.51506</td>
+      <td>0.60603</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>While we’re at it, let’s do a couple of make-overs:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0.2</th>
+      <th>0.7</th>
+      <th>0.8</th>
+      <th>1.2</th>
+      <th>1.3</th>
+      <th>1.8</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.20188</td>
+      <td>0.37775</td>
+      <td>0.40391</td>
+      <td>0.49475</td>
+      <td>0.51501</td>
+      <td>0.60603</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.20197</td>
+      <td>0.37779</td>
+      <td>0.40397</td>
+      <td>0.49464</td>
+      <td>0.51491</td>
+      <td>0.60610</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.20193</td>
+      <td>0.37770</td>
+      <td>0.40391</td>
+      <td>0.49480</td>
+      <td>0.51496</td>
+      <td>0.60610</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.20193</td>
+      <td>0.37779</td>
+      <td>0.40386</td>
+      <td>0.49476</td>
+      <td>0.51495</td>
+      <td>0.60608</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.20194</td>
+      <td>0.37779</td>
+      <td>0.40381</td>
+      <td>0.49478</td>
+      <td>0.51492</td>
+      <td>0.60605</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.20181</td>
+      <td>0.37780</td>
+      <td>0.40386</td>
+      <td>0.49469</td>
+      <td>0.51495</td>
+      <td>0.60612</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.20181</td>
+      <td>0.37773</td>
+      <td>0.40390</td>
+      <td>0.49463</td>
+      <td>0.51507</td>
+      <td>0.60601</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.20196</td>
+      <td>0.37774</td>
+      <td>0.40391</td>
+      <td>0.49466</td>
+      <td>0.51494</td>
+      <td>0.60606</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.20195</td>
+      <td>0.37774</td>
+      <td>0.40389</td>
+      <td>0.49462</td>
+      <td>0.51506</td>
+      <td>0.60613</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.20182</td>
+      <td>0.37776</td>
+      <td>0.40380</td>
+      <td>0.49474</td>
+      <td>0.51506</td>
+      <td>0.60603</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="plotting">
+<h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">()</span> <span class="c1"># To make things appear &quot;more beautiful&quot; 8)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data2</span> <span class="o">=</span> <span class="n">data1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">data2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0.2</th>
+      <th>0.7</th>
+      <th>0.8</th>
+      <th>1.2</th>
+      <th>1.3</th>
+      <th>1.8</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.20188</td>
+      <td>0.37775</td>
+      <td>0.40391</td>
+      <td>0.49475</td>
+      <td>0.51501</td>
+      <td>0.60603</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.20197</td>
+      <td>0.37779</td>
+      <td>0.40397</td>
+      <td>0.49464</td>
+      <td>0.51491</td>
+      <td>0.60610</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.20193</td>
+      <td>0.37770</td>
+      <td>0.40391</td>
+      <td>0.49480</td>
+      <td>0.51496</td>
+      <td>0.60610</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.20193</td>
+      <td>0.37779</td>
+      <td>0.40386</td>
+      <td>0.49476</td>
+      <td>0.51495</td>
+      <td>0.60608</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.20194</td>
+      <td>0.37779</td>
+      <td>0.40381</td>
+      <td>0.49478</td>
+      <td>0.51492</td>
+      <td>0.60605</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.20181</td>
+      <td>0.37780</td>
+      <td>0.40386</td>
+      <td>0.49469</td>
+      <td>0.51495</td>
+      <td>0.60612</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.20181</td>
+      <td>0.37773</td>
+      <td>0.40390</td>
+      <td>0.49463</td>
+      <td>0.51507</td>
+      <td>0.60601</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.20196</td>
+      <td>0.37774</td>
+      <td>0.40391</td>
+      <td>0.49466</td>
+      <td>0.51494</td>
+      <td>0.60606</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.20195</td>
+      <td>0.37774</td>
+      <td>0.40389</td>
+      <td>0.49462</td>
+      <td>0.51506</td>
+      <td>0.60613</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.20182</td>
+      <td>0.37776</td>
+      <td>0.40380</td>
+      <td>0.49474</td>
+      <td>0.51506</td>
+      <td>0.60603</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt1</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data2</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">k</span> <span class="o">=</span><span class="n">plt1</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="n">data2</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_03_LeastSquaresErrors_18_0.png" src="_images/FIZ228_03_LeastSquaresErrors_18_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data2</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2    0.201900
+0.7    0.377759
+0.8    0.403882
+1.2    0.494707
+1.3    0.514983
+1.8    0.606071
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data2</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="n">data_stats</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;dmean&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span> <span class="p">)</span>
+<span class="n">data_stats</span><span class="p">[</span><span class="s1">&#39;dvar&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data2</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+<span class="n">data_stats</span><span class="p">[</span><span class="s1">&#39;dstd&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data2</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">data_stats</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dmean</th>
+      <th>dvar</th>
+      <th>dstd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.2</th>
+      <td>0.201900</td>
+      <td>4.155556e-09</td>
+      <td>0.000064</td>
+    </tr>
+    <tr>
+      <th>0.7</th>
+      <td>0.377759</td>
+      <td>1.076667e-09</td>
+      <td>0.000033</td>
+    </tr>
+    <tr>
+      <th>0.8</th>
+      <td>0.403882</td>
+      <td>2.595556e-09</td>
+      <td>0.000051</td>
+    </tr>
+    <tr>
+      <th>1.2</th>
+      <td>0.494707</td>
+      <td>4.467778e-09</td>
+      <td>0.000067</td>
+    </tr>
+    <tr>
+      <th>1.3</th>
+      <td>0.514983</td>
+      <td>3.778889e-09</td>
+      <td>0.000061</td>
+    </tr>
+    <tr>
+      <th>1.8</th>
+      <td>0.606071</td>
+      <td>1.698889e-09</td>
+      <td>0.000041</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_stats</span><span class="o">.</span><span class="n">dstd</span> <span class="c1"># Unbiased</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2    0.000064
+0.7    0.000033
+0.8    0.000051
+1.2    0.000067
+1.3    0.000061
+1.8    0.000041
+Name: dstd, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="math notranslate nohighlight">
+\[\sigma = \sqrt{\frac{\sum_{i}{\left(x_i - \bar{x}\right)^2}}{N}}\;\text{(Population)}\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\sigma = \sqrt{\frac{\sum_{i}{\left(x_i - \bar{x}\right)^2}}{N-1}}\;\text{(Sample)}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">data2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">coll</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">data2</span><span class="o">.</span><span class="n">columns</span><span class="p">):</span>
+    <span class="n">s_dev</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">s_mean</span> <span class="o">=</span> <span class="n">data2</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="n">coll</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="c1">#print(s_mean)</span>
+    <span class="k">for</span> <span class="n">x_i</span> <span class="ow">in</span> <span class="n">data2</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="n">coll</span><span class="p">]:</span>
+        <span class="c1"># print (x_i)</span>
+        <span class="n">s_dev</span> <span class="o">+=</span> <span class="p">(</span><span class="n">x_i</span> <span class="o">-</span> <span class="n">s_mean</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">s_dev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">s_dev</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:s}</span><span class="s2">: </span><span class="si">{:.6f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">coll</span><span class="p">,</span><span class="n">s_dev</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2: 0.000061
+0.7: 0.000031
+0.8: 0.000048
+1.2: 0.000063
+1.3: 0.000058
+1.8: 0.000039
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data2</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># Biased</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2    0.000061
+0.7    0.000031
+0.8    0.000048
+1.2    0.000063
+1.3    0.000058
+1.8    0.000039
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Average over all the sample deviations should be equal to the deviation of the population!</p>
+<p>For more information on this <em>Bessel’s Correction</em>, check: <a class="reference external" href="http://mathcenter.oxford.emory.edu/site/math117/besselCorrection/">http://mathcenter.oxford.emory.edu/site/math117/besselCorrection/</a></p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="types-of-errors">
+<h1>Types of Errors<a class="headerlink" href="#types-of-errors" title="Permalink to this headline">¶</a></h1>
+<section id="true-error-e-t">
+<h2>True error (<span class="math notranslate nohighlight">\(E_t\)</span>)<a class="headerlink" href="#true-error-e-t" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[E_t = \text{true value} - \text{approximation}\]</div>
+</section>
+<section id="absolute-error-left-e-t-right">
+<h2>Absolute error (<span class="math notranslate nohighlight">\(\left|E_t\right|\)</span>)<a class="headerlink" href="#absolute-error-left-e-t-right" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\left|E_t\right| = \left|\text{true value} - \text{approximation}\right|\]</div>
+</section>
+<section id="true-fractional-relative-error">
+<h2>True fractional relative error<a class="headerlink" href="#true-fractional-relative-error" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\frac{\text{true value} - \text{approximation}}{\text{true value}}\]</div>
+</section>
+<section id="true-percent-relative-error-varepsilon-t">
+<h2>True percent relative error (<span class="math notranslate nohighlight">\(\varepsilon_t\)</span>)<a class="headerlink" href="#true-percent-relative-error-varepsilon-t" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\varepsilon_t = \frac{\text{true value} - \text{approximation}}{\text{true value}}\,100\%\]</div>
+<p>But what if we don’t know the true value?..</p>
+</section>
+<section id="approximate-percent-relative-error-varepsilon-a">
+<h2>Approximate percent relative error (<span class="math notranslate nohighlight">\(\varepsilon_a\)</span>)<a class="headerlink" href="#approximate-percent-relative-error-varepsilon-a" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\varepsilon_a = \frac{\text{present approximation} - \text{previous approximation}}{\text{present approximation}}\,100\%\]</div>
+<p>Computations are repeated until <span class="math notranslate nohighlight">\(\left|\varepsilon_a\right| &lt; \left|\varepsilon_s\right|\)</span> (<span class="math notranslate nohighlight">\(\varepsilon_s\)</span> is the satisfactory precision criterion).</p>
+<p>The result is correct to at least <span class="math notranslate nohighlight">\(n\)</span> significant figures given that:</p>
+<div class="math notranslate nohighlight">
+\[\varepsilon_s=\left(0.5\times10^{2-n}\right)\,\%\]</div>
+<section id="example">
+<h3>Example:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[e^x = 1+x+\frac{x^2}{2}+\frac{x^3}{3!}+\dots+\frac{x^n}{n!}+\dots\]</div>
+<p>To estimate <span class="math notranslate nohighlight">\(e^{0.5}\)</span> so that the absolute value of the approximate error estimate falls below an error criterion conforming to 3 significant figures, how many terms do you need to include?</p>
+<p><strong>Solution:</strong></p>
+<p><span class="math notranslate nohighlight">\(\varepsilon_s=(0.5\times 10^{2-3})\,\%\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eps_s</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">%&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eps_s</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.05%
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eps_s</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">eps_a</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">e_prev</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">no_of_terms</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:&gt;3}</span><span class="s2"> </span><span class="si">{:^13}</span><span class="se">\t</span><span class="si">{:^10}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">,</span><span class="s2">&quot;e&quot;</span><span class="p">,</span><span class="s2">&quot;E_a&quot;</span><span class="p">))</span>
+<span class="k">while</span><span class="p">(</span><span class="n">eps_a</span> <span class="o">&gt;</span> <span class="n">eps_s</span><span class="p">):</span>
+    <span class="n">e_calculated</span> <span class="o">=</span> <span class="n">e_prev</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="n">no_of_terms</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">no_of_terms</span><span class="p">)</span>
+    <span class="n">eps_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(((</span><span class="n">e_calculated</span> <span class="o">-</span> <span class="n">e_prev</span><span class="p">)</span><span class="o">/</span><span class="n">e_calculated</span><span class="p">))</span><span class="o">*</span><span class="mi">100</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:3d}</span><span class="s2">:</span><span class="si">{:10.6f}</span><span class="se">\t</span><span class="si">{:16.5f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">no_of_terms</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">e_calculated</span><span class="p">,</span><span class="n">eps_a</span><span class="p">))</span>
+    <span class="n">e_prev</span> <span class="o">=</span> <span class="n">e_calculated</span>
+    <span class="n">no_of_terms</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  #       e      	   E_a    
+  1:  1.000000	       100.00000
+  2:  1.500000	        33.33333
+  3:  1.625000	         7.69231
+  4:  1.645833	         1.26582
+  5:  1.648438	         0.15798
+  6:  1.648698	         0.01580
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eps_s</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">e_sqrt_real</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">e</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">eps_a</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">e_sqrt_prev</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">no_of_terms</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:&gt;3}</span><span class="s2"> </span><span class="si">{:^13}{:^20}{:^12}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">,</span><span class="s2">&quot;e_calc&quot;</span><span class="p">,</span><span class="s2">&quot;E_a&quot;</span><span class="p">,</span><span class="s2">&quot;E_t&quot;</span><span class="p">))</span>
+<span class="k">while</span><span class="p">(</span><span class="n">eps_a</span> <span class="o">&gt;</span> <span class="n">eps_s</span><span class="p">):</span>
+    <span class="n">e_sqrt_calculated</span> <span class="o">=</span> <span class="n">e_sqrt_prev</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="n">no_of_terms</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">no_of_terms</span><span class="p">)</span>
+    <span class="n">eps_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(((</span><span class="n">e_sqrt_calculated</span> <span class="o">-</span> <span class="n">e_sqrt_prev</span><span class="p">)</span><span class="o">/</span><span class="n">e_sqrt_calculated</span><span class="p">))</span><span class="o">*</span><span class="mi">100</span>
+    <span class="n">eps_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="n">e_sqrt_real</span> <span class="o">-</span> <span class="n">e_sqrt_calculated</span><span class="p">)</span><span class="o">/</span><span class="n">e_sqrt_real</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:3d}</span><span class="s2">:</span><span class="si">{:10.6f}{:16.5f}{:16.5f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">no_of_terms</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">e_sqrt_calculated</span><span class="p">,</span><span class="n">eps_a</span><span class="p">,</span><span class="n">eps_t</span><span class="p">))</span>
+    <span class="n">e_sqrt_prev</span> <span class="o">=</span> <span class="n">e_sqrt_calculated</span>
+    <span class="n">no_of_terms</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  #    e_calc            E_a             E_t     
+  1:  1.000000       100.00000        39.34693
+  2:  1.500000        33.33333         9.02040
+  3:  1.625000         7.69231         1.43877
+  4:  1.645833         1.26582         0.17516
+  5:  1.648438         0.15798         0.01721
+  6:  1.648698         0.01580         0.00142
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="how-good-is-a-mean">
+<h1>How good is a mean?<a class="headerlink" href="#how-good-is-a-mean" title="Permalink to this headline">¶</a></h1>
+<p>Once again, consider our free fall data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0.2</th>
+      <th>0.7</th>
+      <th>0.8</th>
+      <th>1.2</th>
+      <th>1.3</th>
+      <th>1.8</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.20188</td>
+      <td>0.37775</td>
+      <td>0.40391</td>
+      <td>0.49475</td>
+      <td>0.51501</td>
+      <td>0.60603</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.20197</td>
+      <td>0.37779</td>
+      <td>0.40397</td>
+      <td>0.49464</td>
+      <td>0.51491</td>
+      <td>0.60610</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.20193</td>
+      <td>0.37770</td>
+      <td>0.40391</td>
+      <td>0.49480</td>
+      <td>0.51496</td>
+      <td>0.60610</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.20193</td>
+      <td>0.37779</td>
+      <td>0.40386</td>
+      <td>0.49476</td>
+      <td>0.51495</td>
+      <td>0.60608</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.20194</td>
+      <td>0.37779</td>
+      <td>0.40381</td>
+      <td>0.49478</td>
+      <td>0.51492</td>
+      <td>0.60605</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.20181</td>
+      <td>0.37780</td>
+      <td>0.40386</td>
+      <td>0.49469</td>
+      <td>0.51495</td>
+      <td>0.60612</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.20181</td>
+      <td>0.37773</td>
+      <td>0.40390</td>
+      <td>0.49463</td>
+      <td>0.51507</td>
+      <td>0.60601</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.20196</td>
+      <td>0.37774</td>
+      <td>0.40391</td>
+      <td>0.49466</td>
+      <td>0.51494</td>
+      <td>0.60606</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.20195</td>
+      <td>0.37774</td>
+      <td>0.40389</td>
+      <td>0.49462</td>
+      <td>0.51506</td>
+      <td>0.60613</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.20182</td>
+      <td>0.37776</td>
+      <td>0.40380</td>
+      <td>0.49474</td>
+      <td>0.51506</td>
+      <td>0.60603</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_stats</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dmean</th>
+      <th>dvar</th>
+      <th>dstd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.2</th>
+      <td>0.201900</td>
+      <td>4.155556e-09</td>
+      <td>0.000064</td>
+    </tr>
+    <tr>
+      <th>0.7</th>
+      <td>0.377759</td>
+      <td>1.076667e-09</td>
+      <td>0.000033</td>
+    </tr>
+    <tr>
+      <th>0.8</th>
+      <td>0.403882</td>
+      <td>2.595556e-09</td>
+      <td>0.000051</td>
+    </tr>
+    <tr>
+      <th>1.2</th>
+      <td>0.494707</td>
+      <td>4.467778e-09</td>
+      <td>0.000067</td>
+    </tr>
+    <tr>
+      <th>1.3</th>
+      <td>0.514983</td>
+      <td>3.778889e-09</td>
+      <td>0.000061</td>
+    </tr>
+    <tr>
+      <th>1.8</th>
+      <td>0.606071</td>
+      <td>1.698889e-09</td>
+      <td>0.000041</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="scipy-optimize-minimize-to-the-rescue">
+<h1><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize">scipy.optimize.minimize</a> to the rescue!<a class="headerlink" href="#scipy-optimize-minimize-to-the-rescue" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data2</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(10,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
+
+<span class="k">def</span> <span class="nf">fun_err</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">err</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">x_i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+        <span class="n">err</span> <span class="o">+=</span> <span class="p">(</span><span class="n">x_i</span> <span class="o">-</span> <span class="n">m</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">err</span><span class="o">/</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">err</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fun_err</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span><span class="n">data2</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.11555394056866e-05
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fun_err</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">data2</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.00000000187
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minimize</span><span class="p">(</span><span class="n">fun_err</span><span class="p">,</span><span class="n">data2</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">]),</span><span class="n">tol</span><span class="o">=</span><span class="mf">1E-3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: 6.11555394056866e-05
+ hess_inv: array([[1]])
+      jac: array([0.00012183])
+  message: &#39;Optimization terminated successfully.&#39;
+     nfev: 2
+      nit: 0
+     njev: 1
+   status: 0
+  success: True
+        x: array([0.2019])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data2</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.20190000000000002
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">data2</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;0.2&#39;, &#39;0.7&#39;, &#39;0.8&#39;, &#39;1.2&#39;, &#39;1.3&#39;, &#39;1.8&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">,</span><span class="s1">&#39;dmean&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.20190000000000002
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:^5}</span><span class="s2">: </span><span class="si">{:^8}</span><span class="s2"> (</span><span class="si">{:^8}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;col&quot;</span><span class="p">,</span><span class="s2">&quot;min&quot;</span><span class="p">,</span><span class="s2">&quot;mean&quot;</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">data2</span><span class="o">.</span><span class="n">columns</span><span class="p">):</span>
+    <span class="n">res_min</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">fun_err</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="n">col</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:^5}</span><span class="s2">: </span><span class="si">{:8.6f}</span><span class="s2"> (</span><span class="si">{:8.6f}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">col</span><span class="p">,</span><span class="nb">float</span><span class="p">(</span><span class="n">res_min</span><span class="o">.</span><span class="n">x</span><span class="p">),</span><span class="n">data_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">col</span><span class="p">,</span><span class="s1">&#39;dmean&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> col :   min    (  mean  )
+ 0.2 : 0.201900 (0.201900)
+ 0.7 : 0.377759 (0.377759)
+ 0.8 : 0.403882 (0.403882)
+ 1.2 : 0.494707 (0.494707)
+ 1.3 : 0.514983 (0.514983)
+ 1.8 : 0.606071 (0.606071)
+</pre></div>
+</div>
+</div>
+</div>
+<section id="couldn-t-the-cost-function-be-better">
+<h2>Couldn’t the cost function be better?<a class="headerlink" href="#couldn-t-the-cost-function-be-better" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fun_err2</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">err</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">x_i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+        <span class="n">err</span> <span class="o">+=</span> <span class="p">(</span><span class="n">x_i</span> <span class="o">-</span> <span class="n">m</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="c1">#err = np.sqrt(err/x.shape[0])</span>
+    <span class="k">return</span> <span class="n">err</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fun_err2</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span><span class="n">data2</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.740000000000487e-08
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minimize</span><span class="p">(</span><span class="n">fun_err2</span><span class="p">,</span><span class="n">data2</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: 3.740000000000487e-08
+ hess_inv: array([[1]])
+      jac: array([1.49011612e-07])
+  message: &#39;Optimization terminated successfully.&#39;
+     nfev: 2
+      nit: 0
+     njev: 1
+   status: 0
+  success: True
+        x: array([0.2019])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:^5}</span><span class="s2">: </span><span class="si">{:^8}</span><span class="s2"> (</span><span class="si">{:^8}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;col&quot;</span><span class="p">,</span><span class="s2">&quot;min&quot;</span><span class="p">,</span><span class="s2">&quot;mean&quot;</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">data2</span><span class="o">.</span><span class="n">columns</span><span class="p">):</span>
+    <span class="n">res_min</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">fun_err2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="n">col</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:^5}</span><span class="s2">: </span><span class="si">{:8.6f}</span><span class="s2"> (</span><span class="si">{:8.6f}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">col</span><span class="p">,</span><span class="nb">float</span><span class="p">(</span><span class="n">res_min</span><span class="o">.</span><span class="n">x</span><span class="p">),</span><span class="n">data_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">col</span><span class="p">,</span><span class="s1">&#39;dmean&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> col :   min    (  mean  )
+ 0.2 : 0.201900 (0.201900)
+ 0.7 : 0.377759 (0.377759)
+ 0.8 : 0.403882 (0.403882)
+ 1.2 : 0.494707 (0.494707)
+ 1.3 : 0.514983 (0.514983)
+ 1.8 : 0.606071 (0.606071)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fun_err3</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">err</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">x_i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+        <span class="n">err</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x_i</span> <span class="o">-</span> <span class="n">m</span><span class="p">)</span>
+    <span class="c1">#err = np.sqrt(err/x.shape[0])</span>
+    <span class="k">return</span> <span class="n">err</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fun_err3</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span><span class="n">data2</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0005599999999999772
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minimize</span><span class="p">(</span><span class="n">fun_err3</span><span class="p">,</span><span class="n">data2</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: 0.0005000017699288428
+ hess_inv: array([[7.97330502e-06]])
+      jac: array([1.76244418])
+  message: &#39;Desired error not necessarily achieved due to precision loss.&#39;
+     nfev: 120
+      nit: 1
+     njev: 54
+   status: 2
+  success: False
+        x: array([0.20193])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_exp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_stats</span><span class="o">.</span><span class="n">dmean</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_exp</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dmean</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.2</th>
+      <td>0.201900</td>
+    </tr>
+    <tr>
+      <th>0.7</th>
+      <td>0.377759</td>
+    </tr>
+    <tr>
+      <th>0.8</th>
+      <td>0.403882</td>
+    </tr>
+    <tr>
+      <th>1.2</th>
+      <td>0.494707</td>
+    </tr>
+    <tr>
+      <th>1.3</th>
+      <td>0.514983</td>
+    </tr>
+    <tr>
+      <th>1.8</th>
+      <td>0.606071</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">freefall_err</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="n">y_exp</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">err</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">y_theo</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">err</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_theo</span> <span class="o">-</span> <span class="n">y_exp</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_exp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">data_exp</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_exp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;0.2&#39; &#39;0.7&#39; &#39;0.8&#39; &#39;1.2&#39; &#39;1.3&#39; &#39;1.8&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_exp</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype(&#39;&lt;U3&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_exp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">data_exp</span><span class="o">.</span><span class="n">index</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">y_exp</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype(&#39;float64&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">y_exp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.2 0.7 0.8 1.2 1.3 1.8]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">data_exp</span><span class="o">.</span><span class="n">dmean</span><span class="p">[:]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.2019   0.377759 0.403882 0.494707 0.514983 0.606071]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="we-can-do-that-manually">
+<h2>We can do that manually!… (???)<a class="headerlink" href="#we-can-do-that-manually" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freefall_err</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="n">y_exp</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.05069082651399326
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freefall_err</span><span class="p">(</span><span class="mf">9.1</span><span class="p">,</span><span class="n">y_exp</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0388634097682171
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mf">0.1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:5.3f}</span><span class="s2">:</span><span class="si">{:10.6f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="n">freefall_err</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="n">y_exp</span><span class="p">,</span><span class="n">t</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.000:  0.050691
+9.100:  0.038863
+9.200:  0.028605
+9.300:  0.019915
+9.400:  0.012795
+9.500:  0.007243
+9.600:  0.003261
+9.700:  0.000847
+9.800:  0.000002
+9.900:  0.000726
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">9.7</span><span class="p">,</span><span class="mf">9.9</span><span class="p">,</span><span class="mf">0.01</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:5.3f}</span><span class="s2">:</span><span class="si">{:10.6f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="n">freefall_err</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="n">y_exp</span><span class="p">,</span><span class="n">t</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.700:  0.000847
+9.710:  0.000692
+9.720:  0.000552
+9.730:  0.000429
+9.740:  0.000321
+9.750:  0.000228
+9.760:  0.000152
+9.770:  0.000091
+9.780:  0.000045
+9.790:  0.000016
+9.800:  0.000002
+9.810:  0.000004
+9.820:  0.000021
+9.830:  0.000055
+9.840:  0.000103
+9.850:  0.000168
+9.860:  0.000248
+9.870:  0.000344
+9.880:  0.000456
+9.890:  0.000583
+9.900:  0.000726
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">9.79</span><span class="p">,</span><span class="mf">9.81</span><span class="p">,</span><span class="mf">0.001</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:5.3f}</span><span class="s2">:</span><span class="si">{:10.8f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="n">freefall_err</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="n">y_exp</span><span class="p">,</span><span class="n">t</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.790:0.00001591
+9.791:0.00001382
+9.792:0.00001188
+9.793:0.00001010
+9.794:0.00000848
+9.795:0.00000701
+9.796:0.00000570
+9.797:0.00000455
+9.798:0.00000355
+9.799:0.00000272
+9.800:0.00000203
+9.801:0.00000151
+9.802:0.00000114
+9.803:0.00000093
+9.804:0.00000088
+9.805:0.00000098
+9.806:0.00000124
+9.807:0.00000166
+9.808:0.00000223
+9.809:0.00000296
+9.810:0.00000385
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_min</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">freefall_err</span><span class="p">,</span><span class="n">x0</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">y_exp</span><span class="p">,</span><span class="n">t</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res_min</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: 8.748023164225757e-07
+ hess_inv: array([[6.3736979]])
+      jac: array([-2.0061961e-09])
+  message: &#39;Optimization terminated successfully.&#39;
+     nfev: 10
+      nit: 4
+     njev: 5
+   status: 0
+  success: True
+        x: array([9.8038438])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y_exp</span><span class="p">,</span><span class="s2">&quot;or&quot;</span><span class="p">)</span>
+<span class="n">tt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.7</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tt</span><span class="p">,</span><span class="mf">0.5</span><span class="o">*</span><span class="n">res_min</span><span class="o">.</span><span class="n">x</span><span class="o">*</span><span class="n">tt</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;-b&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_03_LeastSquaresErrors_68_0.png" src="_images/FIZ228_03_LeastSquaresErrors_68_0.png" />
+</div>
+</div>
+</section>
+<section id="least-squares-numpy-linalg-lstsq-scipy-linalg-lstsq-scipy-optimize-least-squares-but-not-least-8">
+<h2>Least Squares (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.linalg.lstsq.html">numpy.linalg.lstsq</a> &amp; <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.lstsq.html#scipy.linalg.lstsq">scipy.linalg.lstsq</a> &amp; <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html">scipy.optimize.least_squares</a>) but not least! 8)<a class="headerlink" href="#least-squares-numpy-linalg-lstsq-scipy-linalg-lstsq-scipy-optimize-least-squares-but-not-least-8" title="Permalink to this headline">¶</a></h2>
+<p>NumPy and SciPy’s <code class="docutils literal notranslate"><span class="pre">linalg.lstsq</span></code> functions works similar to each other, solving the matrix equation <span class="math notranslate nohighlight">\(Ax=b\)</span> but as the <em>coefficients matrix</em> <span class="math notranslate nohighlight">\(A\)</span> must be defined as a <u>matrix</u>, we add a “zeros” column next to <span class="math notranslate nohighlight">\(\tfrac{1}{2}t^2\)</span> values, to indicate that our equation is of the form:</p>
+<div class="math notranslate nohighlight">
+\[\left(\frac{1}{2}t^2\right)g^1 + (0)g^0 = y_{exp}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))])</span><span class="o">.</span><span class="n">T</span>
+<span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.02038181, 0.        ],
+       [0.07135093, 0.        ],
+       [0.08156033, 0.        ],
+       [0.12236751, 0.        ],
+       [0.13260375, 0.        ],
+       [0.18366103, 0.        ]])
+</pre></div>
+</div>
+</div>
+</div>
+<section id="numpy-linalg-lstsq">
+<h3><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.linalg.lstsq.html">numpy.linalg.lstsq</a><a class="headerlink" href="#numpy-linalg-lstsq" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g_ls_np</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">y_exp</span><span class="p">,</span><span class="n">rcond</span><span class="o">=</span><span class="kc">None</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">g_ls_np</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.803843815755029
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="scipy-linalg-lstsq">
+<h3><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.lstsq.html#scipy.linalg.lstsq">scipy.linalg.lstsq</a><a class="headerlink" href="#scipy-linalg-lstsq" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="n">g_ls_sp</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">y_exp</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">g_ls_np</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.803843815755029
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="scipy-optimize-least-squares">
+<h3><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html">scipy.optimize.least_squares</a><a class="headerlink" href="#scipy-optimize-least-squares" title="Permalink to this headline">¶</a></h3>
+<p>SciPy’s <code class="docutils literal notranslate"><span class="pre">optimize.least_squares</span></code> is a totally different beast, though. It tries to minimize the cost function (e.g., errors). Its main difference from the above two is that it supports nonlinear least-squares problems and also accepts boundaries on the variables. It is included here only to give you an idea (as it is more or less the same with the <code class="docutils literal notranslate"><span class="pre">optimize.minimize</span></code> ;)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fun_err_g</span><span class="p">(</span><span class="n">g</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">y_exp</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g_ls_sp_opt</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">optimize</span><span class="o">.</span><span class="n">least_squares</span><span class="p">(</span><span class="n">fun_err_g</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">g_ls_sp_opt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.81433312096714
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="various-definitions">
+<h1>Various Definitions<a class="headerlink" href="#various-definitions" title="Permalink to this headline">¶</a></h1>
+<section id="sum-of-the-squares-of-the-data-residuals-s-t">
+<h2>Sum of the squares of the data residuals (<span class="math notranslate nohighlight">\(S_t\)</span>)<a class="headerlink" href="#sum-of-the-squares-of-the-data-residuals-s-t" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[S_t = \sum_{i}{\left(y_i - \bar{y}\right)^2}\]</div>
+<p>(<span class="math notranslate nohighlight">\(\leftrightarrow\)</span> Standard deviation <span class="math notranslate nohighlight">\(\sigma=\sqrt{\frac{S_t}{n-1}}\)</span>, variance <span class="math notranslate nohighlight">\(\sigma^2=\frac{\sum_{i}{\left(y_i-\bar{y}\right)^2}}{n-1}=\frac{\sum_{i}{y_i^2}-\left(\sum_{i}{y_i}\right)^2/n}{n-1}\)</span>)</p>
+</section>
+<section id="coefficient-of-variation">
+<h2>Coefficient of variation<a class="headerlink" href="#coefficient-of-variation" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\text{c.v.} = \frac{s_y}{\bar{y}}\times\,100\%\]</div>
+</section>
+<section id="sum-of-the-squares-of-the-estimate-residuals-s-r">
+<h2>Sum of the squares of the estimate residuals (<span class="math notranslate nohighlight">\(S_r\)</span>)<a class="headerlink" href="#sum-of-the-squares-of-the-estimate-residuals-s-r" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[S_r = \sum_{i}{e_i^2}=\sum_{i}\left(y_i-a_0-a_1 x_i\right)^2\]</div>
+</section>
+<section id="standard-error-of-the-estimate-s-y-x">
+<h2>Standard error of the estimate: (<span class="math notranslate nohighlight">\(s_{y/x}\)</span>)<a class="headerlink" href="#standard-error-of-the-estimate-s-y-x" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[s_{y/x}= \sqrt{\frac{S_r}{n-2}}\]</div>
+<p><img alt="standard_errors.png" src="_images/03_standard_errors_Chapra.png" />
+(a) <span class="math notranslate nohighlight">\(S_t\)</span>, (b) <span class="math notranslate nohighlight">\(S_r\)</span></p>
+<p>(Source: <a class="reference external" href="https://www.mheducation.com/highered/product/applied-numerical-methods-matlab-engineers-scientists-chapra/M9780073397962.html">S.C. Chapra, Applied Numerical Methods with MATLAB</a>)</p>
+</section>
+<section id="coefficient-of-determination-r-2">
+<h2>Coefficient of Determination (<span class="math notranslate nohighlight">\(r^2\)</span>)<a class="headerlink" href="#coefficient-of-determination-r-2" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[r^2 = \frac{S_t-S_r}{S_t}\]</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>D. Horvat &amp; R. Jecmenica, “The Free Fall Experiment” Resonance 21 259-275 (2016) [<a class="reference external" href="https://doi.org/10.1007/s12045-016-0321-9">https://doi.org/10.1007/s12045-016-0321-9</a>]</p></li>
+<li><p>This lecture is heavily benefited from Steven Chapra’s <a class="reference external" href="https://www.mheducation.com/highered/product/applied-numerical-methods-matlab-engineers-scientists-chapra/M9780073397962.html">Applied Numerical Methods with MATLAB: for Engineers &amp; Scientists</a>.</p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="FIZ228_02_DataVisualization.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Visualization of datasets</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="FIZ228_04_Regression.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Regression</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Emre S. Tasci, Ph.D.<br/>
+    
+        &copy; Copyright 2023.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
