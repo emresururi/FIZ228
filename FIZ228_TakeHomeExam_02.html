@@ -206,7 +206,10 @@ const thebe_selector_output = ".output, .cell_output"
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="_sources/FIZ228_TakeHomeExam_02.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="_sources/FIZ228_TakeHomeExam_02.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
@@ -227,6 +230,23 @@ const thebe_selector_output = ".output, .cell_output"
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/FIZ228_TakeHomeExam_02.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
 
         </div>
 
@@ -326,10 +346,13 @@ const thebe_selector_output = ".output, .cell_output"
 <p><strong>FIZ228 - Numerical Analysis</strong><br />
 Dr. Emre S. Tasci, Hacettepe University</p>
 <p><em>It is strictly forbidden to contact anybody outside your group or seeking the direct answer on the internet. Every member of the group is responsible for every one of the questions.</em></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
 </pre></div>
+</div>
+</div>
 </div>
 <section id="better-than-average">
 <h2>0) Better than average<a class="headerlink" href="#better-than-average" title="Permalink to this headline">¶</a></h2>
@@ -340,7 +363,9 @@ Dr. Emre S. Tasci, Hacettepe University</p>
 <p>The “Six-Hump Camel” function is a two-dimensional function used in testing optimizer algorithms and it’s defined as:</p>
 <div class="math notranslate nohighlight">
 \[f(\vec x) = (4 - 2.1 x_1^2 +\frac{x_1^4}{3}) x_1^2 + x_1 x_2 + (-4 + 4 x_2^2) x_2^2 \]</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sixHump</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sixHump</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="c1"># Taken from the &quot;Virtual Library of Simulation Experiments&quot;</span>
     <span class="c1"># by Sonja Surjanovic &amp; Derek Bingham</span>
     <span class="c1"># http://www.sfu.ca/~ssurjano/index.html</span>
@@ -353,12 +378,25 @@ Dr. Emre S. Tasci, Hacettepe University</p>
             <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="o">+</span><span class="mi">4</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
 </pre></div>
 </div>
+</div>
+</div>
 <p>Six-Hump Camel function has two global minimums of -1.0316 located at <span class="math notranslate nohighlight">\((x_1,x_2) = (0.0898,-0.7126)\)</span> and <span class="math notranslate nohighlight">\((x_1,x_2) = (-0.0898,0.7126)\)</span>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sixHump</span><span class="p">([</span><span class="mf">0.0898</span><span class="p">,</span><span class="o">-</span><span class="mf">0.7126</span><span class="p">]),</span> <span class="n">sixHump</span><span class="p">([</span><span class="o">-</span><span class="mf">0.0898</span><span class="p">,</span><span class="mf">0.7126</span><span class="p">])</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sixHump</span><span class="p">([</span><span class="mf">0.0898</span><span class="p">,</span><span class="o">-</span><span class="mf">0.7126</span><span class="p">]),</span> <span class="n">sixHump</span><span class="p">([</span><span class="o">-</span><span class="mf">0.0898</span><span class="p">,</span><span class="mf">0.7126</span><span class="p">])</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-1.0316284229280819, -1.0316284229280819)
+</pre></div>
+</div>
+</div>
+</div>
 <p>and here is what it looks like:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plotfun</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">xy</span><span class="o">=</span><span class="p">[]):</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plotfun</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">xy</span><span class="o">=</span><span class="p">[]):</span>
     <span class="c1"># Basic contour plotter</span>
     <span class="c1"># EST 2023</span>
     
@@ -388,8 +426,17 @@ Dr. Emre S. Tasci, Hacettepe University</p>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plotfun</span><span class="p">(</span><span class="n">sixHump</span><span class="p">,[[</span><span class="mf">0.0898</span><span class="p">,</span><span class="o">-</span><span class="mf">0.7126</span><span class="p">],[</span><span class="o">-</span><span class="mf">0.0898</span><span class="p">,</span><span class="mf">0.7126</span><span class="p">]])</span>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plotfun</span><span class="p">(</span><span class="n">sixHump</span><span class="p">,[[</span><span class="mf">0.0898</span><span class="p">,</span><span class="o">-</span><span class="mf">0.7126</span><span class="p">],[</span><span class="o">-</span><span class="mf">0.0898</span><span class="p">,</span><span class="mf">0.7126</span><span class="p">]])</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_TakeHomeExam_02_9_0.png" src="_images/FIZ228_TakeHomeExam_02_9_0.png" />
+</div>
 </div>
 <p>Using scipy.optimize.minimize and using different starting points, obtain these two global minimum and local minimum points, as well. You are given the fact that all the minimum points are located in the interval:</p>
 <div class="math notranslate nohighlight">
@@ -401,7 +448,9 @@ Dr. Emre S. Tasci, Hacettepe University</p>
 <section id="misc">
 <h3>Misc.<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h3>
 <p>You can also observe the 3D mesh version of the function’s plot alas due to jupyter’s limitations, you won’t be able to interact (e.g., rotate, zoom, etc.) with it directly. For that purpose, you can save the following script as a python (<a class="reference external" href="http://sixhump3D.py">sixhump3D.py</a>) file and run it directly using the Python interpretator (<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">sixhump3D.py</span></code>)</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save this cell content as &quot;sixhump3D.py&quot;</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save this cell content as &quot;sixhump3D.py&quot;</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -439,15 +488,26 @@ Dr. Emre S. Tasci, Hacettepe University</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_TakeHomeExam_02_13_0.png" src="_images/FIZ228_TakeHomeExam_02_13_0.png" />
+</div>
+</div>
 </section>
 </section>
 <section id="least-squares-fitting-linear">
 <h2>2) Least-Squares Fitting: Linear<a class="headerlink" href="#least-squares-fitting-linear" title="Permalink to this headline">¶</a></h2>
 <p>Fit the following data to the linear function given as <span class="math notranslate nohighlight">\(f(x) = ax + b\)</span> by finding the most optimal values for <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_lin</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="s1">&#39;y&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="mf">26.94786969</span><span class="p">,</span>   
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_lin</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="s1">&#39;y&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="mf">26.94786969</span><span class="p">,</span>   
                                                                  <span class="mf">9.28357035</span><span class="p">,</span>
                                                                <span class="mf">114.31762497</span><span class="p">,</span>
                                                                <span class="mf">126.40005481</span><span class="p">,</span>
@@ -460,6 +520,90 @@ Dr. Emre S. Tasci, Hacettepe University</p>
                                                                <span class="mf">521.75068562</span><span class="p">])})</span>
 <span class="n">data_lin</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>26.947870</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10</td>
+      <td>9.283570</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>20</td>
+      <td>114.317625</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>30</td>
+      <td>126.400055</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>40</td>
+      <td>242.933710</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>50</td>
+      <td>288.118953</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>60</td>
+      <td>313.523172</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>70</td>
+      <td>326.483219</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>80</td>
+      <td>417.025922</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>90</td>
+      <td>477.348210</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>100</td>
+      <td>521.750686</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Do the fitting via: <span class="math notranslate nohighlight">\(\DeclareMathOperator\erf{erf}\)</span></p>
 <ul>

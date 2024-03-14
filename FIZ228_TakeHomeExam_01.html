@@ -206,7 +206,10 @@ const thebe_selector_output = ".output, .cell_output"
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="_sources/FIZ228_TakeHomeExam_01.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="_sources/FIZ228_TakeHomeExam_01.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
@@ -227,6 +230,23 @@ const thebe_selector_output = ".output, .cell_output"
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/FIZ228_TakeHomeExam_01.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
 
         </div>
 
@@ -256,15 +276,22 @@ const thebe_selector_output = ".output, .cell_output"
 <p><strong>FIZ228 - Numerical Analysis</strong><br />
 Dr. Emre S. Tasci, Hacettepe University</p>
 <p><em>It is strictly forbidden to contact anybody outside your group or seeking the direct answer on the internet. Every member of the group is responsible for every one of the questions.</em></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">()</span>
 </pre></div>
 </div>
-<!-- #region -->
+</div>
+</div>
 <p>Monoclinic structures’ space groups are designated in the range of <span class="math notranslate nohighlight">\([3,15]\)</span>.</p>
 <p>a) From the random structures database (file: <code class="docutils literal notranslate"><span class="pre">01_RandomStructureDB.csv</span></code>), filter the monoclinic structures and copy them to a new <code class="docutils literal notranslate"><span class="pre">strdb_monoclinic</span></code> dataframe, resetting the index (as there are 88 such entries, the index will run from 0 to 87).</p>
 <p>b) Calculate their unit cell volumes:<br />
@@ -282,7 +309,8 @@ lattice parameters are stored in the <code class="docutils literal notranslate">
 <p><b>Hint:</b> You can directly evaluate operations with columns, for example: <code class="docutils literal notranslate"><span class="pre">strdb_monoclinic['a']*strdb_monoclinic['b']</span></code> will return you a Pandas object (Series) that holds the summations of the corresponding a and b values! ;)</p>
 <p>c) Drop the structures that have volumes greater than <span class="math notranslate nohighlight">\(1000\, \unicode[serif]{xC5}^3\)</span> from <code class="docutils literal notranslate"><span class="pre">strdb_monoclinic</span></code> and re-reset the index (you should have 55 entries remaining)</p>
 <p>d) Plot the histogram of the volumes (using 10 bins).</p>
-<p>(You can check what it should look like in the included PNG file)</p>
+<p>It should like this:</p>
+<p><img alt="HW1_d_histogram.png" src="_images/HW1_d_histogram.png" /></p>
 <p><strong>Bonus:</strong> <a class="reference external" href="https://en.wikipedia.org/wiki/Pearson_symbol">“Pearson symbol”</a> contains the lattice type, centering and the number of atoms in the unit cell. For example, the Pearson symbol “mP64” indicates that the lattice is <strong>m</strong>onoclinic, <strong>P</strong>rimitive and contains 64 atoms in the unit cell. We are going to parse the number of atoms information from the Pearson cell (by discarding all the characters that are not numeric – this is easily done using <a class="reference external" href="https://en.wikipedia.org/wiki/Regular_expression">regular expressions</a>: they look cryptic but can be used to describe any pattern if used correctly). To do this operation, we will employ Pandas’ <code class="docutils literal notranslate"><span class="pre">replace()</span></code> method:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">strdb_monoclinic</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">&#39;PearsonSymb&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[^0-9]&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -294,18 +322,125 @@ lattice parameters are stored in the <code class="docutils literal notranslate">
 </ol>
 <p>Here is a sample:</p>
 <p>(As in this tutorial we are constructing our dataframe from a string, not a file, we make it appear as a file via the <code class="docutils literal notranslate"><span class="pre">StringIO</span></code> command)</p>
-<!-- #endregion -->
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
 <span class="n">sample_data</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="s1">&#39;StructuralForm,PearsonSymb</span><span class="se">\n</span><span class="s1">Ce Ru2 Ge2,tI10</span><span class="se">\n</span><span class="s1">La1.85 Si4 Y3.15,tP36</span><span class="se">\n</span><span class="s1">Gd Mn2,cF24</span><span class="se">\n</span><span class="s1">Ce5 Ni1.85 Si3,hP39</span><span class="se">\n</span><span class="s1">Li3 Mg2 (Nb O6),oF96</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">sample_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">sample_data</span><span class="p">)</span>
 <span class="n">sample_df</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># find and replace the non-numeric characters in &#39;PearsonSymb&#39;</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>StructuralForm</th>
+      <th>PearsonSymb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ce Ru2 Ge2</td>
+      <td>tI10</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>La1.85 Si4 Y3.15</td>
+      <td>tP36</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Gd Mn2</td>
+      <td>cF24</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Ce5 Ni1.85 Si3</td>
+      <td>hP39</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Li3 Mg2 (Nb O6)</td>
+      <td>oF96</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find and replace the non-numeric characters in &#39;PearsonSymb&#39;</span>
 <span class="n">sample_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">&#39;PearsonSymb&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[^0-9]&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># while we are at it, we can define a new column</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PearsonSymb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>39</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>96</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># while we are at it, we can define a new column</span>
 <span class="c1"># using these processed values as well! 8)</span>
 
 <span class="c1"># Pay special attention that we need to convert the replace results</span>
@@ -315,12 +450,70 @@ lattice parameters are stored in the <code class="docutils literal notranslate">
 <span class="n">sample_df</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>StructuralForm</th>
+      <th>PearsonSymb</th>
+      <th>numatoms</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ce Ru2 Ge2</td>
+      <td>tI10</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>La1.85 Si4 Y3.15</td>
+      <td>tP36</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Gd Mn2</td>
+      <td>cF24</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Ce5 Ni1.85 Si3</td>
+      <td>hP39</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Li3 Mg2 (Nb O6)</td>
+      <td>oF96</td>
+      <td>96</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 <p>Now that we have learned how to parse the number of atoms in the unit cell, use this to plot volume with respect to the number of atoms, and while doing that, use the publication date as hue and the beta angle(*) as size via Seaborn.</p>
 <p><em><strong>(*) Challenge:</strong> In standard settings, for monoclinic structures, beta angle is defined as the non-perpendicular angle. However, as you can observe, sometimes the data is entered in non-standard settings and alpha or gamma can be defined as the non-perpendicular angle as well. To remedy this issue, instead of using beta angle, use the maximum angle among the (alpha,beta,gamma) for your size criteria, if you can! ;)</em></p>
-<p>(You can check what it should look like in the included PNG file)</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
+<p>It should look like this:</p>
+<p><img alt="HW1_xbonus_volVSnumatoms.png" src="_images/HW1_xbonus_volVSnumatoms.png" /></p>
 </section>
 
     <script type="text/x-thebe-config">

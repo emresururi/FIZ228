@@ -205,7 +205,10 @@ const thebe_selector_output = ".output, .cell_output"
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="_sources/FIZ228_TakeHomeExam_03.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="_sources/FIZ228_TakeHomeExam_03.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
@@ -226,6 +229,23 @@ const thebe_selector_output = ".output, .cell_output"
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/FIZ228_TakeHomeExam_03.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
 
         </div>
 
@@ -255,7 +275,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p><strong>FIZ228 - Numerical Analysis</strong><br />
 Dr. Emre S. Tasci, Hacettepe University</p>
 <p><em>It is strictly forbidden to contact anybody outside your group or seeking the direct answer on the internet. Every member of the group is responsible for every one of the questions.</em></p>
-<p>Fit the <a class="reference external" href="https://hadi.hacettepe.edu.tr/mod/resource/view.php?id=1184881">Silica FTIR data</a> for the wavenumber range [900,1500] cm<sup>-1</sup>:</p>
+<p>Fit the <a class="reference download internal" download="" href="_downloads/531855fd0accf0811b7ff1823f853ccb/05_Silica_FTIR.csv"><code class="xref download docutils literal notranslate"><span class="pre">Silica</span> <span class="pre">FTIR</span> <span class="pre">data</span></code></a> [Silica FTIR data] for the wavenumber range [900,1500] cm<sup>-1</sup>:</p>
 <ol class="simple">
 <li><p>Using 3 Gaussians</p></li>
 <li><p>Using 4 Gaussians</p></li>
@@ -283,9 +303,6 @@ Dr. Emre S. Tasci, Hacettepe University</p>
 <p>Even though it seems very good, here are its components, separately drawn:</p>
 <p><img alt="HW3_bad5G.png" src="_images/HW3_bad5G.png" /></p>
 <p>which doesn’t make any sense as G3 &amp; G5 Gaussians indicate a negative absorption!</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </section>
 
     <script type="text/x-thebe-config">

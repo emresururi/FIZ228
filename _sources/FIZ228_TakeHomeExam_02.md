@@ -1,16 +1,15 @@
 ---
-jupyter:
-  jupytext:
-    formats: ipynb,md
-    text_representation:
-      extension: .md
-      format_name: markdown
-      format_version: '1.3'
-      jupytext_version: 1.11.5
-  kernelspec:
-    display_name: Python 3 (ipykernel)
-    language: python
-    name: python3
+jupytext:
+  formats: ipynb,md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.11.5
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
 ---
 
 # Take-Home Exam #2
@@ -19,16 +18,16 @@ Dr. Emre S. Tasci, Hacettepe University
 
 _It is strictly forbidden to contact anybody outside your group or seeking the direct answer on the internet. Every member of the group is responsible for every one of the questions._
 
-```python
+```{code-cell} ipython3
 import numpy as np
 import matplotlib.pyplot as plt
-
 ```
 
 ## 0) Better than average
 
 Can you come up with a set of data that has a representative that is better than their average?
 
++++
 
 ## 1) Six-Hump Camel Function
 
@@ -36,7 +35,7 @@ The "Six-Hump Camel" function is a two-dimensional function used in testing opti
 
 $$f(\vec x) = (4 - 2.1 x_1^2 +\frac{x_1^4}{3}) x_1^2 + x_1 x_2 + (-4 + 4 x_2^2) x_2^2 $$
 
-```python
+```{code-cell} ipython3
 def sixHump(x):
     # Taken from the "Virtual Library of Simulation Experiments"
     # by Sonja Surjanovic & Derek Bingham
@@ -52,13 +51,13 @@ def sixHump(x):
 
 Six-Hump Camel function has two global minimums of -1.0316 located at $(x_1,x_2) = (0.0898,-0.7126)$ and $(x_1,x_2) = (-0.0898,0.7126)$.
 
-```python
+```{code-cell} ipython3
 sixHump([0.0898,-0.7126]), sixHump([-0.0898,0.7126])
 ```
 
 and here is what it looks like:
 
-```python
+```{code-cell} ipython3
 def plotfun(f,xy=[]):
     # Basic contour plotter
     # EST 2023
@@ -89,7 +88,7 @@ def plotfun(f,xy=[]):
     plt.show() 
 ```
 
-```python
+```{code-cell} ipython3
 plotfun(sixHump,[[0.0898,-0.7126],[-0.0898,0.7126]])
 ```
 
@@ -97,6 +96,7 @@ Using scipy.optimize.minimize and using different starting points, obtain these 
 
 $$-2.2\le x \le 2.2,\,-1.25\le y \le 1.25$$
 
++++
 
 **Bonus:**
 
@@ -104,12 +104,13 @@ Find the location and the value of the maximum in the interval:
 
 $$-2.2\le x \le 2.2,\,-1.25\le y \le 1.25$$
 
++++
 
 ### Misc.
 
 You can also observe the 3D mesh version of the function's plot alas due to jupyter's limitations, you won't be able to interact (e.g., rotate, zoom, etc.) with it directly. For that purpose, you can save the following script as a python (sixhump3D.py) file and run it directly using the Python interpretator (`python sixhump3D.py`)
 
-```python
+```{code-cell} ipython3
 # Save this cell content as "sixhump3D.py"
 import matplotlib.pyplot as plt
 import numpy as np
@@ -150,14 +151,15 @@ plt.show()
 
 ## 2) Least-Squares Fitting: Linear
 
++++
 
 Fit the following data to the linear function given as $f(x) = ax + b$ by finding the most optimal values for $a$ and $b$.
 
-```python
+```{code-cell} ipython3
 import pandas as pd
 ```
 
-```python
+```{code-cell} ipython3
 data_lin = pd.DataFrame({'x':np.arange(0,101,10),'y':np.array([ 26.94786969,   
                                                                  9.28357035,
                                                                114.31762497,
@@ -187,6 +189,7 @@ Do the fitting via: $\DeclareMathOperator\erf{erf}$
 
 ${y_i}$ represent the given y values and ${t_i}$ represent the values obtained from the model fit.
 
++++
 
 ## Bonus: Least Squares Fitting: Non-Linear (Gaussian)
 
@@ -194,5 +197,10 @@ Gauss function is defined as:
 
 $$ G(x;a,b,c) = a \exp{\left(-\frac{(x-b)^2}{2c^2}\right)}$$
 
++++
 
 Fit the "04_DistortedGaussian.csv" data (where the 1st column holds the x values and the 2nd column the y values), into a Gaussian (using `scipy.optimize.minimize` to minimize the error), thereby identifying the best values for $(a,b,c)$. Calculate the coefficient of determination ($r^2$).
+
+```{code-cell} ipython3
+
+```
