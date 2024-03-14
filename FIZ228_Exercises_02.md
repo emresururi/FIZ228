@@ -22,7 +22,9 @@ Dr. Emre S. Tasci, Hacettepe University
 
 >Anscombe's quartet comprises four data sets that have nearly identical simple descriptive statistics, yet have very different distributions and appear very different when graphed. Each dataset consists of eleven (x, y) points. They were constructed in 1973 by the statistician Francis Anscombe to demonstrate both the importance of graphing data when analyzing it, and the effect of outliers and other influential observations on statistical properties. He described the article as being intended to counter the impression among statisticians that "numerical calculations are exact, but graphs are rough".[1]
 
-[1] Anscombe, F. J. (1973). "Graphs in Statistical Analysis". American Statistician. 27 (1): 17–21. doi:10.1080/00031305.1973.10478966. JSTOR 2682899.
+[1] Anscombe, F. J. (1973). "Graphs in Statistical Analysis". American Statistician. 27 (1): 17–21.  
+  [doi:10.1080/00031305.1973.10478966](https://dx.doi.org/10.1080/00031305.1973.10478966)   
+  [JSTOR 2682899](https://www.jstor.org/stable/2682899).
 
 (From [Wikipedia entry](https://en.wikipedia.org/wiki/Anscombe%27s_quartet))
 
