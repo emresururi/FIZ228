@@ -34,9 +34,9 @@ Dr. Emre S. Tasci, Hacettepe University
 Let's try to fit it to a linear model, $y = ax+b$. Doesn't matter whether we're using least squares method or minimizer, they will both yield the best answer.
 
 ```{code-cell} ipython3
-%matplotlib inline
 import numpy as np
-
+from scipy import optimize
+import matplotlib.pyplot as plt
 import seaborn as sns
 sns.set_theme()
 
@@ -65,6 +65,25 @@ A
 ```{code-cell} ipython3
 a,b = np.linalg.lstsq(A,y,rcond=None)[0]
 print("a: {:.5f}\tb: {:.5f}".format(a,b))
+```
+
+## Alternative approaches for fitting via least squares
+_(A crash course)_
+
+### np.polyfit()
+
+```{code-cell} ipython3
+np.polyfit(x,y,1)
+```
+
+### scipy.optimize.curve_fit()
+
+```{code-cell} ipython3
+def f1(x,m,n):
+    return m*x+n
+
+res = optimize.curve_fit(f1,x,y)
+res[0]
 ```
 
 While we are at it, let's plot it:
@@ -105,7 +124,7 @@ print("Least-square sum of squares error: {:10.2f}".format(err_ls))
 
 # Linearization of Non-linear Relationships
 
-It doesn't much matter even if the model we're trying to fit is non-linear. We can simply apply a transformation to form it into a linear one. Here are a couple example for handling non-linear functions:
+It doesn't matter much even if the model we're trying to fit is non-linear. We can simply apply a transformation to form it into a linear one. Here are a couple example for handling non-linear functions:
 
 |Model|Nonlinear|Linearized|
 |---|-----------|----------|
@@ -276,7 +295,7 @@ LS (linear) | 216118.15
 
 So, we should take the linear least-squares fit as it yields the closest results... or, is it? (it is indeed, as it has the lowest error).
 
-Now what would you say if I told you, this was some kind of force vs. velocity" data -- would you change your mind then?
+Now what would you say if I told you, this was some kind of "force vs. velocity" data -- would you change your mind then?
 
 Here, let's make the graph in the proper way:
 
