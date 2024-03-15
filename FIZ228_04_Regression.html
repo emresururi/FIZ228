@@ -262,6 +262,25 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#">
    Regression
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alternative-approaches-for-fitting-via-least-squares">
+     Alternative approaches for fitting via least squares
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#np-polyfit">
+       np.polyfit()
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#scipy-optimize-curve-fit">
+       scipy.optimize.curve_fit()
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#linearization-of-non-linear-relationships">
@@ -364,6 +383,25 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#">
    Regression
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alternative-approaches-for-fitting-via-least-squares">
+     Alternative approaches for fitting via least squares
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#np-polyfit">
+       np.polyfit()
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#scipy-optimize-curve-fit">
+       scipy.optimize.curve_fit()
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#linearization-of-non-linear-relationships">
@@ -501,9 +539,9 @@ Dr. Emre S. Tasci, Hacettepe University</p>
 <p>Let’s try to fit it to a linear model, <span class="math notranslate nohighlight">\(y = ax+b\)</span>. Doesn’t matter whether we’re using least squares method or minimizer, they will both yield the best answer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">()</span>
 
@@ -568,6 +606,42 @@ Dr. Emre S. Tasci, Hacettepe University</p>
 </div>
 </div>
 </div>
+<section id="alternative-approaches-for-fitting-via-least-squares">
+<h2>Alternative approaches for fitting via least squares<a class="headerlink" href="#alternative-approaches-for-fitting-via-least-squares" title="Permalink to this headline">¶</a></h2>
+<p><em>(A crash course)</em></p>
+<section id="np-polyfit">
+<h3>np.polyfit()<a class="headerlink" href="#np-polyfit" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([  19.4702381 , -234.28571429])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="scipy-optimize-curve-fit">
+<h3>scipy.optimize.curve_fit()<a class="headerlink" href="#scipy-optimize-curve-fit" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">m</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">n</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">curve_fit</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([  19.47023812, -234.28571562])
+</pre></div>
+</div>
+</div>
+</div>
 <p>While we are at it, let’s plot it:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -582,7 +656,7 @@ Dr. Emre S. Tasci, Hacettepe University</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_04_Regression_7_0.png" src="_images/FIZ228_04_Regression_7_0.png" />
+<img alt="_images/FIZ228_04_Regression_11_0.png" src="_images/FIZ228_04_Regression_11_0.png" />
 </div>
 </div>
 <p>And here’s the error (sum of the squares of the estimate residuals (<span class="math notranslate nohighlight">\(S_r\)</span>)):</p>
@@ -624,9 +698,11 @@ Dr. Emre S. Tasci, Hacettepe University</p>
 </div>
 </div>
 </section>
+</section>
+</section>
 <section class="tex2jax_ignore mathjax_ignore" id="linearization-of-non-linear-relationships">
 <h1>Linearization of Non-linear Relationships<a class="headerlink" href="#linearization-of-non-linear-relationships" title="Permalink to this headline">¶</a></h1>
-<p>It doesn’t much matter even if the model we’re trying to fit is non-linear. We can simply apply a transformation to form it into a linear one. Here are a couple example for handling non-linear functions:</p>
+<p>It doesn’t matter much even if the model we’re trying to fit is non-linear. We can simply apply a transformation to form it into a linear one. Here are a couple example for handling non-linear functions:</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Model</p></th>
@@ -793,7 +869,7 @@ Data:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_04_Regression_15_0.png" src="_images/FIZ228_04_Regression_15_0.png" />
+<img alt="_images/FIZ228_04_Regression_19_0.png" src="_images/FIZ228_04_Regression_19_0.png" />
 </div>
 </div>
 </section>
@@ -863,7 +939,7 @@ beta:   1.9842
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_04_Regression_21_0.png" src="_images/FIZ228_04_Regression_21_0.png" />
+<img alt="_images/FIZ228_04_Regression_25_0.png" src="_images/FIZ228_04_Regression_25_0.png" />
 </div>
 </div>
 </section>
@@ -914,7 +990,7 @@ beta:   1.9842
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_04_Regression_24_0.png" src="_images/FIZ228_04_Regression_24_0.png" />
+<img alt="_images/FIZ228_04_Regression_28_0.png" src="_images/FIZ228_04_Regression_28_0.png" />
 </div>
 </div>
 <section id="which-one-is-better">
@@ -949,7 +1025,7 @@ beta:   1.9842
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_04_Regression_28_0.png" src="_images/FIZ228_04_Regression_28_0.png" />
+<img alt="_images/FIZ228_04_Regression_32_0.png" src="_images/FIZ228_04_Regression_32_0.png" />
 </div>
 </div>
 </section>
@@ -976,7 +1052,7 @@ beta:   1.9842
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_04_Regression_30_0.png" src="_images/FIZ228_04_Regression_30_0.png" />
+<img alt="_images/FIZ228_04_Regression_34_0.png" src="_images/FIZ228_04_Regression_34_0.png" />
 </div>
 </div>
 <p>and here is a table of the errors:</p>
@@ -999,7 +1075,7 @@ beta:   1.9842
 </tbody>
 </table>
 <p>So, we should take the linear least-squares fit as it yields the closest results… or, is it? (it is indeed, as it has the lowest error).</p>
-<p>Now what would you say if I told you, this was some kind of force vs. velocity” data – would you change your mind then?</p>
+<p>Now what would you say if I told you, this was some kind of “force vs. velocity” data – would you change your mind then?</p>
 <p>Here, let’s make the graph in the proper way:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1016,7 +1092,7 @@ beta:   1.9842
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_04_Regression_32_0.png" src="_images/FIZ228_04_Regression_32_0.png" />
+<img alt="_images/FIZ228_04_Regression_36_0.png" src="_images/FIZ228_04_Regression_36_0.png" />
 </div>
 </div>
 <p>Even though the linear model produces better fit, the bothersome thing is its behaviour for small velocities: the fit carries the response to negative forces which doesn’t make much sense (can you think of a case that behaves like this? Downwards for low velocities alas upwards for high velocities? Non-newtonian liquids? Not very likely).</p>
@@ -1157,7 +1233,7 @@ beta:   1.9842
 Sum of squares error:       0.00
 </pre></div>
 </div>
-<img alt="_images/FIZ228_04_Regression_39_1.png" src="_images/FIZ228_04_Regression_39_1.png" />
+<img alt="_images/FIZ228_04_Regression_43_1.png" src="_images/FIZ228_04_Regression_43_1.png" />
 </div>
 </div>
 </section>
@@ -1188,39 +1264,39 @@ Sum of squares error:       0.00
 Sum of squares error:   39512.25
 </pre></div>
 </div>
-<img alt="_images/FIZ228_04_Regression_41_1.png" src="_images/FIZ228_04_Regression_41_1.png" />
+<img alt="_images/FIZ228_04_Regression_45_1.png" src="_images/FIZ228_04_Regression_45_1.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Order: 5
 [ 2.45993590e-05 -5.13097319e-03  3.86779575e-01 -1.27692745e+01
   1.96127331e+02 -1.01500000e+03]
 Sum of squares error:  157241.89
 </pre></div>
 </div>
-<img alt="_images/FIZ228_04_Regression_41_3.png" src="_images/FIZ228_04_Regression_41_3.png" />
+<img alt="_images/FIZ228_04_Regression_45_3.png" src="_images/FIZ228_04_Regression_45_3.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Order: 4
 [ 4.03882576e-04 -7.24084596e-02  4.38877841e+00 -8.31222493e+01
   4.92589286e+02]
 Sum of squares error:  184213.33
 </pre></div>
 </div>
-<img alt="_images/FIZ228_04_Regression_41_5.png" src="_images/FIZ228_04_Regression_41_5.png" />
+<img alt="_images/FIZ228_04_Regression_45_5.png" src="_images/FIZ228_04_Regression_45_5.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Order: 3
 [ 2.90404040e-04 -2.00216450e-03  1.76176046e+01 -1.92857143e+02]
 Sum of squares error:  213742.91
 </pre></div>
 </div>
-<img alt="_images/FIZ228_04_Regression_41_7.png" src="_images/FIZ228_04_Regression_41_7.png" />
+<img alt="_images/FIZ228_04_Regression_45_7.png" src="_images/FIZ228_04_Regression_45_7.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Order: 2
 [ 3.72023810e-02  1.61220238e+01 -1.78482143e+02]
 Sum of squares error:  213793.01
 </pre></div>
 </div>
-<img alt="_images/FIZ228_04_Regression_41_9.png" src="_images/FIZ228_04_Regression_41_9.png" />
+<img alt="_images/FIZ228_04_Regression_45_9.png" src="_images/FIZ228_04_Regression_45_9.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Order: 1
 [  19.4702381  -234.28571429]
 Sum of squares error:  216118.15
 </pre></div>
 </div>
-<img alt="_images/FIZ228_04_Regression_41_11.png" src="_images/FIZ228_04_Regression_41_11.png" />
+<img alt="_images/FIZ228_04_Regression_45_11.png" src="_images/FIZ228_04_Regression_45_11.png" />
 </div>
 </div>
 </section>
@@ -1289,7 +1365,7 @@ Sum of squares error:  216118.15
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_04_Regression_45_0.png" src="_images/FIZ228_04_Regression_45_0.png" />
+<img alt="_images/FIZ228_04_Regression_49_0.png" src="_images/FIZ228_04_Regression_49_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1331,7 +1407,7 @@ Sum of squares error:  216118.15
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_04_Regression_48_0.png" src="_images/FIZ228_04_Regression_48_0.png" />
+<img alt="_images/FIZ228_04_Regression_52_0.png" src="_images/FIZ228_04_Regression_52_0.png" />
 </div>
 </div>
 <p>Let’s try to put a Gaussian in it! 8)</p>
@@ -1366,7 +1442,7 @@ Sum of squares error:  216118.15
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_04_Regression_53_0.png" src="_images/FIZ228_04_Regression_53_0.png" />
+<img alt="_images/FIZ228_04_Regression_57_0.png" src="_images/FIZ228_04_Regression_57_0.png" />
 </div>
 </div>
 <p>We can surely do better than that!</p>
@@ -1397,7 +1473,7 @@ Sum of squares error:  216118.15
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_04_Regression_56_0.png" src="_images/FIZ228_04_Regression_56_0.png" />
+<img alt="_images/FIZ228_04_Regression_60_0.png" src="_images/FIZ228_04_Regression_60_0.png" />
 </div>
 </div>
 <p>Let’s call statistics for help!</p>
@@ -1431,7 +1507,7 @@ Sum of squares error:  216118.15
 0.8106737388165177
 </pre></div>
 </div>
-<img alt="_images/FIZ228_04_Regression_58_1.png" src="_images/FIZ228_04_Regression_58_1.png" />
+<img alt="_images/FIZ228_04_Regression_62_1.png" src="_images/FIZ228_04_Regression_62_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1471,7 +1547,7 @@ Sum of squares error:  216118.15
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_04_Regression_62_0.png" src="_images/FIZ228_04_Regression_62_0.png" />
+<img alt="_images/FIZ228_04_Regression_66_0.png" src="_images/FIZ228_04_Regression_66_0.png" />
 </div>
 </div>
 <p>Let’s calculate the coefficient of determination <span class="math notranslate nohighlight">\(r^2\)</span>:</p>
