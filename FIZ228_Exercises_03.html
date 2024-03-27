@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Exercise Set #2 &#8212; FIZ228 - Numerical Analysis Lecture Notes</title>
+    <title>Exercise Set #3 &#8212; FIZ228 - Numerical Analysis Lecture Notes</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -56,8 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Exercise Set #3" href="FIZ228_Exercises_03.html" />
-    <link rel="prev" title="Exercise Set #1" href="FIZ228_Exercises_01.html" />
+    <link rel="prev" title="Exercise Set #2" href="FIZ228_Exercises_02.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -147,13 +146,13 @@ const thebe_selector_output = ".output, .cell_output"
    Exercise Set #1
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="FIZ228_Exercises_02.html">
    Exercise Set #2
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_Exercises_03.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Exercise Set #3
   </a>
  </li>
@@ -197,11 +196,11 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         <a class="dropdown-buttons"
-            href="_sources/FIZ228_Exercises_02.ipynb"><button type="button"
+            href="_sources/FIZ228_Exercises_03.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/FIZ228_Exercises_02.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/FIZ228_Exercises_03.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -226,7 +225,7 @@ const thebe_selector_output = ".output, .cell_output"
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/emresururi/FIZ228/HEAD/v2/gh/emresururi/FIZ228/main?urlpath=tree/FIZ228_Exercises_02.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/emresururi/FIZ228/HEAD/v2/gh/emresururi/FIZ228/main?urlpath=tree/FIZ228_Exercises_03.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -250,12 +249,19 @@ const thebe_selector_output = ".output, .cell_output"
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Exercise Set #2
+   Exercise Set #3
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cappeletti-et-al-s-graph">
+     Cappeletti et al.’s graph
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#anscombe-s-quartet">
-   Anscombe’s Quartet
+  <a class="reference internal nav-link" href="#reference-acknowledgement">
+   Reference &amp; Acknowledgement
   </a>
  </li>
 </ul>
@@ -268,7 +274,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Exercise Set #2</h1>
+                <h1>Exercise Set #3</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -280,12 +286,19 @@ const thebe_selector_output = ".output, .cell_output"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Exercise Set #2
+   Exercise Set #3
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cappeletti-et-al-s-graph">
+     Cappeletti et al.’s graph
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#anscombe-s-quartet">
-   Anscombe’s Quartet
+  <a class="reference internal nav-link" href="#reference-acknowledgement">
+   Reference &amp; Acknowledgement
   </a>
  </li>
 </ul>
@@ -297,153 +310,49 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="exercise-set-2">
-<h1>Exercise Set #2<a class="headerlink" href="#exercise-set-2" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="exercise-set-3">
+<h1>Exercise Set #3<a class="headerlink" href="#exercise-set-3" title="Permalink to this headline">¶</a></h1>
 <p><strong>FIZ228 - Numerical Analysis</strong><br />
 Dr. Emre S. Tasci, Hacettepe University</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="anscombe-s-quartet">
-<h1>Anscombe’s Quartet<a class="headerlink" href="#anscombe-s-quartet" title="Permalink to this headline">¶</a></h1>
-<blockquote>
-<div><p>Anscombe’s quartet comprises four data sets that have nearly identical simple descriptive statistics, yet have very different distributions and appear very different when graphed. Each dataset consists of eleven (x, y) points. They were constructed in 1973 by the statistician Francis Anscombe to demonstrate both the importance of graphing data when analyzing it, and the effect of outliers and other influential observations on statistical properties. He described the article as being intended to counter the impression among statisticians that “numerical calculations are exact, but graphs are rough”.[1]</p>
-</div></blockquote>
-<p>[1] Anscombe, F. J. (1973). “Graphs in Statistical Analysis”. American Statistician. 27 (1): 17–21.<br />
-<a class="reference external" href="https://dx.doi.org/10.1080/00031305.1973.10478966">doi:10.1080/00031305.1973.10478966</a><br />
-<a class="reference external" href="https://www.jstor.org/stable/2682899">JSTOR 2682899</a>.</p>
-<p>(From <a class="reference external" href="https://en.wikipedia.org/wiki/Anscombe%27s_quartet">Wikipedia entry</a>)</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Ax</p></th>
-<th class="head"><p>Ay</p></th>
-<th class="head"><p>Bx</p></th>
-<th class="head"><p>By</p></th>
-<th class="head"><p>Cx</p></th>
-<th class="head"><p>Cy</p></th>
-<th class="head"><p>Dx</p></th>
-<th class="head"><p>Dy</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>10.0</p></td>
-<td><p>8.04</p></td>
-<td><p>10.0</p></td>
-<td><p>9.14</p></td>
-<td><p>10.0</p></td>
-<td><p>7.46</p></td>
-<td><p>8.0</p></td>
-<td><p>6.58</p></td>
-</tr>
-<tr class="row-odd"><td><p>8.0</p></td>
-<td><p>6.95</p></td>
-<td><p>8.0</p></td>
-<td><p>8.14</p></td>
-<td><p>8.0</p></td>
-<td><p>6.77</p></td>
-<td><p>8.0</p></td>
-<td><p>5.76</p></td>
-</tr>
-<tr class="row-even"><td><p>13.0</p></td>
-<td><p>7.58</p></td>
-<td><p>13.0</p></td>
-<td><p>8.74</p></td>
-<td><p>13.0</p></td>
-<td><p>12.74</p></td>
-<td><p>8.0</p></td>
-<td><p>7.71</p></td>
-</tr>
-<tr class="row-odd"><td><p>9.0</p></td>
-<td><p>8.81</p></td>
-<td><p>9.0</p></td>
-<td><p>8.77</p></td>
-<td><p>9.0</p></td>
-<td><p>7.11</p></td>
-<td><p>8.0</p></td>
-<td><p>8.84</p></td>
-</tr>
-<tr class="row-even"><td><p>11.0</p></td>
-<td><p>8.33</p></td>
-<td><p>11.0</p></td>
-<td><p>9.26</p></td>
-<td><p>11.0</p></td>
-<td><p>7.81</p></td>
-<td><p>8.0</p></td>
-<td><p>8.47</p></td>
-</tr>
-<tr class="row-odd"><td><p>14.0</p></td>
-<td><p>9.96</p></td>
-<td><p>14.0</p></td>
-<td><p>8.10</p></td>
-<td><p>14.0</p></td>
-<td><p>8.84</p></td>
-<td><p>8.0</p></td>
-<td><p>7.04</p></td>
-</tr>
-<tr class="row-even"><td><p>6.0</p></td>
-<td><p>7.24</p></td>
-<td><p>6.0</p></td>
-<td><p>6.13</p></td>
-<td><p>6.0</p></td>
-<td><p>6.08</p></td>
-<td><p>8.0</p></td>
-<td><p>5.25</p></td>
-</tr>
-<tr class="row-odd"><td><p>4.0</p></td>
-<td><p>4.26</p></td>
-<td><p>4.0</p></td>
-<td><p>3.10</p></td>
-<td><p>4.0</p></td>
-<td><p>5.39</p></td>
-<td><p>19.0</p></td>
-<td><p>12.50</p></td>
-</tr>
-<tr class="row-even"><td><p>12.0</p></td>
-<td><p>10.84</p></td>
-<td><p>12.0</p></td>
-<td><p>9.13</p></td>
-<td><p>12.0</p></td>
-<td><p>8.15</p></td>
-<td><p>8.0</p></td>
-<td><p>5.56</p></td>
-</tr>
-<tr class="row-odd"><td><p>7.0</p></td>
-<td><p>4.82</p></td>
-<td><p>7.0</p></td>
-<td><p>7.26</p></td>
-<td><p>7.0</p></td>
-<td><p>6.42</p></td>
-<td><p>8.0</p></td>
-<td><p>7.91</p></td>
-</tr>
-<tr class="row-even"><td><p>5.0</p></td>
-<td><p>5.68</p></td>
-<td><p>5.0</p></td>
-<td><p>4.74</p></td>
-<td><p>5.0</p></td>
-<td><p>5.73</p></td>
-<td><p>8.0</p></td>
-<td><p>6.89</p></td>
-</tr>
-</tbody>
-</table>
-<p><em>(You can download the data as CSV from the course page: Exercise_02_AnscombeQuartet.csv)</em></p>
+<p>Fit the <a class="reference download internal" download="" href="_downloads/531855fd0accf0811b7ff1823f853ccb/05_Silica_FTIR.csv"><code class="xref download docutils literal notranslate"><span class="pre">Silica</span> <span class="pre">FTIR</span> <span class="pre">data</span></code></a> [Silica FTIR data] for the wavenumber range [900,1500] cm<sup>-1</sup>:</p>
 <ol class="simple">
-<li><p>Import the data set as a pandas dataframe.</p></li>
-<li><p>Plot each in separate graps.</p></li>
-<li><p>Calculate the mean of each group’s x and y values.</p></li>
-<li><p>Calculate the variance of each group’s x and y values.</p></li>
-<li><p>Find the equation for the best fitting line for each group</p></li>
-<li><p>Calculate the following quantities for each fit:</p>
-<ul class="simple">
-<li><p>Sum of the squares of the data residuals (<span class="math notranslate nohighlight">\(S_t\)</span>)</p></li>
-<li><p>Coefficient of variation (think about what <span class="math notranslate nohighlight">\(s_y\)</span> in the formula represents ;)</p></li>
-<li><p>Sum of the squares of the estimate residuals (<span class="math notranslate nohighlight">\(S_r\)</span>)</p></li>
-<li><p>Standard error of the estimate (<span class="math notranslate nohighlight">\(s_{y/x}\)</span>)</p></li>
-<li><p>Coefficient of determination (<span class="math notranslate nohighlight">\(r^2\)</span>)</p></li>
-</ul>
-</li>
+<li><p>Using 3 Gaussians</p></li>
+<li><p>Using 4 Gaussians</p></li>
+<li><p>Using 5 Gaussians</p></li>
+<li><p>Using 3 Lorentzians</p></li>
+<li><p>Using 2 Gaussians &amp; 2 Lorentzians</p></li>
 </ol>
-<p>Interpret your findings.</p>
-<p><em>For a more modern and interesting similar case, check <a class="reference external" href="https://blog.revolutionanalytics.com/2017/05/the-datasaurus-dozen.html">the Datasaurus Dozen</a>! 8)</em></p>
+<p>Calculate the coefficient of determination (<span class="math notranslate nohighlight">\(r^2\)</span>) for each fit.</p>
+<hr>
+<p><strong>Information:</strong></p>
+<p>A Gaussian characterized by (<span class="math notranslate nohighlight">\(A,\mu,\sigma\)</span>) is formulized as:</p>
+<div class="math notranslate nohighlight">
+\[G(x;A,\mu,\sigma) = A\exp{\left[-\frac{(x-\mu)^2}{2\sigma^2}\right]}\]</div>
+<p>whereas, a Lorentzian characterized by (<span class="math notranslate nohighlight">\(A,x_0,\gamma\)</span>) is formulized as:</p>
+<div class="math notranslate nohighlight">
+\[ L(x;A,x_0,\gamma)=A\left[ { \gamma \over (x - x_0)^2 + \gamma^2  } \right]\]</div>
+<p><strong>Hints:</strong></p>
+<ul class="simple">
+<li><p>Once you solve one of the items, it will be pretty straightforward to apply the same routing to the rest.</p></li>
+<li><p>If at first you don’t get any result or error from the <code class="docutils literal notranslate"><span class="pre">curve_fit()</span></code> or any other fit function you are using, it is most likely due to a bad starting point. Trial &amp; error is a good approach but taking a hint from <a class="reference external" href="https://doi.org/10.1366/12-06748">Cappeletti et al.’s graph</a> is the best one! ;) [See below]</p></li>
+<li><p>It’s always a good idea to separately plot all the components to see if the components make sense (e.g., absorbance can never take negative values!)</p></li>
+</ul>
+<p>As an example for the last one, check the following fit of 5 Gaussians, with <em>r<sup>2</sup></em> = 0.998:</p>
+<p><img alt="HW3_bad5G_sum.png" src="_images/HW3_bad5G_sum.png" /></p>
+<p>Even though it seems very good, here are its components, separately drawn:</p>
+<p><img alt="HW3_bad5G.png" src="_images/HW3_bad5G.png" /></p>
+<p>which doesn’t make any sense as G3 &amp; G5 Gaussians indicate a negative absorption!</p>
+<section id="cappeletti-et-al-s-graph">
+<h2>Cappeletti et al.’s graph<a class="headerlink" href="#cappeletti-et-al-s-graph" title="Permalink to this headline">¶</a></h2>
+<p><img alt="imgs/04_Cappeletti.png" src="_images/04_Cappeletti.png" /></p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="reference-acknowledgement">
+<h1>Reference &amp; Acknowledgement<a class="headerlink" href="#reference-acknowledgement" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>I’m indebted to Prof. Sevgi Bayarı for generously supplying the FTIR data.</p></li>
+<li><p>L.B. Cappeletti et al., <a class="reference external" href="https://doi.org/10.1366/12-06748">“Determination of the Network Structure of Sensor Materials Prepared by Three Different Sol-Gel Routes Using Fourier Transform Infrared Spectroscopy (FT-IR)”, Applied Spectroscopy 67(4) 441-447 (2012) (DOI: 10.1366/12-06748)</a></p></li>
+</ul>
 </section>
 
     <script type="text/x-thebe-config">
@@ -471,19 +380,12 @@ Dr. Emre S. Tasci, Hacettepe University</p>
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="FIZ228_Exercises_01.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="FIZ228_Exercises_02.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Exercise Set #1</p>
+            <p class="prev-next-title">Exercise Set #2</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="FIZ228_Exercises_03.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Exercise Set #3</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             
