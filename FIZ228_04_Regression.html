@@ -102,60 +102,89 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_01_DataProcesses.html">
-   Importing, parsing, processing and exporting datasets
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="FIZ228_LectureNotes.html">
+   Lecture Notes
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_01_DataProcesses.html">
+     Importing, parsing, processing and exporting datasets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_02_DataVisualization.html">
+     Visualization of datasets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_03_LeastSquaresErrors.html">
+     Least Squares Method &amp; Error Estimations
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_05_Interpolation.html">
+     Interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_06_MinimizeOptimize.html">
+     Minimization &amp; Optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_07_ClusteringAndClassification.html">
+     Clustering and Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_08_OrdinaryDifferentialEquations.html">
+     Ordinary Differential Equations
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_02_DataVisualization.html">
-   Visualization of datasets
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="FIZ228_ExercisesExams.html">
+   Exercises &amp; Exams
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_03_LeastSquaresErrors.html">
-   Least Squares Method &amp; Error Estimations
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_05_Interpolation.html">
-   Interpolation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_06_MinimizeOptimize.html">
-   Minimization &amp; Optimization
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_07_ClusteringAndClassification.html">
-   Clustering and Classification
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_08_OrdinaryDifferentialEquations.html">
-   Ordinary Differential Equations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_Exercises_01.html">
-   Exercise Set #1
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_Exercises_02.html">
-   Exercise Set #2
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_Exercises_03.html">
-   Exercise Set #3
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Exams_HWs/FIZ228_Exercises_01.html">
+     Exercise Set #1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Exams_HWs/FIZ228_Exercises_02.html">
+     Exercise Set #2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Exams_HWs/FIZ228_Exercises_03.html">
+     Exercise Set #3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Exams_HWs/FIZ228_20232_MT1.html">
+     Midterm Exam #1
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -483,7 +512,12 @@ const thebe_selector_output = ".output, .cell_output"
 <h1>Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h1>
 <p><strong>FIZ228 - Numerical Analysis</strong><br />
 Dr. Emre S. Tasci, Hacettepe University</p>
-<p><strong>Case Data (Chapra, 14.6):</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This lecture is heavily benefited from Steven Chapra’s <a class="reference external" href="https://www.mheducation.com/highered/product/applied-numerical-methods-matlab-engineers-scientists-chapra/M9780073397962.html">Applied Numerical Methods with MATLAB: for Engineers &amp; Scientists</a>.</p>
+</div>
+<p><strong>Case Data (Chapra, 14.6):</strong><br />
+<a class="reference download internal" download="" href="_downloads/2245bd3d0a88ecaf9666ff1df23b43d3/04_Chapra_data.csv"><code class="xref download docutils literal notranslate"><span class="pre">04_Chapra_data.csv</span></code></a></p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(i\)</span></p></th>
@@ -646,7 +680,7 @@ Dr. Emre S. Tasci, Hacettepe University</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_04_Regression_11_0.png" src="_images/FIZ228_04_Regression_11_0.png" />
+<img alt="_images/FIZ228_04_Regression_12_0.png" src="_images/FIZ228_04_Regression_12_0.png" />
 </div>
 </div>
 <p>And here’s the error (sum of the squares of the estimate residuals (<span class="math notranslate nohighlight">\(S_r\)</span>)):</p>
@@ -859,7 +893,7 @@ Data:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_04_Regression_19_0.png" src="_images/FIZ228_04_Regression_19_0.png" />
+<img alt="_images/FIZ228_04_Regression_20_0.png" src="_images/FIZ228_04_Regression_20_0.png" />
 </div>
 </div>
 </section>
@@ -929,7 +963,7 @@ beta:   1.9842
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_04_Regression_25_0.png" src="_images/FIZ228_04_Regression_25_0.png" />
+<img alt="_images/FIZ228_04_Regression_26_0.png" src="_images/FIZ228_04_Regression_26_0.png" />
 </div>
 </div>
 </section>
@@ -980,7 +1014,7 @@ beta:   1.9842
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_04_Regression_28_0.png" src="_images/FIZ228_04_Regression_28_0.png" />
+<img alt="_images/FIZ228_04_Regression_29_0.png" src="_images/FIZ228_04_Regression_29_0.png" />
 </div>
 </div>
 <section id="which-one-is-better">
@@ -1015,7 +1049,7 @@ beta:   1.9842
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_04_Regression_32_0.png" src="_images/FIZ228_04_Regression_32_0.png" />
+<img alt="_images/FIZ228_04_Regression_33_0.png" src="_images/FIZ228_04_Regression_33_0.png" />
 </div>
 </div>
 </section>
@@ -1042,7 +1076,7 @@ beta:   1.9842
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_04_Regression_34_0.png" src="_images/FIZ228_04_Regression_34_0.png" />
+<img alt="_images/FIZ228_04_Regression_35_0.png" src="_images/FIZ228_04_Regression_35_0.png" />
 </div>
 </div>
 <p>and here is a table of the errors:</p>
@@ -1082,7 +1116,7 @@ beta:   1.9842
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_04_Regression_36_0.png" src="_images/FIZ228_04_Regression_36_0.png" />
+<img alt="_images/FIZ228_04_Regression_37_0.png" src="_images/FIZ228_04_Regression_37_0.png" />
 </div>
 </div>
 <p>Even though the linear model produces better fit, the bothersome thing is its behaviour for small velocities: the fit carries the response to negative forces which doesn’t make much sense (can you think of a case that behaves like this? Downwards for low velocities alas upwards for high velocities? Non-newtonian liquids? Not very likely).</p>
@@ -1223,7 +1257,7 @@ beta:   1.9842
 Sum of squares error:       0.00
 </pre></div>
 </div>
-<img alt="_images/FIZ228_04_Regression_43_1.png" src="_images/FIZ228_04_Regression_43_1.png" />
+<img alt="_images/FIZ228_04_Regression_44_1.png" src="_images/FIZ228_04_Regression_44_1.png" />
 </div>
 </div>
 </section>
@@ -1254,39 +1288,39 @@ Sum of squares error:       0.00
 Sum of squares error:   39512.25
 </pre></div>
 </div>
-<img alt="_images/FIZ228_04_Regression_45_1.png" src="_images/FIZ228_04_Regression_45_1.png" />
+<img alt="_images/FIZ228_04_Regression_46_1.png" src="_images/FIZ228_04_Regression_46_1.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Order: 5
 [ 2.45993590e-05 -5.13097319e-03  3.86779575e-01 -1.27692745e+01
   1.96127331e+02 -1.01500000e+03]
 Sum of squares error:  157241.89
 </pre></div>
 </div>
-<img alt="_images/FIZ228_04_Regression_45_3.png" src="_images/FIZ228_04_Regression_45_3.png" />
+<img alt="_images/FIZ228_04_Regression_46_3.png" src="_images/FIZ228_04_Regression_46_3.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Order: 4
 [ 4.03882576e-04 -7.24084596e-02  4.38877841e+00 -8.31222493e+01
   4.92589286e+02]
 Sum of squares error:  184213.33
 </pre></div>
 </div>
-<img alt="_images/FIZ228_04_Regression_45_5.png" src="_images/FIZ228_04_Regression_45_5.png" />
+<img alt="_images/FIZ228_04_Regression_46_5.png" src="_images/FIZ228_04_Regression_46_5.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Order: 3
 [ 2.90404040e-04 -2.00216450e-03  1.76176046e+01 -1.92857143e+02]
 Sum of squares error:  213742.91
 </pre></div>
 </div>
-<img alt="_images/FIZ228_04_Regression_45_7.png" src="_images/FIZ228_04_Regression_45_7.png" />
+<img alt="_images/FIZ228_04_Regression_46_7.png" src="_images/FIZ228_04_Regression_46_7.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Order: 2
 [ 3.72023810e-02  1.61220238e+01 -1.78482143e+02]
 Sum of squares error:  213793.01
 </pre></div>
 </div>
-<img alt="_images/FIZ228_04_Regression_45_9.png" src="_images/FIZ228_04_Regression_45_9.png" />
+<img alt="_images/FIZ228_04_Regression_46_9.png" src="_images/FIZ228_04_Regression_46_9.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Order: 1
 [  19.4702381  -234.28571429]
 Sum of squares error:  216118.15
 </pre></div>
 </div>
-<img alt="_images/FIZ228_04_Regression_45_11.png" src="_images/FIZ228_04_Regression_45_11.png" />
+<img alt="_images/FIZ228_04_Regression_46_11.png" src="_images/FIZ228_04_Regression_46_11.png" />
 </div>
 </div>
 </section>
@@ -1355,7 +1389,7 @@ Sum of squares error:  216118.15
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_04_Regression_49_0.png" src="_images/FIZ228_04_Regression_49_0.png" />
+<img alt="_images/FIZ228_04_Regression_50_0.png" src="_images/FIZ228_04_Regression_50_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1397,7 +1431,7 @@ Sum of squares error:  216118.15
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_04_Regression_52_0.png" src="_images/FIZ228_04_Regression_52_0.png" />
+<img alt="_images/FIZ228_04_Regression_53_0.png" src="_images/FIZ228_04_Regression_53_0.png" />
 </div>
 </div>
 <p>Let’s try to put a Gaussian in it! 8)</p>
@@ -1432,7 +1466,7 @@ Sum of squares error:  216118.15
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_04_Regression_57_0.png" src="_images/FIZ228_04_Regression_57_0.png" />
+<img alt="_images/FIZ228_04_Regression_58_0.png" src="_images/FIZ228_04_Regression_58_0.png" />
 </div>
 </div>
 <p>We can surely do better than that!</p>
@@ -1463,7 +1497,7 @@ Sum of squares error:  216118.15
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_04_Regression_60_0.png" src="_images/FIZ228_04_Regression_60_0.png" />
+<img alt="_images/FIZ228_04_Regression_61_0.png" src="_images/FIZ228_04_Regression_61_0.png" />
 </div>
 </div>
 <p>Let’s call statistics for help!</p>
@@ -1497,7 +1531,7 @@ Sum of squares error:  216118.15
 0.8106737388165177
 </pre></div>
 </div>
-<img alt="_images/FIZ228_04_Regression_62_1.png" src="_images/FIZ228_04_Regression_62_1.png" />
+<img alt="_images/FIZ228_04_Regression_63_1.png" src="_images/FIZ228_04_Regression_63_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1537,7 +1571,7 @@ Sum of squares error:  216118.15
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_04_Regression_66_0.png" src="_images/FIZ228_04_Regression_66_0.png" />
+<img alt="_images/FIZ228_04_Regression_67_0.png" src="_images/FIZ228_04_Regression_67_0.png" />
 </div>
 </div>
 <p>Let’s calculate the coefficient of determination <span class="math notranslate nohighlight">\(r^2\)</span>:</p>

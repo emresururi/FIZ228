@@ -18,7 +18,14 @@ Dr. Emre S. Tasci, Hacettepe University
 
 +++
 
-**Case Data (Chapra, 14.6):**
+```{note}
+This lecture is heavily benefited from Steven Chapra's [Applied Numerical Methods with MATLAB: for Engineers & Scientists](https://www.mheducation.com/highered/product/applied-numerical-methods-matlab-engineers-scientists-chapra/M9780073397962.html).
+```
+
++++
+
+**Case Data (Chapra, 14.6):**  
+{download}`04_Chapra_data.csv<data/04_Chapra_data.csv>`
 
 |$i$|$x_i$|$y_i$|
 |---|---|---|

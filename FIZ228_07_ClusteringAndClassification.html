@@ -102,60 +102,89 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_01_DataProcesses.html">
-   Importing, parsing, processing and exporting datasets
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="FIZ228_LectureNotes.html">
+   Lecture Notes
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_01_DataProcesses.html">
+     Importing, parsing, processing and exporting datasets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_02_DataVisualization.html">
+     Visualization of datasets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_03_LeastSquaresErrors.html">
+     Least Squares Method &amp; Error Estimations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_04_Regression.html">
+     Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_05_Interpolation.html">
+     Interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_06_MinimizeOptimize.html">
+     Minimization &amp; Optimization
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Clustering and Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_08_OrdinaryDifferentialEquations.html">
+     Ordinary Differential Equations
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_02_DataVisualization.html">
-   Visualization of datasets
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="FIZ228_ExercisesExams.html">
+   Exercises &amp; Exams
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_03_LeastSquaresErrors.html">
-   Least Squares Method &amp; Error Estimations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_04_Regression.html">
-   Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_05_Interpolation.html">
-   Interpolation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_06_MinimizeOptimize.html">
-   Minimization &amp; Optimization
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Clustering and Classification
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_08_OrdinaryDifferentialEquations.html">
-   Ordinary Differential Equations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_Exercises_01.html">
-   Exercise Set #1
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_Exercises_02.html">
-   Exercise Set #2
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_Exercises_03.html">
-   Exercise Set #3
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Exams_HWs/FIZ228_Exercises_01.html">
+     Exercise Set #1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Exams_HWs/FIZ228_Exercises_02.html">
+     Exercise Set #2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Exams_HWs/FIZ228_Exercises_03.html">
+     Exercise Set #3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Exams_HWs/FIZ228_20232_MT1.html">
+     Midterm Exam #1
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -437,6 +466,10 @@ const thebe_selector_output = ".output, .cell_output"
 <h1>Clustering and Classification<a class="headerlink" href="#clustering-and-classification" title="Permalink to this headline">¶</a></h1>
 <p><strong>FIZ228 - Numerical Analysis</strong><br />
 Dr. Emre S. Tasci, Hacettepe University</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>This lecture is heavily benefitted (almost copied fully) from David MacKay’s “Information Theory, Inference, and Learning Algorithms”](<a class="reference external" href="http://www.inference.org.uk/mackay/itila/book.html">http://www.inference.org.uk/mackay/itila/book.html</a>).</em></p>
+</div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
@@ -513,7 +546,6 @@ These deductions are a case of “mixture density modelling”. How well the mod
 <li><p><strong>Update step:</strong> Means are adjusted to match the sample means of the data points that they are responsible for.</p></li>
 </ol>
 <p>=&gt; The k-means algorithm always converges to a fixed point!</p>
-<p><a class="reference external" href="https://www.emresururi.com">EST</a></p>
 </section>
 <section id="the-algorithm-formular">
 <h2>The algorithm (Formular)<a class="headerlink" href="#the-algorithm-formular" title="Permalink to this headline">¶</a></h2>
@@ -526,7 +558,7 @@ These deductions are a case of “mixture density modelling”. How well the mod
 </ol>
 <div class="math notranslate nohighlight">
 \[\hat{k}^{(n)}=\text{argmin}_k \left\{{d\left(\vec{m}^{(k)},x^{(n)}\right)}\right\}\]</div>
-<p><img alt="kmeans_1.png" src="_images/07_kmeans_1.png" />
+<p><img alt="kmeans_1.png" src="_images/07_kmeans_1_1.png" />
 <em>alternative approach:</em> responsibilities as indicator variables <span class="math notranslate nohighlight">\(r_k^{(n)}\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}r_k^{(n)}=\begin{cases}
@@ -534,7 +566,7 @@ These deductions are a case of “mixture density modelling”. How well the mod
   0\;\text{if}\,\hat{k}^{(n)}\ne k
 \end{cases} \end{split}\]</div>
 <p>(if there is a tie, set to the smallest winning <span class="math notranslate nohighlight">\(\{k\}\)</span>).
-<img alt="kmeans_2.png" src="_images/07_kmeans_2.png" /></p>
+<img alt="kmeans_2.png" src="_images/07_kmeans_2_1.png" /></p>
 <ol class="simple">
 <li><p><strong>Update step:</strong> Means are adjusted to match the sample means of the data points that they are responsible for.</p></li>
 </ol>
@@ -714,13 +746,11 @@ These deductions are a case of “mixture density modelling”. How well the mod
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2.59551458 0.29528795]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3.9333455  3.42157136]
+[3.9333455  3.42157136]
 [6.53662173 0.55132918]
 </pre></div>
 </div>
-<img alt="_images/FIZ228_07_ClusteringAndClassification_12_2.png" src="_images/FIZ228_07_ClusteringAndClassification_12_2.png" />
+<img alt="_images/FIZ228_07_ClusteringAndClassification_12_1.png" src="_images/FIZ228_07_ClusteringAndClassification_12_1.png" />
 </div>
 </div>
 <div class="cell docutils container">

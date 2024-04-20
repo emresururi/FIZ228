@@ -29,5 +29,7 @@ This jupyter book is prepared to be used as a companion to the "FIZ228 - Numeric
 February 2023,  
 Dr. Emre S. Tasci
 
+The most recent version of the [source files](https://github.com/emresururi/FIZ228) and [this jupyter book](https://emresururi.github.io/FIZ228/) can be obtained via the [FIZ228 GitHub repository](https://github.com/emresururi/FIZ228).
+
 ```{tableofcontents}
 ```

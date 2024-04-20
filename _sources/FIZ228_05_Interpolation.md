@@ -18,7 +18,13 @@ Dr. Emre S. Tasci, Hacettepe University
 
 +++
 
-In our "Regression" lecture, we talked about fitting a function/model/curve that passes _as close as possible_ to a given set of data points. But sometimes we find ourselves in a case where we have clearly defined points and would like to know about the behaviour between these points. This method of estimating the intermediate values while retaining the known values is known as _interpolation_.
+```{note}
+This lecture is heavily benefited from Steven Chapra's [Applied Numerical Methods with MATLAB: for Engineers & Scientists](https://www.mheducation.com/highered/product/applied-numerical-methods-matlab-engineers-scientists-chapra/M9780073397962.html).
+```
+
++++
+
+In our "[Regression](FIZ228_04_Regression)" lecture, we talked about fitting a function/model/curve that passes _as close as possible_ to a given set of data points. But sometimes we find ourselves in a case where we have clearly defined points and would like to know about the behaviour between these points. This method of estimating the intermediate values while retaining the known values is known as _interpolation_.
 
 The given data points act as the _boundary conditions_, usually fixed and thus very suitable for interpolation applcations. We are given a partial look on the system which corresponds to the _initial conditions_.
 

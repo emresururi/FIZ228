@@ -12,15 +12,13 @@ kernelspec:
   name: python3
 ---
 
-# Take-Home Exam #3
+# Exercise Set #3
 **FIZ228 - Numerical Analysis**  
 Dr. Emre S. Tasci, Hacettepe University
 
-_It is strictly forbidden to contact anybody outside your group or seeking the direct answer on the internet. Every member of the group is responsible for every one of the questions._
-
 +++
 
-Fit the {download}`Silica FTIR data<data/05_Silica_FTIR.csv>` [Silica FTIR data] for the wavenumber range [900,1500] cm<sup>-1</sup>:
+Fit the {download}`Silica FTIR data<../data/05_Silica_FTIR.csv>` [Silica FTIR data] for the wavenumber range [900,1500] cm<sup>-1</sup>:
 
 1. Using 3 Gaussians
 2. Using 4 Gaussians
@@ -49,20 +47,32 @@ $$ L(x;A,x_0,\gamma)=A\left[ { \gamma \over (x - x_0)^2 + \gamma^2  } \right]$$
 **Hints:**
 
 * Once you solve one of the items, it will be pretty straightforward to apply the same routing to the rest.
-* If at first you don't get any result or error from the `curve_fit()` or any other fit function you are using, it is most likely due to a bad starting point. Trial & error is a good approach but taking a hint from [Cappeletti et al.'s graph](https://hadi.hacettepe.edu.tr/course/view.php?id=150905#section-7) is the best one! ;)
+* If at first you don't get any result or error from the `curve_fit()` or any other fit function you are using, it is most likely due to a bad starting point. Trial & error is a good approach but taking a hint from [Cappeletti et al.'s graph](https://doi.org/10.1366/12-06748) is the best one! ;) [See below]
 * It's always a good idea to separately plot all the components to see if the components make sense (e.g., absorbance can never take negative values!)
 
 +++
 
 As an example for the last one, check the following fit of 5 Gaussians, with _r<sup>2</sup>_ = 0.998:
 
-![HW3_bad5G_sum.png](imgs/HW3_bad5G_sum.png)
+![HW3_bad5G_sum.png](../imgs/HW3_bad5G_sum.png)
 
 Even though it seems very good, here are its components, separately drawn:
 
-![HW3_bad5G.png](imgs/HW3_bad5G.png)
+![HW3_bad5G.png](../imgs/HW3_bad5G.png)
 
 which doesn't make any sense as G3 & G5 Gaussians indicate a negative absorption!
+
++++
+
+## Cappeletti et al.'s graph
+
+![imgs/04_Cappeletti.png](../imgs/04_Cappeletti.png)
+
++++
+
+# Reference & Acknowledgement
+* I'm indebted to Prof. Sevgi Bayarı for generously supplying the FTIR data.
+* L.B. Cappeletti et al., ["Determination of the Network Structure of Sensor Materials Prepared by Three Different Sol-Gel Routes Using Fourier Transform Infrared Spectroscopy (FT-IR)", Applied Spectroscopy 67(4) 441-447 (2012) (DOI: 10.1366/12-06748)](https://doi.org/10.1366/12-06748)
 
 ```{code-cell} ipython3
 

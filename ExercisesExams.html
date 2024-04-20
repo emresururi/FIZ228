@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Take-Home Exam #3 &#8212; FIZ228 - Numerical Analysis Lecture Notes</title>
+    <title>Exercises &amp; Exams &#8212; FIZ228 - Numerical Analysis Lecture Notes</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -52,11 +52,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Take-Home Exam #2" href="FIZ228_TakeHomeExam_02.html" />
+    <link rel="next" title="Midterm Exam #1" href="Exams_HWs/FIZ228_20232_MT1.html" />
+    <link rel="prev" title="Exercise Set #3" href="FIZ228_Exercises_03.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -152,19 +151,26 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_TakeHomeExam_01.html">
-   Take-Home Exam #1
+  <a class="reference internal" href="FIZ228_Exercises_03.html">
+   Exercise Set #3
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_TakeHomeExam_02.html">
-   Take-Home Exam #2
-  </a>
- </li>
- <li class="toctree-l1 current active">
+ <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
-   Take-Home Exam #3
+   Exercises &amp; Exams
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Exams_HWs/FIZ228_20232_MT1.html">
+     Midterm Exam #1
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -206,11 +212,11 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         <a class="dropdown-buttons"
-            href="_sources/FIZ228_TakeHomeExam_03.ipynb"><button type="button"
+            href="_sources/ExercisesExams.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/FIZ228_TakeHomeExam_03.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/ExercisesExams.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -235,7 +241,7 @@ const thebe_selector_output = ".output, .cell_output"
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/emresururi/FIZ228/HEAD/v2/gh/emresururi/FIZ228/main?urlpath=tree/FIZ228_TakeHomeExam_03.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/emresururi/FIZ228/HEAD/v2/gh/emresururi/FIZ228/main?urlpath=tree/ExercisesExams.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -259,7 +265,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Take-Home Exam #3</h1>
+                <h1>Exercises & Exams</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -270,39 +276,25 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="take-home-exam-3">
-<h1>Take-Home Exam #3<a class="headerlink" href="#take-home-exam-3" title="Permalink to this headline">¶</a></h1>
-<p><strong>FIZ228 - Numerical Analysis</strong><br />
-Dr. Emre S. Tasci, Hacettepe University</p>
-<p><em>It is strictly forbidden to contact anybody outside your group or seeking the direct answer on the internet. Every member of the group is responsible for every one of the questions.</em></p>
-<p>Fit the <a class="reference download internal" download="" href="_downloads/531855fd0accf0811b7ff1823f853ccb/05_Silica_FTIR.csv"><code class="xref download docutils literal notranslate"><span class="pre">Silica</span> <span class="pre">FTIR</span> <span class="pre">data</span></code></a> [Silica FTIR data] for the wavenumber range [900,1500] cm<sup>-1</sup>:</p>
-<ol class="simple">
-<li><p>Using 3 Gaussians</p></li>
-<li><p>Using 4 Gaussians</p></li>
-<li><p>Using 5 Gaussians</p></li>
-<li><p>Using 3 Lorentzians</p></li>
-<li><p>Using 2 Gaussians &amp; 2 Lorentzians</p></li>
-</ol>
-<p>Calculate the coefficient of determination (<span class="math notranslate nohighlight">\(r^2\)</span>) for each fit.</p>
-<hr>
-<p><strong>Information:</strong></p>
-<p>A Gaussian characterized by (<span class="math notranslate nohighlight">\(A,\mu,\sigma\)</span>) is formulized as:</p>
-<div class="math notranslate nohighlight">
-\[G(x;A,\mu,\sigma) = A\exp{\left[-\frac{(x-\mu)^2}{2\sigma^2}\right]}\]</div>
-<p>whereas, a Lorentzian characterized by (<span class="math notranslate nohighlight">\(A,x_0,\gamma\)</span>) is formulized as:</p>
-<div class="math notranslate nohighlight">
-\[ L(x;A,x_0,\gamma)=A\left[ { \gamma \over (x - x_0)^2 + \gamma^2  } \right]\]</div>
-<p><strong>Hints:</strong></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="exercises-exams">
+<h1>Exercises &amp; Exams<a class="headerlink" href="#exercises-exams" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><p>Once you solve one of the items, it will be pretty straightforward to apply the same routing to the rest.</p></li>
-<li><p>If at first you don’t get any result or error from the <code class="docutils literal notranslate"><span class="pre">curve_fit()</span></code> or any other fit function you are using, it is most likely due to a bad starting point. Trial &amp; error is a good approach but taking a hint from <a class="reference external" href="https://hadi.hacettepe.edu.tr/course/view.php?id=150905#section-7">Cappeletti et al.’s graph</a> is the best one! ;)</p></li>
-<li><p>It’s always a good idea to separately plot all the components to see if the components make sense (e.g., absorbance can never take negative values!)</p></li>
+<li><p>Exercises</p>
+<ul>
+<li><p>Lom 1</p></li>
+<li><p>Lom 2</p></li>
 </ul>
-<p>As an example for the last one, check the following fit of 5 Gaussians, with <em>r<sup>2</sup></em> = 0.998:</p>
-<p><img alt="HW3_bad5G_sum.png" src="_images/HW3_bad5G_sum.png" /></p>
-<p>Even though it seems very good, here are its components, separately drawn:</p>
-<p><img alt="HW3_bad5G.png" src="_images/HW3_bad5G.png" /></p>
-<p>which doesn’t make any sense as G3 &amp; G5 Gaussians indicate a negative absorption!</p>
+</li>
+<li><p>Exams</p>
+<ul>
+<li><p>Ex1</p></li>
+<li><p>Ex2</p></li>
+<li><p>Ex3</p></li>
+</ul>
+</li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -330,12 +322,19 @@ Dr. Emre S. Tasci, Hacettepe University</p>
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="FIZ228_TakeHomeExam_02.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="FIZ228_Exercises_03.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Take-Home Exam #2</p>
+            <p class="prev-next-title">Exercise Set #3</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="Exams_HWs/FIZ228_20232_MT1.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Midterm Exam #1</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             

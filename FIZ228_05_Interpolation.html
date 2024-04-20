@@ -102,60 +102,89 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_01_DataProcesses.html">
-   Importing, parsing, processing and exporting datasets
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="FIZ228_LectureNotes.html">
+   Lecture Notes
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_01_DataProcesses.html">
+     Importing, parsing, processing and exporting datasets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_02_DataVisualization.html">
+     Visualization of datasets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_03_LeastSquaresErrors.html">
+     Least Squares Method &amp; Error Estimations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_04_Regression.html">
+     Regression
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_06_MinimizeOptimize.html">
+     Minimization &amp; Optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_07_ClusteringAndClassification.html">
+     Clustering and Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_08_OrdinaryDifferentialEquations.html">
+     Ordinary Differential Equations
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_02_DataVisualization.html">
-   Visualization of datasets
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="FIZ228_ExercisesExams.html">
+   Exercises &amp; Exams
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_03_LeastSquaresErrors.html">
-   Least Squares Method &amp; Error Estimations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_04_Regression.html">
-   Regression
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Interpolation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_06_MinimizeOptimize.html">
-   Minimization &amp; Optimization
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_07_ClusteringAndClassification.html">
-   Clustering and Classification
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_08_OrdinaryDifferentialEquations.html">
-   Ordinary Differential Equations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_Exercises_01.html">
-   Exercise Set #1
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_Exercises_02.html">
-   Exercise Set #2
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_Exercises_03.html">
-   Exercise Set #3
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Exams_HWs/FIZ228_Exercises_01.html">
+     Exercise Set #1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Exams_HWs/FIZ228_Exercises_02.html">
+     Exercise Set #2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Exams_HWs/FIZ228_Exercises_03.html">
+     Exercise Set #3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Exams_HWs/FIZ228_20232_MT1.html">
+     Midterm Exam #1
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -465,7 +494,11 @@ const thebe_selector_output = ".output, .cell_output"
 <h1>Interpolation<a class="headerlink" href="#interpolation" title="Permalink to this headline">¶</a></h1>
 <p><strong>FIZ228 - Numerical Analysis</strong><br />
 Dr. Emre S. Tasci, Hacettepe University</p>
-<p>In our “Regression” lecture, we talked about fitting a function/model/curve that passes <em>as close as possible</em> to a given set of data points. But sometimes we find ourselves in a case where we have clearly defined points and would like to know about the behaviour between these points. This method of estimating the intermediate values while retaining the known values is known as <em>interpolation</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This lecture is heavily benefited from Steven Chapra’s <a class="reference external" href="https://www.mheducation.com/highered/product/applied-numerical-methods-matlab-engineers-scientists-chapra/M9780073397962.html">Applied Numerical Methods with MATLAB: for Engineers &amp; Scientists</a>.</p>
+</div>
+<p>In our “<a class="reference internal" href="FIZ228_04_Regression.html"><span class="doc std std-doc">Regression</span></a>” lecture, we talked about fitting a function/model/curve that passes <em>as close as possible</em> to a given set of data points. But sometimes we find ourselves in a case where we have clearly defined points and would like to know about the behaviour between these points. This method of estimating the intermediate values while retaining the known values is known as <em>interpolation</em>.</p>
 <p>The given data points act as the <em>boundary conditions</em>, usually fixed and thus very suitable for interpolation applcations. We are given a partial look on the system which corresponds to the <em>initial conditions</em>.</p>
 <p>As was the case in regression, there is always a risk of <em>overfitting</em> alas in the interpolation, we <strong>must</strong> hit all the given data (within an error tolerance that is related to the measurements.</p>
 <div class="cell docutils container">
@@ -567,7 +600,7 @@ Dr. Emre S. Tasci, Hacettepe University</p>
  1220.          830.         1449.99999999]
 </pre></div>
 </div>
-<img alt="_images/FIZ228_05_Interpolation_5_1.png" src="_images/FIZ228_05_Interpolation_5_1.png" />
+<img alt="_images/FIZ228_05_Interpolation_6_1.png" src="_images/FIZ228_05_Interpolation_6_1.png" />
 </div>
 </div>
 <p>A 7th degree polynomial might be too much for our taste! 8) So let’s begin with something simpler. For example, what would be the polynomial whose roots are -1 and 2?..</p>
@@ -644,7 +677,7 @@ Dr. Emre S. Tasci, Hacettepe University</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_05_Interpolation_13_0.png" src="_images/FIZ228_05_Interpolation_13_0.png" />
+<img alt="_images/FIZ228_05_Interpolation_14_0.png" src="_images/FIZ228_05_Interpolation_14_0.png" />
 </div>
 </div>
 </section>
@@ -676,7 +709,7 @@ Dr. Emre S. Tasci, Hacettepe University</p>
  [ 4.3  16.19]]
 </pre></div>
 </div>
-<img alt="_images/FIZ228_05_Interpolation_15_1.png" src="_images/FIZ228_05_Interpolation_15_1.png" />
+<img alt="_images/FIZ228_05_Interpolation_16_1.png" src="_images/FIZ228_05_Interpolation_16_1.png" />
 </div>
 </div>
 <p>This is the part where we forget our polynomial information:</p>
@@ -915,7 +948,7 @@ True value: 0.693147
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_05_Interpolation_29_0.png" src="_images/FIZ228_05_Interpolation_29_0.png" />
+<img alt="_images/FIZ228_05_Interpolation_30_0.png" src="_images/FIZ228_05_Interpolation_30_0.png" />
 </div>
 </div>
 <p>The advantage of this method is its flexibility in the face of the addition of more data points. So suppose that we made another measurement at the <span class="math notranslate nohighlight">\(x_4=5\)</span> point and came up with <span class="math notranslate nohighlight">\(f(x_4)=1.609438\)</span> value and we want to incorporate this new data to better our fit:</p>
@@ -958,7 +991,9 @@ True value: 0.693147
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ln2 ~ 0.628767
-True value: 0.693147
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True value: 0.693147
        E_t: 9.29%
 </pre></div>
 </div>
@@ -982,7 +1017,7 @@ True value: 0.693147
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_05_Interpolation_32_0.png" src="_images/FIZ228_05_Interpolation_32_0.png" />
+<img alt="_images/FIZ228_05_Interpolation_33_0.png" src="_images/FIZ228_05_Interpolation_33_0.png" />
 </div>
 </div>
 </section>
@@ -1349,7 +1384,7 @@ True value: 0.693147
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_05_Interpolation_58_0.png" src="_images/FIZ228_05_Interpolation_58_0.png" />
+<img alt="_images/FIZ228_05_Interpolation_59_0.png" src="_images/FIZ228_05_Interpolation_59_0.png" />
 </div>
 </div>
 </section>

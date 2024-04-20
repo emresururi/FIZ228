@@ -102,60 +102,89 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_01_DataProcesses.html">
-   Importing, parsing, processing and exporting datasets
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="FIZ228_LectureNotes.html">
+   Lecture Notes
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_01_DataProcesses.html">
+     Importing, parsing, processing and exporting datasets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_02_DataVisualization.html">
+     Visualization of datasets
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Least Squares Method &amp; Error Estimations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_04_Regression.html">
+     Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_05_Interpolation.html">
+     Interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_06_MinimizeOptimize.html">
+     Minimization &amp; Optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_07_ClusteringAndClassification.html">
+     Clustering and Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_08_OrdinaryDifferentialEquations.html">
+     Ordinary Differential Equations
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_02_DataVisualization.html">
-   Visualization of datasets
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="FIZ228_ExercisesExams.html">
+   Exercises &amp; Exams
   </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Least Squares Method &amp; Error Estimations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_04_Regression.html">
-   Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_05_Interpolation.html">
-   Interpolation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_06_MinimizeOptimize.html">
-   Minimization &amp; Optimization
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_07_ClusteringAndClassification.html">
-   Clustering and Classification
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_08_OrdinaryDifferentialEquations.html">
-   Ordinary Differential Equations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_Exercises_01.html">
-   Exercise Set #1
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_Exercises_02.html">
-   Exercise Set #2
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FIZ228_Exercises_03.html">
-   Exercise Set #3
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Exams_HWs/FIZ228_Exercises_01.html">
+     Exercise Set #1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Exams_HWs/FIZ228_Exercises_02.html">
+     Exercise Set #2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Exams_HWs/FIZ228_Exercises_03.html">
+     Exercise Set #3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Exams_HWs/FIZ228_20232_MT1.html">
+     Midterm Exam #1
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -619,6 +648,10 @@ const thebe_selector_output = ".output, .cell_output"
 <h1>Least Squares Method &amp; Error Estimations<a class="headerlink" href="#least-squares-method-error-estimations" title="Permalink to this headline">¶</a></h1>
 <p><strong>FIZ228 - Numerical Analysis</strong><br />
 Dr. Emre S. Tasci, Hacettepe University</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This lecture is heavily benefited from Steven Chapra’s <a class="reference external" href="https://www.mheducation.com/highered/product/applied-numerical-methods-matlab-engineers-scientists-chapra/M9780073397962.html">Applied Numerical Methods with MATLAB: for Engineers &amp; Scientists</a>.</p>
+</div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="data-import">
 <h1>Data &amp; Import<a class="headerlink" href="#data-import" title="Permalink to this headline">¶</a></h1>
