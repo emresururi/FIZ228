@@ -4,14 +4,21 @@
 format: jb-book
 root: Cover
 chapters:
-- file: FIZ228_01_DataProcesses.md
-- file: FIZ228_02_DataVisualization.md
-- file: FIZ228_03_LeastSquaresErrors.md
-- file: FIZ228_04_Regression.md
-- file: FIZ228_05_Interpolation.md
-- file: FIZ228_06_MinimizeOptimize.md
-- file: FIZ228_07_ClusteringAndClassification.md
-- file: FIZ228_08_OrdinaryDifferentialEquations.md
-- file: FIZ228_Exercises_01.md
-- file: FIZ228_Exercises_02.md
-- file: FIZ228_Exercises_03.md
+- file: FIZ228_LectureNotes.md
+  sections:
+    - file: FIZ228_01_DataProcesses.md
+    - file: FIZ228_02_DataVisualization.md
+    - file: FIZ228_03_LeastSquaresErrors.md
+    - file: FIZ228_04_Regression.md
+    - file: FIZ228_05_Interpolation.md
+    - file: FIZ228_06_MinimizeOptimize.md
+    - file: FIZ228_07_ClusteringAndClassification.md
+    - file: FIZ228_08_OrdinaryDifferentialEquations.md
+- file: FIZ228_ExercisesExams.md
+  sections:
+    - file: Exams_HWs/FIZ228_Exercises_01.md
+    - file: Exams_HWs/FIZ228_Exercises_02.md
+    - file: Exams_HWs/FIZ228_Exercises_03.md
+    - file: Exams_HWs/FIZ228_TakeHomeExam_01.md
+    - file: Exams_HWs/FIZ228_TakeHomeExam_02.md
+    - file: Exams_HWs/FIZ228_20232_MT1.md

@@ -18,6 +18,10 @@ Dr. Emre S. Tasci, Hacettepe University
 
 +++
 
+```{note}
+This lecture is heavily benefited from Steven Chapra's [Applied Numerical Methods with MATLAB: for Engineers & Scientists](https://www.mheducation.com/highered/product/applied-numerical-methods-matlab-engineers-scientists-chapra/M9780073397962.html).
+```
+
 # Data & Import
 The free-fall data we will be using is taken from: D. Horvat & R. Jecmenica, "The Free Fall Experiment" _Resonance_ **21** 259-275 (2016) [\[https://doi.org/10.1007/s12045-016-0321-9\]](https://doi.org/10.1007/s12045-016-0321-9).
 

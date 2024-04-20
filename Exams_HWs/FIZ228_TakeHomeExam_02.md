@@ -195,4 +195,4 @@ Gauss function is defined as:
 $$ G(x;a,b,c) = a \exp{\left(-\frac{(x-b)^2}{2c^2}\right)}$$
 
 
-Fit the "04_DistortedGaussian.csv" data (where the 1st column holds the x values and the 2nd column the y values), into a Gaussian (using `scipy.optimize.minimize` to minimize the error), thereby identifying the best values for $(a,b,c)$. Calculate the coefficient of determination ($r^2$).
+Fit the {download}`04_DistortedGaussian.csv<../data/04_DistortedGaussian.csv>` data (where the 1st column holds the x values and the 2nd column the y values), into a Gaussian (using `scipy.optimize.minimize` to minimize the error), thereby identifying the best values for $(a,b,c)$. Calculate the coefficient of determination ($r^2$).

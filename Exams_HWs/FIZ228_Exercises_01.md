@@ -19,7 +19,7 @@ Dr. Emre S. Tasci, Hacettepe University
 +++
 
 # 1
-Import the meteorological data (`01_meteoblue_Basel_20230303T060433.csv`) as a pandas dataframe (if you can't readily access the course webpage, you can also download it from the [meteoblue site](https://www.meteoblue.com/en/weather/archive/export) with the date range being 1/1/2022 - 3/3/2023 and the parameters set to those you'll need for this example ;).
+Import the meteorological data ({download}`01_meteoblue_Basel_20230303T060433.csv<../data/01_meteoblue_Basel_20230303T060433.csv>`) as a pandas dataframe (if you can't readily access the course webpage, you can also download it from the [meteoblue site](https://www.meteoblue.com/en/weather/archive/export) with the date range being 1/1/2022 - 3/3/2023 and the parameters set to those you'll need for this example ;).
 
 Then:
 
@@ -37,15 +37,15 @@ Draw 1000 samples from a Gaussian (normal) distribution with $\mu =  10$, $\sigm
 * Calculate the mean and standard deviation of the samples.  
 * Plot its histogram for 10 bins (you can use either matplotlib.pyplot or seaborn).  
     _Hint: You can have the bin positions defined as the average of the left and right boundary of each bin_
-    ![Exercises_01_histgraph.png](imgs/Exercises_01_histgraph.png)
+    ![Exercises_01_histgraph.png](../imgs/Exercises_01_histgraph.png)
 * Define a pandas dataframe such that it has three columns:  
     * `bin_pos` : bin position
     * `bin_count` : count of the samples per each bin
     * `bin_dist` : its distance to the mean
 * Using seaborn, plot the dataframe data such that the horizontal axis is the bin_pos, the vertical axis is the bin_count and the points' sizes change with respect to bin_dist.
-    ![Exercises_01_histgraph_with_size.png](imgs/Exercises_01_histgraph_with_size.png)
+    ![Exercises_01_histgraph_with_size.png](../imgs/Exercises_01_histgraph_with_size.png)
     * _Challenge: try to modify the graph such that the points closer to the mean are displayed bigger in size, while the dots are connected by a line_
-    ![Exercises_01_histgraph_with_invsize.png](imgs/Exercises_01_histgraph_with_invsize.png)
+    ![Exercises_01_histgraph_with_invsize.png](../imgs/Exercises_01_histgraph_with_invsize.png)
 
 ```{code-cell} ipython3
 

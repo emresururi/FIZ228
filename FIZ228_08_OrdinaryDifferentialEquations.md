@@ -13,7 +13,7 @@ kernelspec:
 ---
 
 # Ordinary Differential Equations
-_Derivatives, Ordinary Differential Equations with Finite Difference, Shooting, Euler and Runge-Kutta Methods_  
+
 **FIZ228 - Numerical Analysis**  
 Dr. Emre S. Tasci, Hacettepe University
 

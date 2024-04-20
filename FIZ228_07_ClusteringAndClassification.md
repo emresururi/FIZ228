@@ -18,6 +18,10 @@ Dr. Emre S. Tasci, Hacettepe University
 
 +++
 
+```{note}
+_This lecture is heavily benefitted (almost copied fully) from David MacKay's "Information Theory, Inference, and Learning Algorithms"](http://www.inference.org.uk/mackay/itila/book.html)._
+```
+
 # Introduction
 
 Suppose that we are given the following list, and asked to single out the odd one:
@@ -97,8 +101,6 @@ Two-step algorithm:
 
 => The k-means algorithm always converges to a fixed point!
 
-[EST](https://www.emresururi.com)
-
 +++
 
 ## The algorithm (Formular)
@@ -109,7 +111,7 @@ Two-step algorithm:
 
 $$\hat{k}^{(n)}=\text{argmin}_k \left\{{d\left(\vec{m}^{(k)},x^{(n)}\right)}\right\}$$
 
-![kmeans_1.png](imgs/07_kmeans_1.png)
+![kmeans_1.png](imgs/07_kmeans_1_1.png)
 *alternative approach:* responsibilities as indicator variables $r_k^{(n)}$ 
 
 $$r_k^{(n)}=\begin{cases}
@@ -118,7 +120,7 @@ $$r_k^{(n)}=\begin{cases}
 \end{cases} $$
 
 (if there is a tie, set to the smallest winning $\{k\}$).
-![kmeans_2.png](imgs/07_kmeans_2.png)
+![kmeans_2.png](imgs/07_kmeans_2_1.png)
 
 2. **Update step:** Means are adjusted to match the sample means of the data points that they are responsible for. 
 

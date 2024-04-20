@@ -18,7 +18,7 @@ Dr. Emre S. Tasci, Hacettepe University
 
 +++
 
-Fit the {download}`Silica FTIR data<data/05_Silica_FTIR.csv>` [Silica FTIR data] for the wavenumber range [900,1500] cm<sup>-1</sup>:
+Fit the {download}`Silica FTIR data<../data/05_Silica_FTIR.csv>` [Silica FTIR data] for the wavenumber range [900,1500] cm<sup>-1</sup>:
 
 1. Using 3 Gaussians
 2. Using 4 Gaussians
@@ -54,11 +54,11 @@ $$ L(x;A,x_0,\gamma)=A\left[ { \gamma \over (x - x_0)^2 + \gamma^2  } \right]$$
 
 As an example for the last one, check the following fit of 5 Gaussians, with _r<sup>2</sup>_ = 0.998:
 
-![HW3_bad5G_sum.png](imgs/HW3_bad5G_sum.png)
+![HW3_bad5G_sum.png](../imgs/HW3_bad5G_sum.png)
 
 Even though it seems very good, here are its components, separately drawn:
 
-![HW3_bad5G.png](imgs/HW3_bad5G.png)
+![HW3_bad5G.png](../imgs/HW3_bad5G.png)
 
 which doesn't make any sense as G3 & G5 Gaussians indicate a negative absorption!
 
@@ -66,7 +66,7 @@ which doesn't make any sense as G3 & G5 Gaussians indicate a negative absorption
 
 ## Cappeletti et al.'s graph
 
-![imgs/04_Cappeletti.png](imgs/04_Cappeletti.png)
+![imgs/04_Cappeletti.png](../imgs/04_Cappeletti.png)
 
 +++
 

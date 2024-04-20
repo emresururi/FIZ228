@@ -44,7 +44,7 @@ Dr. Emre S. Tasci, Hacettepe University
 |  7.0 |  4.82 |  7.0 |  7.26 |  7.0 |  6.42 |  8.0 |  7.91
 |  5.0 |  5.68 |  5.0 |  4.74 |  5.0 |  5.73 |  8.0 |  6.89
 
-_(You can download the data as CSV from the course page: Exercise_02_AnscombeQuartet.csv)_
+_(You can download the data as CSV from here: {download}`Exercise_02_AnscombeQuartet.csv<../data/Exercise_02_AnscombeQuartet.csv>`)_
 
 +++
 
