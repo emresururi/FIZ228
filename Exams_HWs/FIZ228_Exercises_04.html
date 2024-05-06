@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Take-Home Exam #1 &#8212; FIZ228 - Numerical Analysis Lecture Notes</title>
+    <title>Exercise Set #4 &#8212; FIZ228 - Numerical Analysis Lecture Notes</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -56,8 +56,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Take-Home Exam #2" href="FIZ228_TakeHomeExam_02.html" />
-    <link rel="prev" title="Exercise Set #4" href="FIZ228_Exercises_04.html" />
+    <link rel="next" title="Take-Home Exam #1" href="FIZ228_TakeHomeExam_01.html" />
+    <link rel="prev" title="Exercise Set #3" href="FIZ228_Exercises_03.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -179,13 +179,13 @@ const thebe_selector_output = ".output, .cell_output"
      Exercise Set #3
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="FIZ228_Exercises_04.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Exercise Set #4
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_TakeHomeExam_01.html">
      Take-Home Exam #1
     </a>
    </li>
@@ -240,9 +240,12 @@ const thebe_selector_output = ".output, .cell_output"
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="../_sources/Exams_HWs/FIZ228_Exercises_04.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/Exams_HWs/FIZ228_TakeHomeExam_01.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/Exams_HWs/FIZ228_Exercises_04.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -262,11 +265,46 @@ const thebe_selector_output = ".output, .cell_output"
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/emresururi/FIZ228/HEAD/v2/gh/emresururi/FIZ228/main?urlpath=tree/Exams_HWs/FIZ228_Exercises_04.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k-means-clustering">
+   k-means Clustering
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#soft-k-means-clustering">
+   Soft k-means Clustering
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -274,87 +312,61 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Take-Home Exam #1</h1>
+                <h1>Exercise Set #4</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k-means-clustering">
+   k-means Clustering
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#soft-k-means-clustering">
+   Soft k-means Clustering
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="take-home-exam-1">
-<h1>Take-Home Exam #1<a class="headerlink" href="#take-home-exam-1" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="exercise-set-4">
+<h1>Exercise Set #4<a class="headerlink" href="#exercise-set-4" title="Permalink to this headline">¶</a></h1>
 <p><strong>FIZ228 - Numerical Analysis</strong><br />
 Dr. Emre S. Tasci, Hacettepe University</p>
-<p><em>It is strictly forbidden to contact anybody outside your group or seeking the direct answer on the internet. Every member of the group is responsible for every one of the questions.</em></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">()</span>
-</pre></div>
-</div>
-<!-- #region -->
-<p>Monoclinic structures’ space groups are designated in the range of <span class="math notranslate nohighlight">\([3,15]\)</span>.</p>
-<p>a) From the random structures database (file: <code class="docutils literal notranslate"><span class="pre">01_RandomStructureDB.csv</span></code>), filter the monoclinic structures and copy them to a new <code class="docutils literal notranslate"><span class="pre">strdb_monoclinic</span></code> dataframe, resetting the index (as there are 88 such entries, the index will run from 0 to 87).</p>
-<p>b) Calculate their unit cell volumes:<br />
-lattice parameters are stored in the <code class="docutils literal notranslate"><span class="pre">a,b,c,alpha,beta,gamma</span></code> columns:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\alpha\)</span> is the angle between b &amp; c,</p></li>
-<li><p><span class="math notranslate nohighlight">\(\beta\)</span> is the angle between a &amp; c,</p></li>
-<li><p><span class="math notranslate nohighlight">\(\gamma\)</span> is the angle between a &amp; b</p></li>
-</ul>
-<p>add a <code class="docutils literal notranslate"><span class="pre">Volume</span></code> column that stores their corresponding volumes.</p>
-<p>A generic volume formula for all kinds of structures is defined as:</p>
-<div class="math notranslate nohighlight">
-\[V = a b c \sqrt{1+2\cos(\alpha)\cos(\beta)\cos(\gamma)-\cos^2(\alpha)-\cos^2(\beta)-\cos^2(\gamma)}\]</div>
-<p>(Keep in mind that the angles are given in degrees, not radians!)</p>
-<p><b>Hint:</b> You can directly evaluate operations with columns, for example: <code class="docutils literal notranslate"><span class="pre">strdb_monoclinic['a']*strdb_monoclinic['b']</span></code> will return you a Pandas object (Series) that holds the summations of the corresponding a and b values! ;)</p>
-<p>c) Drop the structures that have volumes greater than <span class="math notranslate nohighlight">\(1000\, \unicode[serif]{xC5}^3\)</span> from <code class="docutils literal notranslate"><span class="pre">strdb_monoclinic</span></code> and re-reset the index (you should have 55 entries remaining)</p>
-<p>d) Plot the histogram of the volumes (using 10 bins).</p>
-<p>(You can check what it should look like in the included PNG file)</p>
-<p><strong>Bonus:</strong> <a class="reference external" href="https://en.wikipedia.org/wiki/Pearson_symbol">“Pearson symbol”</a> contains the lattice type, centering and the number of atoms in the unit cell. For example, the Pearson symbol “mP64” indicates that the lattice is <strong>m</strong>onoclinic, <strong>P</strong>rimitive and contains 64 atoms in the unit cell. We are going to parse the number of atoms information from the Pearson cell (by discarding all the characters that are not numeric – this is easily done using <a class="reference external" href="https://en.wikipedia.org/wiki/Regular_expression">regular expressions</a>: they look cryptic but can be used to describe any pattern if used correctly). To do this operation, we will employ Pandas’ <code class="docutils literal notranslate"><span class="pre">replace()</span></code> method:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">strdb_monoclinic</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">&#39;PearsonSymb&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[^0-9]&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Explanation:</strong></p>
+<section id="k-means-clustering">
+<h2>k-means Clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">strdb_monoclinic.loc[:,['PearsonSymb']]</span></code> :retrieve the PearsonSymb column</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">.replace(r&quot;[^0-9]&quot;,&quot;&quot;,regex=True)</span></code>: for each value, find all the characters that are not numeric (i.e., not a digit from 0 to 9 – ‘^’ indicates negation), replace it with nothing (i.e., “”) and interpret our query as a regex operation (i.e., <code class="docutils literal notranslate"><span class="pre">regex=True</span></code>)</p></li>
+<li><p>Import the data given in the <a class="reference download internal" download="" href="../_downloads/8be90ebf4cabcb9e2f7829f02779725d/Exercise_04_a.csv"><code class="xref download docutils literal notranslate"><span class="pre">Exercise_04_a.csv</span></code></a> file</p></li>
+<li><p>Plot them.</p></li>
+<li><p>Looking at your data, decide the optimal number of means (<span class="math notranslate nohighlight">\(k\in[2,6]\)</span>) and indicate them by drawing over by hand.</p></li>
+<li><p>Device an algorithm to automatically come up with the optimal number of k-means and implement it.</p></li>
 </ol>
-<p>Here is a sample:</p>
-<p>(As in this tutorial we are constructing our dataframe from a string, not a file, we make it appear as a file via the <code class="docutils literal notranslate"><span class="pre">StringIO</span></code> command)</p>
-<!-- #endregion -->
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
-<span class="n">sample_data</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="s1">&#39;StructuralForm,PearsonSymb</span><span class="se">\n</span><span class="s1">Ce Ru2 Ge2,tI10</span><span class="se">\n</span><span class="s1">La1.85 Si4 Y3.15,tP36</span><span class="se">\n</span><span class="s1">Gd Mn2,cF24</span><span class="se">\n</span><span class="s1">Ce5 Ni1.85 Si3,hP39</span><span class="se">\n</span><span class="s1">Li3 Mg2 (Nb O6),oF96</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">sample_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">sample_data</span><span class="p">)</span>
-<span class="n">sample_df</span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># find and replace the non-numeric characters in &#39;PearsonSymb&#39;</span>
-<span class="n">sample_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">&#39;PearsonSymb&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[^0-9]&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># while we are at it, we can define a new column</span>
-<span class="c1"># using these processed values as well! 8)</span>
-
-<span class="c1"># Pay special attention that we need to convert the replace results</span>
-<span class="c1"># to integers (using &#39;astype(int)&#39;)</span>
-<span class="n">sample_df</span><span class="p">[</span><span class="s1">&#39;numatoms&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">&#39;PearsonSymb&#39;</span><span class="p">]]</span>\
-        <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[^0-9]&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">sample_df</span>
-</pre></div>
-</div>
-<p>Now that we have learned how to parse the number of atoms in the unit cell, use this to plot volume with respect to the number of atoms, and while doing that, use the publication date as hue and the beta angle(*) as size via Seaborn.</p>
-<p><em><strong>(*) Challenge:</strong> In standard settings, for monoclinic structures, beta angle is defined as the non-perpendicular angle. However, as you can observe, sometimes the data is entered in non-standard settings and alpha or gamma can be defined as the non-perpendicular angle as well. To remedy this issue, instead of using beta angle, use the maximum angle among the (alpha,beta,gamma) for your size criteria, if you can! ;)</em></p>
-<p>(You can check what it should look like in the included PNG file)</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
+</section>
+<section id="soft-k-means-clustering">
+<h2>Soft k-means Clustering<a class="headerlink" href="#soft-k-means-clustering" title="Permalink to this headline">¶</a></h2>
+<p>Implement soft k-means clustering by changing the definition of the responsibility vector such that:</p>
+<ol class="simple">
+<li><p>Each point belongs to a mean as a function of the distance between them (closer the mean, higher responsibility)</p></li>
+<li><p>The sum of each mean’s ownership per each data point is equal to 1.</p></li>
+</ol>
+<p>In the lecture notes, the responsibility vector for soft k-means clustering is defined as:</p>
+<div class="math notranslate nohighlight">
+\[r_k^{(n)}=\frac{\exp\left(-\beta\,d\left(\vec{m}^{(k)},x^{(n)}\right)\right)}{\sum_{k'}{\exp\left(-\beta\,d\left(\vec{m}^{(k')},x^{(n)}\right)\right)} }\]</div>
+<p>where <span class="math notranslate nohighlight">\(\beta\)</span> is the <em>softness parameter</em> <span class="math notranslate nohighlight">\((\beta\rightarrow\infty\Rightarrow\text{Hard k-means algorithm.})\)</span> and <span class="math notranslate nohighlight">\(d\left(\vec{m}^{(k)},x^{(n)}\right)\)</span> is the distance function between the k<sup>th</sup> mean and the n<sup>th</sup> data point.</p>
+<p>Define your responsibility vector using a different function than the one given and use it to cluster the data given in <a class="reference download internal" download="" href="../_downloads/ff7f86e17854e4dc604cab23e36d740e/Exercise_04_b.csv"><code class="xref download docutils literal notranslate"><span class="pre">Exercise_04_b.csv</span></code></a></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -382,17 +394,17 @@ lattice parameters are stored in the <code class="docutils literal notranslate">
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="FIZ228_Exercises_04.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="FIZ228_Exercises_03.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Exercise Set #4</p>
+            <p class="prev-next-title">Exercise Set #3</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="FIZ228_TakeHomeExam_02.html" title="next page">
+    <a class='right-next' id="next-link" href="FIZ228_TakeHomeExam_01.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Take-Home Exam #2</p>
+        <p class="prev-next-title">Take-Home Exam #1</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
