@@ -283,7 +283,9 @@ plt.show()
 
 $y'=4e^{0.8t}-0.5y, \;y(t=0)=2$, calculate $y$ for $t\in[0,4]$ with a step size of $h=1$
 
-Analytical solution: $$y=\frac{4}{1.3}\left(e^{0.8t} - e^{-0.5t}\right)+2e^{-0.5t}$$
+Analytical solution: 
+
+$$y=\frac{4}{1.3}\left(e^{0.8t} - e^{-0.5t}\right)+2e^{-0.5t}$$
 
 ```{code-cell} ipython3
 def yp(t,y):
