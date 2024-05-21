@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Midterm Exam #1 Solutions
+# Midterm Exam #1 Hands On Session Solutions
 **FIZ228 - Numerical Analysis**  
 Dr. Emre S. Tasci, Hacettepe University
 
@@ -162,5 +162,9 @@ erf1o,erf2o
 ```
 
 ```{code-cell} ipython3
+S_ro = ((data["y"] - y_org)**2).sum()
+S_to = ((data["y"] - data["y"].mean())**2).sum()
+r2o = (S_to - S_ro) / S_to
 
+r2o
 ```

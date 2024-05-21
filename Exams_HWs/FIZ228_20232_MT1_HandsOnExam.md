@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Midterm Exam #1
+# Midterm Exam #1 Hands On Session
 **FIZ228 - Numerical Analysis**  
 Dr. Emre S. Tasci, Hacettepe University
 

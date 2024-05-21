@@ -28,11 +28,14 @@ kernelspec:
     * [Take Home Exam #1 (26/3/2023)](Exams_HWs/FIZ228_TakeHomeExam_01)
         * Structure Database
     * [Take Home Exam #2 (02/04/2023)](Exams_HWs/FIZ228_TakeHomeExam_02)
-        0. Better than Average
-        1. Six Hump Camel Function
-        2. Least Square Fitting (Linear / Non-Linear) 
-    * [Midterm Exam #1 (19/02/2024)](Exams_HWs/FIZ228_20232_MT1)  
-        * Fitting to Sinusoidal function(s)
+        
+        0\. Better than Average  
+        1\. Six Hump Camel Function  
+        2\. Least Square Fitting (Linear / Non-Linear)  
+    * [Midterm Exam #1 Written Session (19/04/2024)](Exams_HWs/FIZ228_20232_MT1_WrittenExam)  
+        * Deciding on the optimal function & fitting
+    * [Midterm Exam #1 Hands On Session (19/04/2024)](Exams_HWs/FIZ228_20232_MT1_HandsOnExam)  
+        * Fitting to sinusoidal function(s)
 
 ```{code-cell} ipython3
 
