@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Exercise Set #4 &#8212; FIZ228 - Numerical Analysis Lecture Notes</title>
+    <title>Midterm Exam #2 (20232) Written Session &#8212; FIZ228 - Numerical Analysis Lecture Notes</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -56,8 +56,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Take-Home Exam #1" href="FIZ228_TakeHomeExam_01.html" />
-    <link rel="prev" title="Exercise Set #3" href="FIZ228_Exercises_03.html" />
+    <link rel="next" title="Midterm Exam #2 - Hands On Session" href="FIZ228_20232_MT2_HandsOnExam.html" />
+    <link rel="prev" title="Midterm Exam #1 (20232) Hands On Session" href="FIZ228_20232_MT1_HandsOnExam.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -179,8 +179,8 @@ const thebe_selector_output = ".output, .cell_output"
      Exercise Set #3
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="FIZ228_Exercises_04.html">
      Exercise Set #4
     </a>
    </li>
@@ -204,8 +204,8 @@ const thebe_selector_output = ".output, .cell_output"
      Midterm Exam #1 (20232) Hands On Session
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="FIZ228_20232_MT2_WrittenExam.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Midterm Exam #2 (20232) Written Session
     </a>
    </li>
@@ -256,11 +256,11 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         <a class="dropdown-buttons"
-            href="../_sources/Exams_HWs/FIZ228_Exercises_04.ipynb"><button type="button"
+            href="../_sources/Exams_HWs/FIZ228_20232_MT2_WrittenExam.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/Exams_HWs/FIZ228_Exercises_04.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/Exams_HWs/FIZ228_20232_MT2_WrittenExam.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -285,7 +285,7 @@ const thebe_selector_output = ".output, .cell_output"
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/emresururi/FIZ228/HEAD/v2/gh/emresururi/FIZ228/main?urlpath=tree/Exams_HWs/FIZ228_Exercises_04.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/emresururi/FIZ228/HEAD/v2/gh/emresururi/FIZ228/main?urlpath=tree/Exams_HWs/FIZ228_20232_MT2_WrittenExam.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -302,24 +302,6 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#k-means-clustering">
-   k-means Clustering
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#soft-k-means-clustering">
-   Soft k-means Clustering
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -327,61 +309,32 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Exercise Set #4</h1>
+                <h1>Midterm Exam #2 (20232) Written Session</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#k-means-clustering">
-   k-means Clustering
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#soft-k-means-clustering">
-   Soft k-means Clustering
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="exercise-set-4">
-<h1>Exercise Set #4<a class="headerlink" href="#exercise-set-4" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="midterm-exam-2-20232-written-session">
+<h1>Midterm Exam #2 (20232) Written Session<a class="headerlink" href="#midterm-exam-2-20232-written-session" title="Permalink to this headline">¶</a></h1>
 <p><strong>FIZ228 - Numerical Analysis</strong><br />
 Dr. Emre S. Tasci, Hacettepe University</p>
-<section id="k-means-clustering">
-<h2>k-means Clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li><p>Import the data given in the <a class="reference download internal" download="" href="../_downloads/8be90ebf4cabcb9e2f7829f02779725d/Exercise_04_a.csv"><code class="xref download docutils literal notranslate"><span class="pre">Exercise_04_a.csv</span></code></a> file</p></li>
-<li><p>Plot them.</p></li>
-<li><p>Looking at your data, decide the optimal number of means (<span class="math notranslate nohighlight">\(k\in[2,6]\)</span>) and indicate them by drawing over by hand.</p></li>
-<li><p>Device an algorithm to automatically come up with the optimal number of k-means and implement it.</p></li>
-</ol>
-</section>
-<section id="soft-k-means-clustering">
-<h2>Soft k-means Clustering<a class="headerlink" href="#soft-k-means-clustering" title="Permalink to this headline">¶</a></h2>
-<p>Implement soft k-means clustering by changing the definition of the responsibility vector such that:</p>
-<ol class="simple">
-<li><p>Each point belongs to a mean as a function of the distance between them (closer the mean, higher responsibility)</p></li>
-<li><p>The sum of each mean’s ownership per each data point is equal to 1.</p></li>
-</ol>
-<p>In the lecture notes, the responsibility vector for soft k-means clustering is defined as:</p>
+<p>17/05/2024</p>
+<p>Consider the data plotted in the figure below. We want to classify these data points into three classes using k‑means clustering method.</p>
+<p>a) Mark the approximate expected positions of the means on the figure. Use the symbols “■”, “▲” and “✖” to indicate the locations of the means, respectively.</p>
+<p>b) Indicate the domains of each domain on the figure. (Imagine being given a random point, after the means are fixed with respect to the previously existing data (which you did in the previous part) – to which mean would you assign this given point? Once you do the assignment, it means that, that position is <u>within the domain of that mean</u>. Now consider all the positions in the graph to define the domain of each mean and indicate these domains on the figure – that is what is being asked of you ;).</p>
+<p>c) Derive a systematical algorithm to define the domains of each mean (writing a code is not necessary, also not desired, just define the procedures in steps so that a coder without any prior knowledge of the topic can implement it as a code).</p>
+<p><img alt="../imgs/FIZ228_20232_MT2_WrittenExam.png" src="../_images/FIZ228_20232_MT2_WrittenExam.png" /></p>
+<p>d) One downside of this method is the fact that the resulting classification depends on the initial positions of the means. Suppose that for a different set (in which the classification might not be so obvious compared to the one above), you have run your code 20 times, coming up with 20 different associations, with the means’ final positions for each run also stored somewhere. How would you decide on the best classification?</p>
+<p>Bonus: The data plotted have been generated using three 2D Gaussians. A Gaussian is defined through this equation:</p>
 <div class="math notranslate nohighlight">
-\[r_k^{(n)}=\frac{\exp\left(-\beta\,d\left(\vec{m}^{(k)},x^{(n)}\right)\right)}{\sum_{k'}{\exp\left(-\beta\,d\left(\vec{m}^{(k')},x^{(n)}\right)\right)} }\]</div>
-<p>where <span class="math notranslate nohighlight">\(\beta\)</span> is the <em>softness parameter</em> <span class="math notranslate nohighlight">\((\beta\rightarrow\infty\Rightarrow\text{Hard k-means algorithm.})\)</span> and <span class="math notranslate nohighlight">\(d\left(\vec{m}^{(k)},x^{(n)}\right)\)</span> is the distance function between the k<sup>th</sup> mean and the n<sup>th</sup> data point.</p>
-<p>Define your responsibility vector using a different function than the one given and use it to cluster the data given in <a class="reference download internal" download="" href="../_downloads/ff7f86e17854e4dc604cab23e36d740e/Exercise_04_b.csv"><code class="xref download docutils literal notranslate"><span class="pre">Exercise_04_b.csv</span></code></a></p>
-</section>
+\[G(x;\mu,\sigma) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left[-\frac{\left(x-\mu\right)^2}{\sqrt{2\sigma^2}}\right]\]</div>
+<p>Describe how you’d generate such data using the Gaussian function. <em>(Try to justify parameters using numerical values with regard to the plotted data in the figure above.)</em></p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -409,17 +362,17 @@ Dr. Emre S. Tasci, Hacettepe University</p>
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="FIZ228_Exercises_03.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="FIZ228_20232_MT1_HandsOnExam.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Exercise Set #3</p>
+            <p class="prev-next-title">Midterm Exam #1 (20232) Hands On Session</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="FIZ228_TakeHomeExam_01.html" title="next page">
+    <a class='right-next' id="next-link" href="FIZ228_20232_MT2_HandsOnExam.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Take-Home Exam #1</p>
+        <p class="prev-next-title">Midterm Exam #2 - Hands On Session</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
