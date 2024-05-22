@@ -20,7 +20,7 @@ Dr. Emre S. Tasci, Hacettepe University
 
 +++
 
-Classify the 4-dimensional data of 120 points listed in the "FIZ228_20232_MT2_HandsOnExam_data.csv" file via k-means clustering method into 5 classes.
+Classify the 4-dimensional data of 120 points listed in the {download}`FIZ228_20232_MT2_HandsOnExam_data.csv<../data/FIZ228_20232_MT2_HandsOnExam_data.csv>` file via k-means clustering method into 5 classes.
 
 Output should contain:
 
