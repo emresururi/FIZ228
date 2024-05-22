@@ -36,6 +36,10 @@ kernelspec:
         * Deciding on the optimal function & fitting
     * [Midterm Exam #1 Hands On Session (19/04/2024)](Exams_HWs/FIZ228_20232_MT1_HandsOnExam)  
         * Fitting to sinusoidal function(s)
+    * [Midterm Exam #2 Written Session (17/05/2024)](Exams_HWs/FIZ228_20232_MT2_WrittenExam)  
+        * k-means clustering by hand
+    * [Midterm Exam #2 Hands On Session (17/05/2024)](Exams_HWs/FIZ228_20232_MT2_HandsOnExam)  
+        * 4-dimensional k-means clustering
 
 ```{code-cell} ipython3
 
