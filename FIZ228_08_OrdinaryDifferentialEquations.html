@@ -1340,19 +1340,6 @@ k_4 = f(t_i+h,y_i+k_3 h)\end{split}\]</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_RK4</span><span class="p">,</span><span class="n">v_RK4</span><span class="p">,</span><span class="s2">&quot;-g&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7c4fbf8fff70&gt;]
-</pre></div>
-</div>
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_56_1.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_56_1.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_Euler</span><span class="p">,</span><span class="n">v_Euler</span><span class="p">,</span><span class="s2">&quot;-b&quot;</span><span class="p">,</span><span class="n">t_RK4</span><span class="p">,</span><span class="n">v_RK4</span><span class="p">,</span><span class="s2">&quot;-g&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">v_a</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="s2">&quot;:r&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t (s)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;v (m/s)&quot;</span><span class="p">)</span>
@@ -1364,7 +1351,7 @@ k_4 = f(t_i+h,y_i+k_3 h)\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_58_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_58_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_56_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_56_0.png" />
 </div>
 </div>
 </section>
@@ -1454,7 +1441,7 @@ k_4 = f(t_i+h,y_i+k_3 h)\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_65_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_65_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_63_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_63_0.png" />
 </div>
 </div>
 <p>In the graph we see that the built-in RK45 solver determines its data points internally. We can increase the number of data considered by demanding higher accuracy via <code class="docutils literal notranslate"><span class="pre">atol</span></code> and <code class="docutils literal notranslate"><span class="pre">rtol</span></code> tolerance parameters:</p>
@@ -1482,7 +1469,7 @@ k_4 = f(t_i+h,y_i+k_3 h)\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_67_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_67_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_65_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_65_0.png" />
 </div>
 </div>
 </section>
@@ -1516,7 +1503,7 @@ k_4 = f(t_i+h,y_i+k_3 h)\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_70_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_70_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_68_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_68_0.png" />
 </div>
 </div>
 </section>
@@ -1559,7 +1546,7 @@ k_4 = f(t_i+h,y_i+k_3 h)\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_74_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_74_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_72_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_72_0.png" />
 </div>
 </div>
 </section>
@@ -1602,7 +1589,7 @@ k_4 = f(t_i+h,y_i+k_3 h)\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_78_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_78_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_76_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_76_0.png" />
 </div>
 </div>
 </section>
@@ -1649,7 +1636,7 @@ k_4 = f(t_i+h,y_i+k_3 h)\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_83_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_83_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_81_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_81_0.png" />
 </div>
 </div>
 </section>
@@ -1688,7 +1675,7 @@ k_4 = f(t_i+h,y_i+k_3 h)\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_86_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_86_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_84_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_84_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1702,7 +1689,7 @@ k_4 = f(t_i+h,y_i+k_3 h)\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_87_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_87_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_85_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_85_0.png" />
 </div>
 </div>
 </section>
@@ -1783,7 +1770,7 @@ i=N-2 &amp;: &amp;(1-h)y_{N-3} - (2+6h^2)y_{N-2} + (1+h)\underbrace{y_{N-1}}_{89
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_91_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_91_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_89_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_89_0.png" />
 </div>
 </div>
 </section>
@@ -1860,7 +1847,7 @@ i=N-2 &amp;: &amp;y_{N-3} - (2-h^2)y_{N-2} + \underbrace{y_{N-1}}_{-0.5} &amp;= 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_95_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_95_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_93_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_93_0.png" />
 </div>
 </div>
 </section>

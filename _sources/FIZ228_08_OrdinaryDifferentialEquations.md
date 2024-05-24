@@ -586,14 +586,6 @@ plt.show()
 ```
 
 ```{code-cell} ipython3
-plt.plot(t_RK4,v_RK4,"-g")
-```
-
-```{code-cell} ipython3
-
-```
-
-```{code-cell} ipython3
 plt.plot(t_Euler,v_Euler,"-b",t_RK4,v_RK4,"-g",t,v_a(t),":r")
 plt.xlabel("t (s)")
 plt.ylabel("v (m/s)")
