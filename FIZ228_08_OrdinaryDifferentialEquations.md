@@ -379,6 +379,11 @@ def f(t,y):
 ```
 
 ```{code-cell} ipython3
+def y_t(t):
+    return 4/1.3*((np.exp(0.8*t)-np.exp(-0.5*t)))+2*np.exp(-0.5*t)
+```
+
+```{code-cell} ipython3
 y = [2]
 t = np.arange(5)
 h = t[1]-t[0]

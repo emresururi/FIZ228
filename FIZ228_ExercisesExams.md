@@ -40,6 +40,10 @@ kernelspec:
         * k-means clustering by hand
     * [Midterm Exam #2 Hands On Session (17/05/2024)](Exams_HWs/FIZ228_20232_MT2_HandsOnExam)  
         * 4-dimensional k-means clustering
+    * [Midterm Exam #1 Make Up (24/05/2024)](Exams_HWs/FIZ228_20232_MT1_MakeUpExam)  
+        * Fitting data to two good candidate models
+    * [Midterm Exam #2 Make Up (24/05/2024)](Exams_HWs/FIZ228_20232_MT2_MakeUpExam)  
+        * Deciding on the best k-means over a number of runs        
 
 ```{code-cell} ipython3
 
