@@ -433,8 +433,8 @@ g = 9.81 # m/s^2
 m = 68.1 # kg
 C_d = 0.25 # kg/m
 
-def f(t,xp):
-    return g - C_d/m*xp**2
+def f(t,v):
+    return g - C_d/m*v**2
 
 N = 6
 ```
@@ -442,20 +442,20 @@ N = 6
 ### Euler
 
 ```{code-cell} ipython3
-t = np.linspace(0,10,N)
-h = t[1]-t[0]
-x  = np.array([0])
-xp = np.array([0])
+t_Euler = np.linspace(0,10,N)
+h = t_Euler[1]-t_Euler[0]
+x_Euler  = np.array([0])
+v_Euler = np.array([0])
 
-for ti in t[:-1]:
-    xp_ip1 = xp[-1] + f(ti,xp[-1])*h
-    x_ip1  = x[-1]  + xp_ip1*h
-    xp = np.append(xp,xp_ip1)
-    x = np.append(x,x_ip1)
+for ti in t_Euler[:-1]:
+    v_ip1 = v_Euler[-1] + f(ti,v_Euler[-1])*h
+    x_ip1  = x_Euler[-1]  + v_ip1*h
+    v_Euler = np.append(v_Euler,v_ip1)
+    x_Euler = np.append(x_Euler,x_ip1)
 ```
 
 ```{code-cell} ipython3
-plt.plot(t,x,"-b",t,xp,"-r")
+plt.plot(t_Euler,x_Euler,"-b",t_Euler,v_Euler,"-r")
 plt.legend(("Position","Velocity"))
 plt.show()
 ```
@@ -469,12 +469,12 @@ def v_a(t):
     # Analytical Solution
     return np.sqrt(g*m/C_d)*np.tanh(np.sqrt(g*C_d/m)*t)
 
-plt.plot(t,x,"-",t,x_a(t),"--r")
+plt.plot(t_Euler,x_Euler,"-",t_Euler,x_a(t_Euler),"--r")
 plt.title("x(t)")
 plt.legend(["Numerical Solution","Analytical Solution"])
 plt.show()
 
-plt.plot(t,xp,"-",t,v_a(t),"--r")
+plt.plot(t_Euler,v_Euler,"-",t_Euler,v_a(t_Euler),"--r")
 plt.title("v(t)")
 plt.legend(["Numerical Solution","Analytical Solution"])
 plt.show()
@@ -483,7 +483,7 @@ plt.show()
 ### RK4
 
 ```{code-cell} ipython3
-N = 5
+N = 6
 t_aux = np.linspace(0,10,N)
 h = t_aux[1]-t_aux[0]
 
@@ -535,24 +535,24 @@ $$ x_{i+1} = x_i + v_i h + \frac{1}{2}\left(\frac{v_{i+1}-v_i}{h}\right)  h^2$$
 So, implementing this additional factor, we have:
 
 ```{code-cell} ipython3
-N = 5
+N = 6
 t_aux = np.linspace(0,10,N)
 h = t_aux[1]-t_aux[0]
 
 t_wa = np.array([0])
 x_RK4_wa = np.array([0]) # This is position calculated with a
-v_RK4    = np.array([0]) # No change in velocity's equation
+v_RK4_wa = np.array([0]) # No change in velocity's equation
 
 for i in range(len(t_aux)-1):
-    k1 = f(t[i],v_RK4[i])
-    k2 = f(t[i]+0.5*h,v_RK4[i]+0.5*k1*h)
-    k3 = f(t[i]+0.5*h,v_RK4[i]+0.5*k2*h)
-    k4 = f(t[i]+0.5*h,v_RK4[i]+k3*h)
-    v_ip1 = v_RK4[i] + (k1+2*k2+2*k3+k4)*h/6
-    x_wa_ip1 = x_RK4_wa[i]  + v_RK4[i]*h\
-               + 0.5*((v_ip1 - v_RK4[i])/h)*h**2
+    k1 = f(t[i],v_RK4_wa[i])
+    k2 = f(t[i]+0.5*h,v_RK4_wa[i]+0.5*k1*h)
+    k3 = f(t[i]+0.5*h,v_RK4_wa[i]+0.5*k2*h)
+    k4 = f(t[i]+0.5*h,v_RK4_wa[i]+k3*h)
+    v_ip1 = v_RK4_wa[i] + (k1+2*k2+2*k3+k4)*h/6
+    x_wa_ip1 = x_RK4_wa[i]  + v_RK4_wa[i]*h\
+               + 0.5*((v_ip1 - v_RK4_wa[i])/h)*h**2
     
-    v_RK4 = np.append(v_RK4,v_ip1)
+    v_RK4_wa = np.append(v_RK4_wa,v_ip1)
     x_RK4_wa = np.append(x_RK4_wa,x_wa_ip1)
     t_wa = np.append(t_wa,t_wa[i]+h)
 ```
@@ -571,7 +571,11 @@ plt.show()
 ### Comparison of Euler & RK4
 
 ```{code-cell} ipython3
-plt.plot(t,x,"-b",t_RK4,x_RK4,"-c",t_wa,x_RK4_wa,"-g",t,x_a(t),":r")
+t = np.linspace(0,10,N)
+```
+
+```{code-cell} ipython3
+plt.plot(t_Euler,x_Euler,"-b",t_RK4,x_RK4,"-c",t_wa,x_RK4_wa,"-g",t,x_a(t),":r")
 plt.xlabel("t (s)")
 plt.ylabel("x (m)")
 plt.legend(["Numerical Solution (Euler)",
@@ -582,11 +586,105 @@ plt.show()
 ```
 
 ```{code-cell} ipython3
-plt.plot(t,xp,"-b",t_RK4,v_RK4,"-g",t,v_a(t),":r")
+plt.plot(t_RK4,v_RK4,"-g")
+```
+
+```{code-cell} ipython3
+
+```
+
+```{code-cell} ipython3
+plt.plot(t_Euler,v_Euler,"-b",t_RK4,v_RK4,"-g",t,v_a(t),":r")
 plt.xlabel("t (s)")
 plt.ylabel("v (m/s)")
 plt.legend(["Numerical Solution (Euler)",
             "Numerical Solution (RK4)",
+            "Analytical Solution"])
+plt.show()
+```
+
+## Runge-Kutta implemented in Scipy
+
++++
+
+Scipy comes with an initial value problem solver: [scipy.integrate.solve_ivp()](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html#scipy.integrate.solve_ivp). By default, it uses the most popular version of RK, the RK45 that has been derived by blending RK4 and RK5.
+
+It solves problems given in the form:
+
+$$\dydx{y}{t} = f(t,y)$$
+
+with the initial value $y(t_0) = y_0$ and the boundaries $t\in[t_i,t_f]$ given.
+
+Its basic format is:
+
+`solve_ivp(f,t_range,y0)`
+
+and it returns -among other information- the `t` and `y` properties for the solution.
+
+Let's solve our bungee-jumper problem, this time via the built-in solver:
+
+```{code-cell} ipython3
+from scipy import integrate
+```
+
+```{code-cell} ipython3
+# Re-define our ODE for practicality
+
+g = 9.81 # m/s^2
+m = 68.1 # kg
+C_d = 0.25 # kg/m
+
+def f_ivp(t,v):
+    return g - C_d/m*v**2
+```
+
+```{note}
+As the solver supports multi-variable/vector inputs, the initial value(s) should be entered as an array.
+```
+
+```{code-cell} ipython3
+RK_solution = integrate.solve_ivp(f_ivp,[0,10],[0])
+RK_solution
+```
+
+```{code-cell} ipython3
+t = np.linspace(0,10,N)
+
+ivp_t = RK_solution.t
+ivp_y = RK_solution.y[0]
+
+plt.plot(t_Euler,v_Euler,"-bo",
+         t_RK4,v_RK4,"-go",
+         ivp_t,ivp_y,"-co",
+         t,v_a(t),":ro")
+plt.xlabel("t (s)")
+plt.ylabel("v (m/s)")
+plt.legend(["Numerical Solution (Euler)",
+            "Numerical Solution (RK4 - Hand-made)",
+            "Numerical Solution (RK45 - Built-in)",
+            "Analytical Solution"])
+plt.show()
+```
+
+In the graph we see that the built-in RK45 solver determines its data points internally. We can increase the number of data considered by demanding higher accuracy via `atol` and `rtol` tolerance parameters:
+
+```{code-cell} ipython3
+RK_solution = integrate.solve_ivp(f_ivp,[0,10],[0],atol=1E-8,rtol=1E-8)
+
+t = np.linspace(0,10,N)
+
+ivp_t = RK_solution.t
+ivp_y = RK_solution.y[0]
+
+plt.plot(t_Euler,v_Euler,"-bo",
+         t_RK4,v_RK4,"-go",
+         ivp_t,ivp_y,"-co",
+         t,v_a(t),":ro")
+plt.xlabel("t (s)")
+plt.ylabel("v (m/s)")
+plt.legend(["Numerical Solution (Euler)",
+            "Numerical Solution (RK4 - Hand-made)",
+            "Numerical Solution (RK45 - Built-in)",
             "Analytical Solution"])
 plt.show()
 ```
