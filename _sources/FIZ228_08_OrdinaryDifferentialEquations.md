@@ -379,6 +379,11 @@ def f(t,y):
 ```
 
 ```{code-cell} ipython3
+def y_t(t):
+    return 4/1.3*((np.exp(0.8*t)-np.exp(-0.5*t)))+2*np.exp(-0.5*t)
+```
+
+```{code-cell} ipython3
 y = [2]
 t = np.arange(5)
 h = t[1]-t[0]
@@ -478,56 +483,106 @@ plt.show()
 ### RK4
 
 ```{code-cell} ipython3
-t = np.linspace(0,10,N)
-h = t[1]-t[0]
-x_RK4  = np.array([0])
-xp_RK4 = np.array([0])
+N = 5
+t_aux = np.linspace(0,10,N)
+h = t_aux[1]-t_aux[0]
 
-for ti in t[:-1]:
-    k1 = f(ti,xp_RK4[-1])
-    k2 = f(ti+0.5*h,xp_RK4[-1]+0.5*k1*h)
-    k3 = f(ti+0.5*h,xp_RK4[-1]+0.5*k2*h)
-    k4 = f(ti+0.5*h,xp_RK4[-1]+k3*h)
-    xp_ip1 = xp_RK4[-1] + (k1+2*k2+2*k3+k4)*h/6
+t_RK4 = np.array([0])
+x_RK4 = np.array([0])
+v_RK4 = np.array([0])
+
+for i in range(len(t_aux)-1):
+    k1 = f(t[i],v_RK4[i])
+    k2 = f(t[i]+0.5*h,v_RK4[i]+0.5*k1*h)
+    k3 = f(t[i]+0.5*h,v_RK4[i]+0.5*k2*h)
+    k4 = f(t[i]+0.5*h,v_RK4[i]+k3*h)
+    v_ip1 = v_RK4[i] + (k1+2*k2+2*k3+k4)*h/6
+    x_ip1 = x_RK4[i]  + v_RK4[i]*h
     
-    x_ip1  = x_RK4[-1]  + xp_ip1*h
-    
-    xp_RK4 = np.append(xp_RK4,xp_ip1)
+    v_RK4 = np.append(v_RK4,v_ip1)
     x_RK4 = np.append(x_RK4,x_ip1)
+    t_RK4 = np.append(t_RK4,t_RK4[i]+h)
 ```
 
 ```{code-cell} ipython3
-plt.plot(t,x_RK4,"-b",t,xp_RK4,"-r")
+plt.plot(t_RK4,x_RK4,"-b",t_RK4,v_RK4,"-r")
 plt.legend(("Position","Velocity"))
 plt.show()
 ```
 
 ```{code-cell} ipython3
-plt.plot(t,x_RK4,"-",t,x_a(t),"--r")
+plt.plot(t_RK4,x_RK4,"-",t_RK4,x_a(t_RK4),"--r")
 plt.title("x(t)")
 plt.legend(["Numerical Solution","Analytical Solution"])
 plt.show()
 
-plt.plot(t,xp_RK4,"-",t,v_a(t),"--r")
+plt.plot(t_RK4,v_RK4,"-",t_RK4,v_a(t_RK4),"--r")
 plt.title("v(t)")
 plt.legend(["Numerical Solution","Analytical Solution"])
+plt.show()
+```
+
+Even though the velocity fits very good, there is a discrepancy concerning the position. This is due the fact that we have derived the positions from its derivative (i.e., $v$):
+
+$$ x_{i+1} = x_i + v_i h$$
+
+where $h$ is of course, our $\Delta t$.
+
+We can further refine our findings by also considering the acceleration (i.e., $\dot v$) and extending our formula to include that:
+
+$$ x_{i+1} = x_i + v_i h + \frac{1}{2}\left(\frac{v_{i+1}-v_i}{h}\right)  h^2$$
+
+So, implementing this additional factor, we have:
+
+```{code-cell} ipython3
+N = 5
+t_aux = np.linspace(0,10,N)
+h = t_aux[1]-t_aux[0]
+
+t_wa = np.array([0])
+x_RK4_wa = np.array([0]) # This is position calculated with a
+v_RK4    = np.array([0]) # No change in velocity's equation
+
+for i in range(len(t_aux)-1):
+    k1 = f(t[i],v_RK4[i])
+    k2 = f(t[i]+0.5*h,v_RK4[i]+0.5*k1*h)
+    k3 = f(t[i]+0.5*h,v_RK4[i]+0.5*k2*h)
+    k4 = f(t[i]+0.5*h,v_RK4[i]+k3*h)
+    v_ip1 = v_RK4[i] + (k1+2*k2+2*k3+k4)*h/6
+    x_wa_ip1 = x_RK4_wa[i]  + v_RK4[i]*h\
+               + 0.5*((v_ip1 - v_RK4[i])/h)*h**2
+    
+    v_RK4 = np.append(v_RK4,v_ip1)
+    x_RK4_wa = np.append(x_RK4_wa,x_wa_ip1)
+    t_wa = np.append(t_wa,t_wa[i]+h)
+```
+
+Comparing this approach with the previous one & the analytical solution:
+
+```{code-cell} ipython3
+plt.plot(t_RK4,x_RK4,"b-",t_wa,x_RK4_wa,"g-",t_RK4,x_a(t_RK4),"--r")
+plt.title("x(t)")
+plt.legend(["Numerical Solution (w/o a)",
+            "Numerical Solution (w/ a)",
+            "Analytical Solution"])
 plt.show()
 ```
 
 ### Comparison of Euler & RK4
 
 ```{code-cell} ipython3
-plt.plot(t,x,"-b",t,x_RK4,"-g",t,x_a(t),":r")
+plt.plot(t,x,"-b",t_RK4,x_RK4,"-c",t_wa,x_RK4_wa,"-g",t,x_a(t),":r")
 plt.xlabel("t (s)")
 plt.ylabel("x (m)")
 plt.legend(["Numerical Solution (Euler)",
-            "Numerical Solution (RK4)",
+            "Numerical Solution (RK4 w/o a)",
+            "Numerical Solution (RK4 w/ a)",
             "Analytical Solution"])
 plt.show()
 ```
 
 ```{code-cell} ipython3
-plt.plot(t,xp,"-b",t,xp_RK4,"-g",t,v_a(t),":r")
+plt.plot(t,xp,"-b",t_RK4,v_RK4,"-g",t,v_a(t),":r")
 plt.xlabel("t (s)")
 plt.ylabel("v (m/s)")
 plt.legend(["Numerical Solution (Euler)",

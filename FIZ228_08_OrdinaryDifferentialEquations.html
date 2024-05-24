@@ -214,6 +214,16 @@ const thebe_selector_output = ".output, .cell_output"
      Midterm Exam #2 - Hands On Session
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Exams_HWs/FIZ228_20232_MT1_MakeUpExam.html">
+     Midterm Exam #1 Make-Up (20232)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Exams_HWs/FIZ228_20232_MT2_MakeUpExam.html">
+     Midterm Exam #2 Make-Up (20232)
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -1044,6 +1054,14 @@ k_4 = f(t_i+h,y_i+k_3 h)\end{split}\]</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">y_t</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">4</span><span class="o">/</span><span class="mf">1.3</span><span class="o">*</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.8</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">t</span><span class="p">)))</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">h</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -1067,9 +1085,7 @@ k_4 = f(t_i+h,y_i+k_3 h)\end{split}\]</div>
  0	 2.00000	 2.00000	 0.00%
  1	 6.20104	 6.19463	 0.10%
  2	14.86248	14.84392	 0.13%
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 3	33.72135	33.67717	 0.13%
+ 3	33.72135	33.67717	 0.13%
  4	75.43917	75.33896	 0.13%
 </pre></div>
 </div>
@@ -1085,7 +1101,7 @@ k_4 = f(t_i+h,y_i+k_3 h)\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_37_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_37_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_38_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_38_0.png" />
 </div>
 </div>
 </section>
@@ -1146,7 +1162,7 @@ k_4 = f(t_i+h,y_i+k_3 h)\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_42_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_42_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_43_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_43_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1172,8 +1188,8 @@ k_4 = f(t_i+h,y_i+k_3 h)\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_43_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_43_0.png" />
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_43_1.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_43_1.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_44_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_44_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_44_1.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_44_1.png" />
 </div>
 </div>
 </section>
@@ -1181,46 +1197,49 @@ k_4 = f(t_i+h,y_i+k_3 h)\end{split}\]</div>
 <h3>RK4<a class="headerlink" href="#rk4" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
-<span class="n">h</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">x_RK4</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">xp_RK4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">t_aux</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">t_aux</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">t_aux</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="k">for</span> <span class="n">ti</span> <span class="ow">in</span> <span class="n">t</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
-    <span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">ti</span><span class="p">,</span><span class="n">xp_RK4</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">ti</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span><span class="n">xp_RK4</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">k1</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
-    <span class="n">k3</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">ti</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span><span class="n">xp_RK4</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">k2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
-    <span class="n">k4</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">ti</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span><span class="n">xp_RK4</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">k3</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
-    <span class="n">xp_ip1</span> <span class="o">=</span> <span class="n">xp_RK4</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">k1</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">k2</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">k3</span><span class="o">+</span><span class="n">k4</span><span class="p">)</span><span class="o">*</span><span class="n">h</span><span class="o">/</span><span class="mi">6</span>
+<span class="n">t_RK4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">x_RK4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">v_RK4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t_aux</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">v_RK4</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span><span class="n">v_RK4</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">k1</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+    <span class="n">k3</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span><span class="n">v_RK4</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">k2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+    <span class="n">k4</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span><span class="n">v_RK4</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">k3</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+    <span class="n">v_ip1</span> <span class="o">=</span> <span class="n">v_RK4</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">k1</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">k2</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">k3</span><span class="o">+</span><span class="n">k4</span><span class="p">)</span><span class="o">*</span><span class="n">h</span><span class="o">/</span><span class="mi">6</span>
+    <span class="n">x_ip1</span> <span class="o">=</span> <span class="n">x_RK4</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>  <span class="o">+</span> <span class="n">v_RK4</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">h</span>
     
-    <span class="n">x_ip1</span>  <span class="o">=</span> <span class="n">x_RK4</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="o">+</span> <span class="n">xp_ip1</span><span class="o">*</span><span class="n">h</span>
-    
-    <span class="n">xp_RK4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xp_RK4</span><span class="p">,</span><span class="n">xp_ip1</span><span class="p">)</span>
+    <span class="n">v_RK4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v_RK4</span><span class="p">,</span><span class="n">v_ip1</span><span class="p">)</span>
     <span class="n">x_RK4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_RK4</span><span class="p">,</span><span class="n">x_ip1</span><span class="p">)</span>
+    <span class="n">t_RK4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t_RK4</span><span class="p">,</span><span class="n">t_RK4</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">h</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x_RK4</span><span class="p">,</span><span class="s2">&quot;-b&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">xp_RK4</span><span class="p">,</span><span class="s2">&quot;-r&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_RK4</span><span class="p">,</span><span class="n">x_RK4</span><span class="p">,</span><span class="s2">&quot;-b&quot;</span><span class="p">,</span><span class="n">t_RK4</span><span class="p">,</span><span class="n">v_RK4</span><span class="p">,</span><span class="s2">&quot;-r&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s2">&quot;Position&quot;</span><span class="p">,</span><span class="s2">&quot;Velocity&quot;</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_46_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_46_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_47_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_47_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x_RK4</span><span class="p">,</span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">x_a</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="s2">&quot;--r&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_RK4</span><span class="p">,</span><span class="n">x_RK4</span><span class="p">,</span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="n">t_RK4</span><span class="p">,</span><span class="n">x_a</span><span class="p">(</span><span class="n">t_RK4</span><span class="p">),</span><span class="s2">&quot;--r&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;x(t)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;Numerical Solution&quot;</span><span class="p">,</span><span class="s2">&quot;Analytical Solution&quot;</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">xp_RK4</span><span class="p">,</span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">v_a</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="s2">&quot;--r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_RK4</span><span class="p">,</span><span class="n">v_RK4</span><span class="p">,</span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="n">t_RK4</span><span class="p">,</span><span class="n">v_a</span><span class="p">(</span><span class="n">t_RK4</span><span class="p">),</span><span class="s2">&quot;--r&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;v(t)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;Numerical Solution&quot;</span><span class="p">,</span><span class="s2">&quot;Analytical Solution&quot;</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1228,8 +1247,58 @@ k_4 = f(t_i+h,y_i+k_3 h)\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_47_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_47_0.png" />
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_47_1.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_47_1.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_48_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_48_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_48_1.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_48_1.png" />
+</div>
+</div>
+<p>Even though the velocity fits very good, there is a discrepancy concerning the position. This is due the fact that we have derived the positions from its derivative (i.e., <span class="math notranslate nohighlight">\(v\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[ x_{i+1} = x_i + v_i h\]</div>
+<p>where <span class="math notranslate nohighlight">\(h\)</span> is of course, our <span class="math notranslate nohighlight">\(\Delta t\)</span>.</p>
+<p>We can further refine our findings by also considering the acceleration (i.e., <span class="math notranslate nohighlight">\(\dot v\)</span>) and extending our formula to include that:</p>
+<div class="math notranslate nohighlight">
+\[ x_{i+1} = x_i + v_i h + \frac{1}{2}\left(\frac{v_{i+1}-v_i}{h}\right)  h^2\]</div>
+<p>So, implementing this additional factor, we have:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">t_aux</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">t_aux</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">t_aux</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">t_wa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">x_RK4_wa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># This is position calculated with a</span>
+<span class="n">v_RK4</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># No change in velocity&#39;s equation</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t_aux</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">v_RK4</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span><span class="n">v_RK4</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">k1</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+    <span class="n">k3</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span><span class="n">v_RK4</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">k2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+    <span class="n">k4</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span><span class="n">v_RK4</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">k3</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+    <span class="n">v_ip1</span> <span class="o">=</span> <span class="n">v_RK4</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">k1</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">k2</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">k3</span><span class="o">+</span><span class="n">k4</span><span class="p">)</span><span class="o">*</span><span class="n">h</span><span class="o">/</span><span class="mi">6</span>
+    <span class="n">x_wa_ip1</span> <span class="o">=</span> <span class="n">x_RK4_wa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>  <span class="o">+</span> <span class="n">v_RK4</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">h</span>\
+               <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">v_ip1</span> <span class="o">-</span> <span class="n">v_RK4</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">/</span><span class="n">h</span><span class="p">)</span><span class="o">*</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span>
+    
+    <span class="n">v_RK4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v_RK4</span><span class="p">,</span><span class="n">v_ip1</span><span class="p">)</span>
+    <span class="n">x_RK4_wa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_RK4_wa</span><span class="p">,</span><span class="n">x_wa_ip1</span><span class="p">)</span>
+    <span class="n">t_wa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t_wa</span><span class="p">,</span><span class="n">t_wa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">h</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Comparing this approach with the previous one &amp; the analytical solution:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_RK4</span><span class="p">,</span><span class="n">x_RK4</span><span class="p">,</span><span class="s2">&quot;b-&quot;</span><span class="p">,</span><span class="n">t_wa</span><span class="p">,</span><span class="n">x_RK4_wa</span><span class="p">,</span><span class="s2">&quot;g-&quot;</span><span class="p">,</span><span class="n">t_RK4</span><span class="p">,</span><span class="n">x_a</span><span class="p">(</span><span class="n">t_RK4</span><span class="p">),</span><span class="s2">&quot;--r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;x(t)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;Numerical Solution (w/o a)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Numerical Solution (w/ a)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Analytical Solution&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_52_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_52_0.png" />
 </div>
 </div>
 </section>
@@ -1237,23 +1306,24 @@ k_4 = f(t_i+h,y_i+k_3 h)\end{split}\]</div>
 <h3>Comparison of Euler &amp; RK4<a class="headerlink" href="#comparison-of-euler-rk4" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s2">&quot;-b&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">x_RK4</span><span class="p">,</span><span class="s2">&quot;-g&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">x_a</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="s2">&quot;:r&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s2">&quot;-b&quot;</span><span class="p">,</span><span class="n">t_RK4</span><span class="p">,</span><span class="n">x_RK4</span><span class="p">,</span><span class="s2">&quot;-c&quot;</span><span class="p">,</span><span class="n">t_wa</span><span class="p">,</span><span class="n">x_RK4_wa</span><span class="p">,</span><span class="s2">&quot;-g&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">x_a</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="s2">&quot;:r&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t (s)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;x (m)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;Numerical Solution (Euler)&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Numerical Solution (RK4)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Numerical Solution (RK4 w/o a)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Numerical Solution (RK4 w/ a)&quot;</span><span class="p">,</span>
             <span class="s2">&quot;Analytical Solution&quot;</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_49_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_49_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_54_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_54_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">xp</span><span class="p">,</span><span class="s2">&quot;-b&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">xp_RK4</span><span class="p">,</span><span class="s2">&quot;-g&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">v_a</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="s2">&quot;:r&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">xp</span><span class="p">,</span><span class="s2">&quot;-b&quot;</span><span class="p">,</span><span class="n">t_RK4</span><span class="p">,</span><span class="n">v_RK4</span><span class="p">,</span><span class="s2">&quot;-g&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">v_a</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="s2">&quot;:r&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t (s)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;v (m/s)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;Numerical Solution (Euler)&quot;</span><span class="p">,</span>
@@ -1264,7 +1334,7 @@ k_4 = f(t_i+h,y_i+k_3 h)\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_50_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_50_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_55_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_55_0.png" />
 </div>
 </div>
 </section>
@@ -1299,7 +1369,7 @@ k_4 = f(t_i+h,y_i+k_3 h)\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_53_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_53_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_58_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_58_0.png" />
 </div>
 </div>
 </section>
@@ -1342,7 +1412,7 @@ k_4 = f(t_i+h,y_i+k_3 h)\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_57_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_57_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_62_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_62_0.png" />
 </div>
 </div>
 </section>
@@ -1385,7 +1455,7 @@ k_4 = f(t_i+h,y_i+k_3 h)\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_61_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_61_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_66_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_66_0.png" />
 </div>
 </div>
 </section>
@@ -1432,7 +1502,7 @@ k_4 = f(t_i+h,y_i+k_3 h)\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_66_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_66_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_71_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_71_0.png" />
 </div>
 </div>
 </section>
@@ -1471,7 +1541,7 @@ k_4 = f(t_i+h,y_i+k_3 h)\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_69_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_69_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_74_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_74_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1485,7 +1555,7 @@ k_4 = f(t_i+h,y_i+k_3 h)\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_70_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_70_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_75_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_75_0.png" />
 </div>
 </div>
 </section>
@@ -1566,7 +1636,7 @@ i=N-2 &amp;: &amp;(1-h)y_{N-3} - (2+6h^2)y_{N-2} + (1+h)\underbrace{y_{N-1}}_{89
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_74_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_74_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_79_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_79_0.png" />
 </div>
 </div>
 </section>
@@ -1643,7 +1713,7 @@ i=N-2 &amp;: &amp;y_{N-3} - (2-h^2)y_{N-2} + \underbrace{y_{N-1}}_{-0.5} &amp;= 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_78_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_78_0.png" />
+<img alt="_images/FIZ228_08_OrdinaryDifferentialEquations_83_0.png" src="_images/FIZ228_08_OrdinaryDifferentialEquations_83_0.png" />
 </div>
 </div>
 </section>
