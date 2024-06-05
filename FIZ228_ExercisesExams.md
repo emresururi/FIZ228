@@ -43,7 +43,9 @@ kernelspec:
     * [Midterm Exam #1 Make Up (24/05/2024)](Exams_HWs/FIZ228_20232_MT1_MakeUpExam)  
         * Fitting data to two good candidate models
     * [Midterm Exam #2 Make Up (24/05/2024)](Exams_HWs/FIZ228_20232_MT2_MakeUpExam)  
-        * Deciding on the best k-means over a number of runs        
+        * Deciding on the best k-means over a number of runs
+    * [Final Exam (05/06/2024)](Exams_HWs/FIZ228_20232_FinalExam)  
+        * A fitting + 2 ODEs        
 
 ```{code-cell} ipython3
 
