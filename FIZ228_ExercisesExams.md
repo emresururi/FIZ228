@@ -45,7 +45,13 @@ kernelspec:
     * [Midterm Exam #2 Make Up (24/05/2024)](Exams_HWs/FIZ228_20232_MT2_MakeUpExam)  
         * Deciding on the best k-means over a number of runs
     * [Final Exam (05/06/2024)](Exams_HWs/FIZ228_20232_FinalExam)  
-        * A fitting + 2 ODEs        
+        * A fitting + 2 ODEs
+    * [Resit Exam (28/06/2024)](Exams_HWs/FIZ228_20232_ResitExam)
+        
+        1\. pandas DataFrame basics, polynomial fitting
+        2\. Polynomial fitting
+        3\. _Maximization_ with a constraint
+        4\. Initial v
 
 ```{code-cell} ipython3
 
