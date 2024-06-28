@@ -48,7 +48,7 @@ kernelspec:
         * A fitting + 2 ODEs
     * [Resit Exam (28/06/2024)](Exams_HWs/FIZ228_20232_ResitExam)
         
-        1\. pandas DataFrame basics, polynomial fitting  
+        1\. pandas DataFrame basics  
         2\. Polynomial fitting  
         3\. _Maximization_ with a constraint  
         4\. Initial value ODE
